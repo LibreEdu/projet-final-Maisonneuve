@@ -99,8 +99,8 @@ CREATE TABLE vino_usager (
 	courriel VARCHAR(255) NOT NULL,
 	hash CHAR(128) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_langue) REFERENCES vino_langue(id),
-	UNIQUE (courriel)
+	FOREIGN KEY (id_langue) REFERENCES vino_langue(id)
+	-- ,UNIQUE (courriel)
 ) ENGINE=InnoDB;
 
 -- https://stackoverflow.com/questions/219569/best-database-field-type-for-a-url
