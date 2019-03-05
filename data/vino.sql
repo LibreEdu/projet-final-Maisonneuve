@@ -8,6 +8,7 @@ USE vino;
 
 DROP TABLE IF EXISTS vino_cellier__bouteille;
 DROP TABLE IF EXISTS vino_cellier__usager;
+DROP TABLE IF EXISTS vino_role_description;
 DROP TABLE IF EXISTS vino_role;
 DROP TABLE IF EXISTS vino_cellier;
 DROP TABLE IF EXISTS vino_bouteille;
@@ -136,8 +137,17 @@ CREATE TABLE vino_cellier (
 CREATE TABLE vino_role (
 	id INT NOT NULL AUTO_INCREMENT,
 	modifier BOOLEAN NOT NULL,
-	libelle VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE vino_role_description (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_role INT NOT NULL,
+	id_langue INT NOT NULL,
+	libelle VARCHAR(30) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_role) REFERENCES vino_role(id),
+	FOREIGN KEY (id_langue) REFERENCES vino_langue(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE vino_cellier__usager (
@@ -163,8 +173,6 @@ CREATE TABLE vino_cellier__bouteille (
 	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id),
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id)
 ) ENGINE=InnoDB;
-
-
 
 INSERT INTO vino_langue VALUES(1, 'Français', 'fr');
 INSERT INTO vino_langue VALUES(2, 'English', 'en');
@@ -831,8 +839,13 @@ INSERT INTO vino_bouteille VALUES(10, '13637422', NULL, 34.75, 3, 5, 21, 122, 31
 INSERT INTO vino_cellier VALUES(1, 'Domicile');
 INSERT INTO vino_cellier VALUES(2, 'Chalet');
 
-INSERT INTO vino_role VALUES(1, 1, 'Proprietaire');
-INSERT INTO vino_role VALUES(2, 0, 'Visiteur');
+INSERT INTO vino_role VALUES(1, 1);
+INSERT INTO vino_role VALUES(2, 0);
+
+INSERT INTO vino_role_description VALUES(1, 1, 1, 'Proprietaire');
+INSERT INTO vino_role_description VALUES(2, 2, 1, 'Visiteur');
+INSERT INTO vino_role_description VALUES(3, 1, 2, 'Owner');
+INSERT INTO vino_role_description VALUES(4, 2, 2, 'Visitor');
 
 INSERT INTO vino_cellier__usager VALUES(1, 1, 2, 1);
 INSERT INTO vino_cellier__usager VALUES(2, 2, 2, 1);
