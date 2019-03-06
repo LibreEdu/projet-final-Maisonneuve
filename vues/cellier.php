@@ -10,7 +10,8 @@ foreach ($data as $cle => $bouteille) {
         </div>
         <div class="description">
             <p class="nom">Nom : <?php echo $bouteille['nom'] ?></p>
-            <p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?></p>
+            <!-- Ajouter un id pour récuperer l'id de de la bouteille -->
+            <p class="quantite" id="<?php echo $bouteille['id_bouteille_cellier'] ?>">Quantité : <?php echo $bouteille['quantite'] ?></p>
             <p class="pays">Pays : <?php echo $bouteille['pays'] ?></p>
             <p class="type">Type : <?php echo $bouteille['type'] ?></p>
             <p class="millesime">Millesime : <?php echo $bouteille['millesime'] ?></p>
