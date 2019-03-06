@@ -1,23 +1,19 @@
-CELLIER:id, nom
-CONTIENT [NM], 0N BOUTEILLE, 0N CELLIER : quantité, date d’achat, date de peremption, note
-VENDANGÉ À [1N], 0N REGION, 01 BOUTEILLE
-REGION: id, libellé
-CONSTITUE [1N], 0N PAYS, 11 REGION
-
-A [NM], 0N CELLIER, 0N USAGER:rôle
-AJOUTE [1N], 0N USAGER, 01 BOUTEILLE: quantité, date d’achat, date de peremption, note
-BOUTEILLE:id, code SAQ, prix, libellé
-VENDANGÉ À. [1N], 0N PAYS, 01 BOUTEILLE
-PAYS: id, libellé
-
-USAGER: id, estAdmin, nom, courriel, hash
-VENDANGÉ EN [1N], 0N MILLESIME, 01 BOUTEILLE
-EST UN [1N], 0N COULEUR, 01 BOUTEILLE
-FAIT [1N], 0N FORMAT, 01 BOUTEILLE
-:
-
-:
 MILLESIME: id, libellé
-COULEUR: id, libellé
+EST UN [1N], 0N TYPE, 01 BOUTEILLE
+TYPE: id, libellé
 FORMAT : id, quantité, unité
-:
+
+VENDANGÉ EN [1N], 0N MILLESIME, 01 BOUTEILLE
+BOUTEILLE:id, code SAQ, prix, libellé
+FAIT [1N], 0N FORMAT, 01 BOUTEILLE
+BOUTEILLE SAQ:id, code SAQ, prix, libellé
+
+VENDANGÉ À [1N], 0N PAYS, 01 BOUTEILLE
+CONTIENT [NM], 0N BOUTEILLE, 0N CELLIER : quantité, date d’achat, date de peremption, note
+AJOUT PERSO [1N], 0N USAGER, 01 BOUTEILLE: quantité, date d’achat, date de peremption, note
+AJOUTE SAQ [1N], 0N USAGER, 01 BOUTEILLE SAQ, 01 BOUTEILLE : quantité, date d’achat, date de peremption, note
+
+PAYS: id, libellé
+CELLIER:id, nom
+A [NM], 1N CELLIER, 0N USAGER:rôle
+USAGER: id, est admin, nom, courriel, hash
