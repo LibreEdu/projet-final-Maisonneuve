@@ -164,16 +164,39 @@ class Bouteille extends Modele {
 			
 		$requete = "UPDATE vino__cellier SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
 		//echo $requete;
-		//$requete = "SELECT quantite FROM vino__cellier WHERE id = ". $id;
+		
 		
 		$res = $this->_db->query($requete);
-        
-		return $res;
-		//var_dump($res);
+		
+		//Ajout d'une nouvelle requete qui récupére la quantité d'une bouteille 
+		// $requete1 = "SELECT quantite FROM vino__cellier WHERE id = ". $id;
+		// $res1 = $this->_db->query($requete1);		
+			
+		// $row = $res1->fetch_ASSOC(); 
+		// retourner une ligne
+        //return $row;       
+		return $res;		
+	}
+
+	/**
+	 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
+	 * 
+	 * @param int $id id de la bouteille	
+	 * 
+	 * @return $row la ligne de la quntité de la bouteille en question.
+	 */
+	public function recupererQuantiteBouteilleCellier($id)
+	{
+			
+		//Requete qui récupére la quantité d'une bouteille en particulier
+		$requete1 = "SELECT quantite FROM vino__cellier WHERE id = ". $id;
+		$res1 = $this->_db->query($requete1);		
+			
+		$row = $res1->fetch_ASSOC(); 
+		// retourner une ligne
+        return $row;       
+				
 	}
 }
-
-
-
 
 ?>
