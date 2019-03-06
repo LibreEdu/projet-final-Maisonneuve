@@ -18,7 +18,8 @@ window.addEventListener('load', function() {
         element.addEventListener("click", function(evt){
             let id = evt.target.parentElement.dataset.id;
             let requete = new Request(BaseURL+"index.php?requete=boireBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
-
+            // récuperer la quantité avec l'id de la bouteille concerné 
+            let quantite = document.getElementById(id);
             fetch(requete)
             .then(response => {
                 if (response.status === 200) {
@@ -29,6 +30,8 @@ window.addEventListener('load', function() {
               })
               .then(response => {
                 console.debug(response);
+                //affichage de la quantité
+                quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
                 console.error(error);
               });
@@ -41,7 +44,8 @@ window.addEventListener('load', function() {
         element.addEventListener("click", function(evt){
             let id = evt.target.parentElement.dataset.id;
             let requete = new Request(BaseURL+"index.php?requete=ajouterBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
-
+            // récuperer la quantité avec l'id de la bouteille concerné 
+            let quantite = document.getElementById(id);
             fetch(requete)
             .then(response => {
                 if (response.status === 200) {
@@ -52,6 +56,8 @@ window.addEventListener('load', function() {
               })
               .then(response => {
                 console.debug(response);
+                //affichage de la quantité
+                quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
                 console.error(error);
               });
