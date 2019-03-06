@@ -18,6 +18,8 @@ window.addEventListener('load', function() {
         element.addEventListener("click", function(evt){
             let id = evt.target.parentElement.dataset.id;
             let requete = new Request(BaseURL+"index.php?requete=boireBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
+            // récuperer l'id qui contient l'id de la bouteille concernée 
+            let quantite = document.getElementById(id);
 
             fetch(requete)
             .then(response => {
@@ -29,6 +31,9 @@ window.addEventListener('load', function() {
               })
               .then(response => {
                 console.debug(response);
+                console.log(response);
+                //affichage de la quantité
+                quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
                 console.error(error);
               });
@@ -39,19 +44,26 @@ window.addEventListener('load', function() {
     document.querySelectorAll(".btnAjouter").forEach(function(element){
         console.log(element);
         element.addEventListener("click", function(evt){
-            let id = evt.target.parentElement.dataset.id;
+            let id = evt.target.parentElement.dataset.id;            
+            console.log(id);
+            
             let requete = new Request(BaseURL+"index.php?requete=ajouterBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
-
+            // récuperer la quantité avec l'id de la bouteille concerné 
+            let quantite = document.getElementById(id);
+            //console.log(quantite);
             fetch(requete)
             .then(response => {
                 if (response.status === 200) {
-                  return response.json();
+                  return response.json();                
                 } else {
                   throw new Error('Erreur');
                 }
               })
               .then(response => {
                 console.debug(response);
+                console.log(response);
+                //affichage de la quantité
+                quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
                 console.error(error);
               });
