@@ -5,14 +5,16 @@ CREATE DATABASE IF NOT EXISTS vino
 
 USE vino;
 
-
+DROP TABLE IF EXISTS vino_bouteille_partage;
+DROP TABLE IF EXISTS vino_bouteille_bu;
 DROP TABLE IF EXISTS vino_cellier__bouteille;
+DROP TABLE IF EXISTS vino_bouteille;
 DROP TABLE IF EXISTS vino_cellier__usager;
 DROP TABLE IF EXISTS vino_role_description;
 DROP TABLE IF EXISTS vino_role;
-DROP TABLE IF EXISTS vino_cellier;
-DROP TABLE IF EXISTS vino_bouteille;
 DROP TABLE IF EXISTS vino_usager;
+DROP TABLE IF EXISTS vino_cellier;
+DROP TABLE IF EXISTS vino_bouteille_saq;
 DROP TABLE IF EXISTS vino_format;
 DROP TABLE IF EXISTS vino_type_description;
 DROP TABLE IF EXISTS vino_type;
@@ -72,35 +74,20 @@ CREATE TABLE vino_format (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE vino_usager (
-	id INT NOT NULL AUTO_INCREMENT,
-	id_langue INT NOT NULL,
-	admin  BOOLEAN NOT NULL,
-	nom VARCHAR(30) NOT NULL,
-	courriel VARCHAR(255) NOT NULL,
-	hash CHAR(128) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_langue) REFERENCES vino_langue(id),
-	UNIQUE (courriel)
-) ENGINE=InnoDB;
-
 -- https://stackoverflow.com/questions/219569/best-database-field-type-for-a-url
 -- https://s7d9.scene7.com/is/image/SAQ/10324623_is
 -- url_img VARCHAR(2083) DEFAULT NULL,
 -- https://www.saq.com/page/en/saqcom/x/x/12216562
-CREATE TABLE vino_bouteille (
+CREATE TABLE vino_bouteille_saq (
 	id INT NOT NULL AUTO_INCREMENT,
-	code_saq VARCHAR(20) DEFAULT NULL,
-	id_usager INT DEFAULT NULL,
-	prix FLOAT DEFAULT NULL,
-	id_type INT DEFAULT NULL,
-	id_format INT DEFAULT NULL,
-	id_pays INT DEFAULT NULL,
+	code_saq CHAR(8) NOT NULL,
+	prix FLOAT NOT NULL,
+	id_type INT NOT NULL,
+	id_format INT NOT NULL,
+	id_pays INT NOT NULL,
 	id_millesime INT DEFAULT NULL,
 	libelle VARCHAR(200) NOT NULL,
-	note TEXT DEFAULT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_usager) REFERENCES vino_usager(id),
 	FOREIGN KEY (id_type) REFERENCES vino_type(id),
 	FOREIGN KEY (id_format) REFERENCES vino_format(id),
 	FOREIGN KEY (id_pays) REFERENCES vino_pays(id),
@@ -111,6 +98,27 @@ CREATE TABLE vino_cellier (
 	id INT NOT NULL AUTO_INCREMENT,
 	nom VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE vino_usager (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_langue INT NOT NULL,
+	admin BOOLEAN NOT NULL,
+	actif BOOLEAN NOT NULL,
+	date_creation DATE NOT NULL,
+	identifiant VARCHAR(30) NOT NULL,
+	courriel VARCHAR(255) NOT NULL,
+	nom VARCHAR(30) NOT NULL,
+	prenom VARCHAR(30) NOT NULL,
+	adresse VARCHAR(100) DEFAULT NULL,
+	ville VARCHAR(40) DEFAULT NULL,
+	codePostal VARCHAR(10) DEFAULT NULL,
+	province VARCHAR(20) DEFAULT NULL,
+	hash CHAR(128) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_langue) REFERENCES vino_langue(id),
+	UNIQUE (identifiant),
+	UNIQUE (courriel)
 ) ENGINE=InnoDB;
 
 CREATE TABLE vino_role (
@@ -140,19 +148,50 @@ CREATE TABLE vino_cellier__usager (
 	FOREIGN KEY (id_role) REFERENCES vino_role(id)
 ) ENGINE=InnoDB;
 
+CREATE TABLE vino_bouteille (
+	id INT NOT NULL AUTO_INCREMENT,
+	code_saq CHAR(8) DEFAULT NULL,
+	prix FLOAT DEFAULT NULL,
+	id_type INT DEFAULT NULL,
+	id_format INT DEFAULT NULL,
+	id_pays INT DEFAULT NULL,
+	id_millesime INT DEFAULT NULL,
+	libelle VARCHAR(200) NOT NULL,
+	note TEXT DEFAULT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_type) REFERENCES vino_type(id),
+	FOREIGN KEY (id_format) REFERENCES vino_format(id),
+	FOREIGN KEY (id_pays) REFERENCES vino_pays(id),
+	FOREIGN KEY (id_millesime) REFERENCES vino_millesime(id)
+) ENGINE=InnoDB;
+
 CREATE TABLE vino_cellier__bouteille (
 	id INT NOT NULL AUTO_INCREMENT,
 	id_cellier  INT NOT NULL,
 	id_bouteille  INT NOT NULL,
 	quantite INT NOT NULL,
 	date_achat DATE DEFAULT NULL,
-	date_peremption DATE DEFAULT NULL,
-	note TEXT DEFAULT NULL,
+	date_buvable DATE DEFAULT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id),
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id)
 ) ENGINE=InnoDB;
 
+CREATE TABLE vino_bouteille_bu (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_bouteille INT NOT NULL,
+	date_degustation DATE NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE vino_bouteille_partage (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_bouteille INT NOT NULL,
+	date_partage DATE NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id)
+) ENGINE=InnoDB;
 
 -- SELECT *
 -- FROM vino_cellier__bouteille cb
@@ -184,40 +223,47 @@ CREATE TABLE vino_cellier__bouteille (
 INSERT INTO vino_langue VALUES(1, 'Français', 'fr');
 INSERT INTO vino_langue VALUES(2, 'English', 'en');
 
-INSERT INTO vino_millesime VALUES(1, '1951');
-INSERT INTO vino_millesime VALUES(2, '1964');
-INSERT INTO vino_millesime VALUES(3, '1966');
-INSERT INTO vino_millesime VALUES(4, '1982');
-INSERT INTO vino_millesime VALUES(5, '1985');
-INSERT INTO vino_millesime VALUES(6, '1986');
-INSERT INTO vino_millesime VALUES(7, '1988');
-INSERT INTO vino_millesime VALUES(8, '1989');
-INSERT INTO vino_millesime VALUES(9, '1990');
-INSERT INTO vino_millesime VALUES(10, '1994');
-INSERT INTO vino_millesime VALUES(11, '1995');
-INSERT INTO vino_millesime VALUES(12, '1996');
-INSERT INTO vino_millesime VALUES(13, '1997');
-INSERT INTO vino_millesime VALUES(14, '1998');
-INSERT INTO vino_millesime VALUES(15, '1999');
-INSERT INTO vino_millesime VALUES(16, '2000');
-INSERT INTO vino_millesime VALUES(17, '2001');
-INSERT INTO vino_millesime VALUES(18, '2002');
-INSERT INTO vino_millesime VALUES(19, '2003');
-INSERT INTO vino_millesime VALUES(20, '2004');
-INSERT INTO vino_millesime VALUES(21, '2005');
-INSERT INTO vino_millesime VALUES(22, '2006');
-INSERT INTO vino_millesime VALUES(23, '2007');
-INSERT INTO vino_millesime VALUES(24, '2008');
-INSERT INTO vino_millesime VALUES(25, '2009');
-INSERT INTO vino_millesime VALUES(26, '2010');
-INSERT INTO vino_millesime VALUES(27, '2011');
-INSERT INTO vino_millesime VALUES(28, '2012');
-INSERT INTO vino_millesime VALUES(29, '2013');
-INSERT INTO vino_millesime VALUES(30, '2014');
-INSERT INTO vino_millesime VALUES(31, '2015');
-INSERT INTO vino_millesime VALUES(32, '2016');
-INSERT INTO vino_millesime VALUES(33, '2017');
-INSERT INTO vino_millesime VALUES(34, '2018');
+INSERT INTO vino_millesime VALUES(1, '1935');
+INSERT INTO vino_millesime VALUES(2, '1951');
+INSERT INTO vino_millesime VALUES(3, '1964');
+INSERT INTO vino_millesime VALUES(4, '1965');
+INSERT INTO vino_millesime VALUES(5, '1966');
+INSERT INTO vino_millesime VALUES(6, '1967');
+INSERT INTO vino_millesime VALUES(7, '1968');
+INSERT INTO vino_millesime VALUES(8, '1979');
+INSERT INTO vino_millesime VALUES(9, '1981');
+INSERT INTO vino_millesime VALUES(10, '1982');
+INSERT INTO vino_millesime VALUES(11, '1985');
+INSERT INTO vino_millesime VALUES(12, '1986');
+INSERT INTO vino_millesime VALUES(13, '1988');
+INSERT INTO vino_millesime VALUES(14, '1989');
+INSERT INTO vino_millesime VALUES(15, '1990');
+INSERT INTO vino_millesime VALUES(16, '1992');
+INSERT INTO vino_millesime VALUES(17, '1994');
+INSERT INTO vino_millesime VALUES(18, '1995');
+INSERT INTO vino_millesime VALUES(19, '1996');
+INSERT INTO vino_millesime VALUES(20, '1997');
+INSERT INTO vino_millesime VALUES(21, '1998');
+INSERT INTO vino_millesime VALUES(22, '1999');
+INSERT INTO vino_millesime VALUES(23, '2000');
+INSERT INTO vino_millesime VALUES(24, '2001');
+INSERT INTO vino_millesime VALUES(25, '2002');
+INSERT INTO vino_millesime VALUES(26, '2003');
+INSERT INTO vino_millesime VALUES(27, '2004');
+INSERT INTO vino_millesime VALUES(28, '2005');
+INSERT INTO vino_millesime VALUES(29, '2006');
+INSERT INTO vino_millesime VALUES(30, '2007');
+INSERT INTO vino_millesime VALUES(31, '2008');
+INSERT INTO vino_millesime VALUES(32, '2009');
+INSERT INTO vino_millesime VALUES(33, '2010');
+INSERT INTO vino_millesime VALUES(34, '2011');
+INSERT INTO vino_millesime VALUES(35, '2012');
+INSERT INTO vino_millesime VALUES(36, '2013');
+INSERT INTO vino_millesime VALUES(37, '2014');
+INSERT INTO vino_millesime VALUES(38, '2015');
+INSERT INTO vino_millesime VALUES(39, '2016');
+INSERT INTO vino_millesime VALUES(40, '2017');
+INSERT INTO vino_millesime VALUES(41, '2018');
 
 INSERT INTO vino_pays VALUES(1);
 INSERT INTO vino_pays VALUES(2);
@@ -346,38 +392,51 @@ INSERT INTO vino_type_description VALUES(4, 1, 2, 'White wine');
 INSERT INTO vino_type_description VALUES(5, 2, 2, 'Rosé');
 INSERT INTO vino_type_description VALUES(6, 3, 2, 'Red wine ');
 
-INSERT INTO vino_format VALUES(1, 250, 'ml');
-INSERT INTO vino_format VALUES(2, 375, 'ml');
-INSERT INTO vino_format VALUES(3, 500, 'ml');
-INSERT INTO vino_format VALUES(4, 620, 'ml');
-INSERT INTO vino_format VALUES(5, 750, 'ml');
-INSERT INTO vino_format VALUES(6, 1, 'L');
-INSERT INTO vino_format VALUES(7, 1.5, 'L');
-INSERT INTO vino_format VALUES(8, 3, 'L');
-INSERT INTO vino_format VALUES(9, 4, 'L');
-INSERT INTO vino_format VALUES(10, 4.5, 'L');
-INSERT INTO vino_format VALUES(11, 5, 'L');
-INSERT INTO vino_format VALUES(12, 6, 'L');
+INSERT INTO vino_format VALUES(1, 50, 'ml');
+INSERT INTO vino_format VALUES(2, 187, 'ml');
+INSERT INTO vino_format VALUES(3, 200, 'ml');
+INSERT INTO vino_format VALUES(4, 210, 'ml');
+INSERT INTO vino_format VALUES(5, 250, 'ml');
+INSERT INTO vino_format VALUES(6, 355, 'ml');
+INSERT INTO vino_format VALUES(7, 375, 'ml');
+INSERT INTO vino_format VALUES(8, 400, 'ml');
+INSERT INTO vino_format VALUES(9, 500, 'ml');
+INSERT INTO vino_format VALUES(10, 600, 'ml');
+INSERT INTO vino_format VALUES(11, 620, 'ml');
+INSERT INTO vino_format VALUES(12, 700, 'ml');
+INSERT INTO vino_format VALUES(13, 720, 'ml');
+INSERT INTO vino_format VALUES(14, 750, 'ml');
+INSERT INTO vino_format VALUES(15, 1, 'L');
+INSERT INTO vino_format VALUES(16, 1.125, 'L');
+INSERT INTO vino_format VALUES(17, 1.5, 'L');
+INSERT INTO vino_format VALUES(18, 3, 'L');
+INSERT INTO vino_format VALUES(19, 4, 'L');
+INSERT INTO vino_format VALUES(20, 4.5, 'L');
+INSERT INTO vino_format VALUES(21, 5, 'L');
+INSERT INTO vino_format VALUES(22, 6, 'L'); 
 
--- https://passwordsgenerator.net/sha512-hash-generator/
-INSERT INTO vino_usager VALUES(1, 1, true, 'admin', 'admin@courriel.qc.ca', '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
-INSERT INTO vino_usager VALUES(2, 1, false, 'Unproprietaire', 'proprietaire@courriel.qc.ca', '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
-INSERT INTO vino_usager VALUES(3, 1, false, 'Unvisiteur', 'visiteur@courriel.qc.ca', 
-'3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
-
-INSERT INTO vino_bouteille VALUES(1, '10324623', NULL, 11.80, 3, 5, 13, NULL, 'Borsao Seleccion', NULL);
-INSERT INTO vino_bouteille VALUES(2, '10359156', NULL, 19.80, 3, 5, 13, NULL, 'Monasterio de Las Vinas Gran Reserva', NULL);
-INSERT INTO vino_bouteille VALUES(3, '11676671', NULL, 12.50, 3, 5, 13, NULL, 'Castano Hecula', NULL);
-INSERT INTO vino_bouteille VALUES(4, '11462446', NULL, 14.30, 3, 5, 13, NULL, 'Campo Viejo Tempranillo Rioja', NULL);
-INSERT INTO vino_bouteille VALUES(5, '12375942', NULL, 17.10, 3, 5, 13, 33, 'Bodegas Atalaya Laya', NULL);
-INSERT INTO vino_bouteille VALUES(6, '13467048', NULL, 37.20, 1, 8, 14, NULL, 'Vin Vault Pinot Grigio', NULL);
-INSERT INTO vino_bouteille VALUES(7, '13675841', NULL, 22.65, 1, 5, 7, 33, 'Huber Riesling Engelsberg', NULL);
-INSERT INTO vino_bouteille VALUES(8, '13802571', NULL, 18.25, 3, 5, 13, 31, 'Dominio de Tares Estay Castilla y Léon', NULL);
-INSERT INTO vino_bouteille VALUES(9, '12216562', NULL, 21.95, 3, 5, 15, 32, 'Tessellae Old Vines Côtes du Roussillon', NULL);
-INSERT INTO vino_bouteille VALUES(10, '13637422', NULL, 34.75, 3, 5, 21, 31, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
+INSERT INTO vino_bouteille_saq VALUES(1, '10324623', 11.80, 3, 14, 13, NULL, 'Borsao Seleccion');
+INSERT INTO vino_bouteille_saq VALUES(2, '10359156', 19.80, 3, 14, 13, NULL, 'Monasterio de Las Vinas Gran Reserva');
+INSERT INTO vino_bouteille_saq VALUES(3, '11676671', 12.50, 3, 14, 13, NULL, 'Castano Hecula');
+INSERT INTO vino_bouteille_saq VALUES(4, '11462446', 14.30, 3, 14, 13, NULL, 'Campo Viejo Tempranillo Rioja');
+INSERT INTO vino_bouteille_saq VALUES(5, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya');
+INSERT INTO vino_bouteille_saq VALUES(6, '13467048', 37.20, 1, 18, 14, NULL, 'Vin Vault Pinot Grigio');
+INSERT INTO vino_bouteille_saq VALUES(7, '13675841', 22.65, 1, 14, 7, 40, 'Huber Riesling Engelsberg');
+INSERT INTO vino_bouteille_saq VALUES(8, '13802571', 18.25, 3, 14, 13, 38, 'Dominio de Tares Estay Castilla y Léon');
+INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, 3, 14, 15, 39, 'Tessellae Old Vines Côtes du Roussillon');
+INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
 
 INSERT INTO vino_cellier VALUES(1, 'Domicile');
 INSERT INTO vino_cellier VALUES(2, 'Chalet');
+INSERT INTO vino_cellier VALUES(3, 'Domicile');
+INSERT INTO vino_cellier VALUES(4, 'Home');
+
+INSERT INTO vino_usager VALUES(1, 1, true, true, "2019-03-01", 'admin', 'admin@vino.qc.ca', '', '', NULL, NULL, NULL, NULL, '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(2, 1, false, true, "2019-03-01", 'proprio1', 'proprio1@bell.ca', '', '', NULL, NULL, NULL, NULL, '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(3, 1, false, true, "2019-03-01", 'proprio2', 'proprio2@videotron.com', '', '', NULL, NULL, NULL, NULL, 
+'3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(4, 2, false, false, "2019-03-01", 'proprio3', 'proprio3@hydroquebec.com', '', '', NULL, NULL, NULL, NULL, 
+'3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
 
 INSERT INTO vino_role VALUES(1, 1);
 INSERT INTO vino_role VALUES(2, 0);
@@ -389,12 +448,26 @@ INSERT INTO vino_role_description VALUES(4, 2, 2, 'Visitor');
 
 INSERT INTO vino_cellier__usager VALUES(1, 1, 2, 1);
 INSERT INTO vino_cellier__usager VALUES(2, 2, 2, 1);
-INSERT INTO vino_cellier__usager VALUES(3, 1, 3, 2);
+INSERT INTO vino_cellier__usager VALUES(3, 3, 3, 1);
+INSERT INTO vino_cellier__usager VALUES(4, 1, 3, 2);
+INSERT INTO vino_cellier__usager VALUES(5, 4, 4, 1);
 
-INSERT INTO vino_cellier__bouteille VALUES(1, 1, 10, 3, NULL, NULL, NULL);
-INSERT INTO vino_cellier__bouteille VALUES(2, 1, 10, 1, NULL, NULL, NULL);
-INSERT INTO vino_cellier__bouteille VALUES(3, 1, 5, 10, '2019-01-16', '2020-12-31', NULL);
-INSERT INTO vino_cellier__bouteille VALUES(4, 1, 5, 1, NULL, NULL, NULL);
-INSERT INTO vino_cellier__bouteille VALUES(5, 2, 5, 1, NULL, NULL, NULL);
-INSERT INTO vino_cellier__bouteille VALUES(6, 2, 5, 10, NULL, NULL, NULL);
-INSERT INTO vino_cellier__bouteille VALUES(7, 2, 3, 1, '2019-01-26', NULL, NULL);
+INSERT INTO vino_bouteille VALUES(1, '13637422', 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
+INSERT INTO vino_bouteille VALUES(2, '13637422', 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
+INSERT INTO vino_bouteille VALUES(3, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(4, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(5, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(6, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(7, '11676671', 12.50, 3, 14, 13, NULL, 'Castano Hecula', NULL);
+
+INSERT INTO vino_cellier__bouteille VALUES(1, 1, 1, 3, NULL, NULL);
+INSERT INTO vino_cellier__bouteille VALUES(2, 2, 2, 1, NULL, NULL);
+INSERT INTO vino_cellier__bouteille VALUES(3, 1, 3, 10, '2019-01-16', '2020-12-31');
+INSERT INTO vino_cellier__bouteille VALUES(4, 2, 4, 1, NULL, NULL);
+INSERT INTO vino_cellier__bouteille VALUES(5, 3, 5, 1, NULL, NULL);
+INSERT INTO vino_cellier__bouteille VALUES(6, 4, 6, 10, NULL, NULL);
+INSERT INTO vino_cellier__bouteille VALUES(7, 1, 7, 1, '2019-01-26', NULL);
+
+INSERT INTO vino_bouteille_bu VALUES(1, 1, '2019-03-01');
+
+INSERT INTO vino_bouteille_partage VALUES(1, 1, '2019-03-01');
