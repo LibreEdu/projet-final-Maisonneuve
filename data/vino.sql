@@ -6,7 +6,6 @@ CREATE DATABASE IF NOT EXISTS vino
 USE vino;
 
 DROP TABLE IF EXISTS vino_bouteille_partage;
-DROP TABLE IF EXISTS vino_bouteille_bu;
 DROP TABLE IF EXISTS vino_cellier__bouteille;
 DROP TABLE IF EXISTS vino_bouteille;
 DROP TABLE IF EXISTS vino_cellier__usager;
@@ -74,6 +73,7 @@ CREATE TABLE vino_format (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
+-- https://www.saq.com/page/en/saqcom/x/x/12216562
 CREATE TABLE vino_bouteille_saq (
 	id INT NOT NULL AUTO_INCREMENT,
 	code_saq CHAR(8) NOT NULL,
@@ -147,6 +147,7 @@ CREATE TABLE vino_cellier__usager (
 CREATE TABLE vino_bouteille (
 	id INT NOT NULL AUTO_INCREMENT,
 	code_saq CHAR(8) DEFAULT NULL,
+	date_degustation DATE DEFAULT NULL,
 	prix FLOAT DEFAULT NULL,
 	id_type INT DEFAULT NULL,
 	id_format INT DEFAULT NULL,
@@ -171,14 +172,6 @@ CREATE TABLE vino_cellier__bouteille (
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id),
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id)
-) ENGINE=InnoDB;
-
-CREATE TABLE vino_bouteille_bu (
-	id INT NOT NULL AUTO_INCREMENT,
-	id_bouteille INT NOT NULL,
-	date_degustation DATE NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE vino_bouteille_partage (
@@ -448,13 +441,13 @@ INSERT INTO vino_cellier__usager VALUES(3, 3, 3, 1);
 INSERT INTO vino_cellier__usager VALUES(4, 1, 3, 2);
 INSERT INTO vino_cellier__usager VALUES(5, 4, 4, 1);
 
-INSERT INTO vino_bouteille VALUES(1, '13637422', 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
-INSERT INTO vino_bouteille VALUES(2, '13637422', 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
-INSERT INTO vino_bouteille VALUES(3, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
-INSERT INTO vino_bouteille VALUES(4, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
-INSERT INTO vino_bouteille VALUES(5, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
-INSERT INTO vino_bouteille VALUES(6, '12375942', 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
-INSERT INTO vino_bouteille VALUES(7, '11676671', 12.50, 3, 14, 13, NULL, 'Castano Hecula', NULL);
+INSERT INTO vino_bouteille VALUES(1, '13637422', "2019-03-01", 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
+INSERT INTO vino_bouteille VALUES(2, '13637422', NULL, 34.75, 3, 14, 21, 38, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
+INSERT INTO vino_bouteille VALUES(3, '12375942', NULL, 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(4, '12375942', NULL, 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(5, '12375942', NULL, 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(6, '12375942', NULL, 17.10, 3, 14, 13, 40, 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(7, '11676671', NULL, 12.50, 3, 14, 13, NULL, 'Castano Hecula', NULL);
 
 INSERT INTO vino_cellier__bouteille VALUES(1, 1, 1, 3, NULL, NULL);
 INSERT INTO vino_cellier__bouteille VALUES(2, 2, 2, 1, NULL, NULL);
@@ -463,7 +456,5 @@ INSERT INTO vino_cellier__bouteille VALUES(4, 2, 4, 1, NULL, NULL);
 INSERT INTO vino_cellier__bouteille VALUES(5, 3, 5, 1, NULL, NULL);
 INSERT INTO vino_cellier__bouteille VALUES(6, 4, 6, 10, NULL, NULL);
 INSERT INTO vino_cellier__bouteille VALUES(7, 1, 7, 1, '2019-01-26', NULL);
-
-INSERT INTO vino_bouteille_bu VALUES(1, 1, '2019-03-01');
 
 INSERT INTO vino_bouteille_partage VALUES(1, 1, '2019-03-01');
