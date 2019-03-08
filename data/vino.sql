@@ -74,10 +74,6 @@ CREATE TABLE vino_format (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
--- https://stackoverflow.com/questions/219569/best-database-field-type-for-a-url
--- https://s7d9.scene7.com/is/image/SAQ/10324623_is
--- url_img VARCHAR(2083) DEFAULT NULL,
--- https://www.saq.com/page/en/saqcom/x/x/12216562
 CREATE TABLE vino_bouteille_saq (
 	id INT NOT NULL AUTO_INCREMENT,
 	code_saq CHAR(8) NOT NULL,
