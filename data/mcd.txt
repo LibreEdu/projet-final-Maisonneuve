@@ -1,4 +1,4 @@
-USAGER: id, admin, actif, date création, identifiant, courriel, nom, prénom, adresse, ville, code postale, province, pays,hash
+USAGER: id, admin, actif, date création, identifiant, courriel, nom, prénom, adresse, ville, code postale, province, téléphone, pays, hash
 A [NM], 1N CELLIER, 0N USAGER:rôle
 CELLIER:id, nom
 BOUTEILLE SAQ:id, code SAQ, prix, libellé, id millésime, id type, id pays, id format
