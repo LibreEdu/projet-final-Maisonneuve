@@ -1,22 +1,22 @@
 USAGER: id, admin, actif, date création, identifiant, courriel, nom, prénom, adresse, ville, code postale, province, pays,hash
 A [NM], 1N CELLIER, 0N USAGER:rôle
 CELLIER:id, nom
-BOUTEILLE SAQ:id, code SAQ, prix, libellé, type, pays, format, millésime
+BOUTEILLE SAQ:id, code SAQ, prix, libellé, id millésime, id type, id pays, id format
 MILLÉSIME: id, libellé
 
 BOUTEILLE BU: id, date de dégustation
 SE BOIT [1N], 0N BOUTEILLE, 11 BOUTEILLE BU
-CONTIENT [NM], 1N BOUTEILLE, 0N CELLIER : quantité, date d’achat, boire avant
-EST INSTANCE, 0N BOUTEILLE SAQ, O1 BOUTEILLE
+CONTIENT [NM], 1N BOUTEILLE, 0N CELLIER : quantité, date d’achat
+EST INSTANCE [1N], 0N BOUTEILLE SAQ, O1 BOUTEILLE
 DATE [1N], 0N MILLÉSIME, 01 BOUTEILLE
 
 BOUTEILLE PARTAGÉ: id, date de partage
 SE PARTAGE [1N], 0N BOUTEILLE, 11 BOUTEILLE PARTAGÉ
-BOUTEILLE:id, code SAQ, prix, libellé, note
+BOUTEILLE:id, code SAQ, boire avant, prix, libellé, note
 EST [1N], 0N TYPE, 01 BOUTEILLE
 TYPE: id, libellé
 
-FORMAT : id, quantité, unité
+FORMAT : id, contenance, unité
 FAIT [1N], 0N FORMAT, 01 BOUTEILLE
 VIENT [1N], 0N PAYS, 01 BOUTEILLE
 PAYS: id, libellé
