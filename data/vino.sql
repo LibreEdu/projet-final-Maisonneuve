@@ -97,7 +97,8 @@ CREATE TABLE vino_bouteille_saq (
 
 CREATE TABLE vino_cellier (
 	id INT NOT NULL AUTO_INCREMENT,
-	nom VARCHAR(30) NOT NULL,
+	date_creation DATE,
+	libelle VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
@@ -433,11 +434,11 @@ INSERT INTO vino_bouteille_saq VALUES(8, '13802571', 18.25, 38, 3, 13, 14, 'Domi
 INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, 39, 3, 15, 14, 'Tessellae Old Vines Côtes du Roussillon');
 INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, 38, 3, 21, 13, 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
 
-INSERT INTO vino_cellier VALUES(1, 'Domicile');
-INSERT INTO vino_cellier VALUES(2, 'Chalet');
-INSERT INTO vino_cellier VALUES(3, 'Domicile');
-INSERT INTO vino_cellier VALUES(4, 'Domicile');
-INSERT INTO vino_cellier VALUES(5, 'Home');
+INSERT INTO vino_cellier VALUES(1, 2019-01-01, 'Domicile');
+INSERT INTO vino_cellier VALUES(2, 2019-01-01, 'Chalet');
+INSERT INTO vino_cellier VALUES(3, 2019-01-01, 'Domicile');
+INSERT INTO vino_cellier VALUES(4, 2019-01-01, 'Domicile');
+INSERT INTO vino_cellier VALUES(5, 2019-01-01, 'Home');
 
 INSERT INTO vino_usager VALUES(1, 1, true, true, "2019-01-01", 'admin', 'admin@vino.qc.ca', '', '', NULL, NULL, NULL, NULL, NULL, NULL, '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
 INSERT INTO vino_usager VALUES(2, 1, false, true, "2019-01-01", 'johanne', 'johanne@bell.ca', 'Johanne', 'Leblanc', '6775 Metivier', 'Montréal', 'QC', 'H4K2N4', '514 315-5964', 'Canada', '3C9909AFEC25354D551DAE21590BB26E38D53F2173B8D3DC3EEE4C047E7AB1C1EB8B85103E3BE7BA613B31BB5C9C36214DC9F14A42FD7A2FDB84856BCA5C44C2');
