@@ -5,6 +5,10 @@ CREATE DATABASE IF NOT EXISTS vino
 
 USE vino;
 
+
+DROP TABLE IF EXISTS vino_liste_achat__bouteille_saq;
+DROP TABLE IF EXISTS vino_liste_achat;
+DROP TABLE IF EXISTS vino_erreur;
 DROP TABLE IF EXISTS vino_bouteille_partage;
 DROP TABLE IF EXISTS vino_bouteille_bu;
 DROP TABLE IF EXISTS vino_cellier__bouteille;
@@ -191,6 +195,37 @@ CREATE TABLE vino_bouteille_partage (
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_bouteille) REFERENCES vino_bouteille(id)
 ) ENGINE=InnoDB;
+
+CREATE TABLE vino_erreur (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_usager INT NOT NULL,
+	id_bouteille_saq INT NOT NULL,
+	date_erreur DATE NOT NULL,
+	remarque TEXT DEFAULT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_usager) REFERENCES vino_usager(id),
+	FOREIGN KEY (id_bouteille_saq) REFERENCES vino_bouteille_saq(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE vino_liste_achat (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_usager INT NOT NULL,
+	libelle INT NOT NULL,
+	date_creation DATE NOT NULL,
+	note TEXT DEFAULT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_usager) REFERENCES vino_usager(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE vino_liste_achat__bouteille_saq (
+	id INT NOT NULL AUTO_INCREMENT,
+	id_liste_achat INT NOT NULL,
+	id_bouteille_saq INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_liste_achat) REFERENCES vino_liste_achat(id),
+	FOREIGN KEY (id_bouteille_saq) REFERENCES vino_bouteille_saq(id)
+) ENGINE=InnoDB;
+
 
 INSERT INTO vino_langue VALUES(1, 'Français', 'fr');
 INSERT INTO vino_langue VALUES(2, 'English', 'en');
@@ -445,6 +480,13 @@ INSERT INTO vino_cellier__bouteille VALUES(6, 5, 6, 10, NULL);
 INSERT INTO vino_cellier__bouteille VALUES(7, 1, 7, 1, '2019-01-26');
 INSERT INTO vino_cellier__bouteille VALUES(8, 2, 1, 1, NULL);
 
-INSERT INTO vino_bouteille_bu VALUES(1, 1, '2019-03-01');
+INSERT INTO vino_bouteille_bu VALUES(1, 1, '2019-03-02');
 
 INSERT INTO vino_bouteille_partage VALUES(1, 1, '2019-03-01');
+INSERT INTO vino_bouteille_partage VALUES(2, 1, '2019-03-02');
+
+INSERT INTO vino_erreur VALUES(1, 2, 1, '2019-03-01', NULL);
+
+INSERT INTO vino_liste_achat VALUES(1, 2, 'Fin de projet', '2019-03-01', 'Ça se fête!');
+
+INSERT INTO vino_liste_achat__bouteille_saq VALUES(1, 1, 10);
