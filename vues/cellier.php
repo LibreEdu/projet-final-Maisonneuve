@@ -17,12 +17,12 @@ foreach ($donnees as $bouteille) {
 			<p class="prix">Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
 			<p><a href="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>">Lien SAQ</a></p>
 		</div>
-		<div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
+		<!-- <div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
 			<button>Modifier</button>
 			<button class='btnAjouter'>Ajouter</button>
 			<button class='btnBoire'>Boire</button>
 			
-		</div>
+		</div> -->
 	</div>
 <?php
 }

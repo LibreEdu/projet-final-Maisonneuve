@@ -39,7 +39,7 @@ class MonSQL {
 	public static function obtenir_instance() {
 
 		if (is_null(self::$_instance)) {
-			self::$_instance = new mysqli(HOTE, UTILISATEUR, MOTDEPASSE, BASEDEDONNES);
+			self::$_instance = new mysqli(HOTE, UTILISATEUR, MOTDEPASSE, BASEDEDONNEES);
 			if (self::$_instance->connect_errno) {
 				echo "Échec lors de la connexion à MySQL : (" . self::$_instance->connect_errno . ") " . self::$_instance->connect_error;
 			}
