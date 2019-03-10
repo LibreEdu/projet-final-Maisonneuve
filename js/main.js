@@ -137,7 +137,7 @@ window.addEventListener('load', function() {
 	let btnAjouter = document.querySelector("[name='ajouterBouteilleCellier']");
 	if(btnAjouter){
 		btnAjouter.addEventListener("click", function(evt){
-		  var param = {
+		var param = {
 			"id_bouteille":bouteille.nom.dataset.id,
 			"date_achat":bouteille.date_achat.value,
 			"garde_jusqua":bouteille.garde_jusqua.value,
@@ -145,8 +145,8 @@ window.addEventListener('load', function() {
 			"prix":bouteille.prix.value,
 			"quantite":bouteille.quantite.value,
 			"millesime":bouteille.millesime.value,
-		  };
-		  let requete = new Request(BaseURL+"index.php?requete=ajouterNouvelleBouteilleCellier", {method: 'POST', body: JSON.stringify(param)});
+		};
+		let requete = new Request(BaseURL+"index.php?requete=ajouterNouvelleBouteilleCellier", {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
@@ -205,22 +205,22 @@ window.addEventListener('load', function() {
 			fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
-					  return response.json();
+						return response.json();
 					} else {
-					  throw new Error('Erreur');
+						throw new Error('Erreur');
 					}
-				  })
-				  .then(response => {
+				})
+				.then(response => {
 					console.log(response);
 					
-				  }).catch(error => {
+				}).catch(error => {
 					console.error(error);
-				  });
+				});
 		
 		});
 	}
 }
-	
+
 
 });
 
