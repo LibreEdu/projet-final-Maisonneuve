@@ -59,7 +59,6 @@ class Controler
 		{
 			$bouteille_cellier = new Bouteille();
 			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
-			// var_dump($donnees);die;
 			include("vues/entete.php");
 			include("vues/cellier.php");
 			include("vues/pied.php");
@@ -75,10 +74,10 @@ class Controler
 		private function listeBouteille()
 		{
 			$bte = new Bouteille();
-            $cellier = $bte->getListeBouteilleCellier();
-            
-            echo json_encode($cellier);
-                  
+			$cellier = $bte->getListeBouteilleCellier();
+			
+			echo json_encode($cellier);
+				  
 		}
 		
 		private function autocompleteBouteille()
@@ -87,10 +86,10 @@ class Controler
 			//var_dump(file_get_contents('php://input'));
 			$body = json_decode(file_get_contents('php://input'));
 			//var_dump($body);
-            $listeBouteille = $bte->autocomplete($body->nom);
-            
-            echo json_encode($listeBouteille);
-                  
+			$listeBouteille = $bte->autocomplete($body->nom);
+			
+			echo json_encode($listeBouteille);
+				  
 		}
 		private function ajouterNouvelleBouteilleCellier()
 		{
@@ -117,7 +116,6 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
-			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 
@@ -127,7 +125,6 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
-			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 		
