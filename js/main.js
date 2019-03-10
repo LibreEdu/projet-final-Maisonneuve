@@ -64,6 +64,15 @@ window.addEventListener('load', function() {
         })
 
     });
+	
+	document.querySelectorAll(".btnModifier").forEach(function(element){
+        //console.log(element);
+        element.addEventListener("click", function(evt){
+			let id = evt.target.parentElement.dataset.id;
+			 window.location = "vino16628/index.php?requete=modifierBouteille&id="+id;
+      })
+
+    });
    
     let inputNomBouteille = document.querySelector("[name='nom_bouteille']");
     console.log(inputNomBouteille);
@@ -151,7 +160,62 @@ window.addEventListener('load', function() {
                   });
         
         });
-      } 
+      }
+
+	  let bouteille2 = {
+        id : document.querySelector("[name='id']"),
+		nom : document.querySelector("[name='nom']"),
+        millesime : document.querySelector("[name='millesime']"),
+        quantite : document.querySelector("[name='quantite']"),
+        date_achat : document.querySelector("[name='date_achat']"),
+        prix : document.querySelector("[name='prix']"),
+        garde_jusqua : document.querySelector("[name='garde_jusqua']"),
+        notes : document.querySelector("[name='notes']"),
+		code_saq : document.querySelector("[name='code_saq']"),
+		prix_saq : document.querySelector("[name='prix_saq']"),
+		format : document.querySelector("[name='format']"),
+		description : document.querySelector("[name='description']"),
+		pays : document.querySelector("[name='pays']"),
+		id_type : document.querySelector("[name='id_type']"),
+      };
+	  
+	  let btnModifier = document.querySelector("[name='modifierBouteilleCellier']");
+      if(btnModifier){
+        btnModifier.addEventListener("click", function(evt){
+          var params = {
+            "id":bouteille2.id.value,
+			"nom":bouteille2.nom.value,
+            "date_achat":bouteille2.date_achat.value,
+            "garde_jusqua":bouteille2.garde_jusqua.value,
+            "notes":bouteille2.date_achat.value,
+            "prix":bouteille2.prix.value,
+            "quantite":bouteille2.quantite.value,
+            "millesime":bouteille2.millesime.value,
+			"code_saq":bouteille2.code_saq.value,
+			"prix_saq":bouteille2.prix_saq.value,
+			"format":bouteille2.format.value,
+			"description":bouteille2.description.value,
+			"pays":bouteille2.pays.value,
+			"id_type":bouteille2.type.value,
+          };
+          let requete = new Request(BaseURL+"/index.php?requete=modifier", {method: 'POST', body: JSON.stringify(params)});
+            fetch(requete)
+                .then(response => {
+                    if (response.status === 200) {
+                      return response.json();
+                    } else {
+                      throw new Error('Erreur');
+                    }
+                  })
+                  .then(response => {
+                    console.log(response);
+                    
+                  }).catch(error => {
+                    console.error(error);
+                  });
+        
+        });
+	 } 
   }
     
 
