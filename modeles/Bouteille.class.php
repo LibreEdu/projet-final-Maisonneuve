@@ -91,8 +91,6 @@ class Bouteille extends Modele {
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
 		}
 		
-		
-		
 		return $liste_bouteilles_cellier;
 	}
 	
