@@ -10,9 +10,6 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
-	
-	
-
 
 	function mon_autoloader($class) 
 	{
@@ -31,8 +28,3 @@
 	}
 	
 	spl_autoload_register('mon_autoloader');
-	
-	
-	
-	
-?>

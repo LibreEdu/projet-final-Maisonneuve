@@ -4,6 +4,5 @@
 
 	define('HOTE', 'localhost');
 	define('UTILISATEUR', 'root');
-	define('MOTDEPASSE', 'root');
+	define('MOTDEPASSE', '');
 	define('BASEDEDONNES', 'vino');
-?>

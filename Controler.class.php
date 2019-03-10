@@ -49,6 +49,7 @@ class Controler
 		{
 			$bouteille_cellier = new Bouteille();
 			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
+			// var_dump($donnees);die;
 			include("vues/entete.php");
 			include("vues/cellier.php");
 			include("vues/pied.php");
@@ -92,8 +93,6 @@ class Controler
 				include("vues/ajouter.php");
 				include("vues/pied.php");
 			}
-			
-            
 		}
 		
 		private function boireBouteilleCellier()
@@ -115,19 +114,3 @@ class Controler
 		}
 		
 }
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
