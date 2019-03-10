@@ -69,7 +69,7 @@ window.addEventListener('load', function() {
         //console.log(element);
         element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			 window.location = "vino16628/index.php?requete=modifierBouteille&id="+id;
+			 window.location = "index.php?requete=modifierBouteille&id="+id;
       })
 
     });
@@ -198,7 +198,7 @@ window.addEventListener('load', function() {
 			"pays":bouteille2.pays.value,
 			"id_type":bouteille2.type.value,
           };
-          let requete = new Request(BaseURL+"/index.php?requete=modifier", {method: 'POST', body: JSON.stringify(params)});
+          let requete = new Request(BaseURL+"index.php?requete=modifier", {method: 'POST', body: JSON.stringify(params)});
             fetch(requete)
                 .then(response => {
                     if (response.status === 200) {
