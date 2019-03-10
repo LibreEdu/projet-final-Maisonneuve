@@ -14,7 +14,7 @@
 	$saq = new SAQ();
 	//for($i=0; $i<6;$i++)
 	//{
-		$nombre = $saq->getProduits($nombreProduit,$debut);
+		$nombre = $saq->getProduits($debut, $nombreProduit);
 		echo "importation : ". $nombre. "<br>";
 	//	$debut += $nombreProduit;	
 	//}
