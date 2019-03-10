@@ -20,5 +20,4 @@ Desktop.ini
 !/.gitignore
 !/.travis.yml
 !/.project
-dataconf.php
 .push.settings.jsonc

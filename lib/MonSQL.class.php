@@ -24,10 +24,10 @@ class MonSQL {
 	 * @param void
 	 * @return void
 	 */
-	private function __construct($host, $user, $password, $database) 
-	{
+	// private function __construct($host, $user, $password, $database) 
+	// {
 		
-	}
+	// }
 
 	/**
 	 * Méthode qui crée l'unique instance de la classe
@@ -36,12 +36,12 @@ class MonSQL {
 	 * @param void
 	 * @return Singleton
 	 */
-	public static function getInstance() {
+	public static function obtenirInstance() {
 
 		if (is_null(self::$_instance)) {
-			self::$_instance = new mysqli(HOST, USER, PASSWORD, DATABASE);
-			if (self::$_instance-> connect_errno) {
-				echo "Echec lors de la connexion à MySQL : (" . self::$_instance -> connect_errno . ") " . self::$_instance-> connect_error;
+			self::$_instance = new mysqli(HOTE, UTILISATEUR, MOTDEPASSE, BASEDEDONNES);
+			if (self::$_instance->connect_errno) {
+				echo "Échec lors de la connexion à MySQL : (" . self::$_instance->connect_errno . ") " . self::$_instance->connect_error;
 			}
 			else {
 				self::$_instance->set_charset("UTF-8");	
