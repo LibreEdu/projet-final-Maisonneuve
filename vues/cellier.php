@@ -1,36 +1,30 @@
 <div class="cellier">
 <?php
-foreach ($data as $cle => $bouteille) {
+foreach ($donnees as $bouteille) {
  
-    ?>
-    <div class="bouteille" data-quantite="">
-        <div class="img">
-            
-            <img src="https:<?php echo $bouteille['image'] ?>">
-        </div>
-        <div class="description">
-            <p class="nom">Nom : <?php echo $bouteille['nom'] ?></p>
-            <!-- Ajouter un id pour récuperer l'id de de la bouteille -->
-            <p class="quantite" id="<?php echo $bouteille['id_bouteille_cellier'] ?>">Quantité : <?php echo $bouteille['quantite'] ?></p>
-            <!-- <p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?></p> -->
-            <p class="pays">Pays : <?php echo $bouteille['pays'] ?></p>
-            <p class="type">Type : <?php echo $bouteille['type'] ?></p>
-            <p class="millesime">Millesime : <?php echo $bouteille['millesime'] ?></p>
-            <p><a href="<?php echo $bouteille['url_saq'] ?>">Voir SAQ</a></p>
-        </div>
-        <div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
-            <button>Modifier</button>
-            <button class='btnAjouter'>Ajouter</button>
-            <button class='btnBoire'>Boire</button>
-            
-        </div>
-    </div>
+	?>
+	<div class="bouteille" data-quantite="">
+		<div class="img">
+			<img src="https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-list$">
+		</div>
+		<div class="description">
+			<p class="nom"><?php echo $bouteille['nom']; ?> <?php echo $bouteille['millesime']; ?></p>
+			<p class="type"><?php echo $bouteille['type']; ?></p>
+			<p class="pays"><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['contenance']; ?> <?php echo $bouteille['unite']; ?></p>
+			<p class="boireAvant">Boire avant : <?php echo $bouteille['date_buvable'] ?></p>
+			<p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?></p>
+			<p class="dateAchat">Date d’achat : <?php echo $bouteille['date_achat'] ?></p>
+			<p class="prix">Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
+			<p><a href="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>">Lien SAQ</a></p>
+		</div>
+		<div class="options" data-id="<?php echo $bouteille['id_bouteille_cellier'] ?>">
+			<button>Modifier</button>
+			<button class='btnAjouter'>Ajouter</button>
+			<button class='btnBoire'>Boire</button>
+			
+		</div>
+	</div>
 <?php
-
-
 }
-
 ?>	
 </div>
-
-
