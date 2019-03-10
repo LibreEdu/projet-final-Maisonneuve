@@ -4,77 +4,96 @@
  * Cette classe possède les fonctions de gestion des bouteilles dans le cellier et des bouteilles dans le catalogue complet.
  * 
  * @author Jonathan Martel
+ * @author Alexandre Pachot
  * @version 1.0
- * @update 2019-01-21
+ * @update 2019-03-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
 class Bouteille extends Modele {
-	const TABLE = 'vino__bouteille';
-    
+	const TABLE = 'vino_bouteille';
+	
 	public function getListeBouteille()
 	{
 		
-		$rows = Array();
-		$res = $this->_db->query('Select * from '. self::TABLE);
+		$lignes = Array();
+		$res = $this->_bd->query('Select * from '. self::TABLE);
 		if($res->num_rows)
 		{
 			while($row = $res->fetch_assoc())
 			{
-				$rows[] = $row;
+				$lignes[] = $row;
 			}
 		}
 		
-		return $rows;
+		return $lignes;
 	}
 	
-	public function getListeBouteilleCellier()
+	public function obtenir_liste_bouteilles_cellier($id_cellier)
 	{
-		
-		$rows = Array();
-		$requete ='SELECT 
-						c.id as id_bouteille_cellier,
-						c.id_bouteille, 
-						c.date_achat, 
-						c.garde_jusqua, 
-						c.notes, 
-						c.prix, 
-						c.quantite,
-						c.millesime, 
-						b.id,
-						b.nom, 
-						b.type, 
-						b.image, 
-						b.code_saq, 
-						b.url_saq, 
-						b.pays, 
-						b.description,
-						t.type 
-						from vino__cellier c 
-						INNER JOIN vino__bouteille b ON c.id_bouteille = b.id
-						INNER JOIN vino__type t ON t.id = b.type
-						'; 
-		if(($res = $this->_db->query($requete)) ==	 true)
+		$liste_bouteilles_cellier = array();
+		$requete ='SELECT cb.id AS id_cellier_bouteille,
+				cb.date_achat AS date_achat,
+				cb.quantite AS quantite,
+				cellier.libelle AS nom_cellier,
+				bouteille.id AS id_bouteille,
+				bouteille.libelle AS nom,
+				bouteille.code_saq AS code_SAQ,
+				bouteille.date_buvable AS date_buvable,
+				bouteille.prix AS prix,
+				bouteille.note AS note,
+				millesime.libelle AS millesime,
+				typeD.libelle AS type,
+				paysD.libelle AS pays,
+				format.contenance AS contenance,
+				format.unite AS unite
+			FROM vino_cellier__bouteille cb
+			INNER JOIN vino_cellier cellier
+				ON cellier.id = cb.id_cellier
+			INNER JOIN vino_cellier__usager cu
+				ON cu.id_cellier = cellier.id
+			INNER JOIN vino_usager usager
+				ON usager.id = cu.id_usager
+			INNER JOIN vino_langue langue
+				ON langue.id = usager.id_langue
+			INNER JOIN vino_role_description roleD
+				ON roleD.id_role = cu.id_role
+			INNER JOIN vino_bouteille bouteille 
+				ON bouteille.id = cb.id_bouteille
+			LEFT JOIN vino_millesime millesime
+				ON millesime.id = bouteille.id_millesime
+			LEFT JOIN vino_type_description typeD
+				ON typeD.id_type = bouteille.id_type
+			LEFT JOIN vino_pays_description paysD
+				ON paysD.id_pays = bouteille.id_pays
+			LEFT JOIN vino_format format
+				ON format.id = bouteille.id_format
+			WHERE roleD.id_langue = 1
+				AND typeD.id_langue = 1
+				AND paysD.id_langue = 1
+				AND cu.id_role = 1
+				AND cellier.id = ' . $id_cellier . '
+			ORDER BY bouteille.libelle';
+	
+		if(($resultat = $this->_bd->query($requete)) ==	 true)
 		{
-			if($res->num_rows)
+			if($resultat->num_rows)
 			{
-				while($row = $res->fetch_assoc())
+				while($ligne_resultat = $resultat->fetch_assoc())
 				{
-					$row['nom'] = trim(utf8_encode($row['nom']));
-					$rows[] = $row;
+					$liste_bouteilles_cellier[] = $ligne_resultat;
 				}
 			}
 		}
 		else 
 		{
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
-			 //$this->_db->error;
 		}
 		
 		
 		
-		return $rows;
+		return $liste_bouteilles_cellier;
 	}
 	
 	/**
@@ -91,7 +110,7 @@ class Bouteille extends Modele {
 	public function autocomplete($nom, $nb_resultat=10)
 	{
 		
-		$rows = Array();
+		$lignes = Array();
 		$nom = $this->_db->real_escape_string($nom);
 		$nom = preg_replace("/\*/","%" , $nom);
 		 
@@ -105,7 +124,7 @@ class Bouteille extends Modele {
 				while($row = $res->fetch_assoc())
 				{
 					$row['nom'] = trim(utf8_encode($row['nom']));
-					$rows[] = $row;
+					$lignes[] = $row;
 					
 				}
 			}
@@ -117,8 +136,8 @@ class Bouteille extends Modele {
 		}
 		
 		
-		//var_dump($rows);
-		return $rows;
+		//var_dump($lignes);
+		return $lignes;
 	}
 	
 	
@@ -167,26 +186,6 @@ class Bouteille extends Modele {
         $res = $this->_db->query($requete);
         
 		return $res;
-	}
-
-	/**
-	 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
-	 * 
-	 * @param int $id id de la bouteille	
-	 * 
-	 * @return $row la ligne de la quntité de la bouteille en question.
-	 */
-	public function recupererQuantiteBouteilleCellier($id)
-	{
-			
-		//Requete qui récupére la quantité d'une bouteille en particulier
-		$requete1 = "SELECT quantite FROM vino__cellier WHERE id = ". $id;
-		$res1 = $this->_db->query($requete1);		
-			
-		$row = $res1->fetch_ASSOC(); 
-		// retourner une ligne
-        return $row;       
-				
 	}
 }
 

@@ -4,8 +4,9 @@
  * Gère les requêtes HTTP
  * 
  * @author Jonathan Martel
+ * @author Alexandre Pachot
  * @version 1.0
- * @update 2019-01-21
+ * @update 2019-03-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
@@ -21,7 +22,8 @@ class Controler
 		public function gerer()
 		{
 			
-			switch ($_GET['requete']) {
+			switch ($_GET['requete'])
+			{
 				case 'listeBouteille':
 					$this->listeBouteille();
 					break;
@@ -45,12 +47,11 @@ class Controler
 
 		private function accueil()
 		{
-			$bte = new Bouteille();
-            $data = $bte->getListeBouteilleCellier();
+			$bouteille_cellier = new Bouteille();
+			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
 			include("vues/entete.php");
 			include("vues/cellier.php");
 			include("vues/pied.php");
-                  
 		}
 		
 
@@ -101,8 +102,6 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
-			//Appel de la fonction
-			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 
@@ -112,8 +111,6 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
-			//Appel de la fonction
-			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 		
