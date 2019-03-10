@@ -36,7 +36,7 @@ class MonSQL {
 	 * @param void
 	 * @return Singleton
 	 */
-	public static function obtenirInstance() {
+	public static function obtenir_instance() {
 
 		if (is_null(self::$_instance)) {
 			self::$_instance = new mysqli(HOTE, UTILISATEUR, MOTDEPASSE, BASEDEDONNES);
