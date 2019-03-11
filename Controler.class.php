@@ -22,7 +22,7 @@ class Controler
 		public function gerer()
 		{
 			
-			switch ($_GET['requete'])
+			switch ($_REQUEST['requete'])
 			{
 				case 'listeBouteille':
 					$this->listeBouteille();
@@ -129,6 +129,24 @@ class Controler
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
 			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
+		}
+
+		private function modifierBouteille()
+		{
+			$bte = new Bouteille();
+			$data = $bte->getBouteilleParId($_GET["id"]);
+			include("vues/entete.php");
+			include("vues/modifier.php");
+			include("vues/pied.php");
+		}
+
+		private function modifierUneBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+		{
+			$bte = new Bouteille();
+			
+			$data = $bte->modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format);
+			$this->accueil();
+			
 		}
 		
 }
