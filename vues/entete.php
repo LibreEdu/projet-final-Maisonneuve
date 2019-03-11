@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Un petit verre de vino</title>
-
 		<meta charset="utf-8">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta name="viewport" content="width=device-width, minimum-scale=0.5, initial-scale=1.0, user-scalable=yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Vino, mon cellier">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<title>Mon cellier</title>
 
-		<meta name="description" content="Un petit verre de vino">
-		<meta name="author" content="Jonathan Martel (jmartel@cmaisonneuve.qc.ca)">
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
-		<!-- <link rel="stylesheet" href="./css/normalize.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/base_h5bp.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="./css/main.css" type="text/css" media="screen"> -->
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+		<link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+		<meta name="msapplication-TileColor" content="#3372DF">
+
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="./css/material.css">
-		<base href="<?php echo BASEURL; ?>">
-		<!--<script src="./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
-		<!-- <script src="./js/plugins.js"></script>
-		<script src="./js/main.js"></script> -->
-		<script defer src="./js/material.js"></script>
+		<link rel="stylesheet" href="./style/styles.css">
 	</head>
 	<body >
 		<header>
