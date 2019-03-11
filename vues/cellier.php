@@ -20,7 +20,7 @@ foreach ($donnees as $bouteille) {
 		</div>
 		<div class="options" data-id="<?php echo $bouteille['id_cellier_bouteille'] ?>">
 			
-			<button>Modifier</button>
+			<button class="btnModifier">Modifier</button>
 			<button class='btnAjouter'>Ajouter</button>
 			<button class='btnBoire'>Boire</button>
 			

@@ -71,8 +71,9 @@ window.addEventListener('load', function() {
 	document.querySelectorAll(".btnModifier").forEach(function(element){
         //console.log(element);
         element.addEventListener("click", function(evt){
-			let id = evt.target.parentElement.dataset.id;
-			 window.location = "index.php?requete=modifierBouteille&id="+id;
+      let id = evt.target.parentElement.dataset.id;
+      //console.log('Mon id = '+id);
+			window.location = "index.php?requete=modifierBouteille&id="+id;
       })
 
     });
