@@ -39,6 +39,7 @@ window.addEventListener('load', function() {
 
     });
 
+
     document.querySelectorAll(".btnAjouter").forEach(function(element){
         console.log(element);
         element.addEventListener("click", function(evt){
@@ -46,6 +47,7 @@ window.addEventListener('load', function() {
             let requete = new Request(BaseURL+"index.php?requete=ajouterBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
             // récuperer la quantité avec l'id de la bouteille concerné 
             let quantite = document.getElementById(id);
+            
             fetch(requete)
             .then(response => {
                 if (response.status === 200) {
@@ -56,6 +58,7 @@ window.addEventListener('load', function() {
               })
               .then(response => {
                 console.debug(response);
+                console.log(response);
                 //affichage de la quantité
                 quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
