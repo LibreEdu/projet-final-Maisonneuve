@@ -117,6 +117,7 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, -1);
+			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 
@@ -126,6 +127,7 @@ class Controler
 			
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
+			$resultat = $bte->recupererQuantiteBouteilleCellier($body->id);
 			echo json_encode($resultat);
 		}
 		

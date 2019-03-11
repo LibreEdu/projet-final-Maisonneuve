@@ -18,7 +18,7 @@ class Bouteille extends Modele {
 	{
 		
 		$lignes = Array();
-		$res = $this->_bd->query('Select * from '. self::TABLE);
+		$res = $this->_db->query('Select * from '. self::TABLE);
 		if($res->num_rows)
 		{
 			while($row = $res->fetch_assoc())
@@ -62,7 +62,7 @@ class Bouteille extends Modele {
 				AND cellier.id = ' . $id_cellier . '
 			ORDER BY bouteille.libelle';
 	
-		if(($resultat = $this->_bd->query($requete)) ==	 true)
+		if(($resultat = $this->_db->query($requete)) ==	 true)
 		{
 			if($resultat->num_rows)
 			{
