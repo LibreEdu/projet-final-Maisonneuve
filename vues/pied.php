@@ -8,6 +8,6 @@
 				Réalisé par <a href="mailto:jmartel@cmaisonneuve.qc.ca">Jonathan Martel</a>. Sous licence Creative Commons BY-NC 4.0 (2014)
 			</p>
 		</footer>
+		<script defer src="./js/material.js"></script>
 	</body>
-
 </html>
