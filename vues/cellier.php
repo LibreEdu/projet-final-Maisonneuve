@@ -10,7 +10,7 @@ foreach ($donnees as $bouteille) {
 		<div class="description">
 			<p class="nom"><?php echo $bouteille['nom']; ?> <?php echo $bouteille['millesime']; ?></p>
 			<p class="type"><?php echo $bouteille['type']; ?></p>
-			<p class="pays"><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['contenance']; ?> <?php echo $bouteille['unite']; ?></p>
+			<p class="pays"><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['format']; ?></p>
 			<p class="boireAvant">Boire avant : <?php echo $bouteille['date_buvable'] ?></p>
 			<!-- <p class="quantite">Quantité : <?php echo $bouteille['quantite'] ?></p> -->
 			 <p class="quantite" id="<?php echo $bouteille['id_cellier_bouteille'] ?>">Quantité : <?php echo $bouteille['quantite'] ?></p>

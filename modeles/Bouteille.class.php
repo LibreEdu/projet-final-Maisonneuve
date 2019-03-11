@@ -42,12 +42,11 @@ class Bouteille extends Modele {
 				bouteille.code_saq AS code_SAQ,
 				bouteille.date_buvable AS date_buvable,
 				bouteille.prix AS prix,
+				bouteille.millesime AS millesime,
+				bouteille.pays AS pays,
+				bouteille.format AS format,
 				bouteille.note AS note,
-				millesime.libelle AS millesime,
-				typeD.libelle AS type,
-				paysD.libelle AS pays,
-				format.contenance AS contenance,
-				format.unite AS unite
+				type.libelle AS type
 			FROM vino_cellier__bouteille cb
 			INNER JOIN vino_cellier cellier
 				ON cellier.id = cb.id_cellier
@@ -55,24 +54,11 @@ class Bouteille extends Modele {
 				ON cu.id_cellier = cellier.id
 			INNER JOIN vino_usager usager
 				ON usager.id = cu.id_usager
-			INNER JOIN vino_langue langue
-				ON langue.id = usager.id_langue
-			INNER JOIN vino_role_description roleD
-				ON roleD.id_role = cu.id_role
 			INNER JOIN vino_bouteille bouteille 
 				ON bouteille.id = cb.id_bouteille
-			LEFT JOIN vino_millesime millesime
-				ON millesime.id = bouteille.id_millesime
-			LEFT JOIN vino_type_description typeD
-				ON typeD.id_type = bouteille.id_type
-			LEFT JOIN vino_pays_description paysD
-				ON paysD.id_pays = bouteille.id_pays
-			LEFT JOIN vino_format format
-				ON format.id = bouteille.id_format
-			WHERE roleD.id_langue = 1
-				AND typeD.id_langue = 1
-				AND paysD.id_langue = 1
-				AND cu.id_role = 1
+			LEFT JOIN vino_type type
+				ON type.id = bouteille.id_type
+			WHERE cu.id_role = 1
 				AND cellier.id = ' . $id_cellier . '
 			ORDER BY bouteille.libelle';
 	
