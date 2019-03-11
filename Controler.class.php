@@ -39,6 +39,9 @@ class Controler
 				case 'boireBouteilleCellier':
 					$this->boireBouteilleCellier();
 					break;
+				case 'alex':
+					$this->alex();
+					break;
 				default:
 					$this->accueil();
 					break;
@@ -55,6 +58,12 @@ class Controler
 			include("vues/pied.php");
 		}
 		
+		private function alex()
+		{
+			$bouteille_cellier = new Bouteille();
+			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
+			include("mdlt/index.html");
+		}
 
 		private function listeBouteille()
 		{
