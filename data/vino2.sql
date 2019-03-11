@@ -150,7 +150,7 @@ INSERT INTO vino_cellier__usager VALUES(6, 5, 5, 1);
 
 INSERT INTO vino_bouteille VALUES(1, '13637422', NULL, 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille');
 INSERT INTO vino_bouteille VALUES(2, '13637422', NULL, 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', NULL);
-INSERT INTO vino_bouteille VALUES(3, '12375942', '2020-12-31', 17.10, 40, 3,'Espagne','750ml', 'Bodegas Atalaya Laya', NULL);
+INSERT INTO vino_bouteille VALUES(3, '12375942', '2020-12-31', 17.10, 40, 3, 'Espagne', '750ml', 'Bodegas Atalaya Laya', NULL);
 INSERT INTO vino_bouteille VALUES(4, '12375942', NULL, 17.10, '2017', 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', NULL);
 INSERT INTO vino_bouteille VALUES(5, '12375942', NULL, 17.10, '2017', 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', NULL);
 INSERT INTO vino_bouteille VALUES(6, '12375942', NULL, 17.10, '2017', 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', NULL);
