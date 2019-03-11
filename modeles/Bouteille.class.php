@@ -18,7 +18,7 @@ class Bouteille extends Modele {
 	{
 		
 		$lignes = Array();
-		$res = $this->_bd->query('Select * from '. self::TABLE);
+		$res = $this->_db->query('Select * from '. self::TABLE);
 		if($res->num_rows)
 		{
 			while($row = $res->fetch_assoc())
@@ -76,7 +76,7 @@ class Bouteille extends Modele {
 				AND cellier.id = ' . $id_cellier . '
 			ORDER BY bouteille.libelle';
 	
-		if(($resultat = $this->_bd->query($requete)) ==	 true)
+		if(($resultat = $this->_db->query($requete)) ==	 true)
 		{
 			if($resultat->num_rows)
 			{
@@ -179,11 +179,31 @@ class Bouteille extends Modele {
 		//TODO : Valider les données.
 			
 			
-		$requete = "UPDATE vino__cellier SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
+		$requete = "UPDATE vino_cellier__bouteille SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
 		//echo $requete;
         $res = $this->_db->query($requete);
         
 		return $res;
+	}
+
+	/**
+	 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
+	 * 
+	 * @param int $id id de la bouteille	
+	 * 
+	 * @return $row la ligne de la quntité de la bouteille en question.
+	 */
+	public function recupererQuantiteBouteilleCellier($id)
+	{
+			
+		//Requete qui récupére la quantité d'une bouteille en particulier
+		$requete1 = "SELECT quantite FROM vino_cellier__bouteille WHERE id = ". $id;
+		$res1 = $this->_db->query($requete1);		
+			
+		$row = $res1->fetch_ASSOC(); 
+		// retourner une ligne
+        return $row;       
+				
 	}
 }
 

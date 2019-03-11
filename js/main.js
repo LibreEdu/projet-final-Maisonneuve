@@ -56,6 +56,7 @@ window.addEventListener('load', function() {
               })
               .then(response => {
                 console.debug(response);
+                console.log(response);
                 //affichage de la quantité
                 quantite.innerHTML = 'Quantité : '+ response.quantite;
               }).catch(error => {
