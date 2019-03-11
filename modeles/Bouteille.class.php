@@ -171,9 +171,55 @@ class Bouteille extends Modele {
         
 		return $res;
 	}
+
+	public function getBouteilleParId($id)
+	{
+		//$rows = Array();
+		$res = $this->_bd->query('SELECT cb.id AS id_cellier_bouteille,
+			cb.date_achat AS date_achat,
+			cb.quantite AS quantite,
+			bouteille.id AS id_bouteille,
+			bouteille.libelle AS nom,
+			bouteille.code_saq AS code_SAQ,
+			bouteille.date_buvable AS date_buvable,
+			bouteille.prix AS prix,
+			bouteille.millesime AS millesime,
+			bouteille.pays AS pays,
+			bouteille.format AS leFormat,
+			bouteille.note AS note,
+			type.libelle AS type
+			FROM vino_cellier__bouteille cb			
+			INNER JOIN vino_bouteille bouteille 
+				ON bouteille.id = cb.id_bouteille
+			LEFT JOIN vino_type type
+				ON type.id = bouteille.id_type
+			WHERE cb.id ='.$id);
+		
+		$row = $res->fetch_assoc();
+		
+		return $row;
+	}
+
+	public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+	{
+		//TODO : Valider les données.
+		
+		$requete = "UPDATE vino_cellier__bouteille, vino_bouteille
+			SET vino_cellier__bouteille.date_achat='".$date_achat."',
+			vino_cellier__bouteille.quantite=".$quantite.",
+			vino_bouteille.prix=".$prix.",
+			vino_bouteille.millesime=".$millesime.",
+			vino_bouteille.date_buvable=".$date_buvable.",
+			vino_bouteille.libelle='".$nom."',
+			vino_bouteille.pays='".$pays."',
+			vino_bouteille.format='".$format."'
+			WHERE vino_cellier__bouteille.id=".$id." 
+				AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
+
+		var_dump($requete);die;
+
+        $res = $this->_db->query($requete);
+	}
 }
-
-
-
 
 ?>

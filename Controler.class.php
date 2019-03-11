@@ -22,7 +22,7 @@ class Controler
 		public function gerer()
 		{
 			
-			switch ($_GET['requete'])
+			switch ($_REQUEST['requete'])
 			{
 				case 'listeBouteille':
 					$this->listeBouteille();
@@ -38,6 +38,13 @@ class Controler
 					break;
 				case 'boireBouteilleCellier':
 					$this->boireBouteilleCellier();
+					break;
+				case 'modifierBouteille':
+					$this->modifierBouteille();
+					break;
+				case 'modifier':
+					$this->modifierUneBouteille($_POST['id'], $_POST['nom'], $_POST['millesime'], $_POST['quantite'], $_POST['date_achat'], $_POST['date_buvable'], $_POST['prix'], $_POST['pays'], $_POST['format']);
+					//$this->modifierLaBouteille($_POST);
 					break;
 				default:
 					$this->accueil();
@@ -111,6 +118,24 @@ class Controler
 			$bte = new Bouteille();
 			$resultat = $bte->modifierQuantiteBouteilleCellier($body->id, 1);
 			echo json_encode($resultat);
+		}
+
+		private function modifierBouteille()
+		{
+			$bte = new Bouteille();
+			$data = $bte->getBouteilleParId($_GET["id"]);
+			include("vues/entete.php");
+			include("vues/modifier.php");
+			include("vues/pied.php");
+		}
+
+		private function modifierUneBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+		{
+			$bte = new Bouteille();
+			
+			$data = $bte->modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format);
+			$this->accueil();
+			
 		}
 		
 }

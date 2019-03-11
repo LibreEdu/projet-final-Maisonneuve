@@ -26,7 +26,11 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="./css/material.css">
-		<link rel="stylesheet" href="./style/styles.css">
+		<link rel="stylesheet" href="./css/styles.css">
+		<base href="<?php echo BASEURL; ?>">
+		<!--<script src="./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<script src="./js/plugins.js"></script>-->
+		<script src="./js/main.js"></script>
 	</head>
 	<body >
 		<header>
