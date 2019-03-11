@@ -19,7 +19,7 @@ foreach ($donnees as $bouteille) {
 			<p><a href="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>">Lien SAQ</a></p>
 		</div>
 		<div class="options" data-id="<?php echo $bouteille['id_cellier_bouteille'] ?>">
-			<?php echo var_dump($bouteille['id_cellier_bouteille']); ?>
+			
 			<button>Modifier</button>
 			<button class='btnAjouter'>Ajouter</button>
 			<button class='btnBoire'>Boire</button>
