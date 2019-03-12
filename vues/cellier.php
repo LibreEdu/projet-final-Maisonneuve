@@ -54,7 +54,7 @@
           <?php
                     }
             ?>
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+         <!--  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                 <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
@@ -80,8 +80,8 @@
               <li class="mdl-menu__item" disabled>Ipsum</li>
               <li class="mdl-menu__item">Dolor</li>
             </ul>
-          </section>
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+          </section> -->
+          <!-- <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__supporting-text">
                 <h4>Technology</h4>
@@ -170,6 +170,6 @@
                 Cupidatat labore nisi ut sunt voluptate quis sunt qui ad Lorem esse nisi. Ex esse velit ullamco incididunt occaecat dolore veniam tempor minim adipisicing amet. Consequat in exercitation est elit anim consequat cillum sint labore cillum. Aliquip mollit laboris ad labore anim.
               </p>
             </div>
-          </section>
-        </div>
+          </section> -->
+        <!-- </div> -->
 
