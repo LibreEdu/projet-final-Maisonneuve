@@ -48,6 +48,47 @@
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                 <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
+
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                <div class='cellier'>
+                    <?php
+                      foreach ($donnees as $bouteille) {                     
+                    ?>
+                  <h5>Lorem ipsum dolor sit amet</h5>
+                  <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+                    <div class='bouteille' data-quantite=''>
+                      <div class='img'>
+                        <img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-list$'>
+                      </div>
+                      <div class='description'>
+                        <p class='nom'><?php echo $bouteille['nom']; ?> <?php echo $bouteille['millesime']; ?></p>
+                        <p class='type'><?php echo $bouteille['type']; ?></p>
+                        <p class='pays'><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['format']; ?></p>
+                        <p class='boireAvant'>Boire avant : <?php echo $bouteille['date_buvable'] ?></p>
+                        <!-- <p class='quantite'>Quantité : <?php echo $bouteille['quantite'] ?></p> -->
+                         <p class='quantite' id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>Quantité : <?php echo $bouteille['quantite'] ?></p>
+                        <p class='dateAchat'>Date d’achat : <?php echo $bouteille['date_achat'] ?></p>
+                        <p class='prix'>Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
+                        <p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>'>Lien SAQ</a></p>
+                      </div>
+                      <div class='options' data-id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>
+                        <button class='btnModifier'>Modifier</button>
+                        <button class='btnAjouter'>Ajouter</button>
+                        <button class='btnBoire'>Boire</button>                        
+                      </div>
+                    </div>
+                    <?php
+                      }
+                    ?>
+                  </div>
+                  <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                </div>
+
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                   <div class="section__circle-container__circle mdl-color--primary"></div>
                 </div>
@@ -55,13 +96,7 @@
                   <h5>Lorem ipsum dolor sit amet</h5>
                   Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
                 </div>
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>Lorem ipsum dolor sit amet</h5>
-                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                </div>
+
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                   <div class="section__circle-container__circle mdl-color--primary"></div>
                 </div>
@@ -70,6 +105,7 @@
                   Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
                 </div>
               </div>
+
               <div class="mdl-card__actions">
                 <a href="#" class="mdl-button">Read our features</a>
               </div>
