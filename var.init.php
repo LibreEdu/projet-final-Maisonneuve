@@ -4,7 +4,7 @@
    */
    
    
-	if(empty($_GET['requete']))
+	if(empty($_REQUEST['requete']))
 	{
-		$_GET['requete'] = '';
+		$_REQUEST['requete'] = '';
 	}
