@@ -13,10 +13,10 @@
  */
 class Modele {
 	
-	protected $_db;
+	protected $_bd;
 	function __construct ()
 	{
-		$this->_db = MonSQL::obtenir_instance();
+		$this->_bd = MonSQL::obtenir_instance();
 	}
 	
 	// function __destruct ()
