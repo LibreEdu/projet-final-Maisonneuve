@@ -177,17 +177,17 @@ class SAQ extends Modele {
 		// Vérifier si les rangées ne sont pas vident
 		echo " <br>nombre de rows ".$rangeeType->num_rows;
 
-		if ($rangeeType->num_rows > 1 ) {	
+		if ($rangeeType->num_rows == 1 ) {	
 			// Récupère le id de type de vin
 			$type = $rangeeType->fetch_assoc();
 			$type = $type['id'];
 
 		} else {
 			// Ajouter le type dans la table de type
-			$this->stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
-			$this->stmt->bind_param("s", $bte->type);
-			$this->stmt->execute();
-			$dernierId = $this->stmt->insert_id;
+			$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
+			$stmt->bind_param("s", $bte->type);
+			$stmt->execute();
+			$dernierId = $stmt->insert_id;
 			$type = $dernierId;
 			echo "<br>dernier id insere dans else ".$type;
 		}
