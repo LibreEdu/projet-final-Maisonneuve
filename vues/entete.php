@@ -28,6 +28,7 @@
 		<link rel="stylesheet" href="./css/material.css">
 		<link rel="stylesheet" href="./css/styles.css">
 		<script src="./js/main.js"></script>
+		<script src="./js/valider.js"></script>
 	</head>
 	<body >
 		<header>

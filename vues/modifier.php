@@ -1,11 +1,11 @@
 <div class="modifier">
  <div class="bouteille">
-            <form method="POST">
+            <form name="form" method="POST" onsubmit="return ValiderChamps(this)">
                 <p>Nom : <input name="nom" value="<?php echo $data['nom'] ?>"></p>
-                <p>Millesime : <input name="millesime" value="<?php echo $data['millesime'] ?>"></p>
-                <p>Quantite : <input name="quantite" value="<?php echo $data['quantite'] ?>"></p>
+                <p>Millesime : <input type="number" min="1900" max="<?php echo date('Y'); ?>" name="millesime" value="<?php echo $data['millesime'] ?>"></p>
+                <p>Quantite : <input type="number" min="0" name="quantite" value="<?php echo $data['quantite'] ?>"></p>
                 <p>Date achat : <input type="date" name="date_achat" value="<?php echo $data['date_achat'] ?>"></p>
-				<p>Date buvable : <input type="date" name="date_buvable" value="<?php echo $data['date_buvable'] ?>"></p>
+				<p>Boire avant : <input type="date" name="date_buvable" value="<?php echo $data['date_buvable'] ?>"></p>
                 <p>Prix : <input name="prix" value="<?php echo $data['prix'] ?>"></p>
 				<p>Pays : <input name="pays" value="<?php echo $data['pays'] ?>"></p>
 				<p>Format : <input name="format" value="<?php echo $data['leFormat'] ?>"></p>
