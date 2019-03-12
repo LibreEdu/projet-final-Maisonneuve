@@ -18,7 +18,7 @@ class Bouteille extends Modele {
 	{
 		
 		$lignes = Array();
-		$res = $this->_db->query('Select * from '. self::TABLE);
+		$res = $this->_bd->query('Select * from '. self::TABLE);
 		if($res->num_rows)
 		{
 			while($row = $res->fetch_assoc())
@@ -62,7 +62,7 @@ class Bouteille extends Modele {
 				AND cellier.id = ' . $id_cellier . '
 			ORDER BY bouteille.libelle';
 	
-		if(($resultat = $this->_db->query($requete)) ==	 true)
+		if(($resultat = $this->_bd->query($requete)) ==	 true)
 		{
 			if($resultat->num_rows)
 			{
@@ -90,18 +90,18 @@ class Bouteille extends Modele {
 	 * 
 	 * @return array id et nom de la bouteille trouvée dans le catalogue
 	 */
-       
+	   
 	public function autocomplete($nom, $nb_resultat=10)
 	{
 		
 		$lignes = Array();
-		$nom = $this->_db->real_escape_string($nom);
+		$nom = $this->_bd->real_escape_string($nom);
 		$nom = preg_replace("/\*/","%" , $nom);
 		 
 		//echo $nom;
 		$requete ='SELECT id, nom FROM vino__bouteille where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
 		//var_dump($requete);
-		if(($res = $this->_db->query($requete)) ==	 true)
+		if(($res = $this->_bd->query($requete)) ==	 true)
 		{
 			if($res->num_rows)
 			{
@@ -146,8 +146,8 @@ class Bouteille extends Modele {
 		"'".$data->quantite."',".
 		"'".$data->millesime."')";
 
-        $res = $this->_db->query($requete);
-        
+		$res = $this->_bd->query($requete);
+		
 		return $res;
 	}
 	
@@ -167,8 +167,8 @@ class Bouteille extends Modele {
 			
 		$requete = "UPDATE vino_cellier__bouteille SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
 		//echo $requete;
-        $res = $this->_db->query($requete);
-        
+		$res = $this->_bd->query($requete);
+		
 		return $res;
 	}
 
@@ -216,9 +216,9 @@ class Bouteille extends Modele {
 			WHERE vino_cellier__bouteille.id=".$id." 
 				AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
 
-		var_dump($requete);die;
+		// var_dump($requete);die;
 
-        $res = $this->_db->query($requete);
+	$res = $this->_bd->query($requete);
 	}
 }
 

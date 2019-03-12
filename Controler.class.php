@@ -41,6 +41,7 @@ class Controler
 					break;
 				case 'alex':
 					$this->alex();
+					break;
 				case 'modifierBouteille':
 					$this->modifierBouteille();
 					break;
