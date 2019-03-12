@@ -19,13 +19,13 @@ class SAQ extends Modele {
 	private static $_status;
 	private $stmt;
 
-	public function __construct() {
-	 	parent::__construct();
+	 public function __construct() {
+	  	parent::__construct();
 		if (!($this->stmt = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (libelle, millesime, id_type, pays, format, code_saq, prix) 
 			VALUES (?, ?, ?, ?, ?, ?, ?)'))) {
-			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+				echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
 		}
-	}
+	 }
 
 	/**
 	 * getProduits
@@ -170,46 +170,55 @@ class SAQ extends Modele {
 		$retour -> raison = '';
 		$dernierId = "";
 
-
 		// Récupère le type reçu en paramètre 
 		$rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
 		
 		// Vérifier si les rangées ne sont pas vident
-		echo " <br>nombre de rows ".$rangeeType->num_rows;
+		//echo " <br>nombre de rows ".$rangeeType->num_rows;
 
-		if ($rangeeType->num_rows > 1 ) {	
+		//echo "type = -" . $bte->type . "-";
+		
+		if ($rangeeType->num_rows == 1 ) {	
 			// Récupère le id de type de vin
-			$type = $rangeeType->fetch_assoc();
-			$type = $type['id'];
+			$id_type = $rangeeType->fetch_assoc();
+			$id_type = $id_type['id'];
 
 		} else {
 			// Ajouter le type dans la table de type
-			$this->stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
-			$this->stmt->bind_param("s", $bte->type);
-			$this->stmt->execute();
-			$dernierId = $this->stmt->insert_id;
-			$type = $dernierId;
-			echo "<br>dernier id insere dans else ".$type;
+			//$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES ("'.$bte->type.'")');
+			$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
+			$stmt->bind_param("s", $bte->type);		
+			$stmt->execute();			
+			$id_type = $stmt->insert_id;
+			 	echo " <br>last id dans elese ".$id_type;
+			 //die;
+
+			// Verifier si la nouvelle insertion existe deja ou pas
+			// $rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
+			// if ($rangeeType->num_rows == 2) {
+			// 	$dernierId = $this->stmt->insert_id;
+			// 	$type = $dernierId;
+			// 	echo "<br>dernier id insere dans else ".$type;
+			// }
 		}
+		
+		// Récupère le code_saq pour vérifier après si il existe dans la table ou non
+		 $rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
+
+		//Si le code_saq n'existe pas dans le tableau
+		if ($rangeeCodeSaq->num_rows < 1) {
 			
-			echo "<br>dernier id insere apres la fin de else ".$type;
-			
-			// Récupère le code_saq pour vérifier après si il existe dans la table ou non
-			$rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
+			$this->stmt->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
+			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
 
-			//Si le code_saq n'existe pas dans le tableau
-			if ($rangeeCodeSaq->num_rows < 1) {
-				$this->stmt->bind_param("siissii", $bte->nom, $bte->millesime, $type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
-				echo "<br>dernier id insere apres cherche codeSAQ ".$type;
+			$retour->succes = $this->stmt->execute();
+			echo "<br>dernier id insere apres execute ".$id_type; 
 
-				$retour->succes = $this->stmt->execute();
-				echo "<br>dernier id insere apres execute ".$type; 
-
-			} else {
-				$retour->succes = false;
-				$retour->raison = self::DUPLICATION;
-			}
-		return $retour;
+		} else {
+			$retour->succes = false;
+			$retour->raison = self::DUPLICATION;
+		}
+	return $retour;
 	}
 }
 ?>
