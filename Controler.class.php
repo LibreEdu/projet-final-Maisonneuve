@@ -59,9 +59,9 @@ class Controler
 			$bouteille_cellier = new Bouteille();
 			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
 			// var_dump($donnees);die;
-			include("vues/entete.php");
+			include("vues/entete2.php");
 			include("vues/cellier.php");
-			include("vues/pied.php");
+			include("vues/pied2.php");
 		}
 		
 		private function alex()
