@@ -1,8 +1,7 @@
 <div class='cellier'>
 <?php
 foreach ($donnees as $bouteille) {
- 
-	?>
+?>
 	<div class='bouteille' data-quantite=''>
 		<div class='img'>
 			<img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-list$'>
@@ -27,6 +26,6 @@ foreach ($donnees as $bouteille) {
 		</div>
 	</div>
 <?php
-}
+	}
 ?>
 </div>
