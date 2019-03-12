@@ -59,6 +59,19 @@
       margin-right: 40px;
       margin-bottom: 40px;
       z-index: 900;
+    }    
+
+    .demo-card-wide.mdl-card {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .demo-card-wide > .mdl-card__title {
+      color: #000;
+      height: 100px;
+      border-bottom: 2px solid lightgrey;
+    }
+    .demo-card-wide > .mdl-card__menu {
+      color: #fff;
     }
     </style>
   </head>
