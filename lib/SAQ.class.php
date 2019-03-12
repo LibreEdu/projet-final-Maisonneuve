@@ -17,14 +17,18 @@ class SAQ extends Modele {
 
 	private static $_pageweb;
 	private static $_status;
-	private $stmt;
+	private $_stmt_bouteille_saq;
+	private $_stmt_type;
 
 	 public function __construct() {
-	  	parent::__construct();
-		if (!($this->stmt = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (libelle, millesime, id_type, pays, format, code_saq, prix) 
-			VALUES (?, ?, ?, ?, ?, ?, ?)'))) {
-				echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
-		}
+		parent::__construct();
+		try {
+			$this->_stmt_bouteille_saq = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (libelle, millesime, id_type, pays, format, code_saq, prix) 
+			VALUES (?, ?, ?, ?, ?, ?, ?)');
+			$this->_stmt_type = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
+		} catch (Exception $e) {
+			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
+		}	
 	 }
 
 	/**
@@ -173,11 +177,7 @@ class SAQ extends Modele {
 		// Récupère le type reçu en paramètre 
 		$rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
 		
-		// Vérifier si les rangées ne sont pas vident
-		//echo " <br>nombre de rows ".$rangeeType->num_rows;
-
-		//echo "type = -" . $bte->type . "-";
-		
+		// Vérifier si les rangées ne sont pas vides		
 		if ($rangeeType->num_rows == 1 ) {	
 			// Récupère le id de type de vin
 			$id_type = $rangeeType->fetch_assoc();
@@ -185,21 +185,9 @@ class SAQ extends Modele {
 
 		} else {
 			// Ajouter le type dans la table de type
-			//$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES ("'.$bte->type.'")');
-			$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
-			$stmt->bind_param("s", $bte->type);		
-			$stmt->execute();			
-			$id_type = $stmt->insert_id;
-			 	echo " <br>last id dans elese ".$id_type;
-			 //die;
-
-			// Verifier si la nouvelle insertion existe deja ou pas
-			// $rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
-			// if ($rangeeType->num_rows == 2) {
-			// 	$dernierId = $this->stmt->insert_id;
-			// 	$type = $dernierId;
-			// 	echo "<br>dernier id insere dans else ".$type;
-			// }
+			$this->_stmt_type->bind_param("s", $bte->type);		
+			$this->_stmt_type->execute();			
+			$id_type = $this->_stmt_type->insert_id;
 		}
 		
 		// Récupère le code_saq pour vérifier après si il existe dans la table ou non
@@ -208,10 +196,10 @@ class SAQ extends Modele {
 		//Si le code_saq n'existe pas dans le tableau
 		if ($rangeeCodeSaq->num_rows < 1) {
 			
-			$this->stmt->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
+			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
 			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
 
-			$retour->succes = $this->stmt->execute();
+			$retour->succes = $this->_stmt_bouteille_saq->execute();
 			echo "<br>dernier id insere apres execute ".$id_type; 
 
 		} else {
