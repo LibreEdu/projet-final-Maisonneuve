@@ -185,12 +185,9 @@ class SAQ extends Modele {
 
 		} else {
 			// Ajouter le type dans la table de type
-			$stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
-			$stmt->bind_param("s", $bte->type);
-			$stmt->execute();
-			$dernierId = $stmt->insert_id;
-			$type = $dernierId;
-			echo "<br>dernier id insere dans else ".$type;
+			$this->_stmt_type->bind_param("s", $bte->type);		
+			$this->_stmt_type->execute();			
+			$id_type = $this->_stmt_type->insert_id;
 		}
 		
 		// Récupère le code_saq pour vérifier après si il existe dans la table ou non
@@ -212,4 +209,4 @@ class SAQ extends Modele {
 	return $retour;
 	}
 }
-?>s
+?>
