@@ -45,9 +45,11 @@
 			<div class="mdl-textfield mdl-js-textfield">
 				Code SAQ : <input class="mdl-textfield__input" type="text" name="code_SAQ" value="<?php echo $data['code_SAQ'] ?>" disabled="disabled">
 			</div>
+			<div>
 				<input type="hidden" name="id" value="<?php echo $data['id_cellier_bouteille'] ?>">
 				<input type="hidden" name="requete" value="modifier">
 				<input type="submit" value="Modifier la bouteille" class="mdl-button mdl-js-button mdl-button--raised">
+				</div>
 		</form>
 	</div>
 </main>
