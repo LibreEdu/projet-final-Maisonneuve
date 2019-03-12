@@ -1,25 +1,3 @@
-  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Name &amp; Title</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#overview" class="mdl-layout__tab is-active">Mon cellier</a>
-          <a href="#features" class="mdl-layout__tab">Ajouter bouteille</a>
-          <a href="#features" class="mdl-layout__tab">Details</a>
-          <a href="#features" class="mdl-layout__tab">Technology</a>
-          <a href="#features" class="mdl-layout__tab">FAQ</a>
-          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
-            <i class="material-icons" role="presentation">add</i>
-            <span class="visuallyhidden">Add</span>
-          </button>
-        </div>
-      </header>
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="overview">
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
@@ -48,55 +26,7 @@
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                 <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
-
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                <div class='cellier'>
-                    <?php
-                      foreach ($donnees as $bouteille) {                     
-                    ?>
-                  <h5>Lorem ipsum dolor sit amet</h5>
-                  <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-                    <div class='bouteille' data-quantite=''>
-                      <div class='img'>
-                        <img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-list$'>
-                      </div>
-                      <div class='description'>
-                        <p class='nom'><?php echo $bouteille['nom']; ?> <?php echo $bouteille['millesime']; ?></p>
-                        <p class='type'><?php echo $bouteille['type']; ?></p>
-                        <p class='pays'><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['format']; ?></p>
-                        <p class='boireAvant'>Boire avant : <?php echo $bouteille['date_buvable'] ?></p>
-                        <!-- <p class='quantite'>Quantité : <?php echo $bouteille['quantite'] ?></p> -->
-                         <p class='quantite' id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>Quantité : <?php echo $bouteille['quantite'] ?></p>
-                        <p class='dateAchat'>Date d’achat : <?php echo $bouteille['date_achat'] ?></p>
-                        <p class='prix'>Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
-                        <p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>'>Lien SAQ</a></p>
-                      </div>
-                      <div class='options' data-id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>
-                        <button class='btnModifier'>Modifier</button>
-                        <button class='btnAjouter'>Ajouter</button>
-                        <button class='btnBoire'>Boire</button>                        
-                      </div>
-                    </div>
-                    <?php
-                      }
-                    ?>
-                  </div>
-                  <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                </div>
-
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>Lorem ipsum dolor sit amet</h5>
-                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                </div>
-
+                
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                   <div class="section__circle-container__circle mdl-color--primary"></div>
                 </div>
