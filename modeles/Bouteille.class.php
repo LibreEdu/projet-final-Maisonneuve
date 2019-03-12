@@ -172,6 +172,29 @@ class Bouteille extends Modele {
 		return $res;
 	}
 
+	/**
+	 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
+	 * 
+	 * @param int $id id  cellier_bouteille	
+	 * 
+	 * @return $ligne la ligne de la quantité de la bouteille en question.
+	 */
+	public function recupererQuantiteBouteilleCellier($id)
+	{
+			
+		//Requete qui récupére la quantité d'une bouteille en particulier
+		$requete = "SELECT quantite FROM vino_cellier__bouteille WHERE id = ". $id;
+		$res = $this->_bd->query($requete);		
+			
+		$ligne = $res->fetch_ASSOC(); 
+		// retourner une ligne
+		return $ligne;
+				
+	}
+
+
+
+
 	public function getBouteilleParId($id)
 	{
 		//$rows = Array();
