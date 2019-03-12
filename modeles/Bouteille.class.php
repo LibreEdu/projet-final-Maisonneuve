@@ -236,27 +236,52 @@ class Bouteille extends Modele {
 		return $rows;
 	}
 
-	public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes)
-	{
-		//TODO : Valider les données.
+	// public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes)
+	// {
+	// 	//TODO : Valider les données.
 		
-		$requete = "UPDATE vino_cellier__bouteille, vino_bouteille
-			SET vino_cellier__bouteille.date_achat='".$date_achat."',
-			vino_cellier__bouteille.quantite=".$quantite.",
-			vino_bouteille.prix=".$prix.",
-			vino_bouteille.millesime=".$millesime.",
-			vino_bouteille.date_buvable='".$date_buvable."',
-			vino_bouteille.libelle='".$nom."',
-			vino_bouteille.pays='".$pays."',
-			vino_bouteille.format='".$format."',
-			vino_bouteille.note='".$notes."',
-			vino_bouteille.id_type=".$type."
-			WHERE vino_cellier__bouteille.id=".$id." 
-				AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
+	// 	$requete = "UPDATE vino_cellier__bouteille, vino_bouteille
+	// 		SET vino_cellier__bouteille.date_achat='".$date_achat."',
+	// 		vino_cellier__bouteille.quantite=".$quantite.",
+	// 		vino_bouteille.prix=".$prix.",
+	// 		vino_bouteille.millesime=".$millesime.",
+	// 		vino_bouteille.date_buvable='".$date_buvable."',
+	// 		vino_bouteille.libelle='".$nom."',
+	// 		vino_bouteille.pays='".$pays."',
+	// 		vino_bouteille.format='".$format."',
+	// 		vino_bouteille.note='".$notes."',
+	// 		vino_bouteille.id_type=".$type."
+	// 		WHERE vino_cellier__bouteille.id=".$id." 
+	// 			AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
 
-		// var_dump($requete);die;
+	// 	// var_dump($requete);die;
 
-	$res = $this->_bd->query($requete);
+	// $res = $this->_bd->query($requete);
+	// }	
+
+	public function modifierBouteille()
+	{
+
+	// var_dump($_POST);
+	// die;
+	$sql = "UPDATE vino_cellier__bouteille, vino_bouteille 
+		SET vino_cellier__bouteille.date_achat=?,
+			vino_cellier__bouteille.quantite=?,
+			vino_bouteille.prix=?,
+			vino_bouteille.millesime=?,
+			vino_bouteille.date_buvable=?,
+			vino_bouteille.libelle=?,
+			vino_bouteille.pays=?,
+			vino_bouteille.format=?,
+			vino_bouteille.note=?,
+			vino_bouteille.id_type=?
+		WHERE vino_cellier__bouteille.id=?
+			AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
+
+	$stmt = $this->_bd->prepare($sql);
+
+	$stmt->bind_param('sidssssssii', $_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['date_buvable'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['notes'], $_POST['type'], $_POST['id']);
+	$stmt->execute();
 	}
 }
 
