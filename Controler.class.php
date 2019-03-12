@@ -46,8 +46,7 @@ class Controler
 					$this->modifierBouteille();
 					break;
 				case 'modifier':
-					$this->modifierUneBouteille($_POST['id'], $_POST['nom'], $_POST['millesime'], $_POST['quantite'], $_POST['date_achat'], $_POST['date_buvable'], $_POST['prix'], $_POST['pays'], $_POST['format'], $_POST['type'], $_POST['notes']);
-					//$this->modifierLaBouteille($_POST);
+					$this->modifierUneBouteille();
 					break;
 				default:
 					$this->accueil();
@@ -143,11 +142,11 @@ class Controler
 			include("vues/pied.php");
 		}
 
-		private function modifierUneBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes)
+		private function modifierUneBouteille()
 		{
 			$bte = new Bouteille();
 			
-			$data = $bte->modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes);
+			$data = $bte->modifierBouteille();
 			$this->accueil();
 			
 		}
