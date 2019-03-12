@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <script src="./js/main.js"></script>
+    <script src="./js/valider.js"></script>
 
     <style>
     #view-source {
