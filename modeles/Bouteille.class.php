@@ -186,13 +186,10 @@ class Bouteille extends Modele {
 			bouteille.millesime AS millesime,
 			bouteille.pays AS pays,
 			bouteille.format AS leFormat,
-			bouteille.note AS note,
-			type.libelle AS type
+			bouteille.note AS notes			
 			FROM vino_cellier__bouteille cb			
 			INNER JOIN vino_bouteille bouteille 
 				ON bouteille.id = cb.id_bouteille
-			LEFT JOIN vino_type type
-				ON type.id = bouteille.id_type
 			WHERE cb.id ='.$id);
 		
 		$row = $res->fetch_assoc();
@@ -200,7 +197,23 @@ class Bouteille extends Modele {
 		return $row;
 	}
 
-	public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+	public function listeType()
+	{
+		$rows = Array();
+		$res = $this->_bd->query('SELECT *	FROM vino_type');
+		
+		if($res->num_rows)
+		{
+			while($row = $res->fetch_assoc())
+			{
+				$rows[] = $row;
+			}
+		}
+		
+		return $rows;
+	}
+
+	public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes)
 	{
 		//TODO : Valider les données.
 		
@@ -209,10 +222,12 @@ class Bouteille extends Modele {
 			vino_cellier__bouteille.quantite=".$quantite.",
 			vino_bouteille.prix=".$prix.",
 			vino_bouteille.millesime=".$millesime.",
-			vino_bouteille.date_buvable=".$date_buvable.",
+			vino_bouteille.date_buvable='".$date_buvable."',
 			vino_bouteille.libelle='".$nom."',
 			vino_bouteille.pays='".$pays."',
-			vino_bouteille.format='".$format."'
+			vino_bouteille.format='".$format."',
+			vino_bouteille.note='".$notes."',
+			vino_bouteille.id_type=".$type."
 			WHERE vino_cellier__bouteille.id=".$id." 
 				AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
 

@@ -46,7 +46,7 @@ class Controler
 					$this->modifierBouteille();
 					break;
 				case 'modifier':
-					$this->modifierUneBouteille($_POST['id'], $_POST['nom'], $_POST['millesime'], $_POST['quantite'], $_POST['date_achat'], $_POST['date_buvable'], $_POST['prix'], $_POST['pays'], $_POST['format']);
+					$this->modifierUneBouteille($_POST['id'], $_POST['nom'], $_POST['millesime'], $_POST['quantite'], $_POST['date_achat'], $_POST['date_buvable'], $_POST['prix'], $_POST['pays'], $_POST['format'], $_POST['type'], $_POST['notes']);
 					//$this->modifierLaBouteille($_POST);
 					break;
 				default:
@@ -137,16 +137,17 @@ class Controler
 		{
 			$bte = new Bouteille();
 			$data = $bte->getBouteilleParId($_GET["id"]);
+			$type = $bte->listeType();
 			include("vues/entete.php");
 			include("vues/modifier.php");
 			include("vues/pied.php");
 		}
 
-		private function modifierUneBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+		private function modifierUneBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes)
 		{
 			$bte = new Bouteille();
 			
-			$data = $bte->modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format);
+			$data = $bte->modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format, $type, $notes);
 			$this->accueil();
 			
 		}
