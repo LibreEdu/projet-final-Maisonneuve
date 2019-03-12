@@ -4,7 +4,7 @@
  * Classe qui génère ma connection à MySQL à travers un singleton
  *
  *
- * @author Alexandre Pachot et Fatemeh Homatash 
+ * @author Alexandre Pachot
  * @version 1.0
  *
  *
@@ -19,13 +19,12 @@ class SAQ extends Modele {
 	private static $_status;
 	private $stmt;
 
-	public function __construct() {
-	 	parent::__construct();
-		if (!($this->stmt = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (libelle, millesime, id_type, pays, format, code_saq, prix) 
-			VALUES (?, ?, ?, ?, ?, ?, ?)'))) {
-			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
-		}
-	}
+	// public function __construct() {
+	// 	parent::__construct();
+	// 	if (!($this -> stmt = $this -> _db -> prepare("INSERT INTO vino__bouteille(nom, type, image, code_saq, pays, description, prix_saq, url_saq, url_img, format) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))) {
+	// 		echo "Echec de la préparation : (" . $mysqli -> errno . ") " . $mysqli -> error;
+	// 	}
+	// }
 
 	/**
 	 * getProduits
@@ -38,15 +37,15 @@ class SAQ extends Modele {
 
 		// URL à récupérer.
 		curl_setopt($gc, CURLOPT_URL, 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin&beginIndex=' . $debut . '&pageSize=' . $nombre);
+		
+		curl_setopt($gc, CURLOPT_SSL_VERIFYPEER, false);
 
 		// Retourne directement le transfert sous forme de chaine au lieu de l’afficher directement.
 		curl_setopt($gc, CURLOPT_RETURNTRANSFER, true);
 
-		// Pour que le php laisse accesse a https
-		curl_setopt($gc, CURLOPT_SSL_VERIFYPEER, false);
-
 		// Exécution de la session cURL.
 		self::$_pageweb = curl_exec($gc);
+		var_dump(self::$_pageweb);
 
 		// Lecture du dernier code de réponse.
 		self::$_status = curl_getinfo($gc, CURLINFO_HTTP_CODE);
@@ -74,13 +73,12 @@ class SAQ extends Modele {
 		foreach ($elements as $noeud) {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
-				//var_dump($info);die;
-				$retour = $this->ajouteProduit($info);
-				//var_dump($retour);die;
-				if ($retour->succes == false) {
-					echo "erreur : " . $retour->raison . "<br>";
+				var_dump($info);die;
+				$retour = $this -> ajouteProduit($info);
+				if ($retour -> succes == false) {
+					echo "erreur : " . $retour -> raison . "<br>";
 					echo "<pre>";
-					//var_dump($info);
+					var_dump($info);
 					echo "</pre>";
 					echo "<br>";
 				} else {
@@ -88,6 +86,7 @@ class SAQ extends Modele {
 				}
 			}
 		}
+
 		return $nombreDeProduits;
 	}
 
@@ -135,13 +134,15 @@ class SAQ extends Modele {
 					// Récupération de l’information de la deuxième ligne
 					if (isset($correspondances[1][1])) {
 						// Ex: "Arménie (République d'), 750 ml" ou "Arménie (République d'), 1,5 L"
-						preg_match("/(.*),(.*)/", $correspondances[1][1], $corres);
+						preg_match("/(.*),\D*(\d*(,\d*)?)\W*(\w*)/", $correspondances[1][1], $corres);
 
 						// Remplacement de l’apostrophe droite (') par l’apostrophe typographique (’)
 						$info->pays = str_replace("'", '’', $corres[1]);
 
 						// Remplacement du séparateur décimal, format base de données
-						$info->format = $corres[2];
+						$info->quantite = str_replace(',', '.', $corres[2]);
+
+						$info->unite = $corres[4];
 					}
 
 					// Récupération de l’information de la troisième ligne
@@ -168,48 +169,35 @@ class SAQ extends Modele {
 		$retour = new stdClass();
 		$retour -> succes = false;
 		$retour -> raison = '';
-		$dernierId = "";
 
-
-		// Récupère le type reçu en paramètre 
-		$rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
+		// var_dump($bte);die;
+		// Récupère le type
+		$rows = $this -> _db -> query("select id from vino__type where type = '" . $bte -> desc -> type . "'");
 		
-		// Vérifier si les rangées ne sont pas vident
-		echo " <br>nombre de rows ".$rangeeType->num_rows;
-
-		if ($rangeeType->num_rows > 1 ) {	
-			// Récupère le id de type de vin
-			$type = $rangeeType->fetch_assoc();
+		if ($rows -> num_rows == 1) {
+			$type = $rows -> fetch_assoc();
+			// var_dump($type);
 			$type = $type['id'];
 
-		} else {
-			// Ajouter le type dans la table de type
-			$this->stmt = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
-			$this->stmt->bind_param("s", $bte->type);
-			$this->stmt->execute();
-			$dernierId = $this->stmt->insert_id;
-			$type = $dernierId;
-			echo "<br>dernier id insere dans else ".$type;
-		}
+			$rows = $this -> _db -> query("select id from vino__bouteille where code_saq = '" . $bte -> desc -> code_SAQ . "'");
+			// var_dump($info);
 			
-			echo "<br>dernier id insere apres la fin de else ".$type;
-			
-			// Récupère le code_saq pour vérifier après si il existe dans la table ou non
-			$rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
-
-			//Si le code_saq n'existe pas dans le tableau
-			if ($rangeeCodeSaq->num_rows < 1) {
-				$this->stmt->bind_param("siissii", $bte->nom, $bte->millesime, $type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
-				echo "<br>dernier id insere apres cherche codeSAQ ".$type;
-
-				$retour->succes = $this->stmt->execute();
-				echo "<br>dernier id insere apres execute ".$type; 
+			if ($rows -> num_rows < 1) {
+				$this -> stmt -> bind_param("sissssssss", $bte -> nom, $type, $bte -> img, $bte -> desc -> code_SAQ, $bte -> desc -> pays, $bte -> desc -> texte, $bte -> prix, $bte -> url, $bte -> img, $bte -> desc -> format);
+				$retour -> succes = $this -> stmt -> execute();
 
 			} else {
-				$retour->succes = false;
-				$retour->raison = self::DUPLICATION;
+				$retour -> succes = false;
+				$retour -> raison = self::DUPLICATION;
 			}
+		} else {
+			$retour -> succes = false;
+			$retour -> raison = self::ERREURDB;
+
+		}
 		return $retour;
+
 	}
+
 }
 ?>

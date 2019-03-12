@@ -69,7 +69,9 @@ class Controler
 		{
 			$bouteille_cellier = new Bouteille();
 			$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
-			include("mdlt/index.html");
+			include("vues/header.html");
+			include("vues/body.html");
+			include("vues/footer.html");
 		}
 
 		private function listeBouteille()
