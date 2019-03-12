@@ -18,7 +18,7 @@ class Bouteille extends Modele {
 	{
 		
 		$lignes = Array();
-		$res = $this->_db->query('Select * from '. self::TABLE);
+		$res = $this->_bd->query('Select * from '. self::TABLE);
 		if($res->num_rows)
 		{
 			while($row = $res->fetch_assoc())
@@ -62,7 +62,7 @@ class Bouteille extends Modele {
 				AND cellier.id = ' . $id_cellier . '
 			ORDER BY bouteille.libelle';
 	
-		if(($resultat = $this->_db->query($requete)) ==	 true)
+		if(($resultat = $this->_bd->query($requete)) ==	 true)
 		{
 			if($resultat->num_rows)
 			{
@@ -90,18 +90,18 @@ class Bouteille extends Modele {
 	 * 
 	 * @return array id et nom de la bouteille trouvée dans le catalogue
 	 */
-       
+	   
 	public function autocomplete($nom, $nb_resultat=10)
 	{
 		
 		$lignes = Array();
-		$nom = $this->_db->real_escape_string($nom);
+		$nom = $this->_bd->real_escape_string($nom);
 		$nom = preg_replace("/\*/","%" , $nom);
 		 
 		//echo $nom;
 		$requete ='SELECT id, nom FROM vino__bouteille where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
 		//var_dump($requete);
-		if(($res = $this->_db->query($requete)) ==	 true)
+		if(($res = $this->_bd->query($requete)) ==	 true)
 		{
 			if($res->num_rows)
 			{
@@ -146,8 +146,8 @@ class Bouteille extends Modele {
 		"'".$data->quantite."',".
 		"'".$data->millesime."')";
 
-        $res = $this->_db->query($requete);
-        
+		$res = $this->_bd->query($requete);
+		
 		return $res;
 	}
 	
@@ -167,33 +167,59 @@ class Bouteille extends Modele {
 			
 		$requete = "UPDATE vino_cellier__bouteille SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
 		//echo $requete;
-        $res = $this->_db->query($requete);
-        
+		$res = $this->_bd->query($requete);
+		
 		return $res;
 	}
 
-	/**
-	 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
-	 * 
-	 * @param int $id id de la bouteille	
-	 * 
-	 * @return $row la ligne de la quntité de la bouteille en question.
-	 */
-	public function recupererQuantiteBouteilleCellier($id)
+	public function getBouteilleParId($id)
 	{
-			
-		//Requete qui récupére la quantité d'une bouteille en particulier
-		$requete1 = "SELECT quantite FROM vino_cellier__bouteille WHERE id = ". $id;
-		$res1 = $this->_db->query($requete1);		
-			
-		$row = $res1->fetch_ASSOC(); 
-		// retourner une ligne
-        return $row;       
-				
+		//$rows = Array();
+		$res = $this->_bd->query('SELECT cb.id AS id_cellier_bouteille,
+			cb.date_achat AS date_achat,
+			cb.quantite AS quantite,
+			bouteille.id AS id_bouteille,
+			bouteille.libelle AS nom,
+			bouteille.code_saq AS code_SAQ,
+			bouteille.date_buvable AS date_buvable,
+			bouteille.prix AS prix,
+			bouteille.millesime AS millesime,
+			bouteille.pays AS pays,
+			bouteille.format AS leFormat,
+			bouteille.note AS note,
+			type.libelle AS type
+			FROM vino_cellier__bouteille cb			
+			INNER JOIN vino_bouteille bouteille 
+				ON bouteille.id = cb.id_bouteille
+			LEFT JOIN vino_type type
+				ON type.id = bouteille.id_type
+			WHERE cb.id ='.$id);
+		
+		$row = $res->fetch_assoc();
+		
+		return $row;
+	}
+
+	public function modifierBouteille($id, $nom, $millesime, $quantite, $date_achat, $date_buvable, $prix, $pays, $format)
+	{
+		//TODO : Valider les données.
+		
+		$requete = "UPDATE vino_cellier__bouteille, vino_bouteille
+			SET vino_cellier__bouteille.date_achat='".$date_achat."',
+			vino_cellier__bouteille.quantite=".$quantite.",
+			vino_bouteille.prix=".$prix.",
+			vino_bouteille.millesime=".$millesime.",
+			vino_bouteille.date_buvable=".$date_buvable.",
+			vino_bouteille.libelle='".$nom."',
+			vino_bouteille.pays='".$pays."',
+			vino_bouteille.format='".$format."'
+			WHERE vino_cellier__bouteille.id=".$id." 
+				AND vino_bouteille.id=vino_cellier__bouteille.id_bouteille";
+
+		// var_dump($requete);die;
+
+	$res = $this->_bd->query($requete);
 	}
 }
-
-
-
 
 ?>

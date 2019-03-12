@@ -42,6 +42,13 @@ class Controler
 				case 'alex':
 					$this->alex();
 					break;
+				case 'modifierBouteille':
+					$this->modifierBouteille();
+					break;
+				case 'modifier':
+					$this->modifierUneBouteille($_POST['id'], $_POST['nom'], $_POST['millesime'], $_POST['quantite'], $_POST['date_achat'], $_POST['date_buvable'], $_POST['prix'], $_POST['pays'], $_POST['format']);
+					//$this->modifierLaBouteille($_POST);
+					break;
 				default:
 					$this->accueil();
 					break;
