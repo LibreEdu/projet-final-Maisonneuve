@@ -1,20 +1,38 @@
-<div class="ajouter">
+<main class="mdl-layout__content">
+	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">Ajouter une bouteille</h2>
+	</div>
+	<div class="mdl-card__supporting-text">
+			<div class="mdl-textfield mdl-js-textfield">
+				Recherche : <input class="mdl-textfield__input" type="text" name="nom_bouteille">
+				<ul class="listeAutoComplete">
 
-    <div class="nouvelleBouteille" vertical layout>
-        Recherche : <input type="text" name="nom_bouteille">
-        <ul class="listeAutoComplete">
-
-        </ul>
-            <div >
-                <p>Nom : <span data-id="" class="nom_bouteille"></span></p>
-                <p>Millesime : <input name="millesime"></p>
-                <p>Quantite : <input name="quantite" value="1"></p>
-                <p>Date achat : <input name="date_achat"></p>
-                <p>Prix : <input name="prix"></p>
-                <p>Garde : <input name="garde_jusqua"></p>
-                <p>Notes <input name="notes"></p>
-            </div>
-            <button name="ajouterBouteilleCellier">Ajouter la bouteille</button>
-        </div>
-    </div>
-</div>
+				</ul>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Nom : <span data-id="" class="nom_bouteille"></span>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Millesime : <input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y'); ?>" name="millesime">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Quantité : <input class="mdl-textfield__input" type="number"  min="0" name="quantite" value="1">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Date d'achat : <input class="mdl-textfield__input" type="date" name="date_achat">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Prix : <input class="mdl-textfield__input" type="text" name="prix">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Boire avant : <input class="mdl-textfield__input" type="date" name="date_buvable">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				Notes : <input class="mdl-textfield__input" type="text" size="3" name="notes">
+			</div>
+			<div>
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="ajouterBouteilleCellier">Ajouter la bouteille</button>
+			</div>
+	</div>
+</main>
