@@ -1,5 +1,5 @@
 <?php
-class Bouteille_modele extends CI_Model {
+class Cellier_modele extends CI_Model {
 
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Bouteille_modele extends CI_Model {
 		$this->db->select('cellier.libelle AS nom_cellier');
 		$this->db->select('bouteille.id AS id_bouteille');
 		$this->db->select('bouteille.libelle AS nom');
-		$this->db->select('code_saq AS code_SAQ');
+		$this->db->select('code_saq');
 		$this->db->select('date_buvable');
 		$this->db->select('prix');
 		$this->db->select('millesime');

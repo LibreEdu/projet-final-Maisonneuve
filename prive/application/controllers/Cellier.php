@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bouteille extends CI_Controller {
+class Cellier extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('bouteille_modele');
+		$this->load->model('cellier_modele');
 		// $this->load->helper('url_helper');
 	}
 
@@ -27,7 +27,7 @@ class Bouteille extends CI_Controller {
 	 */
 	public function index()
 	{
-		$donnees['bouteilles'] = $this->bouteille_modele->bouteilles_par_cellier(1);
+		$donnees['bouteilles'] = $this->cellier_modele->bouteilles_par_cellier(1);
 
 		$this->load->view('modeles/en-tete');
 		$this->load->view('cellier', $donnees);
