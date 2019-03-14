@@ -9,7 +9,7 @@
 						 
 							<div class='bouteille' data-quantite=''>
 								<div class='img'>
-									 <img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-gril$'>
+									 <img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_saq']; ?>_is?$saq-rech-prod-gril$'>
 								 </div>            
 
 						</header>
@@ -26,7 +26,7 @@
 								<p class='prix'>Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
 							</div>
 							<div class="mdl-card__actions">
-								<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>'target="_blank">Lien SAQ</a></p>
+								<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_saq'] ?>'target="_blank">Lien SAQ</a></p>
 								<p>
 									<div class='options' data-id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>
 			
