@@ -91,9 +91,7 @@ class SAQ extends Modele {
 				}
 			}
 		}
-		//return $nombreDeProduits;
-		//var_dump($info);
-		return $info;
+		return $nombreDeProduits;
 	}
 
 	private function get_inner_html($node) {
@@ -198,12 +196,29 @@ class SAQ extends Modele {
 		if ($rangeeCodeSaq->num_rows < 1) {			
 			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
 			$retour->succes = $this->_stmt_bouteille_saq->execute();
+			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
+
 		} else {
 			$retour->succes = false;
 			$retour->raison = self::DUPLICATION;
 		}
-//		var_dump($retour);
 	return $retour;
+	}
+
+	public function getBouteillesSaqAjouter() {
+		$bouteillesSaq = array();
+		$resultat = $this->_bd->prepare("SELECT * FROM vino_bouteille_saq");
+		$resultat->execute();
+		if ($resultat->num_rows) {
+			while ($chaqueResultat = $resultat->fetch_assoc()) {
+				$bouteillesSaq[] = $chaqueResultat;
+			}
+		}
+		else {		 
+			throw new Exception("Erreur de requête sur la base de donnée", 1);
+		}
+		var_dump($bouteillesSaq);
+		return $bouteillesSaq;
 	}
 }
 ?>

@@ -148,7 +148,7 @@ class Controler
 	private function ajouterBouteilleSaq()
 	{
 		$bte = new SAQ();
-		$data = $bte->getProduits();
+		$data = $bte->getBouteillesSaqAjouter();
 		include("vues/entete.php");
 		include("vues/bouteilleSaq.php");
 		include("vues/pied.php");
