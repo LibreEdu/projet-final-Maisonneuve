@@ -15,8 +15,7 @@ class Bouteille extends Modele {
 	const TABLE = 'vino_bouteille';
 	
 	public function getListeBouteille()
-	{
-		
+	{		
 		$lignes = Array();
 		$res = $this->_bd->query('Select * from '. self::TABLE);
 		if($res->num_rows)
@@ -25,8 +24,7 @@ class Bouteille extends Modele {
 			{
 				$lignes[] = $row;
 			}
-		}
-		
+		}		
 		return $lignes;
 	}
 	

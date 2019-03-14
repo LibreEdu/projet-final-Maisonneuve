@@ -49,7 +49,7 @@
 				<input type="hidden" name="id" value="<?php echo $data['id_cellier_bouteille'] ?>">
 				<input type="hidden" name="requete" value="modifier">
 				<input type="submit" value="Modifier la bouteille" class="mdl-button mdl-js-button mdl-button--raised">
-				</div>
+			</div>
 		</form>
 	</div>
 </main>

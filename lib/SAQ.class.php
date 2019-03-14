@@ -11,7 +11,6 @@
  *
  */
 class SAQ extends Modele {
-
 	const DUPLICATION = 'duplication';
 	const ERREURDB = 'erreurdb';
 
@@ -36,7 +35,7 @@ class SAQ extends Modele {
 	 * @param int $debut
 	 * @param int $nombre
 	 */
-	public function getProduits($debut = 0, $nombre = 100) {
+	public function getProduits($debut = 0, $nombre = 10) {
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
 
@@ -92,7 +91,9 @@ class SAQ extends Modele {
 				}
 			}
 		}
-		return $nombreDeProduits;
+		//return $nombreDeProduits;
+		//var_dump($info);
+		return $info;
 	}
 
 	private function get_inner_html($node) {
@@ -194,18 +195,14 @@ class SAQ extends Modele {
 		 $rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
 
 		//Si le code_saq n'existe pas dans le tableau
-		if ($rangeeCodeSaq->num_rows < 1) {
-			
+		if ($rangeeCodeSaq->num_rows < 1) {			
 			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
-			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
-
 			$retour->succes = $this->_stmt_bouteille_saq->execute();
-			echo "<br>dernier id insere apres execute ".$id_type; 
-
 		} else {
 			$retour->succes = false;
 			$retour->raison = self::DUPLICATION;
 		}
+//		var_dump($retour);
 	return $retour;
 	}
 }

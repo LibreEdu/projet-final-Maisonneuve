@@ -2,82 +2,39 @@
         <div class="mdl-layout__tab-panel is-active" id="overview">
           <!-- Récupérer les données -->
           <?php
-              foreach ($donnees as $bouteille) {
+            foreach ($data as $bouteille) {
           ?>
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-             
-            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
-              <!-- <i class="material-icons">play_circle_filled</i> -->
-             
-              <div class='bouteille' data-quantite=''>
-                <div class='img'>
-                   <img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille['code_SAQ']; ?>_is?$saq-rech-prod-gril$'>
-                 </div>            
-
-            </header>
-            
-            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-              <div class="mdl-card__supporting-text">
-                <h4 class='nom'><?php echo $bouteille['nom']; ?> <?php echo $bouteille['millesime']; ?></h4>
-                <p class='type'><?php echo $bouteille['type']; ?></p>
-                <p class='pays'><?php echo $bouteille['pays']; ?>, <?php echo $bouteille['format']; ?></p>
-                <p class='boireAvant'>Boire avant : <?php echo $bouteille['date_buvable'] ?></p>
-                <!-- <p class='quantite'>Quantité : <?php echo $bouteille['quantite'] ?></p> -->
-                 <p class='quantite' id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>Quantité : <?php echo $bouteille['quantite'] ?></p>
-                <p class='dateAchat'>Date d’achat : <?php echo $bouteille['date_achat'] ?></p>
-                <p class='prix'>Prix : <?php echo number_format($bouteille['prix'], 2, ',', ' ') ?> $</p>
-              </div>
-              <div class="mdl-card__actions">
-                <p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>'target="_blank">Lien SAQ</a></p>
-                <p>
-                  <div class='options' data-id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>
-                    <button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
-                    <button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>Ajouter</button>
-                    <button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>Boire</button>
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+              <div class="mdl-card mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                  <h4 class="mdl-cell mdl-cell--12-col">Bouteilles SAQ ajouter</h4>
+                  
+                  <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                    <div class="section__circle-container__circle mdl-color--primary"></div>
                   </div>
-                </p>
-              </div>
-            </div>
-            <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn1">
-              <i class="material-icons">more_vert</i>
-            </button> -->
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-          </section>
+                  <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                    <h5>Nom: <?php echo $bouteille['nom']; ?></h5>
+                    Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                  </div>
+                </div>
 
+                <div class="mdl-card__actions">
+                  <a href="#" class="mdl-button">Read our features</a>
+                </div>
+              </div>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+                <i class="material-icons">more_vert</i>
+              </button>
+              <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+                <li class="mdl-menu__item">Lorem</li>
+                <li class="mdl-menu__item" disabled>Ipsum</li>
+                <li class="mdl-menu__item">Dolor</li>
+              </ul>
+            </section>
           <?php
                     }
             ?>
-         <!--  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
-                
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>Lorem ipsum dolor sit amet</h5>
-                  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                </div>
-              </div>
 
-              <div class="mdl-card__actions">
-                <a href="#" class="mdl-button">Read our features</a>
-              </div>
-            </div>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-          </section> -->
           <!-- <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
               <div class="mdl-card__supporting-text">
