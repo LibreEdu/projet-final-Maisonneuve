@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bouteilles extends CI_Controller {
+class Bouteille extends CI_Controller {
 
 	public function __construct()
 	{
