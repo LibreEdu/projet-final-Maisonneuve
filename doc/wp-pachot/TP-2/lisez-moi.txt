@@ -1,0 +1,35 @@
+Liste de fichiers modifiés ou créés :
+./wp-content/plugins/e1795854-tp2/languages/e1795854-tp2-fr_FR.mo                           -> Compilation des traductions du plugin
+./wp-content/plugins/e1795854-tp2/languages/e1795854-tp2-fr_FR.po                           -> Fichier des traductions du plugin
+./wp-content/plugins/e1795854-tp2/e1795854-tp2--plugin.php                                  -> Fichier principal pour le TPP et le formulaire
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-aa-champ-personnalises.php                   -> Champs personnalisés du TPP
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-aa-tpp.php                                   -> Création du TPP
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-aa-translate.php                             -> Prise en compte de la traduction
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-rh-activation.php                            -> Création de la table pour le vernissage
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-sc-preview.php                               -> Formulaire du vernissage
+./wp-content/plugins/e1795854-tp2/e1795854-tp2-sc-registered.php                            -> Liste des inscrits
+./wp-content/themes/e1795854-tp2/template-functions.php                                     -> Requête pour la page d’accueil
+./wp-content/themes/e1795854-tp2/template-tags                                              -> Fonction d’affichage des images
+./wp-content/themes/e1795854-tp2/languages/fr_FR.mo                                         -> Compilation des traductions du thème
+./wp-content/themes/e1795854-tp2/languages/fr_FR.po                                         -> Fichier des traductions du thème
+./wp-content/themes/e1795854-tp2/template-parts/content-archive-e1795854_exhibition.php     -> Sous-partie de la page Toutes les expositions : affichage d’une exposition
+./wp-content/themes/e1795854-tp2/template-parts/content-e1795854_exhibition.php             -> Sous-partie de l’affichage d’une seule exposition : affichage de l’exposition
+./wp-content/themes/e1795854-tp2/template-parts/content-page-accueil.php                    -> Sous-partide de la page d’accueil : affichage d’une exposition
+./wp-content/themes/e1795854-tp2/template-parts/content-taxonomy-e1795854_exhibition.php    -> Sous-partide de la page des taxonomies : affichage d’une exposition
+./wp-content/themes/e1795854-tp2/404.php                                                    -> Erreur 40
+./wp-content/themes/e1795854-tp2/archive-e1795854_exhibition.php                            -> Page Toutes les expositions
+./wp-content/themes/e1795854-tp2/footer.php                                                 -> Pied de page
+./wp-content/themes/e1795854-tp2/header.php                                                 -> En-tête de page
+./wp-content/themes/e1795854-tp2/page-accueil.php                                           -> Page d’accueil
+./wp-content/themes/e1795854-tp2/page.php                                                   -> Page par défaut : pour les autres pages du menu
+./wp-content/themes/e1795854-tp2/screenshot.png                                             -> Capture d’écran
+./wp-content/themes/e1795854-tp2/single-e1795854_exhibition.php                             -> Affichage d’une seule exposition
+./wp-content/themes/e1795854-tp2/style.css                                                  -> Feuille de style
+./wp-content/themes/e1795854-tp2/taxonomy.php                                               -> Affichage des taxonomies
+./lisez-moi.txt                                                                             -> Ce fichier
+
+https://e1795854.webdev.cmaisonneuve.qc.ca/tp2/
+identifiant : admin / editeur / auteur / contributeur / abonne
+mot de passe : 12345
+
+La dernière exposition, celle de Peter Sculthorpe a un inscrit au vernissage.
