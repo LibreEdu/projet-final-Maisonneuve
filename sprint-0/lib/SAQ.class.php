@@ -11,7 +11,6 @@
  *
  */
 class SAQ extends Modele {
-
 	const DUPLICATION = 'duplication';
 	const ERREURDB = 'erreurdb';
 
@@ -36,7 +35,7 @@ class SAQ extends Modele {
 	 * @param int $debut
 	 * @param int $nombre
 	 */
-	public function getProduits($debut = 0, $nombre = 100) {
+	public function getProduits($debut = 0, $nombre = 10) {
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
 
@@ -78,9 +77,8 @@ class SAQ extends Modele {
 		foreach ($elements as $noeud) {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
-				//var_dump($info);die;
+				//var_dump($info);
 				$retour = $this->ajouteProduit($info);
-				//var_dump($retour);die;
 				if ($retour->succes == false) {
 					echo "erreur : " . $retour->raison . "<br>";
 					echo "<pre>";
@@ -101,7 +99,6 @@ class SAQ extends Modele {
 		foreach ($children as $child) {
 			$innerHTML .= $child -> ownerDocument -> saveXML($child);
 		}
-
 		return $innerHTML;
 	}
 
@@ -155,8 +152,7 @@ class SAQ extends Modele {
 					}
 					break;
 			}
-		}
-		
+		}		
 		// Récupération du prix
 		$cellules = $noeud->getElementsByTagName("td");
 		foreach ($cellules as $cellule) {
@@ -194,19 +190,42 @@ class SAQ extends Modele {
 		 $rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
 
 		//Si le code_saq n'existe pas dans le tableau
-		if ($rangeeCodeSaq->num_rows < 1) {
-			
-			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
-			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
-
+		if ($rangeeCodeSaq->num_rows < 1) {			
+			$this->_stmt_bouteille_saq->bind_param("siissid", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
 			$retour->succes = $this->_stmt_bouteille_saq->execute();
-			echo "<br>dernier id insere apres execute ".$id_type; 
+			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
 
 		} else {
 			$retour->succes = false;
 			$retour->raison = self::DUPLICATION;
 		}
 	return $retour;
+	}
+
+	public function obtenirBouteillesSaq() {
+		$bouteillesSaq = array();
+		$resultat = $this->_bd->query("SELECT bs.id AS id,
+					bs.code_saq AS code_saq,
+					bs.prix AS prix,
+					bs.millesime AS millesime,
+					bs.pays AS pays,
+					bs.format AS format,
+					bs.libelle AS nom,
+					t.libelle AS type
+					FROM vino_bouteille_saq bs
+					INNER JOIN vino_type t
+					ON bs.id_type = t.id
+					ORDER BY id");
+		//verifie si il a recu une resultat, si oui il fait un fetch et les mets dans le tableau $resltat
+		if ($resultat->num_rows) {
+			while ($chaqueResultat = $resultat->fetch_assoc()) {
+				$bouteillesSaq[] = $chaqueResultat;
+			}
+		}
+		else {		 
+			throw new Exception("Erreur de requête sur la base de donnée", 1);
+		}
+		return $bouteillesSaq;
 	}
 }
 ?>
