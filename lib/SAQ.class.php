@@ -77,7 +77,8 @@ class SAQ extends Modele {
 		foreach ($elements as $noeud) {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
-				$retour = $this->ajouteProduit($info);				
+				var_dump($info);
+				$retour = $this->ajouteProduit($info);
 				if ($retour->succes == false) {
 					echo "erreur : " . $retour->raison . "<br>";
 					echo "<pre>";
@@ -190,7 +191,7 @@ class SAQ extends Modele {
 
 		//Si le code_saq n'existe pas dans le tableau
 		if ($rangeeCodeSaq->num_rows < 1) {			
-			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
+			$this->_stmt_bouteille_saq->bind_param("siissid", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
 			$retour->succes = $this->_stmt_bouteille_saq->execute();
 			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
 
@@ -201,7 +202,7 @@ class SAQ extends Modele {
 	return $retour;
 	}
 
-	public function getBouteillesSaqAjouter() {
+	public function obtenirBouteillesSaq() {
 		$bouteillesSaq = array();
 		$resultat = $this->_bd->query("SELECT bs.id AS id,
 					bs.code_saq AS code_saq,
