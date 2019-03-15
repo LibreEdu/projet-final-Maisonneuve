@@ -77,9 +77,7 @@ class SAQ extends Modele {
 		foreach ($elements as $noeud) {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
-				//var_dump($info);die;
-				$retour = $this->ajouteProduit($info);
-				//var_dump($retour);die;
+				$retour = $this->ajouteProduit($info);				
 				if ($retour->succes == false) {
 					echo "erreur : " . $retour->raison . "<br>";
 					echo "<pre>";
@@ -100,7 +98,6 @@ class SAQ extends Modele {
 		foreach ($children as $child) {
 			$innerHTML .= $child -> ownerDocument -> saveXML($child);
 		}
-
 		return $innerHTML;
 	}
 
@@ -154,8 +151,7 @@ class SAQ extends Modele {
 					}
 					break;
 			}
-		}
-		
+		}		
 		// Récupération du prix
 		$cellules = $noeud->getElementsByTagName("td");
 		foreach ($cellules as $cellule) {
@@ -207,8 +203,19 @@ class SAQ extends Modele {
 
 	public function getBouteillesSaqAjouter() {
 		$bouteillesSaq = array();
-		$resultat = $this->_bd->prepare("SELECT * FROM vino_bouteille_saq");
-		$resultat->execute();
+		$resultat = $this->_bd->query("SELECT bs.id AS id,
+					bs.code_saq AS code_saq,
+					bs.prix AS prix,
+					bs.millesime AS millesime,
+					bs.pays AS pays,
+					bs.format AS format,
+					bs.libelle AS nom,
+					t.libelle AS type
+					FROM vino_bouteille_saq bs
+					INNER JOIN vino_type t
+					ON bs.id_type = t.id
+					ORDER BY id");
+		//verifie si il a recu une resultat, si oui il fait un fetch et les mets dans le tableau $resltat
 		if ($resultat->num_rows) {
 			while ($chaqueResultat = $resultat->fetch_assoc()) {
 				$bouteillesSaq[] = $chaqueResultat;
@@ -217,7 +224,6 @@ class SAQ extends Modele {
 		else {		 
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
 		}
-		var_dump($bouteillesSaq);
 		return $bouteillesSaq;
 	}
 }
