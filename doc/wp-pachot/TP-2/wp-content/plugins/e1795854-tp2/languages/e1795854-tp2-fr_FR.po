@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 2.2\n"
+
+msgid "Exhibition"
+msgstr "Exposition"
+
+msgid "Exhibitions"
+msgstr "Expositions"
+
+msgid "Add New"
+msgstr "Ajouter"
+
+msgid "Add New Exhibition"
+msgstr "Ajouter une exposition"
+
+msgid "Edit Exhibition"
+msgstr "Éditer une exposition"
+
+msgid "New Exhibition"
+msgstr "Nouvelle exposition"
+
+msgid "View Exhibition"
+msgstr "Voir une exposition"
+
+msgid "View Exhibitions"
+msgstr "Voir les expositions"
+
+msgid "Search Exhibitions"
+msgstr "Rechercher des exposition"
+
+msgid "No exhibitions found."
+msgstr "Aucune exposition trouvée."
+
+msgid "No exhibitions found in Trash."
+msgstr "Aucune exposition trouvée dans la corbeille."
+
+msgid "Exhibition Book:"
+msgstr "Exposition parent:"
+
+msgid "All Exhibitions"
+msgstr "Tous les expositions"
+
+msgid "Exhibition Archives"
+msgstr "Exposition archivée"
+
+msgid "Exhibition Attributes"
+msgstr "Attributs d’une exposition"
+
+msgid "Insert into exhibition"
+msgstr "Insérer dans l’exposition"
+
+msgid "Uploaded to this exhibition"
+msgstr "Téléversé sur cette exposition"
+
+msgid "Exhibition Poster"
+msgstr "Affiche"
+
+msgid "Set poster"
+msgstr "Définir l’affiche"
+
+msgid "Remove poster"
+msgstr "Supprimer l’affiche"
+
+msgid "Use as poster"
+msgstr "Utiliser comme affiche"
+
+msgid "Filter exhibitions list"
+msgstr "Listre des filtres d’exposition"
+
+msgid "Exhibitions list navigation"
+msgstr "Navigation de la liste des expositions"
+
+msgid "Exhibitions list"
+msgstr "Liste des expositions"
+
+msgid "Themes"
+msgstr "Thèmes"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "Artists"
+msgstr "Artistes"
+
+msgid "Artist"
+msgstr "Artiste"
+
+msgid "Places"
+msgstr "Lieu"
+
+msgid "Place"
+msgstr "Lieux"
