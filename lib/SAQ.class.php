@@ -77,7 +77,7 @@ class SAQ extends Modele {
 		foreach ($elements as $noeud) {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
-				var_dump($info);
+				//var_dump($info);
 				$retour = $this->ajouteProduit($info);
 				if ($retour->succes == false) {
 					echo "erreur : " . $retour->raison . "<br>";
