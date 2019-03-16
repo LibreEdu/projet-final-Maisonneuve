@@ -8,13 +8,13 @@
 <?php
 	require("dataconf.php");
 	require("config.php");
-	$debut = 0;
-	$nombreProduit = 10;
+	//$debut = 0;
+	//$nombreProduit = 10;
 	
 	$saq = new SAQ();
 	//for($i=0; $i<6;$i++)
 	//{
-		$nombre = $saq->getProduits($debut, $nombreProduit);
+		$nombre = $saq->getProduits();
 		echo "importation : ". $nombre. "<br>";
 	//	$debut += $nombreProduit;	
 	//}

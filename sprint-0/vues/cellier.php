@@ -31,12 +31,9 @@
                 <p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille['code_SAQ'] ?>'target="_blank">Lien SAQ</a></p>
                 <p>
                   <div class='options' data-id='<?php echo $bouteille['id_cellier_bouteille'] ?>'>
-      
-                  <button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
-
-                  <button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>Ajouter</button>
-                  <button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>Boire</button>
-     
+                    <button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
+                    <button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>Ajouter</button>
+                    <button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>Boire</button>
                   </div>
                 </p>
               </div>

@@ -15,8 +15,7 @@ class Bouteille extends Modele {
 	const TABLE = 'vino_bouteille';
 	
 	public function getListeBouteille()
-	{
-		
+	{		
 		$lignes = Array();
 		$res = $this->_bd->query('Select * from '. self::TABLE);
 		if($res->num_rows)
@@ -25,8 +24,7 @@ class Bouteille extends Modele {
 			{
 				$lignes[] = $row;
 			}
-		}
-		
+		}		
 		return $lignes;
 	}
 	
@@ -47,20 +45,20 @@ class Bouteille extends Modele {
 				bouteille.format AS format,
 				bouteille.note AS note,
 				type.libelle AS type
-			FROM vino_cellier__bouteille cb
-			INNER JOIN vino_cellier cellier
-				ON cellier.id = cb.id_cellier
-			INNER JOIN vino_cellier__usager cu
-				ON cu.id_cellier = cellier.id
-			INNER JOIN vino_usager usager
-				ON usager.id = cu.id_usager
-			INNER JOIN vino_bouteille bouteille 
-				ON bouteille.id = cb.id_bouteille
-			LEFT JOIN vino_type type
-				ON type.id = bouteille.id_type
-			WHERE cu.id_role = 1
-				AND cellier.id = ' . $id_cellier . '
-			ORDER BY bouteille.libelle';
+				FROM vino_cellier__bouteille cb
+				INNER JOIN vino_cellier cellier
+					ON cellier.id = cb.id_cellier
+				INNER JOIN vino_cellier__usager cu
+					ON cu.id_cellier = cellier.id
+				INNER JOIN vino_usager usager
+					ON usager.id = cu.id_usager
+				INNER JOIN vino_bouteille bouteille 
+					ON bouteille.id = cb.id_bouteille
+				LEFT JOIN vino_type type
+					ON type.id = bouteille.id_type
+				WHERE cu.id_role = 1
+					AND cellier.id = ' . $id_cellier . '
+				ORDER BY bouteille.libelle';
 	
 		if(($resultat = $this->_bd->query($requete)) ==	 true)
 		{
