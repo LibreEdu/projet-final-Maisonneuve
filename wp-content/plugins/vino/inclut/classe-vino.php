@@ -1,36 +1,35 @@
 <?php
 /**
- * WooCommerce setup
+ * Réglage de Vino
  *
- * @package WooCommerce
- * @since   3.2.0
+ * @package Vino\Classes
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Main WooCommerce Class.
+ * Classe principale de Vino.
  *
- * @class WooCommerce
+ * @class Vino
  */
 final class Vino {
 
 	/**
-	 * The single instance of the class.
+	 * La seule instance de la classe.
 	 *
-	 * @var WooCommerce
-	 * @since 2.1
+	 * @var Vino
 	 */
 	protected static $_instance = null;
 
 	/**
-	 * Main WooCommerce Instance.
+	 * L’instance principale de Vino.
 	 *
-	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
+	 * S’assurer qu’une seule instance de Vino est chargée ou peut être chargée.
 	 *
 	 * @return Vino - Instance principale.
 	 */
 	public static function instance() {
+		// Méthode pour avoir un singleton.
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 		}
@@ -38,25 +37,27 @@ final class Vino {
 	}
 
 	/**
-	 * Cloning is forbidden.
+	 * Le clonage est interdit.
 	 *
-	 * @since 2.1
+	 * @return void
 	 */
 	public function __clone() {
-		trigger_error('Clonage interdit.', E_USER_ERROR);
+		trigger_error('Le clonage est interdit.', E_USER_ERROR);
 	}
 
 	/**
-	 * Unserializing instances of this class is forbidden.
+	 * La désérialisation de l’instances de cette classe est interdite.
 	 *
-	 * @since 2.1
+	 * @return void
 	 */
 	public function __wakeup() {
 		trigger_error('La désérialisation de l’instances de cette classe est interdite.', E_USER_ERROR);
 	}
 
 	/**
-	 * WooCommerce Constructor.
+	 * Le constructeur de Vino.
+	 *
+	 * @return void
 	 */
 	public function __construct() {
 		$this->definir_constante();
@@ -65,38 +66,41 @@ final class Vino {
 	}
 
 	/**
-	 * Define WC Constants.
+	 * Définit la constante de Vino.
+	 *
+	 * @return void
 	 */
 	private function definir_constante() {
 		$this->define( 'VINO_REPERTOIRE', dirname( VINO_FICHIER ) . '/' );
 	}
 
 	/**
-	 * Define constant if not already set.
+	 * Définit une constante si elle n’est pas déjà définie.
 	 *
-	 * @param string      $name  Constant name.
-	 * @param string|bool $value Constant value.
+	 * @param string      $nom    Nom de la constante.
+	 * @param string|bool $valeur Valeur de la constante.
 	 */
-	private function define( $name, $value ) {
-		if ( ! defined( $name ) ) {
-			define( $name, $value );
+	private function define( $nom, $valeur ) {
+		if ( ! defined( $nom ) ) {
+			define( $nom, $valeur );
 		}
 	}
-	
+
 	/**
-	 * Include required core files used in admin and on the frontend.
+	 * Inclusion des fichiers de base requis utilisés pour l’interface d’administration et l’application frontale.
+	 *
+	 * @return void
 	 */
 	public function inclut() {
-		/**
-		 * Classe de base
-		 */
 		include_once VINO_REPERTOIRE . 'inclut/classe-vino-installer.php';
 	}
 
 	/**
-	 * Hook into actions and filters.
+	 * Initialisation du crochet
+	 *
+	 * @return void
 	 */
 	private function initialisation_crochet() {
-		register_activation_hook( VINO_FICHIER, array( 'Vino_Installer', 'installer' ));
+		register_activation_hook( VINO_FICHIER, array( 'Vino_Installer', 'verifie_version' ));
 	}
 }

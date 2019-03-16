@@ -1,85 +1,60 @@
 <?php
 /**
- * Installation related functions and actions.
+ * Fonctions liées à l'installation.
  *
- * @package WooCommerce/Classes
- * @version 3.0.0
+ * @package Vino\Classes
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * WC_Install Class.
+ * Vino_Installer Class.
  */
 class Vino_Installer {
 
 	/**
-	 * Hook in tabs.
-	 */
-	public static function init() {
-		add_action( 'init', array( __CLASS__, 'verifie_version' ));
-	}
-
-	/**
-	 * Check WooCommerce version and run the updater is required.
-	 *
-	 * This check is done on all requests and runs if the versions do not match.
+	 * Vérifie la version de WordPress et lance l’installation.
 	 */
 	public static function verifie_version() {
 		global $wp_version;
-		if(version_compare($wp_version, '5', '>=')) { // Fonction PHP
-			self::installer();
+
+		// On vérifie que WordPress est installé ainsi que sa version
+		if( is_blog_installed() && version_compare($wp_version, '5', '>=') ) {
+			self::creer_tables();
 		}
 	}
 
 	/**
-	 * Install WC.
-	 */
-	public static function installer() {
-		if ( ! is_blog_installed() ) {
-			return;
-		}
-
-		self::create_tables();
-	}
-
-	/**
-	 * Set up the database tables which the plugin needs to function.
+	 * Crée les tables nécessaires au plug-in.
 	 *
-	 * Tables:
-	 *      woocommerce_attribute_taxonomies - Table for storing attribute taxonomies - these are user defined
-	 *      woocommerce_termmeta - Term meta table - sadly WordPress does not have termmeta so we need our own
-	 *      woocommerce_downloadable_product_permissions - Table for storing user and guest download permissions.
-	 *          KEY(order_id, product_id, download_id) used for organizing downloads on the My Account page
-	 *      woocommerce_order_items - Order line items are stored in a table to make them easily queryable for reports
-	 *      woocommerce_order_itemmeta - Order line item meta is stored in a table for storing extra data.
-	 *      woocommerce_tax_rates - Tax Rates are stored inside 2 tables making tax queries simple and efficient.
-	 *      woocommerce_tax_rate_locations - Each rate can be applied to more than one postcode/city hence the second table.
+	 * @return void
 	 */
-	private static function create_tables() {
+	private static function creer_tables() {
 		global $wpdb;
 
 		$wpdb->hide_errors();
 
+		// Pour pouvoir appeler dbDelta.
 		require_once(ABSPATH . "wp-admin/includes/upgrade.php"); // Pour l’appel de la fonction dbDelta.
 
-		dbDelta( self::get_schema() );
-
+		// Création de nouvelles tables ou modification de la structure.
+		dbDelta( self::obtenir_schema() );
 	}
 
 	/**
-	 * Get Table schema.
+	 * Obtenir le schéma des tables.
 	 *
+	 * Tables:
+	 *   vino_type - Table contenant les types de vin (Vin rouge, vin blanc…)
+	 *   vino_bouteille_saq - Table destinée à stocker la liste des bouteilles de la SAQ.
+	 *   vino_cellier - Table contenant les données relatives au cellier.
+	 *   vino_bouteille - Table contenant les bouteilles contenues dans les celliers.
 	 * @return string
 	 */
-	private static function get_schema() {
+	private static function obtenir_schema() {
 		global $wpdb;
 
-		$charset_collate = '';
-
-		if ( $wpdb->has_cap( 'collation' ) ) {
-			$charset_collate = $wpdb->get_charset_collate();
-		}
+		$charset_collate = $wpdb->has_cap( 'collation' ) ? $charset_collate = $wpdb->get_charset_collate() : '';
 
 		$tables = "
 CREATE TABLE {$wpdb->prefix}vino_type (
@@ -129,12 +104,11 @@ CREATE TABLE {$wpdb->prefix}vino_bouteille (
 	}
 
 	/**
-	 * Return a list of WooCommerce tables. Used to make sure all WC tables are dropped when uninstalling the plugin
-	 * in a single site or multi site environment.
+	 * Renvoie une liste de tables afin de pouvoir les supprimer lors de la désinstallation de l’extension.
 	 *
-	 * @return array WC tables.
+	 * @return array Liste des tables Vino
 	 */
-	public static function get_tables() {
+	public static function obtenir_tables() {
 		global $wpdb;
 
 		$tables = array(
@@ -148,19 +122,17 @@ CREATE TABLE {$wpdb->prefix}vino_bouteille (
 	}
 
 	/**
-	 * Drop WooCommerce tables.
+	 * Supprime les tables Vino
 	 *
 	 * @return void
 	 */
-	public static function drop_tables() {
+	public static function supprimer_tables() {
 		global $wpdb;
 
-		$tables = self::get_tables();
+		$tables = self::obtenir_tables();
 
 		foreach ( $tables as $table ) {
-			$wpdb->query( "DROP TABLE IF EXISTS {$table}" ); // phpcs:ignore WordPress.WP.PreparedSQL.NotPrepared
+			$wpdb->query( "DROP TABLE IF EXISTS {$table}" );
 		}
 	}
 }
-
-Vino_Installer::init();
