@@ -14,14 +14,14 @@ defined( 'ABSPATH' ) || exit;
 class Vino_Admin {
 
 	/**
-	 * Constructor.
+	 * Constructeur
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'inclut' ) );
 	}
 
 	/**
-	 * Include any classes we need within admin.
+	 * Inclut toutes les classes nécessaires à l'administration.
 	 */
 	public function inclut() {
 		include_once VINO_REPERTOIRE . 'inclut/admin/classe-vino-admin-menu.php';
