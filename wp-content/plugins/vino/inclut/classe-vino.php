@@ -37,24 +37,6 @@ final class Vino {
 	}
 
 	/**
-	 * Le clonage est interdit.
-	 *
-	 * @return void
-	 */
-	public function __clone() {
-		trigger_error('Le clonage est interdit.', E_USER_ERROR);
-	}
-
-	/**
-	 * La désérialisation de l’instances de cette classe est interdite.
-	 *
-	 * @return void
-	 */
-	public function __wakeup() {
-		trigger_error('La désérialisation de l’instances de cette classe est interdite.', E_USER_ERROR);
-	}
-
-	/**
 	 * Le constructeur de Vino.
 	 *
 	 * @return void
@@ -93,6 +75,7 @@ final class Vino {
 	 */
 	public function inclut() {
 		include_once VINO_REPERTOIRE . 'inclut/classe-vino-installer.php';
+		include_once VINO_REPERTOIRE . 'inclut/admin/classe-vino-admin.php';
 	}
 
 	/**
