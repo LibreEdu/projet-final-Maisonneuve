@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Vino
+ * Plugin URI:  https://github.com/projetwebmaisonneuve/vino
  * Description: Gestion de celliers pouvant contenir des bouteilles de la Société des alcools du Québec (SAQ).
  * Version:     1.0
  * Author:      José Ignacio Delgado, Fatemeh Homatash, Alexandre Pachot et Charef Eddine Yagoubi
@@ -18,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
 // __FILE__ est une constante magique qui contient le chemin complet et le nom du fichier courant.
 // Le premier paramètre de la fonction d’enregistrement des crochets d’activation (register_activation_hook)
 // doit être le chemin du fichier principal de l’extension.
+// C’est pour cela qu’on a besoin de cette constante.
 // Si cette constante n’est pas définie alors on la définit.
 defined( 'VINO_FICHIER' ) || define( 'VINO_FICHIER', __FILE__ );
 

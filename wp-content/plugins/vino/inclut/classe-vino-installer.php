@@ -35,7 +35,7 @@ class Vino_Installer {
 		$wpdb->hide_errors();
 
 		// Pour pouvoir appeler dbDelta.
-		require_once(ABSPATH . "wp-admin/includes/upgrade.php"); // Pour l’appel de la fonction dbDelta.
+		require_once(ABSPATH . "wp-admin/includes/upgrade.php");
 
 		// Création de nouvelles tables ou modification de la structure.
 		dbDelta( self::obtenir_schema() );
