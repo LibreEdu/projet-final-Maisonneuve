@@ -14,7 +14,7 @@ Un [embryon de MVC maison](https://github.com/projetwebmaisonneuve/vino/tree/21a
 
 Le sprint 0 a permis de corriger les bogues, modifier le modèle conceptuel des données et créer une première maquette avec Material Design Lite.
 
-Par la suite, l’option CodeIgniter a été écartée par le groupe qui a préféré un développement WordPress.
+Par la suite, l’option CodeIgniter a été écartée par le groupe qui a préféré un développement sous WordPress.
 
 ## Équipe
 - [José Ignacio Delgado](https://github.com/jidelgado77)
