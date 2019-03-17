@@ -37,12 +37,7 @@ class Vino_Admin_Menu {
 	 * Ajout du menu d’administration.
 	 */
 	public function admin_page() {
-		?>
-		<div class="wrap">
-			<h2>Coucou</h2>
-		</div>
-		<?php
-		
+		include_once __DIR__ . '/vues/html-admin-page.php';
 	}
 }
 
