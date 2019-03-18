@@ -16,7 +16,7 @@
                     <h5><?php echo $bouteille['type']; ?></h5>
                     <h5><?php echo $bouteille['pays']; ?></h5>
                     <h5><?php echo $bouteille['format']; ?></h5>
-                    <h5><?php echo $bouteille['prix']." $"; ?></h5>
+                    <h5><?php echo number_format($bouteille['prix'], 2, ',', ' ')." $"; ?></h5>
                   </div>
                 </div>
                 <div class="mdl-card__actions">

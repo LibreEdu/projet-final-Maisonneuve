@@ -37,6 +37,9 @@ class Controler
 			case 'ajouterBouteilleCellier':
 				$this->ajouterBouteilleCellier();
 				break;
+			case 'listesCelliers':
+				$this->listesCelliers();
+				break;
 			case 'boireBouteilleCellier':
 				$this->boireBouteilleCellier();
 				break;
@@ -153,6 +156,16 @@ class Controler
 		$data = $bte->obtenirBouteillesSaq();
 		include("vues/entete.php");
 		include("vues/bouteilleSaq.php");
+		include("vues/pied.php");
+	}
+
+	private function listesCelliers()
+	{
+		$celliers = new Celliers();
+		//faire appelle a get produit pour les inserer dans la base de donnees 
+		$data = $celliers->recupereToutCellier();
+		include("vues/entete.php");
+		include("vues/listesCelliers.php");
 		include("vues/pied.php");
 	}
 }
