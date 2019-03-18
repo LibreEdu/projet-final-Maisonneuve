@@ -1,17 +1,30 @@
 <?php
-/**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
- *
- * @package WordPress
- */
 
 /**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
+ * Fichier de lancement du MVC, Il appel le var.init et le gabarit HTML 
+ * @author Jonathan Martel
+ * @version 1.0
+ * @update 2019-01-21
+ * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
+ * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
+ * 
  */
-define( 'WP_USE_THEMES', true );
 
-/** Loads the WordPress Environment and Template */
-require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+
+ 
+	 /***************************************************/
+    /** Fichier de configuration, contient les define et l'autoloader **/
+    /***************************************************/
+    require_once('./dataconf.php');
+	require_once("./config.php");
+	
+   /***************************************************/
+    /** Initialisation des variables **/
+    /***************************************************/
+	require_once("./var.init.php");
+   
+   /***************************************************/
+    /** Démarrage du controleur **/
+    /***************************************************/
+	$oCtl = new Controler();
+	$oCtl->gerer();
