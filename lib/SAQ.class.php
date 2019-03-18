@@ -80,11 +80,7 @@ class SAQ extends Modele {
 				//var_dump($info);
 				$retour = $this->ajouteProduit($info);
 				if ($retour->succes == false) {
-					echo "erreur : " . $retour->raison . "<br>";
-					echo "<pre>";
-					//var_dump($info);
-					echo "</pre>";
-					echo "<br>";
+					$retour->raison;
 				} else {
 					$nombreDeProduits++;
 				}
@@ -193,8 +189,6 @@ class SAQ extends Modele {
 		if ($rangeeCodeSaq->num_rows < 1) {			
 			$this->_stmt_bouteille_saq->bind_param("siissid", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
 			$retour->succes = $this->_stmt_bouteille_saq->execute();
-			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
-
 		} else {
 			$retour->succes = false;
 			$retour->raison = self::DUPLICATION;
