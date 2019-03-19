@@ -15,12 +15,12 @@
 						<p class='type'><?php echo $bouteille->id_type; ?></p>
 						<p class='pays'><?php echo $bouteille->pays; ?>, <?php echo $bouteille->format; ?></p>
 						<p class='boireAvant'>Boire avant : <?php echo $bouteille->boire_avant ?></p>
-						<p class='quantite' id='<?php echo $bouteille->id_bouteille ?>'>Quantité : <?php echo $bouteille->quantite ?></p>
+						<p class='quantite' id='<?php echo $bouteille->id_bouteille; ?>'>Quantité : <?php echo $bouteille->quantite ?></p>
 						<p class='dateAchat'>Date d’achat : <?php echo $bouteille->date_achat ?></p>
 						<p class='prix'>Prix : <?php echo number_format($bouteille->prix, 2, ',', ' ') ?> $</p>
 					</div>
 					<div class="mdl-card__actions">
-						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_SAQ ?>'target="_blank">Lien SAQ</a></p>
+						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
 						<p>
 						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
