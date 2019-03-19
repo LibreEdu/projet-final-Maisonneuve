@@ -1,5 +1,14 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
+			<div>
+				<?php // On affiche le message
+		if(isset($_SESSION["UserID"]))
+			{
+				echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p>";
+				echo "<a href='?usager&action=Logout'>Se déconnecter</a>";
+			}
+		?>
+			</div>
 			<?php foreach ($data['bouteilles'] as $bouteille): ?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">

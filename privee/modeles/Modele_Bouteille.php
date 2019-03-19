@@ -51,7 +51,7 @@
          * 
          * @param int $id id  cellier_bouteille 
          * 
-         * @return $ligne la ligne de la quantité de la bouteille en question.
+         * @return $laBouteille la ligne de la quantité de la bouteille en question.
          */
         public function recupererQuantiteBouteilleCellier($id)
         {
