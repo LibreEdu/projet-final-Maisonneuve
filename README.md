@@ -24,4 +24,3 @@ Structure utilisée :
 - [Fatemeh <span style="font-variant:small-caps;">Homatash</span>](https://github.com/FatemehHo)
 - [Alexandre <span style="font-variant:small-caps;">Pachot</span>](https://github.com/LibreEdu)
 - [Charef Eddine <span style="font-variant:small-caps;">Yagoubi</span>](https://github.com/charefeddine)
-****small cap****
