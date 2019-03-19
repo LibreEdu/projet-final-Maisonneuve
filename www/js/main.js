@@ -74,7 +74,6 @@ window.addEventListener('load', function() {
 		//console.log(element);
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			console.log("l'id est "+id);
 			 window.location = "index.php?bouteille&action=modifierBouteille&id="+id;
 	})
 
@@ -88,9 +87,10 @@ window.addEventListener('load', function() {
 	  inputNomBouteille.addEventListener("keyup", function(evt){
 		console.log(evt);
 		let nom = inputNomBouteille.value;
+		console.log("le nom est "+nom);
 		liste.innerHTML = "";
 		if(nom){
-			let requete = new Request(BaseURL+"index.php?requete=autocompleteBouteille", {method: 'POST', body: '{"nom": "'+nom+'"}'});
+			let requete = new Request(BaseURL+"index.php?bouteille&action=autocompleteBouteille", {method: 'POST', body: '{"nom": "'+nom+'"}'});
 			fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
@@ -104,7 +104,7 @@ window.addEventListener('load', function() {
 				
 				
 					response.forEach(function(element){
-						liste.innerHTML += "<li data-id='"+element.id +"'>"+element.nom+"</li>";
+						liste.innerHTML += "<li data-id='"+element.id_bouteille_saq +"'>"+element.nom+"</li>";
 					})
 				}).catch(error => {
 					console.error(error);
