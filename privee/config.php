@@ -1,6 +1,6 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoPerso/privee/');
-	define("BASEURL", 'http://localhost:8888/vinoPerso/www/');
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinocharef/privee/');
+	define("BASEURL", 'http://localhost/vinocharef/www/');
 	define("DBTYPE", 'mysql');
 	define("DBNAME", 'vino');
 	define("HOST", 'localhost');
