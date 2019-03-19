@@ -3,12 +3,9 @@
  * Class MonSQL
  * Classe qui génère ma connection à MySQL à travers un singleton
  *
- *
- * @author Alexandre Pachot et Fatemeh Homatash 
+ * @author Alexandre Pachot
+ * @author Fatemeh Homatash
  * @version 1.0
- *
- *
- *
  */
 class SAQ extends Modele {
 	const DUPLICATION = 'duplication';
@@ -22,9 +19,9 @@ class SAQ extends Modele {
 	 public function __construct() {
 		parent::__construct();
 		try {
-			$this->_stmt_bouteille_saq = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (libelle, millesime, id_type, pays, format, code_saq, prix) 
+			$this->_stmt_bouteille_saq = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (nom, millesime, id_type, pays, format, code_saq, prix) 
 			VALUES (?, ?, ?, ?, ?, ?, ?)');
-			$this->_stmt_type = $this->_bd->prepare('INSERT INTO vino_type (libelle) VALUES (?)');
+			$this->_stmt_type = $this->_bd->prepare('INSERT INTO vino_type (type) VALUES (?)');
 		} catch (Exception $e) {
 			echo "Echec de la préparation : (" . $mysqli->errno . ") " . $mysqli->error;
 		}	
@@ -78,7 +75,7 @@ class SAQ extends Modele {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
 				//var_dump($info);
-				$retour = $this->ajouteProduit($info);
+				$retour = $this->ajoutProduit($info);
 				if ($retour->succes == false) {
 					$retour->raison;
 				} else {
@@ -160,30 +157,30 @@ class SAQ extends Modele {
 		return $info;
 	}
 
-	private function ajouteProduit($bte) {
+	private function ajoutProduit($bte) {
 		$retour = new stdClass();
-		$retour -> succes = false;
-		$retour -> raison = '';
+		$retour->succes = false;
+		$retour->raison = "";
 		$dernierId = "";
 
 		// Récupère le type reçu en paramètre 
-		$rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
+		$rangeeType = $this->_bd->query("SELECT id_type FROM vino_type WHERE type = '" . $bte->type . "'");
 		
-		// Vérifier si les rangées ne sont pas vides		
-		if ($rangeeType->num_rows == 1 ) {	
+		// Vérifier si les rangées ne sont pas vides
+		if ($rangeeType->num_rows == 1 ) {
 			// Récupère le id de type de vin
 			$id_type = $rangeeType->fetch_assoc();
-			$id_type = $id_type['id'];
+			$id_type = $id_type['id_type'];
 
 		} else {
 			// Ajouter le type dans la table de type
-			$this->_stmt_type->bind_param("s", $bte->type);		
-			$this->_stmt_type->execute();			
+			$this->_stmt_type->bind_param("s", $bte->type);
+			$this->_stmt_type->execute();
 			$id_type = $this->_stmt_type->insert_id;
 		}
 		
 		// Récupère le code_saq pour vérifier après si il existe dans la table ou non
-		 $rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
+		 $rangeeCodeSaq = $this->_bd->query("SELECT id_bouteille_saq FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
 
 		//Si le code_saq n'existe pas dans le tableau
 		if ($rangeeCodeSaq->num_rows < 1) {			
@@ -198,25 +195,25 @@ class SAQ extends Modele {
 
 	public function obtenirBouteillesSaq() {
 		$bouteillesSaq = array();
-		$resultat = $this->_bd->query("SELECT bs.id AS id,
+		$resultat = $this->_bd->query("SELECT bs.id_bouteille_saq AS id,
 					bs.code_saq AS code_saq,
 					bs.prix AS prix,
 					bs.millesime AS millesime,
 					bs.pays AS pays,
 					bs.format AS format,
-					bs.libelle AS nom,
-					t.libelle AS type
+					bs.nom AS nom,
+					t.type AS type
 					FROM vino_bouteille_saq bs
 					INNER JOIN vino_type t
-					ON bs.id_type = t.id
+					ON bs.id_type = t.id_type
 					ORDER BY id");
-		//verifie si il a recu une resultat, si oui il fait un fetch et les mets dans le tableau $resltat
+		//Verifie si il a recu une resultat, si oui il fait un fetch et les mets dans le tableau $resltat
 		if ($resultat->num_rows) {
 			while ($chaqueResultat = $resultat->fetch_assoc()) {
 				$bouteillesSaq[] = $chaqueResultat;
 			}
 		}
-		else {		 
+		else {
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
 		}
 		return $bouteillesSaq;

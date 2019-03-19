@@ -13,13 +13,13 @@
  */
 
 class Controler 
-{	
+{
 	/**
 	 * Traite la requête
 	 * @return void
 	*/
 	public function gerer()
-	{			
+	{
 		switch ($_REQUEST['requete'])
 		{
 			case 'listeBouteille':
@@ -37,11 +37,11 @@ class Controler
 			case 'ajouterBouteilleCellier':
 				$this->ajouterBouteilleCellier();
 				break;
+			case 'listesCelliers':
+				$this->listesCelliers();
+				break;
 			case 'boireBouteilleCellier':
 				$this->boireBouteilleCellier();
-				break;
-			case 'alex':
-				$this->alex();
 				break;
 			case 'modifierBouteille':
 				$this->modifierBouteille();
@@ -59,47 +59,31 @@ class Controler
 	{
 		$bouteille_cellier = new Bouteille();
 		$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
-		// var_dump($donnees);die;
 		include("vues/entete.php");
 		include("vues/cellier.php");
 		include("vues/pied.php");
-	}
-	
-	private function alex()
-	{
-		$bouteille_cellier = new Bouteille();
-		$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
-		include("vues/entete2.php");
-		include("vues/cellier2.php");
-		include("vues/pied2.php");
 	}
 
 	private function listeBouteille()
 	{
 		$bte = new Bouteille();
 		$cellier = $bte->getListeBouteilleCellier();
-		echo json_encode($cellier);				  
+		echo json_encode($cellier);
 	}
 	
 	private function autocompleteBouteille()
 	{
 		$bte = new Bouteille();
-		//var_dump(file_get_contents('php://input'));
 		$body = json_decode(file_get_contents('php://input'));
-		//var_dump($body);
 		$listeBouteille = $bte->autocomplete($body->nom);
-		echo json_encode($listeBouteille);				  
+		echo json_encode($listeBouteille);
 	}
 
 	private function ajouterNouvelleBouteilleCellier()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		//var_dump($body);
 		if(!empty($body)){
 			$bte = new Bouteille();
-			//var_dump($_POST['data']);
-			
-			//var_dump($data);
 			$resultat = $bte->ajouterBouteilleCellier($body);
 			echo json_encode($resultat);
 		}
@@ -140,7 +124,7 @@ class Controler
 
 	private function modifierUneBouteille()
 	{
-		$bte = new Bouteille();		
+		$bte = new Bouteille();
 		$data = $bte->modifierBouteille();
 		$this->accueil();
 	}
@@ -148,11 +132,21 @@ class Controler
 	private function ajouterBouteilleSaq()
 	{
 		$bte = new SAQ();
-		//faire appelle a get produit pour les inserer dans la base de donnees 
+		// Faire appelle à get produit pour les insérer dans la base de données
 		$bte->getProduits();
 		$data = $bte->obtenirBouteillesSaq();
 		include("vues/entete.php");
 		include("vues/bouteilleSaq.php");
+		include("vues/pied.php");
+	}
+
+	private function listesCelliers()
+	{
+		$celliers = new Celliers();
+		// Faire appelle à recupereToutCellier pour récupérer tous les celliers existants par l’usager qui est connecte 
+		$data = $celliers->recupereTousCelliersUsager(1);
+		include("vues/entete.php");
+		include("vues/listesCelliers.php");
 		include("vues/pied.php");
 	}
 }
