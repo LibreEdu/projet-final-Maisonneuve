@@ -13,13 +13,13 @@
  */
 
 class Controler 
-{	
+{
 	/**
 	 * Traite la requête
 	 * @return void
 	*/
 	public function gerer()
-	{			
+	{
 		switch ($_REQUEST['requete'])
 		{
 			case 'listeBouteille':
@@ -81,7 +81,7 @@ class Controler
 	{
 		$bte = new Bouteille();
 		$cellier = $bte->getListeBouteilleCellier();
-		echo json_encode($cellier);				  
+		echo json_encode($cellier);
 	}
 	
 	private function autocompleteBouteille()
@@ -91,7 +91,7 @@ class Controler
 		$body = json_decode(file_get_contents('php://input'));
 		//var_dump($body);
 		$listeBouteille = $bte->autocomplete($body->nom);
-		echo json_encode($listeBouteille);				  
+		echo json_encode($listeBouteille);
 	}
 
 	private function ajouterNouvelleBouteilleCellier()
@@ -151,7 +151,7 @@ class Controler
 	private function ajouterBouteilleSaq()
 	{
 		$bte = new SAQ();
-		//Faire appelle a get produit pour les inserer dans la base de donnees 
+		// Faire appelle à get produit pour les insérer dans la base de données
 		$bte->getProduits();
 		$data = $bte->obtenirBouteillesSaq();
 		include("vues/entete.php");
@@ -162,7 +162,7 @@ class Controler
 	private function listesCelliers()
 	{
 		$celliers = new Celliers();
-		//Faire appelle a recupereToutCellier pour recuperer tous les cellier existant par l'usager qui est connecte 
+		// Faire appelle à recupereToutCellier pour récupérer tous les celliers existants par l’usager qui est connecte 
 		$data = $celliers->recupereTousCelliersUsager(1);
 		include("vues/entete.php");
 		include("vues/listesCelliers.php");
