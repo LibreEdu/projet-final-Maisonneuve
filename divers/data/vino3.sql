@@ -61,6 +61,7 @@ CREATE TABLE vino_bouteille (
 	note TEXT DEFAULT NULL,
 	quantite SMALLINT NOT NULL,
 	date_achat DATE DEFAULT NULL,
+	boire_avant DATE DEFAULT NULL,
 	PRIMARY KEY (id_bouteille),
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id_cellier),
 	FOREIGN KEY (id_type) REFERENCES vino_type(id_type)
@@ -92,8 +93,8 @@ INSERT INTO vino_cellier VALUES(3, 3, 'Domicile');
 INSERT INTO vino_cellier VALUES(4, 4, 'Domicile');
 INSERT INTO vino_cellier VALUES(5, 1, 'Home');
 
-INSERT INTO vino_bouteille VALUES(1, 1, '13637422', 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01');
-INSERT INTO vino_bouteille VALUES(2, 2, '12375942', 17.10, NULL, 3, 'Italie', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22');
-INSERT INTO vino_bouteille VALUES(3, 3, '11676671', 12.50, '2015', 3, 'Italie', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01');
-INSERT INTO vino_bouteille VALUES(4, 4, '12216562', 21.95, '2015', 3, 'Italie', '750 ml', 'Tessellae Old Vines Côtes du Roussillon', 'Une bonne bouteille', 5, '2016-04-11');
-INSERT INTO vino_bouteille VALUES(5, 1, '13802571', 18.25, '2015', 3, 'Espagne', '750 ml', 'Dominio de Tares Estay Castilla y Léon', 'Une bonne bouteille', 25, '2018-10-01');
+INSERT INTO vino_bouteille VALUES(1, 1, '13637422', 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01', NULL);
+INSERT INTO vino_bouteille VALUES(2, 2, '12375942', 17.10, NULL, 3, 'Italie', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
+INSERT INTO vino_bouteille VALUES(3, 3, '11676671', 12.50, '2015', 3, 'Italie', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01', NULL);
+INSERT INTO vino_bouteille VALUES(4, 4, '12216562', 21.95, '2015', 3, 'Italie', '750 ml', 'Tessellae Old Vines Côtes du Roussillon', 'Une bonne bouteille', 5, '2016-04-11', NULL);
+INSERT INTO vino_bouteille VALUES(5, 1, '13802571', 18.25, '2015', 3, 'Espagne', '750 ml', 'Dominio de Tares Estay Castilla y Léon', 'Une bonne bouteille', 25, '2018-10-01', NULL);
