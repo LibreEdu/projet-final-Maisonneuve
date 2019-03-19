@@ -85,24 +85,63 @@
         {
             
             $lignes = Array();
-            $nom = mysqli_real_escape_string($nom);
+            $nom = $this->_bd->real_escape_string($nom);
             $nom = preg_replace("/\*/","%" , $nom);
             
             //echo $nom;
             $requete ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
-            if($res->num_rows)
+           
+            if(($res = $this->requete($requete)) ==	 true)
             {
-                while($row = $res->fetch_assoc())
+                if($res->num_rows)
                 {
-                    $row['nom'] = trim(utf8_encode($row['nom']));
-                    $lignes[] = $row;
-          
+                    while($row = $res->fetch_assoc())
+                    {
+                        $row['nom'] = trim(utf8_encode($row['nom']));
+                        $lignes[] = $row;
+                        
+                    }
                 }
+            }
+            else 
+            {
+                throw new Exception("Erreur de requête sur la base de données", 1);
+                
             }
             
             
             //var_dump($lignes);
             return $lignes;
+        }
+
+        public function modifierBouteille()
+        {
+            $sql = "UPDATE vino_bouteille 
+                SET date_achat=?,
+                    quantite=?,
+                    prix=?,
+                    millesime=?,
+                    boire_avant=?,
+                    nom=?,
+                    pays=?,
+                    format=?,
+                    note=?,
+                    id_type=?,
+                    id_cellier=?
+                WHERE id_bouteille=?";
+
+            $donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['id_bouteille']);
+
+            $resultat = $this->requete($sql, $donnees);
+        }
+
+        public function ajouterUneBouteille()
+        {
+            $sql = "INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+            $donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier']);
+
+            $resultat = $this->requete($sql, $donnees);
         }
     }
 
