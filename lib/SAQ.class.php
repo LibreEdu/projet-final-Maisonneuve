@@ -3,12 +3,9 @@
  * Class MonSQL
  * Classe qui génère ma connection à MySQL à travers un singleton
  *
- *
- * @author Alexandre Pachot et Fatemeh Homatash 
+ * @author Alexandre Pachot
+ * @author Fatemeh Homatash
  * @version 1.0
- *
- *
- *
  */
 class SAQ extends Modele {
 	const DUPLICATION = 'duplication';
@@ -169,16 +166,16 @@ class SAQ extends Modele {
 		// Récupère le type reçu en paramètre 
 		$rangeeType = $this->_bd->query("SELECT id_type FROM vino_type WHERE type = '" . $bte->type . "'");
 		
-		// Vérifier si les rangées ne sont pas vides		
-		if ($rangeeType->num_rows == 1 ) {	
+		// Vérifier si les rangées ne sont pas vides
+		if ($rangeeType->num_rows == 1 ) {
 			// Récupère le id de type de vin
 			$id_type = $rangeeType->fetch_assoc();
 			$id_type = $id_type['id_type'];
 
 		} else {
 			// Ajouter le type dans la table de type
-			$this->_stmt_type->bind_param("s", $bte->type);		
-			$this->_stmt_type->execute();			
+			$this->_stmt_type->bind_param("s", $bte->type);
+			$this->_stmt_type->execute();
 			$id_type = $this->_stmt_type->insert_id;
 		}
 		
@@ -216,7 +213,7 @@ class SAQ extends Modele {
 				$bouteillesSaq[] = $chaqueResultat;
 			}
 		}
-		else {		 
+		else {
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
 		}
 		return $bouteillesSaq;
