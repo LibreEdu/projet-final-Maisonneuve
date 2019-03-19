@@ -2,8 +2,9 @@
 	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoPerso/privee/');
 	define("BASEURL", 'http://localhost:8888/vinoPerso/www/');
 	define("DBTYPE", 'mysql');
-	define("DBNAME", 'vino');
 	define("HOST", 'localhost');
+	define("DBNAME", 'vino');
+	define("CHARSET", 'utf8mb4');
 	define("USER", 'root');
 	define("PWD", 'root');
 	
