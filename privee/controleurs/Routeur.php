@@ -1,4 +1,7 @@
 <?php
+ // Ouverture de la session
+    session_start();
+
     class Routeur
     {
         public static function route()

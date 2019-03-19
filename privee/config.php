@@ -34,7 +34,4 @@
 	{
 		$_REQUEST['action'] = 'index';
 	}
-
-
-
 ?>
