@@ -78,7 +78,7 @@ class SAQ extends Modele {
 			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
 				$info = self::recupereInfo($noeud);
 				//var_dump($info);
-				$retour = $this->ajouteProduit($info);
+				$retour = $this->ajoutProduit($info);
 				if ($retour->succes == false) {
 					$retour->raison;
 				} else {
@@ -160,10 +160,10 @@ class SAQ extends Modele {
 		return $info;
 	}
 
-	private function ajouteProduit($bte) {
+	private function ajoutProduit($bte) {
 		$retour = new stdClass();
-		$retour -> succes = false;
-		$retour -> raison = '';
+		$retour->succes = false;
+		$retour->raison = "";
 		$dernierId = "";
 
 		// Récupère le type reçu en paramètre 
