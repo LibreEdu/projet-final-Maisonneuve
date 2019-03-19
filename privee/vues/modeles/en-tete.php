@@ -71,15 +71,15 @@
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
 			<?php
-			if(isset($_SESSION["UserID"]))
-			{
+			// if(isset($_SESSION["UserID"]))
+			// {
 			?>
 			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
 			<a href="index.php?bouteille&action=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
 			<a href="index.php?bouteille&action=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
 			<a href="index.php?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<?php
-			}
+			// }
 			?>
 		</div>
 	</header>

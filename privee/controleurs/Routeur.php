@@ -17,7 +17,7 @@
             
             //si aucun contrôleur n'a été spécifié, mettre un contrôleur par défaut
             if($controleur == "")
-                $controleur = "usager";
+                $controleur = "Bouteille";
             
             //on a déterminé le controleur
             //on en crée une instance si la classe existe
