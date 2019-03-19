@@ -151,7 +151,7 @@ class Controler
 	private function ajouterBouteilleSaq()
 	{
 		$bte = new SAQ();
-		//faire appelle a get produit pour les inserer dans la base de donnees 
+		//Faire appelle a get produit pour les inserer dans la base de donnees 
 		$bte->getProduits();
 		$data = $bte->obtenirBouteillesSaq();
 		include("vues/entete.php");
@@ -162,7 +162,7 @@ class Controler
 	private function listesCelliers()
 	{
 		$celliers = new Celliers();
-		//faire appelle a get produit pour les inserer dans la base de donnees 
+		//Faire appelle a get produit pour les inserer dans la base de donnees 
 		$data = $celliers->recupereToutCellier();
 		include("vues/entete.php");
 		include("vues/listesCelliers.php");
