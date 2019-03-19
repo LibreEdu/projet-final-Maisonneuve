@@ -25,7 +25,7 @@
 			{
 				
 				//on fait une connexion à la BD
-				$connexion = DBFactory::getDB(DBTYPE, DBNAME, HOST, USER, PWD);
+				$connexion = DBFactory::getDB(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
 				
 				//on crée une instance de la classe Modele_$classe
 				$objetModele = new $classe($connexion);
