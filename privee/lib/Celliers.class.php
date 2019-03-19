@@ -32,7 +32,7 @@ class Celliers extends Modele {
 	 * getProduits
 	 * @param int $idUsager
 	 */
-	public function recupereCelliersUsager($idUsager) {
+	public function recupereCelliers($idUsager) {
 		$listesCelliers = array();
 
 		// Recuperation de tous les celliers par id usager

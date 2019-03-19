@@ -144,7 +144,7 @@ class Controler
 	{
 		$celliers = new Celliers();
 		// Faire appelle à recupereToutCellier pour récupérer tous les celliers existants par l’usager qui est connecte 
-		$data = $celliers->recupereTousCelliersUsager(1);
+		$data = $celliers->recupereCelliers(1);
 		include("vues/entete.php");
 		include("vues/listesCelliers.php");
 		include("vues/pied.php");
