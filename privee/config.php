@@ -1,6 +1,6 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinocharef/privee/');
-	define("BASEURL", 'http://localhost/vinocharef/www/');
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoJose/privee/');
+	define("BASEURL", 'http://127.0.0.1/vinoJose/www/');
 	define("DBTYPE", 'mysql');
 	define("HOST", 'localhost');
 	define("DBNAME", 'vino');
@@ -29,6 +29,12 @@
 
 	spl_autoload_register('my_autoloader');
 
-	$_REQUEST['action'] = $_REQUEST['action'] ?? 'index';
+	// $_REQUEST['action'] = $_REQUEST['action'] ?? 'index';
+	if (empty($_REQUEST['action']))
+	{
+		$_REQUEST['action'] = 'index';
+	}
+
+
 
 ?>
