@@ -43,9 +43,6 @@ class Controler
 			case 'boireBouteilleCellier':
 				$this->boireBouteilleCellier();
 				break;
-			case 'alex':
-				$this->alex();
-				break;
 			case 'modifierBouteille':
 				$this->modifierBouteille();
 				break;
@@ -66,15 +63,6 @@ class Controler
 		include("vues/entete.php");
 		include("vues/cellier.php");
 		include("vues/pied.php");
-	}
-	
-	private function alex()
-	{
-		$bouteille_cellier = new Bouteille();
-		$donnees = $bouteille_cellier->obtenir_liste_bouteilles_cellier(1);
-		include("vues/entete2.php");
-		include("vues/cellier2.php");
-		include("vues/pied2.php");
 	}
 
 	private function listeBouteille()
