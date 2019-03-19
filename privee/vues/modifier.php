@@ -1,8 +1,6 @@
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 	<?php 
-		foreach ($data['bouteille'] as $bouteille)
-		{
 			$nom = isset($bouteille->nom) ? $bouteille->nom : '';
 			$quantite = isset($bouteille->quantite) ? $bouteille->quantite : '';
 			$millesime = isset($bouteille->millesime) ? $bouteille->millesime : '';
@@ -18,6 +16,12 @@
 			<h2 class="mdl-card__title-text"><?php echo $data['titre'] ?></h2>		
 			</div>
 			<div class="mdl-card__supporting-text">
+			<div class="mdl-textfield mdl-js-textfield">
+				Recherche : <input class="mdl-textfield__input" type="text" name="nom_bouteille">
+				<ul class="listeAutoComplete">
+
+				</ul>
+			</div>
 				<form name="form" method="POST" onsubmit="return ValiderChamps(this)">
 					<div class="mdl-textfield mdl-js-textfield">
 						Nom : <input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>">
@@ -61,7 +65,7 @@
 						<input type="hidden" name="requete" value="<?php echo $data['actionBouton'] ?>">
 						<input type="submit" value="<?php echo $data['titreBouton'] ?>" class="mdl-button mdl-js-button mdl-button--raised">
 	<?php
-		}
+		//}
 	?>
 			</div>
 		</form>

@@ -28,9 +28,8 @@
 					break;
 				case "modifier":
 					$this->modifierUneBouteille();
-
-					case "boireBouteilleCellier":
-					
+					break;
+				case "boireBouteilleCellier":					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
 					
@@ -39,9 +38,7 @@
 
 					echo json_encode($resultat);					
 					break;
-
-					case "ajouterBouteilleCellier":
-					
+				case "ajouterBouteilleCellier":					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
 					
@@ -49,6 +46,22 @@
 					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
 
 					echo json_encode($resultat);					
+					break;
+				case "ajouterNouvelleBouteilleCellier":					
+					$modeleType = $this->getDAO('Type');
+					$donnees["types"] = $modeleType->obtenir_tous();
+					$donnees["titre"] = "Ajouter Bouteille";
+					$donnees["actionBouton"] = "ajouter";
+					$donnees["titreBouton"] = "Ajouter la bouteille";
+					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modifier', $donnees);
+					$this->afficheVue('modeles/bas-de-page');					
+					break;
+				case "autocompleteBouteille":
+					$body = json_decode(file_get_contents('php://input'));
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
+					echo json_encode($listeBouteilles);					
 					break;
 				default :
 					trigger_error("Action invalide.");
