@@ -6,4 +6,3 @@
 	define('UTILISATEUR', 'root');
 	define('MOTDEPASSE', '');
 	define('BASEDEDONNEES', 'vino');
-?>
