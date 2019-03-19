@@ -20,7 +20,7 @@ Structure utilisée :
 - MVC maison de la structure initiale.
 
 ## Équipe
-- [José Ignacio Delgado](https://github.com/jidelgado77)
-- [Fatemeh Homatash](https://github.com/FatemehHo)
-- [Alexandre Pachot](https://github.com/LibreEdu)
-- [Charef Eddine Yagoubi](https://github.com/charefeddine)
+- [José Ignacio <span style="font-variant:small-caps;">Delgado</span>](https://github.com/jidelgado77)
+- [Fatemeh <span style="font-variant:small-caps;">Homatash</span>](https://github.com/FatemehHo)
+- [Alexandre <span style="font-variant:small-caps;">Pachot</span>](https://github.com/LibreEdu)
+- [Charef Eddine <span style="font-variant:small-caps;">Yagoubi</span>](https://github.com/charefeddine)
