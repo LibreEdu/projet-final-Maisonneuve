@@ -124,7 +124,7 @@ class Controler
 
 	private function modifierUneBouteille()
 	{
-		$bte = new Bouteille();		
+		$bte = new Bouteille();
 		$data = $bte->modifierBouteille();
 		$this->accueil();
 	}
