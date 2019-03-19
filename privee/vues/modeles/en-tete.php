@@ -71,14 +71,23 @@
 		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+			<?php
+			if(isset($_SESSION["UserID"]))
+			{
+			?>
+
 			<a href="?requete=accueil" class="mdl-layout__tab is-active">Mon cellier</a>
 			<a href="?requete=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
 			<a href="?requete=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
+
+			<?php			
+			}
+			?>
 
 			<!-- <a href="?requete=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab">Ajouter bouteille</a> -->
 			<!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span>
 			</button>-->
-		</div>
+		</div>		
 	</header>

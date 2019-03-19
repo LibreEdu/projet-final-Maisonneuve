@@ -15,7 +15,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-					case "boireBouteilleCellier":
+				case "boireBouteilleCellier":
 					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
@@ -26,7 +26,7 @@
 					echo json_encode($resultat);					
 					break;
 
-					case "ajouterBouteilleCellier":
+				case "ajouterBouteilleCellier":
 					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');

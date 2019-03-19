@@ -1,4 +1,7 @@
 <?php
+ // Ouverture de la session
+    session_start();
+
     class Routeur
     {
         public static function route()
@@ -14,7 +17,7 @@
             
             //si aucun contrôleur n'a été spécifié, mettre un contrôleur par défaut
             if($controleur == "")
-                $controleur = "Bouteille";
+                $controleur = "usager";
             
             //on a déterminé le controleur
             //on en crée une instance si la classe existe
