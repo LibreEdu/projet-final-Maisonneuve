@@ -5,7 +5,7 @@
 	define("DBNAME", 'vino');
 	define("HOST", 'localhost');
 	define("USER", 'root');
-	define("PWD", 'root');
+	define("PWD", '');
 	
 	//définition de ma fonction d'autoload
 	function my_autoloader($classe)
