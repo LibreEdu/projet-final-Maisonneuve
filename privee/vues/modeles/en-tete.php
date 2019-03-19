@@ -70,10 +70,10 @@
 		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-			<a href="?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
-			<a href="?bouteille&action=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
-			<a href="?bouteille&action=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
-			<a href="?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab is-active">Ajouter bouteille</a>
+			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
+			<a href="index.php?bouteille&action=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
+			<a href="index.php?bouteille&action=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
+			<a href="index.php?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span>
