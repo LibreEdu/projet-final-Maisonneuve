@@ -19,6 +19,8 @@
 					$donnees["bouteille"] = $modeleBouteille->obtenir_par_id($_GET["id"]);
 					$modeleType = $this->getDAO('Type');
 					$donnees["types"] = $modeleType->obtenir_tous();
+					$modeleCellier = $this->getDAO('Cellier');
+					$donnees["celliers"] = $modeleCellier->obtenir_tous();
 					$donnees["titre"] = "Modifier Bouteille";
 					$donnees["actionBouton"] = "modifier";
 					$donnees["titreBouton"] = "Modifier la bouteille";
@@ -27,7 +29,24 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 				case "modifier":
-					$this->modifierUneBouteille();
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$modeleBouteille->modifierBouteille();
+					$donnees["bouteilles"] = $modeleBouteille->obtenir_tous();
+					echo "<script>alert(\"La bouteille a été modifiée.\")</script>";
+					
+					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('modeles/bas-de-page');
+					break;
+				case "ajouter":
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$modeleBouteille->ajouterUneBouteille();
+					$donnees["bouteilles"] = $modeleBouteille->obtenir_tous();
+					echo "<script>alert(\"La bouteille a été ajoutée.\")</script>";
+					
+					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('modeles/bas-de-page');
 					break;
 				case "boireBouteilleCellier":					
 					$body = json_decode(file_get_contents('php://input'));
@@ -50,6 +69,8 @@
 				case "ajouterNouvelleBouteilleCellier":					
 					$modeleType = $this->getDAO('Type');
 					$donnees["types"] = $modeleType->obtenir_tous();
+					$modeleCellier = $this->getDAO('Cellier');
+					$donnees["celliers"] = $modeleCellier->obtenir_tous();
 					$donnees["titre"] = "Ajouter Bouteille";
 					$donnees["actionBouton"] = "ajouter";
 					$donnees["titreBouton"] = "Ajouter la bouteille";

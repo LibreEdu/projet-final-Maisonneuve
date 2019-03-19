@@ -32,6 +32,12 @@
 			$query = "SELECT * from " . $this->getTableName();
 			return $this->requete($query);
 		}
+
+		protected function obtenirTous()
+		{
+			$query = "SELECT * from " . $this->getTableName() . " WHERE id_usager = 1";
+			return $this->requete($query);
+		}
 		
 		final protected function requete($query, $data = array())
 		{
