@@ -1,18 +1,19 @@
 <?php
 /**
- * Class MonSQL
- * Classe qui génère ma connection à MySQL à travers un singleton
+ * Class Celliers
+ * Classe qui gere les celliers
  *
  *
- * @author Alexandre Pachot et Fatemeh Homatash 
+ * @author Fatemeh Homatash 
  * @version 1.0
  *
  *
  *
  */
 class Celliers extends Modele {
-	const DUPLICATION = 'duplication';
-	const ERREURDB = 'erreurdb';
+	const DUPLICATION = "duplication";
+	const USAGERNEXISTPAS = "Cet usager n'existe pas";
+	const ERREURDB = "erreurdb";
 
 	private $listesCelliers;
 
@@ -29,29 +30,21 @@ class Celliers extends Modele {
 
 	/**
 	 * getProduits
-	 * @param int $debut
-	 * @param int $nombre
+	 * @param int $idUsager
 	 */
-	public function recupereToutCellier($idUsager) {
-
+	public function recupereTousCelliersUsager($idUsager) {
 		$listesCelliers = array();
-		// Recuperation de tous les celliers.
-		//$resultats = $this->_bd->query("SELECT * FROM vino_cellier");
-		$resultats = $this->_bd->query("SELECT id_cellier FROM vino_cellier__usager WHERE id_usager = ?");
-		$this->resultats->bind_param("i", $idUsager);
-		$this->resultats->execute();
-		
 
-		if ($resultats->num_rows) {
-			while ($resultat = $resultats->fetch_assoc()){
+		// Recuperation de tous les celliers par id usager
+		$resultats = $this->_bd->query("SELECT id_cellier, nom FROM vino_cellier WHERE id_usager = " .$idUsager);
+
+		if ($resultats->num_rows > 0) {	
+			while ($resultat = $resultats->fetch_assoc()) {
 				$listesCelliers[] = $resultat;
 			}
 		} else {
 			throw new Exception("Erreur de requête sur la base de donnée", 1);
-		} 	
-
-		echo "bbbbb";
-		var_dump($listesCelliers);
+		}
 		return $listesCelliers;
 	}
 

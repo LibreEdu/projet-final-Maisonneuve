@@ -65,3 +65,35 @@ CREATE TABLE vino_bouteille (
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id_cellier),
 	FOREIGN KEY (id_type) REFERENCES vino_type(id_type)
 ) ENGINE=InnoDB;
+
+INSERT INTO vino_type VALUES(1, 'Vin blanc');
+INSERT INTO vino_type VALUES(2, 'Vin rosé');
+INSERT INTO vino_type VALUES(3, 'Vin rouge');
+
+INSERT INTO vino_bouteille_saq VALUES(1, '10324623', 11.80, NULL, 3, 'Espagne', '750 ml', 'Borsao Seleccion');
+INSERT INTO vino_bouteille_saq VALUES(2, '10359156', 19.80, NULL, 3, 'Espagne', '750 ml', 'Monasterio de Las Vinas Gran Reserva');
+INSERT INTO vino_bouteille_saq VALUES(3, '11676671', 12.50, NULL, 3, 'Espagne', '750 ml', 'Castano Hecula');
+INSERT INTO vino_bouteille_saq VALUES(4, '11462446', 14.30, NULL, 3, 'Espagne', '750 ml', 'Campo Viejo Tempranillo Rioja');
+INSERT INTO vino_bouteille_saq VALUES(5, '12375942', 17.10, '2017', 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya');
+INSERT INTO vino_bouteille_saq VALUES(6, '13467048', 37.20, NULL, 1, 'États-Unis', '3 L', 'Vin Vault Pinot Grigio');
+INSERT INTO vino_bouteille_saq VALUES(7, '13675841', 22.65, '2017', 1, 'Autriche', '750 ml', 'Huber Riesling Engelsberg');
+INSERT INTO vino_bouteille_saq VALUES(8, '13802571', 18.25, '2015', 3, 'Espagne', '750 ml', 'Dominio de Tares Estay Castilla y Léon');
+INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, '2016', 3, 'France', '750 ml', 'Tessellae Old Vines Côtes du Roussillon');
+INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
+
+INSERT INTO vino_usager VALUES(1, true, true, 'admin@vino.qc.ca', 'Fatemeh', 'Ho', '3C9909AFEC24A42FD7A2FDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(2, true, true, 'admin@vino.qc.ca', 'Ali', 'Po', '3C99FEC24A42FD7A2FDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(3, true, true, 'admin@vino.qc.ca', 'Sara', 'Min', '3C9909AFEC24A42FDFDB84856BCA5C44C2');
+INSERT INTO vino_usager VALUES(4, true, false, 'admin@vino.qc.ca', 'Nina', 'Ao', '3C9909A24A42FD7A2FDB84856BCA5C44C2');
+
+INSERT INTO vino_cellier VALUES(1, 1, 'Domicile');
+INSERT INTO vino_cellier VALUES(2, 2, 'Chalet');
+INSERT INTO vino_cellier VALUES(3, 3, 'Domicile');
+INSERT INTO vino_cellier VALUES(4, 4, 'Domicile');
+INSERT INTO vino_cellier VALUES(5, 1, 'Home');
+
+INSERT INTO vino_bouteille VALUES(1, 1, '13637422', 34.75, '2015', 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01');
+INSERT INTO vino_bouteille VALUES(2, 2, '12375942', 17.10, NULL, 3, 'Italie', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22');
+INSERT INTO vino_bouteille VALUES(3, 3, '11676671', 12.50, '2015', 3, 'Italie', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01');
+INSERT INTO vino_bouteille VALUES(4, 4, '12216562', 21.95, '2015', 3, 'Italie', '750 ml', 'Tessellae Old Vines Côtes du Roussillon', 'Une bonne bouteille', 5, '2016-04-11');
+INSERT INTO vino_bouteille VALUES(5, 1, '13802571', 18.25, '2015', 3, 'Espagne', '750 ml', 'Dominio de Tares Estay Castilla y Léon', 'Une bonne bouteille', 25, '2018-10-01');
