@@ -158,7 +158,7 @@ class Bouteille extends Modele {
 		//TODO : Valider les données.
 			
 			
-		$requete = "UPDATE vino_cellier__bouteille SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id = ". $id;
+		$requete = "UPDATE vino_bouteille SET quantite = GREATEST(quantite + ". $nombre. ", 0) WHERE id_bouteille = ". $id;
 		//echo $requete;
 		$res = $this->_bd->query($requete);
 		
@@ -176,7 +176,7 @@ class Bouteille extends Modele {
 	{
 			
 		//Requete qui récupére la quantité d'une bouteille en particulier
-		$requete = "SELECT quantite FROM vino_cellier__bouteille WHERE id = ". $id;
+		$requete = "SELECT quantite FROM vino_bouteille WHERE id_bouteille = ". $id;
 		$res = $this->_bd->query($requete);		
 			
 		$ligne = $res->fetch_ASSOC(); 
