@@ -32,7 +32,7 @@ class Celliers extends Modele {
 	 * getProduits
 	 * @param int $idUsager
 	 */
-	public function recupereTousCelliersUsager($idUsager) {
+	public function recupereCelliersUsager($idUsager) {
 		$listesCelliers = array();
 
 		// Recuperation de tous les celliers par id usager
@@ -47,6 +47,7 @@ class Celliers extends Modele {
 		}
 		return $listesCelliers;
 	}
+
 
 	/*
 	private function get_inner_html($node) {

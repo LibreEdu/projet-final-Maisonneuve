@@ -64,8 +64,7 @@ window.addEventListener('load', function() {
 			}).catch(error => {
 				console.error(error);
 			});
-		})
-
+		});
 	});
 	
 	document.querySelectorAll(".btnModifier").forEach(function(element){
