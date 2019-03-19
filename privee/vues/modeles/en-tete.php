@@ -33,7 +33,6 @@
 	<link rel="stylesheet" href="<?php echo BASEURL?>css/styles.css">
 
 	<script src="<?php echo BASEURL?>js/main.js"></script>
-	<script src="<?php echo BASEURL?>js/valider.js"></script>
 
 	<style>
 	#view-source {
@@ -74,7 +73,7 @@
 			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
 			<a href="index.php?bouteille&action=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
 			<a href="index.php?bouteille&action=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
-			<a href="index.php?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab">Ajouter bouteille</a>
+			<a href="index.php?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span>
