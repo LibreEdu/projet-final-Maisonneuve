@@ -1,11 +1,11 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoPerso/privee/');
-	define("BASEURL", 'http://localhost:8888/vinoPerso/www/');
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoJose/privee/');
+	define("BASEURL", 'http://127.0.0.1/vinoJose/www/');
 	define("DBTYPE", 'mysql');
 	define("DBNAME", 'vino');
 	define("HOST", 'localhost');
 	define("USER", 'root');
-	define("PWD", 'root');
+	define("PWD", '');
 	
 	//définition de ma fonction d'autoload
 	function my_autoloader($classe)
@@ -28,6 +28,12 @@
 
 	spl_autoload_register('my_autoloader');
 
-	$_REQUEST['action'] = $_REQUEST['action'] ?? 'index';
+	// $_REQUEST['action'] = $_REQUEST['action'] ?? 'index';
+	if (empty($_REQUEST['action']))
+	{
+		$_REQUEST['action'] = 'index';
+	}
+
+
 
 ?>

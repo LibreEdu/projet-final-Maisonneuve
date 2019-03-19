@@ -14,7 +14,7 @@ console.log(BaseURL);
 window.addEventListener('load', function() {
 	console.log("load");
 	document.querySelectorAll(".btnBoire").forEach(function(element){
-		console.log(element);
+		//console.log(element);
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
 			let requete = new Request("index.php?requete=boireBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
@@ -41,7 +41,7 @@ window.addEventListener('load', function() {
 
 
 	document.querySelectorAll(".btnAjouter").forEach(function(element){
-		console.log(element);
+		//console.log(element);
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
 			let requete = new Request("index.php?requete=ajouterBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
@@ -72,7 +72,8 @@ window.addEventListener('load', function() {
 		//console.log(element);
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			 window.location = "index.php?requete=modifierBouteille&id="+id;
+			console.log("l'id est "+id);
+			 window.location = "index.php?bouteille&action=modifierBouteille&id="+id;
 	})
 
 	});

@@ -1,6 +1,6 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<<?php foreach ($data['bouteilles'] as $bouteille): ?>
+			<?php foreach ($data['bouteilles'] as $bouteille): ?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
 					<div class='bouteille' data-quantite=''>
@@ -22,7 +22,7 @@
 					<div class="mdl-card__actions">
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_SAQ ?>'target="_blank">Lien SAQ</a></p>
 						<p>
-						<div class='options' data-id='<?php echo $bouteille->id_cellier_bouteille ?>'>
+						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
 							<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>Ajouter</button>
 							<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>Boire</button>
