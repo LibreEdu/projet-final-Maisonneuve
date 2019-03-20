@@ -86,7 +86,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'autocompleteBouteille':
+				case 'saisie-semi-automatique':
 					$body = json_decode(file_get_contents('php://input'));
 					var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
