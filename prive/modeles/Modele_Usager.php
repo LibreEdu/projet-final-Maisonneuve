@@ -1,6 +1,6 @@
 <?php
 	class Modele_Usager extends BaseDAO
-	{       
+	{
 		public function getTableName()
 		{
 			return 'vino_usager';
@@ -33,8 +33,8 @@
 		 */
 		public function  Authentification($username, $password)
 		{
-		   
-			$query = 'SELECT id_usager, hash from '. $this->getTableName() .' WHERE courriel = '' . $username . ''';
+		
+			$query = 'SELECT id_usager, hash from '. $this->getTableName() .' WHERE courriel = "' . $username . '"';
 			$resultat = $this->requete($query);
 			// Récuperer le résultat sous forme d'un objet
 			$result = $resultat->fetch(PDO::FETCH_OBJ);
@@ -56,11 +56,11 @@
 		}
 
 		/**
-		 *  Fonction qui retourne le nom de l'usager username par son id        
+		 *  Fonction qui retourne le nom de l'usager username par son id
 		 *  @param integer $id l'id de l'usager
 		 *  @param string $colonne l'username de l'usager
-		 *  @return  $lUsager  
-		 */     
+		 *  @return  $lUsager
+		 */
 		 public function obtenirUsager($id, $colonne = 'courriel')
 		{
 			
@@ -69,7 +69,7 @@
 			$lUsager = $resultat->fetch();
 			return $lUsager;
 		}
-		 
+		
 		
 	}
 
