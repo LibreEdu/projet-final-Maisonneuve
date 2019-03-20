@@ -30,9 +30,9 @@
 		background-color: #7b1fa2 !important;
 	}
 	.mdl-color--teal-100 .img img {
-		box-shadow: 2px 4px 42px  #5F04B4;
+		box-shadow: 2px 4px 2px  #7c4dff;
 		border-radius: 10px;
-		-webkit-border-radius: 10px !important;
+		-webkit-border-radius: 10px;
 	}
 	.mdl-demo .mdl-layout__header {
 		background-image: url('../images/vin-plaisir2.jpg');
