@@ -1,39 +1,11 @@
-A [NM], 1N CELLIER, 0N USAGER:rôle
 CELLIER:id, date création, libellé
-BOUTEILLE PARTAGÉE: id, date de partage
-SE PARTAGE [1N], 0N BOUTEILLE, 11 BOUTEILLE PARTAGÉE
-SE BOIT [1N], 0N BOUTEILLE, 11 BOUTEILLE BUE
-BOUTEILLE BUE: id, date de dégustation
-
-USAGER: id, admin, actif, date création, identifiant, courriel, nom, prénom, adresse, ville, code postale, province, téléphone, pays, hash
 CONTIENT [NM], 1N BOUTEILLE, 0N CELLIER : quantité, date d’achat
-:
-BOUTEILLE:id, code SAQ, prix, libellé, boire avant, note
-:
-FAIT [1N], 0N FORMAT, 01 BOUTEILLE
+BOUTEILLE:id, code SAQ, prix, millésime, pays, format, libellé, boire avant, note
 
-CRÉE [1N], 0N USAGER, 11 LISTE ACHATS
-SIGNALE [1N], 0N USAGER, 11 ERREUR
-DATE [1N], 0N MILLÉSIME, 01 BOUTEILLE
+A [NM], 1N CELLIER, 0N USAGER:rôle
+USAGER: id, admin, actif, date création, identifiant, courriel, nom, prénom, adresse, ville, code postale, province, téléphone, pays, hash
 EST [1N], 0N TYPE, 01 BOUTEILLE
-VIENT [1N], 0N PAYS, 01 BOUTEILLE
-:
 
-LISTE ACHATS: id, libellé, date création, note
-ERREUR : id, date signalement, remarque
-MILLÉSIME: id, libellé
-TYPE: id, libellé
-PAYS: id, libellé
-FORMAT : id, contenance, unité
-
-:
-CORRESPOND [1N], 0N BOUTEILLE SAQ, 11 ERREUR
-DATE  [1N], 0N MILLÉSIME, 01 BOUTEILLE SAQ
+BOUTEILLE SAQ:id, code SAQ, prix, millésime, pays, format, libellé
 EST  [1N], 0N TYPE, 01 BOUTEILLE SAQ
-VIENT  [1N], 0N PAYS, 01 BOUTEILLE SAQ
-
-LISTE [NM], 0N LISTE ACHATS, 0N BOUTEILLE SAQ
-::
-BOUTEILLE SAQ:id, code SAQ, prix, libellé
-:
-FAIT  [1N], 0N FORMAT, 01 BOUTEILLE SAQ
+TYPE: id, libellé
