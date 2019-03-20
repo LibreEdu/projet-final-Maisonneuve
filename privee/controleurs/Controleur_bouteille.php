@@ -82,9 +82,19 @@
 					break;
 				case "autocompleteBouteille":
 					$body = json_decode(file_get_contents('php://input'));
+					var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
+					
 					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
-					echo json_encode($listeBouteilles);					
+
+					echo json_encode($listeBouteilles);
+					
+
+					break;
+				case "alex":
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$listeBouteilles = $modeleBouteille->autocomplete("a");
+					// var_dump("a");die;
 					break;
 				default :
 					trigger_error("Action invalide.");
