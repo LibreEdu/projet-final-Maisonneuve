@@ -52,7 +52,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'boire':
+				case 'boire-js':
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
 					
