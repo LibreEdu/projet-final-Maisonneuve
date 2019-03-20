@@ -80,15 +80,16 @@ window.addEventListener('load', function() {
 			fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
-					return response.json();
+						return response.text();
 					} else {
 					throw new Error('Erreur');
 					}
 				})
 				.then(response => {
-					response.forEach(function(element){
-						liste.innerHTML += "<li data-id='"+element.id_bouteille_saq +"'>"+element.nom+"</li>";
-					})
+					console.log(response);
+					// response.forEach(function(element){
+					// 	liste.innerHTML += "<li data-id='"+element.id_bouteille_saq +"'>"+element.nom+"</li>";
+					// })
 				}).catch(error => {
 					console.error(error);
 				});
