@@ -27,8 +27,8 @@
 		/**
 		 *  Fonction qui authentifie un utilisateur et qui retourne un 
 		 *  booléen
-		 *  @param string $username l'username de l'usager
-		 *  @param string $password le mot de passe de l'usager
+		 *  @param string $username l’username de l’usager
+		 *  @param string $password le mot de passe de l’usager
 		 *  @return  boolean 
 		 */
 		public function  Authentification($username, $password)
@@ -56,9 +56,9 @@
 		}
 
 		/**
-		 *  Fonction qui retourne le nom de l'usager username par son id
-		 *  @param integer $id l'id de l'usager
-		 *  @param string $colonne l'username de l'usager
+		 *  Fonction qui retourne le nom de l’usager username par son id
+		 *  @param integer $id l’id de l’usager
+		 *  @param string $colonne l’username de l’usager
 		 *  @return  $lUsager
 		 */
 		 public function obtenirUsager($id, $colonne = 'courriel')

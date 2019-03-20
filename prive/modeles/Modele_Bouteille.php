@@ -25,12 +25,12 @@
 
 
 		/**
-		 * Cette méthode change la quantité d'une bouteille en particulier dans le cellier
+		 * Cette méthode change la quantité d’une bouteille en particulier dans le cellier
 		 * 
 		 * @param int $id id de la bouteille
-		 * @param int $nombre Nombre de bouteille a ajouter ou retirer
+		 * @param int $nombre Nombre de bouteille à ajouter ou à retirer
 		 * 
-		 * @return Boolean Succès ou échec de l'ajout.
+		 * @return Boolean Succès ou échec de l’ajout.
 		 */
 		public function modifierQuantiteBouteilleCellier($id, $nombre)
 		{
@@ -47,7 +47,7 @@
 		}
 
 		/**
-		 * Cette méthode récupére la quantité d'une bouteille en particulier dans le cellier
+		 * Cette méthode récupére la quantité d’une bouteille en particulier dans le cellier
 		 * 
 		 * @param int $id id  cellier_bouteille 
 		 * 
@@ -56,7 +56,7 @@
 		public function recupererQuantiteBouteilleCellier($id)
 		{
 			
-			//Requete qui récupére la quantité d'une bouteille en particulier
+			//Requete qui récupére la quantité d’une bouteille en particulier
 			$requete = 'SELECT quantite FROM vino_bouteille WHERE id_bouteille = '. $id;
 			$resultat = $this->requete($requete);
 
@@ -70,7 +70,7 @@
 		}
 		
 		/**
-		 * Cette méthode permet de retourner les résultats de recherche pour la fonction d'autocomplete de l'ajout des bouteilles dans le cellier
+		 * Cette méthode permet de retourner les résultats de recherche pour la fonction d’autocomplete de l’ajout des bouteilles dans le cellier
 		 * 
 		 * @param string $nom La chaine de caractère à rechercher
 		 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
