@@ -11,7 +11,7 @@
  *
  */
 class Utilitaires {
-	
+
 	/**
 	 * 
 	 *
@@ -37,4 +37,3 @@ class Utilitaires {
 	}
 
 }
-?>

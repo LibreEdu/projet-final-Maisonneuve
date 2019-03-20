@@ -219,4 +219,3 @@ class SAQ extends Modele {
 		return $bouteillesSaq;
 	}
 }
-?>

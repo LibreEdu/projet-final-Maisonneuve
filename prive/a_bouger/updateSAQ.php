@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-	
 	<head>
 		<meta charset="UTF-8" />	
 	</head>
@@ -18,9 +17,6 @@
 		echo "importation : ". $nombre. "<br>";
 	//	$debut += $nombreProduit;	
 	//}
-	
-	
-	
 
 ?>
 </body>
