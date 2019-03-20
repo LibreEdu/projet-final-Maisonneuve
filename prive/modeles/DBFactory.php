@@ -6,11 +6,11 @@
 		{
 			if($typeBD == 'mysql')
 			{
-				$laDB = new PDO('mysql:host=$host;dbname=$dbName;charset=$charset', $user, $pwd);
+				$laDB = new PDO("mysql:host=$host;dbname=$dbName;charset=$charset", $user, $pwd);
 			}
 			else if($typeBD == 'oracle')
 			{
-				$laDB = new PDO('oci:host=$host;dbname=$dbName;charset=$charset', $user, $pwd);		
+				$laDB = new PDO("oci:host=$host;dbname=$dbName;charset=$charset", $user, $pwd);		
 			}
 			else
 			{

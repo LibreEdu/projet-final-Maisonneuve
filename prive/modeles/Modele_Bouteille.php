@@ -90,7 +90,7 @@
 			// var_dump($nom);die;
 			
 			//echo $nom;
-			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER('%?%') LIMIT 0,'. $nb_resultat;
+			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%?%") LIMIT 0,'. $nb_resultat;
 			$resultat = $this->requete($sql,$nom);
 
 			$lesNoms = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
