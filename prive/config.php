@@ -17,7 +17,7 @@
 			RACINE . 'modeles/',
 			RACINE . 'vues/'
 		);
-			
+
 		foreach($repertoires as $rep)
 		{
 			if(file_exists($rep . $classe . '.php'))
