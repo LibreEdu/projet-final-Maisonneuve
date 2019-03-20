@@ -1,6 +1,6 @@
 <?php
 /**
- * Gestion de celliers qui peuvent contenir des bouteilles de la Société des alcools du Québec (SAQ). 
+ * Gestion de celliers qui peuvent contenir des bouteilles de la Société des alcools du Québec (SAQ).
  * @author José Ignacio Delgado
  * @author Fatemeh Homatash
  * @author Alexandre Pachot
