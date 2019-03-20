@@ -9,7 +9,7 @@
 					$modeleCellier = $this->getDAO('Cellier');
 					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
 					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('listesCelliers', $donnees);
+					$this->afficheVue('cellier/liste', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
