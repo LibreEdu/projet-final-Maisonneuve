@@ -9,5 +9,5 @@
  * @license GNU General Public License v3.0
  */
 
-require_once('../privee/config.php');
+require_once('../prive/config.php');
 Routeur::route();
