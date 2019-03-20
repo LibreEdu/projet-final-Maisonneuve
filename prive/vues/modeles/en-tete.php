@@ -31,9 +31,6 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
 	<link rel="stylesheet" href="<?php echo BASEURL?>css/mdl-demo.css">
-
-	<script src="<?php echo BASEURL?>js/main.js"></script>
-
 	<style>
 	#view-source {
 		position: fixed;
