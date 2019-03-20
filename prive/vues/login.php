@@ -11,7 +11,7 @@
 			<!-- Formulaire de connexion -->
 			<form method="POST">
 			Nom de l'utilisateur : <input type="text" name="user"/><br><br>
-			Mot de passe : <input type="password" name="pass"/><br><br>					
+			Mot de passe : <input type="password" name="pass"/><br><br>
 			<input type="submit" value="Login"/>
 			<input type="hidden" name="action" value="login">
 		</form>
@@ -25,13 +25,13 @@
 				// // On affiche le message
 				// echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p><br>";
 				// echo "<a href='?usager&action=Logout'>Se déconnecter</a>";
-			}					
+			}
 			// On affiche le message
 			if($donnees["erreurs"] != "")
-            {
-                echo "<p class='message'><i class='fas fa-exclamation'></i>" . $donnees["erreurs"] . "</p>";
-            }
-		?>	
+			{
+				echo "<p class='message'><i class='fas fa-exclamation'></i>" . $donnees["erreurs"] . "</p>";
+			}
+		?>
 		</div>
 
 	</div>
