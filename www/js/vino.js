@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll(".btnAjouter").forEach(function(element){
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request("index.php?bouteille&action=ajouterBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
+			let requete = new Request("index.php?bouteille&action=ajouter-js", {method: 'POST', body: '{"id": '+id+'}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			
