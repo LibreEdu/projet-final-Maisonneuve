@@ -12,7 +12,7 @@
 			<form method="POST">
 			Nom de l'utilisateur : <input type="text" name="user"/><br><br>
 			Mot de passe : <input type="password" name="pass"/><br><br>					
-			<input type="submit" value="Login"/>
+			<input type="submit" value="Se Connecter"/>
 			<input type="hidden" name="action" value="login">
 		</form>
 		<a href="?usager&action=inscription">Créer un compte</a><br>
