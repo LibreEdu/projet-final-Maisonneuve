@@ -22,11 +22,11 @@
 				$controleur = substr($chaineRequete, 0, $posEperluette);
 
 			// Si aucun contrôleur n’est spécifié, mettre le contrôleur par défaut
-			if($controleur == "")
-				$controleur = "Bouteille";
+			if($controleur == '')
+				$controleur = 'Bouteille';
 
 			// Détermin la classe du controleur
-			$classe = "Controleur_" . $controleur;
+			$classe = 'Controleur_' . $controleur;
 
 			// Si la classe existe
 			if(class_exists($classe))
@@ -41,11 +41,11 @@
 					$objetControleur->traite($_REQUEST);
 				}
 				else
-					trigger_error("Controleur invalide.");
+					trigger_error('Controleur invalide.');
 			}
 			else
 			{
-				trigger_error("Erreur 404! Le controleur $controleur n’existe pas.");
+				trigger_error('Erreur 404! Le controleur $controleur n’existe pas.');
 			}
 		}
 	}
