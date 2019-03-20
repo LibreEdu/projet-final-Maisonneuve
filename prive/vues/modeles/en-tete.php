@@ -21,15 +21,16 @@
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
 	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
 	<meta name="msapplication-TileColor" content="#3372DF">
-	<link rel="shortcut icon" href="images/favicon.png">
+	<link rel="shortcut icon" href="images/vino.logo3.png">
 
 	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 	<!--
 	<link rel="canonical" href="http://www.example.com/">
 	-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,500i,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-deep_purple.min.css">
 	<link rel="stylesheet" href="<?php echo BASEURL?>css/mdl-demo.css">
 	<style>
 	#view-source {

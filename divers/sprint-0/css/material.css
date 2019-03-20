@@ -7612,7 +7612,8 @@ input.mdl-button[type="submit"] {
   box-shadow: none; }
 
 .mdl-layout__header--seamed {
-  box-shadow: none; }
+  box-shadow: none;
+  background-image: url('../images/ventedevin.jpg'); }
 
 .mdl-layout__header--scroll {
   box-shadow: none; }
