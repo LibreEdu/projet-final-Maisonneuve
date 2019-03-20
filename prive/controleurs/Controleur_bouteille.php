@@ -7,9 +7,7 @@
 			{
 				case 'index':
 					$modeleBouteille = $this->getDAO('Bouteille');
-					
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
@@ -35,7 +33,6 @@
 					$modeleBouteille->modifierBouteille();
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					echo '<script>alert("La bouteille a été modifiée.")</script>';
-					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
@@ -46,7 +43,6 @@
 					$modeleBouteille->ajouterUneBouteille();
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					echo '<script>alert("La bouteille a été ajoutée.")</script>';
-					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
@@ -55,21 +51,16 @@
 				case 'boire-js':
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
-					
 					$modeleBouteille->modifierQuantiteBouteilleCellier($body->id,-1);
 					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
-
 					echo json_encode($resultat);
 					break;
 					
 				case 'ajouter-js':
-					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
-					
 					$modeleBouteille->modifierQuantiteBouteilleCellier($body->id, 1);
 					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
-
 					echo json_encode($resultat);
 					break;
 					
@@ -90,9 +81,7 @@
 					$body = json_decode(file_get_contents('php://input'));
 					var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
-					
 					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
-
 					echo json_encode($listeBouteilles);
 					break;
 
