@@ -13,7 +13,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'modifierBouteille':
+				case 'modifier-form':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
 					$modeleType = $this->getDAO('Type');
@@ -24,7 +24,7 @@
 					$donnees['actionBouton'] = 'modifier';
 					$donnees['titreBouton'] = 'Modifier la bouteille';
 					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('modifier', $donnees);
+					$this->afficheVue('bouteille/formulaire', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
@@ -73,7 +73,7 @@
 					$donnees['actionBouton'] = 'ajouter';
 					$donnees['titreBouton'] = 'Ajouter la bouteille';
 					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('modifier', $donnees);
+					$this->afficheVue('bouteille/formulaire', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
