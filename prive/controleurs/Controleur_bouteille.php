@@ -3,62 +3,66 @@
 	{
 		public function traite(array $params)
 		{
-			switch($params["action"])
+			switch($params['action'])
 			{
-				case "index":
+				case 'index':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					
-					$donnees["bouteilles"] = $modeleBouteille->obtenir_tous();
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
-				case "modifierBouteille":					
+
+				case 'modifierBouteille':
 					$modeleBouteille = $this->getDAO('Bouteille');
-					$donnees["bouteille"] = $modeleBouteille->obtenir_par_id($_GET["id"]);
+					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
 					$modeleType = $this->getDAO('Type');
-					$donnees["types"] = $modeleType->obtenir_tous();
+					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees["celliers"] = $modeleCellier->obtenir_tous();
-					$donnees["titre"] = "Modifier Bouteille";
-					$donnees["actionBouton"] = "modifier";
-					$donnees["titreBouton"] = "Modifier la bouteille";
+					$donnees['celliers'] = $modeleCellier->obtenir_tous();
+					$donnees['titre'] = 'Modifier Bouteille';
+					$donnees['actionBouton'] = 'modifier';
+					$donnees['titreBouton'] = 'Modifier la bouteille';
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modifier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
-				case "modifier":
+
+				case 'modifier':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$modeleBouteille->modifierBouteille();
-					$donnees["bouteilles"] = $modeleBouteille->obtenir_tous();
-					echo "<script>alert(\"La bouteille a été modifiée.\")</script>";
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+					echo '<script>alert("La bouteille a été modifiée.")</script>';
 					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
-				case "ajouter":
+
+				case 'ajouter':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$modeleBouteille->ajouterUneBouteille();
-					$donnees["bouteilles"] = $modeleBouteille->obtenir_tous();
-					echo "<script>alert(\"La bouteille a été ajoutée.\")</script>";
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+					echo '<script>alert("La bouteille a été ajoutée.")</script>';
 					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
-				case "boireBouteilleCellier":					
+
+				case 'boireBouteilleCellier':
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
 					
 					$modeleBouteille->modifierQuantiteBouteilleCellier($body->id,-1);
 					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
 
-					echo json_encode($resultat);					
+					echo json_encode($resultat);
 					break;
-
-				case "ajouterBouteilleCellier":
+					
+				case 'ajouterBouteilleCellier':
 					
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
@@ -66,21 +70,23 @@
 					$modeleBouteille->modifierQuantiteBouteilleCellier($body->id, 1);
 					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
 
-					echo json_encode($resultat);					
+					echo json_encode($resultat);
 					break;
-				case "ajouterNouvelleBouteilleCellier":					
+					
+				case 'ajouterNouvelleBouteilleCellier':
 					$modeleType = $this->getDAO('Type');
-					$donnees["types"] = $modeleType->obtenir_tous();
+					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees["celliers"] = $modeleCellier->obtenir_tous();
-					$donnees["titre"] = "Ajouter Bouteille";
-					$donnees["actionBouton"] = "ajouter";
-					$donnees["titreBouton"] = "Ajouter la bouteille";
+					$donnees['celliers'] = $modeleCellier->obtenir_tous();
+					$donnees['titre'] = 'Ajouter Bouteille';
+					$donnees['actionBouton'] = 'ajouter';
+					$donnees['titreBouton'] = 'Ajouter la bouteille';
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modifier', $donnees);
-					$this->afficheVue('modeles/bas-de-page');					
+					$this->afficheVue('modeles/bas-de-page');
 					break;
-				case "autocompleteBouteille":
+
+				case 'autocompleteBouteille':
 					$body = json_decode(file_get_contents('php://input'));
 					var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
@@ -88,16 +94,16 @@
 					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
 
 					echo json_encode($listeBouteilles);
-					
+					break;
 
-					break;
-				case "alex":
+				case 'alex':
 					$modeleBouteille = $this->getDAO('Bouteille');
-					$listeBouteilles = $modeleBouteille->autocomplete("a");
-					// var_dump("a");die;
+					$listeBouteilles = $modeleBouteille->autocomplete('a');
+					// var_dump('a');die;
 					break;
+
 				default :
-					trigger_error("Action invalide.");
+					trigger_error('Action invalide.');
 			}
 		}
 	}
