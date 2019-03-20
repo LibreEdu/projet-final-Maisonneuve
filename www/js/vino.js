@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
 
-			let requete = new Request("index.php?bouteille&action=boireBouteilleCellier", {method: 'POST', body: '{"id": '+id+'}'});
+			let requete = new Request("index.php?bouteille&action=boire", {method: 'POST', body: '{"id": '+id+'}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			fetch(requete)
