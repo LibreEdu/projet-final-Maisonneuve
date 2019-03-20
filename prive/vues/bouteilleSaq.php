@@ -2,7 +2,7 @@
         <div class="mdl-layout__tab-panel is-active" id="overview">
           <!-- Récupérer les données  -->
           <?php
-            foreach ($data as $bouteille) {
+            foreach ($donnees as $bouteille) {
           ?>
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
               <div class="mdl-card mdl-cell mdl-cell--12-col">

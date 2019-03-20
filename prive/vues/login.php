@@ -27,9 +27,9 @@
 				// echo "<a href='?usager&action=Logout'>Se déconnecter</a>";
 			}					
 			// On affiche le message
-			if($data["erreurs"] != "")
+			if($donnees["erreurs"] != "")
             {
-                echo "<p class='message'><i class='fas fa-exclamation'></i>" . $data["erreurs"] . "</p>";
+                echo "<p class='message'><i class='fas fa-exclamation'></i>" . $donnees["erreurs"] . "</p>";
             }
 		?>	
 		</div>

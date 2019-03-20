@@ -1,8 +1,8 @@
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 	<?php 
-		if(isset($data['bouteille'])){
-		$bouteille = $data['bouteille'][0];
+		if(isset($donnees['bouteille'])){
+		$bouteille = $donnees['bouteille'][0];
 		}
 
 		$nom = isset($bouteille->nom) ? $bouteille->nom : '';
@@ -17,7 +17,7 @@
 		$id_bouteille = isset($bouteille->id_bouteille) ? $bouteille->id_bouteille : '';
 	?>
 		<div class="mdl-card__title">	
-			<h2 class="mdl-card__title-text"><?php echo $data['titre'] ?></h2>		
+			<h2 class="mdl-card__title-text"><?php echo $donnees['titre'] ?></h2>		
 		</div>
 		<div class="mdl-card__supporting-text">
 			<div class="mdl-textfield mdl-js-textfield">
@@ -55,7 +55,7 @@
 				<div class="mdl-textfield mdl-js-textfield">
 					Type : <select name="type">
 					<?php
-						foreach ($data['types'] as $unType)
+						foreach ($donnees['types'] as $unType)
 						{
 							echo "<option value='" . $unType->id_type . "'>" . $unType->type . "</option>";
 						}
@@ -68,7 +68,7 @@
 				<div class="mdl-textfield mdl-js-textfield">
 					Cellier : <select name="id_cellier">
 					<?php
-						foreach ($data['celliers'] as $unCellier)
+						foreach ($donnees['celliers'] as $unCellier)
 						{
 							echo "<option value='" . $unCellier->id_cellier . "'>" . $unCellier->nom . "</option>";
 						}
@@ -77,8 +77,8 @@
 				</div>
 				<div>
 					<input type="hidden" name="id_bouteille" value="<?php echo $id_bouteille ?>">
-					<input type="hidden" name="action" value="<?php echo $data['actionBouton'] ?>">
-					<input type="submit" value="<?php echo $data['titreBouton'] ?>" class="mdl-button mdl-js-button mdl-button--raised">
+					<input type="hidden" name="action" value="<?php echo $donnees['actionBouton'] ?>">
+					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="mdl-button mdl-js-button mdl-button--raised">
 				</div>
 			</form>
 	</div>
