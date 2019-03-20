@@ -1,9 +1,3 @@
-CREATE DATABASE IF NOT EXISTS vino
-	CHARACTER SET utf8mb4
-	COLLATE utf8mb4_unicode_ci;
-
-USE vino;
-
 DROP TABLE IF EXISTS vino_bouteille;
 DROP TABLE IF EXISTS vino_cellier;
 DROP TABLE IF EXISTS vino_usager;
@@ -14,7 +8,7 @@ CREATE TABLE vino_type (
 	id_type TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	type VARCHAR(20) NOT NULL,
 	PRIMARY KEY (id_type)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE vino_bouteille_saq (
 	id_bouteille_saq MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,7 +21,7 @@ CREATE TABLE vino_bouteille_saq (
 	nom VARCHAR(200) NOT NULL,
 	PRIMARY KEY (id_bouteille_saq),
 	FOREIGN KEY (id_type) REFERENCES vino_type(id_type)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE vino_usager (
 	id_usager SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -38,7 +32,7 @@ CREATE TABLE vino_usager (
 	prenom VARCHAR(30) NOT NULL,
 	hash CHAR(128) NOT NULL,
 	PRIMARY KEY (id_usager)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE vino_cellier (
 	id_cellier MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -46,7 +40,7 @@ CREATE TABLE vino_cellier (
 	nom VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id_cellier),
 	FOREIGN KEY (id_usager) REFERENCES vino_usager(id_usager)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE vino_bouteille (
 	id_bouteille INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -65,7 +59,7 @@ CREATE TABLE vino_bouteille (
 	PRIMARY KEY (id_bouteille),
 	FOREIGN KEY (id_cellier) REFERENCES vino_cellier(id_cellier),
 	FOREIGN KEY (id_type) REFERENCES vino_type(id_type)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO vino_type VALUES(1, 'Vin blanc');
 INSERT INTO vino_type VALUES(2, 'Vin rosé');
