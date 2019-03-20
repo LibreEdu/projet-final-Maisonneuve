@@ -1,6 +1,7 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoFatemeh/privee/');
-	define("BASEURL", 'http://127.0.0.1/vinoFatemeh/www/');
+	// Définition des constantes
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vino/prive/');
+	define("BASEURL", 'http://127.0.0.1/vino/www/');
 	define("DBTYPE", 'mysql');
 	define("HOST", 'localhost');
 	define("DBNAME", 'vino');
@@ -8,7 +9,7 @@
 	define("USER", 'root');
 	define("PWD", '');
 	
-	//définition de ma fonction d'autoload
+	// Fonction d’autoload
 	function my_autoloader($classe)
 	{
 		$repertoires = array(
@@ -29,9 +30,9 @@
 
 	spl_autoload_register('my_autoloader');
 
-	// $_REQUEST['action'] = $_REQUEST['action'] ?? 'index';
+
+	// Action par défaut
 	if (empty($_REQUEST['action']))
 	{
 		$_REQUEST['action'] = 'index';
 	}
-?>
