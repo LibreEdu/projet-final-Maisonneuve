@@ -85,11 +85,19 @@
         {
             
             $lignes = Array();
-            $nom = $this->_bd->real_escape_string($nom);
-            $nom = preg_replace("/\*/","%" , $nom);
+			// $nom = real_escape_string($nom);
+			// $nom = "*a*";
+			$nom = preg_replace("/\*/","%" , $nom);
+			// var_dump($nom);die;
             
             //echo $nom;
-            $requete ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'. $nom .'%") LIMIT 0,'. $nb_resultat; 
+			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%?%") LIMIT 0,'. $nb_resultat;
+			$resultat = $this->requete($sql,$nom);
+
+			$lesNoms = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Bouteille");
+			var_dump($lesNoms);die;
+			return $lesCelliers;
+
            
             if(($res = $this->requete($requete)) ==	 true)
             {
