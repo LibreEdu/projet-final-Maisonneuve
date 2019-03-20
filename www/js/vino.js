@@ -133,7 +133,7 @@ window.addEventListener('load', function() {
 			"quantite":bouteille.quantite.value,
 			"millesime":bouteille.millesime.value,
 		};
-		let requete = new Request("index.php?requete=ajouterNouvelleBouteilleCellier", {method: 'POST', body: JSON.stringify(param)});
+		let requete = new Request("index.php?requete=ajouterBouteille", {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
 				.then(response => {
 					if (response.status === 200) {

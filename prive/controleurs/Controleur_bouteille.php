@@ -73,7 +73,7 @@
 					echo json_encode($resultat);
 					break;
 					
-				case 'ajouterNouvelleBouteilleCellier':
+				case 'ajouterBouteille':
 					$modeleType = $this->getDAO('Type');
 					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
