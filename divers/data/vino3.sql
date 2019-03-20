@@ -57,7 +57,7 @@ CREATE TABLE vino_bouteille (
 	id_type TINYINT unsigned NOT NULL,
 	pays VARCHAR(30) DEFAULT NULL,
 	format VARCHAR(10) DEFAULT NULL,
-	nom VARCHAR(200) s NULL,
+	nom VARCHAR(200) NULL,
 	note TEXT DEFAULT NULL,
 	quantite SMALLINT DEFAULT NULL,
 	date_achat DATE DEFAULT NULL,

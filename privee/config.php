@@ -1,12 +1,12 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoPerso/privee/');
-	define("BASEURL", 'http://localhost:8888/vinoPerso/www/');
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vinoFatemeh/privee/');
+	define("BASEURL", 'http://127.0.0.1/vinoFatemeh/www/');
 	define("DBTYPE", 'mysql');
 	define("HOST", 'localhost');
 	define("DBNAME", 'vino');
 	define("CHARSET", 'utf8mb4');
 	define("USER", 'root');
-	define("PWD", 'root');
+	define("PWD", '');
 	
 	//définition de ma fonction d'autoload
 	function my_autoloader($classe)
@@ -34,7 +34,4 @@
 	{
 		$_REQUEST['action'] = 'index';
 	}
-
-
-
 ?>

@@ -76,7 +76,7 @@
 			?>
 			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
 			<a href="index.php?bouteille&action=ajouterBouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
-			<a href="index.php?bouteille&action=listesCelliers" class="mdl-layout__tab is-active">Liste des celliers</a>
+			<a href="index.php?cellier" class="mdl-layout__tab is-active">Celliers</a>
 			<a href="index.php?bouteille&action=ajouterNouvelleBouteilleCellier" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<?php
 			// }
