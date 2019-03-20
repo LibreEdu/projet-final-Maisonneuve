@@ -6,7 +6,7 @@
 
     // Définition des constantes de connexion à la base de données
     define("DBTYPE", "mysql");
-    define("DBNAME", "e1795854");
+    define("DBNAME", "");
     define("HOST", "localhost");
 
     /* Local : Mac */
@@ -18,8 +18,8 @@
     define("PWD", ""); /**/
 
     /* WebDev * /
-    define("USER", "e1795854");
-    define("PWD", "tWNAH4SuwQZrAHd4uflf"); /**/
+    define("USER", "");
+    define("PWD", ""); /**/
 
     define("PREFIXE", "php_");
     define("MAINADMIN", "admin");
