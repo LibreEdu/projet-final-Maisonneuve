@@ -1,6 +1,7 @@
 <?php
 /**
- * Gestion de celliers qui peuvent contenir des bouteilles de la Société des alcools du Québec (SAQ).
+ * Projet de fin d’études : site web gérant des celliers 
+ * qui peuvent contenir des bouteilles de la Société des alcools du Québec (SAQ).
  * @author José Ignacio Delgado
  * @author Fatemeh Homatash
  * @author Alexandre Pachot
