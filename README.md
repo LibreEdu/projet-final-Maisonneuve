@@ -2,7 +2,7 @@
 
 ## Contexte
 
-Projet final de la formation en Conception et programmation de sites Web du Collège de Maisonneuve.
+Projet final de la formation en *Conception et programmation de sites Web* du Collège de Maisonneuve.
 
 [Description du programme.](https://fc.cmaisonneuve.qc.ca/repertoire/ti/aec/developpement-sites-web)
 
