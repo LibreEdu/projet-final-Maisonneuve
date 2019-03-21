@@ -1,15 +1,13 @@
 <?php
-	class Controleur_BouteilleSaq extends BaseControleur
+	class Controleur_Admin extends BaseControleur
 	{
 		public function traite(array $params)
 		{
 			switch($params['action'])
 			{
 				case 'index':
-					$modeleBouteilleSaq = $this->getDAO('BouteilleSaq');	
-					$donnees['bouteilleSaq'] = $modeleBouteilleSaq->obtenir_tous();
 					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('bouteille/bouteilleSaq', $donnees);
+					$this->afficheVue('modeles/menu-admin');
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
