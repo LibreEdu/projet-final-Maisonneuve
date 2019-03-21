@@ -9,11 +9,12 @@
  */
 
 window.addEventListener('load', function() {
-	document.querySelectorAll('.formAjouterCellier').forEach(function(element){
-		element.addEventListener('click', function(evt){
+	let btnAjouterCellier = document.getElementById('btnAjouterCellier');
+	if(btnAjouterCellier){
+		btnAjouterCellier.addEventListener('click', function(){
 			window.location = 'index.php?uCellier&action=ajouter-form';
 		});
-	});
+	};
 
 	let cellier = {
 		id_usager : document.querySelector('[name="id_usager"]'),
