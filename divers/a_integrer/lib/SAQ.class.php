@@ -16,7 +16,7 @@ class SAQ extends Modele {
 	private $_stmt_bouteille_saq;
 	private $_stmt_type;
 
-	 public function __construct() {
+	public function __construct() {
 		parent::__construct();
 		try {
 			$this->_stmt_bouteille_saq = $this->_bd->prepare('INSERT INTO vino_bouteille_saq (nom, millesime, id_type, pays, format, code_saq, prix) 
