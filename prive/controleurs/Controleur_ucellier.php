@@ -13,7 +13,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'formAjouterCellier':
+				case 'ajouter-form':
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier/ajouter');
 					$this->afficheVue('modeles/bas-de-page');
