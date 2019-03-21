@@ -20,7 +20,6 @@
 					break;
 
 				case 'ajouter':
-					echo "string";
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->ajoutCellier();
 					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
