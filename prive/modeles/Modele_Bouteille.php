@@ -98,7 +98,7 @@
 			// var_dump($nom);die;
 			
 			//echo $nom;
-			$sql ='SELECT id_bouteille_saq AS id_bouteille, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
+			$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
 			// $sql ='SELECT * FROM vino_bouteille_saq';
 			//$sql ='SELECT * FROM vino_bouteille_saq WHERE id_bouteille_saq=?';
 			//$donnee = ['a'];
@@ -108,19 +108,27 @@
 			// echo "ddd";die;
 
 			$requete = $this->requete($sql);
-			$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'BouteilleSaq');
 			
 
 			// var_dump($bouteilles);die;
 
 			foreach($bouteilles as $bouteille) {
 				$uneBouteille = array();
-				$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille;
+				$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
+				$uneBouteille["code_saq"] = $bouteille->code_saq;
+				$uneBouteille["prix"] = $bouteille->prix;
+				$uneBouteille["millesime"] = $bouteille->millesime;
+				$uneBouteille["id_type"] = $bouteille->id_type;
+				$uneBouteille["pays"] = $bouteille->pays;
+				$uneBouteille["format"] = $bouteille->format;
 				$uneBouteille["nom"] = $bouteille->nom;
 				array_push($listeBouteilles, $uneBouteille);
 			}
 			// var_dump($listeBouteilles);die;
 			return $listeBouteilles;
+
+
 
 			//$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
 				//$laBouteille = $resultat->fetch();
