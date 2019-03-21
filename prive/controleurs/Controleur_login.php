@@ -22,7 +22,7 @@
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;
 								$this->afficheVue('modeles/en-tete');
-								$this->afficheVue('modeles/menu-admin');
+								$this->afficheVue('modeles/menu-usager');
 								$this->afficheVue('cellier', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
 							}
