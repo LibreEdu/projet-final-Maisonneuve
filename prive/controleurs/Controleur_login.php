@@ -6,9 +6,9 @@
 			switch($params['action'])
 			{
 				case 'index':
-				//var_dump($_SESSION);die;
-				 $messageErreur = '';
+					$messageErreur = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
+					// 
 						{
 							$modeleUsager = $this->getDAO('Usager');
 							
@@ -21,6 +21,7 @@
 								$_SESSION['UserID'] = $_REQUEST['user'];
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;
+								
 								$this->afficheVue('modeles/en-tete');
 								$this->afficheVue('modeles/menu-usager');
 								$this->afficheVue('cellier', $donnees);
@@ -38,9 +39,15 @@
 							}
 						}
 						// Dans le cas qu’aucun paramètre n’est spécifié, on affiche la page login
+						// die();
+						// echo "coucou";
+						
 						$this->afficheVue('modeles/en-tete');
+						
 						$this->afficheVue('modeles/menu-admin');
+						
 						$this->afficheVue('login/login');
+						die();
 						$this->afficheVue('modeles/bas-de-page');
 					break;
 
