@@ -1,5 +1,5 @@
 <?php
-	class Controleur_uBouteille extends BaseControleur
+	class Controleur_Bouteille extends BaseControleur
 	{
 		public function traite(array $params)
 		{
@@ -97,7 +97,6 @@
 					// echo "coucou";die;
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$listeBouteilles = $modeleBouteille->autocomplete('a');
-					// var_dump('a');die;
 					break;
 
 				default :

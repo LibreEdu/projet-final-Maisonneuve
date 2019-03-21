@@ -28,7 +28,7 @@
 			</div>
 			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
-					Nom : <input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required">
+					Nom : <span data-id='' class='nom_bouteille'><input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required"></span>
 					<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
