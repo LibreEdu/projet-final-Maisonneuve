@@ -39,10 +39,15 @@ window.addEventListener('load', function() {
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
-					return response.json();
+					return response.text();
 				} else {
 					throw new Error('Erreur');
 				}
+			})
+			.then(response => {
+				console.log(response);
+			}).catch(error => {
+				console.error(error);
 			});
 		});
 	});
