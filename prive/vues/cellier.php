@@ -5,7 +5,7 @@
 		if(isset($_SESSION["UserID"]))
 			{
 				echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p>";
-				echo "<a href='?usager&action=Logout'>Se déconnecter</a>";
+				echo "<a href='?uUsager&action=Logout'>Se déconnecter</a>";
 			}
 		?>
 			</div>
@@ -31,8 +31,8 @@
 						<p>
 						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
-							<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>Ajouter</button>
-							<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>Boire</button>
+							<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>+ 1</button>
+							<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>- 1</button>
 						</div>
 						</p>
 					</div>
