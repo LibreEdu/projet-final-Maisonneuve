@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 					throw new Error('Erreur');
 				}
 			});*/
-			window.location = 'index.php?uBouteille&action=visiterCellier&id='+id;
+			window.location = 'index.php?bouteille&action=visiterCellier&id='+id;
 		});
 	});
 
@@ -56,7 +56,7 @@ window.addEventListener('load', function() {
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
 
-			let requete = new Request('index.php?uBouteille&action=boire-js', {method: 'POST', body: '{"id": ' + id + '}'});
+			let requete = new Request('index.php?bouteille&action=boire-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			fetch(requete)
@@ -81,7 +81,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnAjouter').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?uBouteille&action=ajouter-js', {method: 'POST', body: '{"id": ' + id + '}'});
+			let requete = new Request('index.php?bouteille&action=ajouter-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			
@@ -106,7 +106,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnModifier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			window.location = 'index.php?uBouteille&action=modifier-form&id='+id;
+			window.location = 'index.php?bouteille&action=modifier-form&id='+id;
 		});
 	});
 
@@ -117,7 +117,7 @@ window.addEventListener('load', function() {
 		let nom = inputNomBouteille.value;
 		liste.innerHTML = '';
 		if(nom){
-			let requete = new Request('index.php?uBouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+			let requete = new Request('index.php?bouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
