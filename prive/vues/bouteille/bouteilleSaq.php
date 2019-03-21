@@ -2,21 +2,21 @@
 		<div class="mdl-layout__tab-panel is-active" id="overview">
 			<!-- Récupérer les données  -->
 			<?php
-				foreach ($donnees as $bouteille) {
+				foreach ($donnees['bouteilleSaq'] as $bouteille) {
 			?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<div class="mdl-card mdl-cell mdl-cell--12-col">
 					<div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-						<h4 class="mdl-cell mdl-cell--12-col"><?php echo $bouteille['nom']. " ".$bouteille['millesime']; ?></h4>
+						<h4 class="mdl-cell mdl-cell--12-col"><?php echo $bouteille->nom. " ".$bouteille->millesime; ?></h4>
 						<div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
 							<div class="section__circle-container__circle mdl-color--primary"></div>
 						</div>
 						<div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-							<h5><?php echo $bouteille['code_saq']; ?></h5>
-							<h5><?php echo $bouteille['type']; ?></h5>
-							<h5><?php echo $bouteille['pays']; ?></h5>
-							<h5><?php echo $bouteille['format']; ?></h5>
-							<h5><?php echo number_format($bouteille['prix'], 2, ',', ' ')." $"; ?></h5>
+							<h5><?php echo $bouteille->code_saq; ?></h5>
+							<h5><?php echo $bouteille->type; ?></h5>
+							<h5><?php echo $bouteille->pays; ?></h5>
+							<h5><?php echo $bouteille->format; ?></h5>
+							<h5><?php echo number_format($bouteille->prix, 2, ',', ' ')." $"; ?></h5>
 						</div>
 					</div>
 					<div class="mdl-card__actions">
