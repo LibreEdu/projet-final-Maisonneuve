@@ -40,7 +40,8 @@
 				case 'supprimerCellier':
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees['celliers'] = $modeleCellier->supprimer_par_id($body->id);
+					$modeleCellier->supprimer_par_id($body->id);
+					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier/liste', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
