@@ -98,32 +98,49 @@
 			// var_dump($nom);die;
 			
 			//echo $nom;
-			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%?%") LIMIT 0,'. $nb_resultat;
-			$resultat = $this->requete($sql,$nom);
+			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
+			// $sql ='SELECT * FROM vino_bouteille_saq';
+			//$sql ='SELECT * FROM vino_bouteille_saq WHERE id_bouteille_saq=?';
+			//$donnee = ['a'];
 
-			$lesNoms = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			var_dump($lesNoms);die;
-			return $lesCelliers;
 
-			if(($res = $this->requete($requete)) ==	 true)
-			{
-				if($res->num_rows)
-				{
-					while($row = $res->fetch_assoc())
-					{
-						$row['nom'] = trim(utf8_encode($row['nom']));
-						$lignes[] = $row;
-					}
-				}
-			}
-			else 
-			{
-				throw new Exception('Erreur de requête sur la base de données', 1);
+
+			// echo "ddd";die;
+
+			$requete = $this->requete($sql);
+			$resultat = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			var_dump($resultat);die;
+			//$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+				//$laBouteille = $resultat->fetch();
+				//return $laBouteille; 
+			//var_dump($resultat);die;
+
+			// $lesNoms = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			// var_dump($lesNoms);die;
+			// return $lesCelliers;
+
+			// if(($res = $this->requete($requete)) ==	 true)
+			// {
+			// 	if($res->num_rows)
+			// 	{
+			//		while($row = $requete->fetch_assoc())
+			//		{
+			//			$row['nom'] = trim(utf8_encode($row['nom']));
+			//			$lignes[] = $row;
+			//		}
+			// 	}
+			// }
+			// else 
+			// {
+			// 	throw new Exception('Erreur de requête sur la base de données', 1);
 				
+			// }
+			
+			while($lignes = $requete->fetch_assoc())
+			{
+				$
 			}
-			
-			
-			//var_dump($lignes);
+			//var_dump($resultat);
 			return $lignes;
 		}
 
