@@ -3,13 +3,16 @@
 	<div class="mdl-card__title">
 		<h2 class="mdl-card__title-text">Ajouter un cellier</h2>
 	</div>
-	<div class="mdl-card__supporting-text">
-		<div class="mdl-textfield mdl-js-textfield">
-			Id usager : <input class="mdl-textfield__input" type="text" name="id_usager">
-			Nom de cellier : <input class="mdl-textfield__input" type="text" name="nom">
+	<form method="POST">
+		<div class="mdl-card__supporting-text">
+			<div class="mdl-textfield mdl-js-textfield">
+				Id usager : <input class="mdl-textfield__input" type="text" name="id_usager">
+				Nom de cellier : <input class="mdl-textfield__input" type="text" name="nom">
+			</div>
+			<div>
+				<input type="hidden" name="action" value="ajouter">
+				<input type="submit" value="Ajouter" class="ajouterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			</div>
 		</div>
-		<div>
-			<button class="ajouterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="ajouterCellier">Ajouter le cellier</button>
-		</div>
-	</div>
+	</form>
 </main>
