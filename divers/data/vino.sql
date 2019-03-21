@@ -77,9 +77,9 @@ INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, 2016, 3, 'France', '
 INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
 
 INSERT INTO vino_usager VALUES(1, true, true, 'aa@aa.aa', 'Fatemeh', 'Homatash', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(2, true, true, 'bb@bb.bb', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(3, true, true, 'cc@cc.cc', 'Jose', 'Ignacio', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(4, true, true, 'dd@dd.dd', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(2, false, true, 'bb@bb.bb', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(3, false, true, 'cc@cc.cc', 'Jose', 'Ignacio', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(4, false, true, 'dd@dd.dd', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
 INSERT INTO vino_usager VALUES(5, false, true, 'ee@ee.ee', 'Mina', 'Amir', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
 
 INSERT INTO vino_cellier VALUES(1, 1, 'Domicile');
