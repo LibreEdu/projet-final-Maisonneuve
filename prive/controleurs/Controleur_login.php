@@ -6,16 +6,16 @@
 			switch($params['action'])
 			{
 				case 'index':
-				 $message = '';
+				 $messageErreur = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
 						{
 							//$usager = new Usager();
-							 $modeleUsager = $this->getDAO('Usager');
-							 $modeleBouteille = $this->getDAO('Bouteille');
-							 $donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-							 
+							$modeleUsager = $this->getDAO('Usager');
+							
 							if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 							{
+								$modeleBouteille = $this->getDAO('Bouteille');
+								$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 								// Mets le nom d’usager dans la variable session UserID,
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
@@ -26,9 +26,9 @@
 							}
 							else
 							{
-								$message = 'Mauvaise combinaison username/password';
+								$messageErreur = 'Mauvaise combinaison username/password';
 								// On affiche la page login
-								$donnees['erreurs'] = $message;
+								$donnees['erreurs'] = $messageErreur;
 								$this->afficheVue('modeles/en-tete');
 								$this->afficheVue('login/login', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
@@ -39,10 +39,71 @@
 						$this->afficheVue('login/login');
 						$this->afficheVue('modeles/bas-de-page');
 					break;
-				case 'Forminscription':
+				case 'formulaire':
 						 $this->afficheVue('modeles/en-tete');
-						 $this->afficheVue('login/inscription');
+						 $this->afficheVue('login/formulaire');
 						 $this->afficheVue('modeles/bas-de-page');
+					break;
+				case "sinscrire":
+					$modeleUsager = $this->getDAO('Usager');
+					$donnees["usager"] = $modeleUsager->obtenir_tous();
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+					
+					$messageErreur="";
+					if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
+					{
+
+						$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
+
+						if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
+						{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+							$messageErreur = 'Ce pseudo est déjà utilisé.';
+								
+							$donnees['erreurs'] = $messageErreur;
+							//echo "Ce pseudo est déjà utilisé.";
+						} 
+
+						if($messageErreur == "")
+						{
+							$nouveauSujet = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
+
+							$modeleUsager->sauvegarde($nouveauSujet);
+
+							// $messageErreur = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
+							// $donnees['erreurs'] = $messageErreur;
+							// $this->afficheVue('modeles/en-tete');
+							// $this->afficheVue('');
+							// $this->afficheVue('modeles/bas-de-page');
+							header('Location: ' . BASEURL);
+
+						} else
+						{
+
+							$this->afficheVue('modeles/en-tete');
+							$this->afficheFormInscription($messageErreur);
+							$this->afficheVue('modeles/bas-de-page');
+						} 
+					}
+					else
+					{
+						$messageErreur = "Paramètres invalides.";
+					}
+					break;
+				case 'logout':
+					// Supprime la session en lui assignant un tableau vide
+					$_SESSION = array();
+			
+					// Supprime le cookie de session en créant un nouveau cookie
+					// avec la date d’expiration dans le passé
+					if(isset($_COOKIE[session_name()]))
+					{
+						setcookie(session_name(), '', time() - 3600);
+					}
+			
+					// Détruire la session
+					session_destroy();
+					header('Location: ' . BASEURL);
 					break;
 				default :
 					trigger_error('Action invalide.');
@@ -62,8 +123,7 @@
 			// Remplir le tableau erreurs
 			$donnees['erreurs'] = $erreurs;
 			// Afficher le formulaire Ajouter un sujet
-			$vue = 'inscription';
-			$this->afficheVue($vue, $donnees);
+			$this->afficheVue('login/formulaire', $donnees);
 		}
 
 		 /*=====  Fonction de validation du formulaire d'inscription ======*/
