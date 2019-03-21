@@ -9,10 +9,71 @@
  */
 
 window.addEventListener('load', function() {
+	document.querySelectorAll(".formAjouterCellier").forEach(function(element){
+		element.addEventListener("click", function(evt){
+			window.location = "index.php?cellier&action=formAjouterCellier";
+		});
+	});
+
+	let cellier = {
+		id_usager : document.querySelector("[name='id_usager']"),
+		nom : document.querySelector("[name='nom']"),
+	};
+
+	/*let btnAjouterCellier = document.querySelector("[name='ajouterCellier']");
+	if(btnAjouterCellier){
+		btnAjouterCellier.addEventListener("click", function(evt){
+			var param = {
+				"id_usager":cellier.id_usager.value,
+				"nom":cellier.nom.value,
+			};
+			let requete = new Request("index.php?cellier&action=ajouterCellier", {method: 'POST', body: JSON.stringify(param)});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					console.log(response);
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+				window.location = "index.php?cellier&action=ajouterCellier";
+			}).catch(error => {
+				console.error(error);
+			});
+		});
+	}*/	
+
+	document.querySelectorAll(".ajouterCellier").forEach(function(element){
+		element.addEventListener("click", function(evt){
+			var param = {
+				"id_usager":cellier.id_usager.value,
+				"nom":cellier.nom.value,
+			};
+			let requete = new Request("index.php?cellier&action=ajouterCellier", {method: 'POST', body: JSON.stringify(param)});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					console.log(response);
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+				alert("safdadfe");
+				window.location = "index.php?cellier&action=ajouterCellier";
+			}).catch(error => {
+				console.error(error);
+			});
+		});
+	});
+
 	document.querySelectorAll(".btnVisiterCellier").forEach(function(element){
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			/*let requete = new Request("index.php?cellier&action=visiterCellier-js", {method: 'POST', body: '{"id": '+id+'}'});
+			/*let requete = new Request("index.php?cellier&action=visiterCellier", {method: 'POST', body: '{"id": '+id+'}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -21,14 +82,14 @@ window.addEventListener('load', function() {
 					throw new Error('Erreur');
 				}
 			});*/
-			window.location = "index.php?bouteille&action=visiterCellier-js&id="+id;
+			window.location = "index.php?bouteille&action=visiterCellier&id="+id;
 		});
 	});
 
 	document.querySelectorAll(".btnSupprimerCellier").forEach(function(element){
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request("index.php?cellier&action=supprimerCellier-js", {method: 'POST', body: '{"id": '+id+'}'});
+			let requete = new Request("index.php?cellier&action=supprimerCellier", {method: 'POST', body: '{"id": '+id+'}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -94,39 +155,35 @@ window.addEventListener('load', function() {
 	document.querySelectorAll(".btnModifier").forEach(function(element){
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			 window.location = "index.php?bouteille&action=modifier-form&id="+id;
-	})
-
+			window.location = "index.php?bouteille&action=modifier-form&id="+id;
+		});
 	});
 
 	let inputNomBouteille = document.querySelector("[name='nom_bouteille']");
 	let liste = document.querySelector('.listeAutoComplete');
-
 	if(inputNomBouteille){
-	  inputNomBouteille.addEventListener("keyup", function(evt){
+	  	inputNomBouteille.addEventListener("keyup", function(evt){
 		let nom = inputNomBouteille.value;
 		liste.innerHTML = "";
 		if(nom){
 			let requete = new Request("index.php?bouteille&action=saisie-semi-automatique", {method: 'POST', body: '{"nom": "'+nom+'"}'});
 			fetch(requete)
-				.then(response => {
-					if (response.status === 200) {
-						return response.text();
-					} else {
-					throw new Error('Erreur');
-					}
-				})
-				.then(response => {
-					console.log(response);
-					// response.forEach(function(element){
-					// 	liste.innerHTML += "<li data-id='"+element.id_bouteille_saq +"'>"+element.nom+"</li>";
-					// })
-				}).catch(error => {
-					console.error(error);
-				});
+			.then(response => {
+				if (response.status === 200) {
+					return response.text();
+				} else {
+				throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+				console.log(response);
+				// response.forEach(function(element){
+				// 	liste.innerHTML += "<li data-id='"+element.id_bouteille_saq +"'>"+element.nom+"</li>";
+				// })
+			}).catch(error => {
+				console.error(error);
+			});
 		}
-		
-		
 	});
 
 	let bouteille = {
@@ -139,8 +196,7 @@ window.addEventListener('load', function() {
 		notes : document.querySelector("[name='notes']"),
 	};
 
-
-	  liste.addEventListener("click", function(evt){
+	liste.addEventListener("click", function(evt){
 		console.dir(evt.target)
 		if(evt.target.tagName == "LI"){
 			bouteille.nom.dataset.id = evt.target.dataset.id;
@@ -166,18 +222,17 @@ window.addEventListener('load', function() {
 		};
 		let requete = new Request("index.php?requete=ajouter-form", {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
-				.then(response => {
-					if (response.status === 200) {
-						return response.json();
-					} else {
-						throw new Error('Erreur');
-					}
-				})
-				.then(response => {
-				}).catch(error => {
-					console.error(error);
-				});
-		
+			.then(response => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+			}).catch(error => {
+				console.error(error);
+			});		
 		});
 	  }
 
