@@ -25,14 +25,17 @@
 				<ul class="listeAutoComplete">
 
 				</ul>
+				<div class="infos">
+
+				</div>
 			</div>
 			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
-					Nom : <span data-id='' class='nom_bouteille'><input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required"></span>
-					<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>
+					Nom : <span data-id='' class='nom_bouteille'><input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required">
+					<span class="mdl-textfield__error">Entrez le nom de la bouteille</span></span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Millesime : <input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" name="millesime" value="<?php echo $millesime ?>">
+					Millesime :  <span data-id='' class='millesime'><input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" name="millesime" value="<?php echo $millesime ?>"></span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Quantité : <input class="mdl-textfield__input" type="number"  min="0" name="quantite" value="<?php echo $quantite ?>">
@@ -44,7 +47,10 @@
 					Boire avant : <input class="mdl-textfield__input" type="date" name="boire_avant" value="<?php echo $boire_avant ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Prix : <input class="mdl-textfield__input" type="text" name="prix" value="<?php echo $prix ?>">
+					Prix :
+					<span data-id='' class='prix'>
+						<input class="mdl-textfield__input" type="text" name="prix" value="<?php echo $prix ?>">
+					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Pays : <input class="mdl-textfield__input" type="text" name="pays" value="<?php echo $pays ?>">

@@ -55,7 +55,7 @@
 	if (isset($donnees['erreurs'])) {
 		if($donnees['erreurs'] != '')
 			{
-				echo '<p class="message"><i class="fas fa-exclamation"></i>' . $donnees['erreurs'] . '</p>';
+				echo '<p class="message"><i class="fas fa-exclamation"> </i>' . $donnees['erreurs'] . '</p>';
 			}
 	}
 	

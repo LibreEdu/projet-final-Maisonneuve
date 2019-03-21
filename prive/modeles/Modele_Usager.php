@@ -79,7 +79,7 @@
 				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->actif, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
 				return $this->requete($query, $donnees);
 
-		}		 
+		}
 		
 		
 	}

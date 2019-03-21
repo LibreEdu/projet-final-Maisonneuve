@@ -6,6 +6,7 @@
 			switch($params['action'])
 			{
 				case 'index':
+				//var_dump($_SESSION);die;
 				 $messageErreur = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
 						{
@@ -18,7 +19,6 @@
 								// Mets le nom d’usager dans la variable session UserID,
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
-								var_dump($_SESSION['UserID']);
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;
 								$this->afficheVue('modeles/en-tete');
@@ -59,7 +59,7 @@
 
 						if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
 						{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
-							$messageErreur = 'Ce pseudo est déjà utilisé.';
+							$messageErreur = ' Ce courriel est déjà utilisé.';
 								
 							$donnees['erreurs'] = $messageErreur;
 							//echo "Ce pseudo est déjà utilisé.";
@@ -160,7 +160,7 @@
 				$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
 
 			if(strlen($hash)>12|| strlen($hash)<5)
-				$msgErreur .= 'Le mot de passe doit être ent 6 et 12 caractéres.<br>';
+				$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractéres.<br>';
 
 			if(trim($hash) != trim($hash2))
 				$msgErreur .= 'Les mots de passe doivent ètre identique.<br>';

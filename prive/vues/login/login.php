@@ -6,18 +6,20 @@
 
 
 <main id='inscription'>
-<div class="card bg-light">
+<!-- <div class="card bg-light"> -->
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Connexion</h4>
-	<p class="divider-text">
-        <!-- <span class="bg-light">OR</span> -->
-    </p>
+	<!-- <h4 class="card-title mt-3 text-center">Connexion</h4> -->
+	<!-- <p class="divider-text">
+        <span class="bg-light">OR</span>
+    </p> -->
 
     <?php
 			// Si la variable session n'est pas remplie
 			if(!isset($_SESSION["UserID"]))
 			{
+			
 	?>
+	<h4 class="card-title mt-3 text-center">Connexion</h4>
 	<form method="POST" action="index.php?login">
 
 		<div class="form-group input-group">
@@ -41,6 +43,8 @@
     <p class="text-center">Vous n'avez pas de compte ? <a href="index.php?login&action=formulaire">Créer un Compte</a> </p> 
 
 </form>
+
+
 <?php
 		}
 		// Si l'usager est déjà connecté
@@ -58,8 +62,10 @@
 	}
 	
 ?>
+
+
 </article>
 </div> 
-</div>
+
 
 </main>
