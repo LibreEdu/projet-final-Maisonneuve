@@ -10,12 +10,14 @@
 		{
 			return 'id_bouteille';
 		}
+
 		public function obtenir_par_id($id)
 		{
 			$resultat = $this->lire($id, 'id_bouteille');
 			$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
 			return $maBouteille;
 		}
+
 		public function obtenir_tous()
 		{
 			$resultat = $this->lireTous();
@@ -23,7 +25,13 @@
 			return $lesRealisateurs;
 		}
 
-
+		public function obtenir_par_id_cellier($id)
+		{
+			$resultat = $this->lire($id, 'id_cellier');
+			$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			return $maBouteille;
+		}
+		
 		/**
 		 * Cette méthode change la quantité d’une bouteille en particulier dans le cellier
 		 * 
@@ -143,9 +151,7 @@
 		public function ajouterUneBouteille()
 		{
 			$sql = 'INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
-
 			$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier']);
-
 			$resultat = $this->requete($sql, $donnees);
 		}
 	}

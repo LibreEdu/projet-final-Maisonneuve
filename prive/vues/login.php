@@ -7,7 +7,7 @@
 				// var_dump($_SESSION["UserID"]);
 		?>
 		<div id="formlogin" >
-			<h1>Connexion</h1>
+			<h2>Connexion</h2>
 			<!-- Formulaire de connexion -->
 			<form method="POST">
 			Nom de l'utilisateur : <input type="text" name="user"/><br><br>
@@ -15,7 +15,7 @@
 			<input type="submit" value="Login"/>
 			<input type="hidden" name="action" value="login">
 		</form>
-		<a href="?usager&action=inscription">Créer un compte</a><br>
+		<a href="?usager&action=Forminscription">Créer un compte</a><br>
 				
 		<?php
 			}

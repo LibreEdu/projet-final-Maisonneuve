@@ -13,6 +13,14 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
+				case 'visiterCellier':
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($_GET['id']);
+					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('modeles/bas-de-page');
+					break;
+
 				case 'modifier-form':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
