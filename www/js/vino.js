@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 					throw new Error('Erreur');
 				}
 			});*/
-			window.location = 'index.php?uBouteille&action=visiterCellier&id='+id;
+			window.location = 'index.php?bouteille&action=visiterCellier&id='+id;
 		});
 	});
 
@@ -43,6 +43,11 @@ window.addEventListener('load', function() {
 				} else {
 					throw new Error('Erreur');
 				}
+			})
+			.then(response => {
+				window.location = 'index.php?uCellier';
+			}).catch(error => {
+				console.error(error);
 			});
 		});
 	});
@@ -51,7 +56,7 @@ window.addEventListener('load', function() {
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
 
-			let requete = new Request('index.php?uBouteille&action=boire-js', {method: 'POST', body: '{"id": ' + id + '}'});
+			let requete = new Request('index.php?bouteille&action=boire-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			fetch(requete)
@@ -76,7 +81,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnAjouter').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?uBouteille&action=ajouter-js', {method: 'POST', body: '{"id": ' + id + '}'});
+			let requete = new Request('index.php?bouteille&action=ajouter-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			
@@ -101,7 +106,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnModifier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			window.location = 'index.php?uBouteille&action=modifier-form&id='+id;
+			window.location = 'index.php?bouteille&action=modifier-form&id='+id;
 		});
 	});
 
@@ -112,20 +117,21 @@ window.addEventListener('load', function() {
 		let nom = inputNomBouteille.value;
 		liste.innerHTML = '';
 		if(nom){
-			let requete = new Request('index.php?uBouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+			let requete = new Request('index.php?bouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
-					return response.text();
+					return response.json();
 				} else {
 				throw new Error('Erreur');
 				}
 			})
 			.then(response => {
-				console.log(response);
-				// response.forEach(function(element){
-				// 	liste.innerHTML += '<li data-id=" + element.id_bouteille_saq +'">'+element.nom+'</li>';
-				// })
+				// console.log(response);
+				response.forEach(function(element){
+					// console.log(element.id_bouteille_saq);
+					liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
+				} )
 			}).catch(error => {
 				console.error(error);
 			});
@@ -145,6 +151,7 @@ window.addEventListener('load', function() {
 	liste.addEventListener('click', function(evt){
 		console.dir(evt.target)
 		if(evt.target.tagName == 'LI'){
+			console.log(evt.target.dataset);
 			bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.innerHTML = evt.target.innerHTML;
 			
@@ -153,34 +160,35 @@ window.addEventListener('load', function() {
 
 		}
 	});
+	
 
-	// let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
-	// if(btnAjouter){
-	// 	btnAjouter.addEventListener('click', function(evt){
-	// 	var param = {
-	// 		'id_bouteille':bouteille.nom.dataset.id,
-	// 		'date_achat':bouteille.date_achat.value,
-	// 		'garde_jusqua':bouteille.garde_jusqua.value,
-	// 		'notes':bouteille.date_achat.value,
-	// 		'prix':bouteille.prix.value,
-	// 		'quantite':bouteille.quantite.value,
-	// 		'millesime':bouteille.millesime.value,
-	// 	};
-	// 	let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
-	// 		fetch(requete)
-	// 		.then(response => {
-	// 			if (response.status === 200) {
-	// 				return response.json();
-	// 			} else {
-	// 				throw new Error('Erreur');
-	// 			}
-	// 		})
-	// 		.then(response => {
-	// 		}).catch(error => {
-	// 			console.error(error);
-	// 		});		
-	// 	});
-	// }
+	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	if(btnAjouter){
+		btnAjouter.addEventListener('click', function(evt){
+		var param = {
+			'id_bouteille':bouteille.nom.dataset.id,
+			'date_achat':bouteille.date_achat.value,
+			'garde_jusqua':bouteille.garde_jusqua.value,
+			'notes':bouteille.date_achat.value,
+			'prix':bouteille.prix.value,
+			'quantite':bouteille.quantite.value,
+			'millesime':bouteille.millesime.value,
+		};
+		let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+			}).catch(error => {
+				console.error(error);
+			});		
+		});
+	}
 
 	// let bouteille2 = {
 	// 	id : document.querySelector('[name="id"]'),

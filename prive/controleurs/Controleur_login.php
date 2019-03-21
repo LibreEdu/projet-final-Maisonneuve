@@ -19,6 +19,7 @@
 								// Mets le nom d’usager dans la variable session UserID,
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
+								var_dump($_SESSION['UserID']);
 
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;

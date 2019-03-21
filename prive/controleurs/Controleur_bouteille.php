@@ -1,5 +1,5 @@
 <?php
-	class Controleur_uBouteille extends BaseControleur
+	class Controleur_Bouteille extends BaseControleur
 	{
 		public function traite(array $params)
 		{
@@ -87,16 +87,16 @@
 
 				case 'saisie-semi-automatique':
 					$body = json_decode(file_get_contents('php://input'));
-					var_dump($body->nom);die;
+					//var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
 					echo json_encode($listeBouteilles);
 					break;
 
 				case 'alex':
+					// echo "coucou";die;
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$listeBouteilles = $modeleBouteille->autocomplete('a');
-					// var_dump('a');die;
 					break;
 
 				default :
