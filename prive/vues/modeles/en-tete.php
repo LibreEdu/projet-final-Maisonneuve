@@ -77,7 +77,12 @@
 			<a href="index.php?uCellier" class="mdl-layout__tab is-active">Celliers</a>
 			<a href="index.php?bouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<?php
-			// }
+			if(isset($_SESSION["UserID"]))
+			{
+			?>
+			<a href="index.php?login&action=logout" class="mdl-layout__tab is-active" id="deconnexion">Déconnexion</a>
+			<?php
+			 }
 			?>
 		</div>
 	</header>
