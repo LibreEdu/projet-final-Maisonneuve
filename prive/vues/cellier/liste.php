@@ -1,5 +1,9 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterCellier">
+				<i class="material-icons" role="presentation">add</i>
+				<span class="visuallyhidden">Add</span>
+		  	</button>
 			<!-- Récupérer les données -->
 			<?php
 				foreach ($donnees["celliers"] as $cellier) {

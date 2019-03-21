@@ -23,7 +23,7 @@
 
 			// Si aucun contrôleur n’est spécifié, mettre le contrôleur par défaut
 			if($controleur == '')
-				$controleur = 'Bouteille';
+				$controleur = 'uBouteille';
 
 			// Détermin la classe du controleur
 			$classe = 'Controleur_' . $controleur;

@@ -1,5 +1,5 @@
 <?php
-	class Controleur_bouteille extends BaseControleur
+	class Controleur_uBouteille extends BaseControleur
 	{
 		public function traite(array $params)
 		{
@@ -13,7 +13,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'visiterCellier-js':
+				case 'visiterCellier':
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($_GET['id']);
 					$this->afficheVue('modeles/en-tete');
