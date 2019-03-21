@@ -6,6 +6,11 @@
 			switch($params['action'])
 			{
 				case 'index':
+					$modeleUsager = $this->getDAO('Usager');
+					$modeleUsager->obtenir_tous();
+					//$_SESSION['UserID'] = $params['id_usager'];
+					//var_dump($_SESSION['UserID']);
+					//var_dump($modeleUsager->obtenir_tous());die;
 					$modeleCellier = $this->getDAO('Cellier');
 					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
 					$this->afficheVue('modeles/en-tete');

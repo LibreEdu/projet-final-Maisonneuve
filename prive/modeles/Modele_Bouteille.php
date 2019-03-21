@@ -136,10 +136,10 @@
 				
 			// }
 			
-			while($lignes = $requete->fetch_assoc())
+			/*while($lignes = $requete->fetch_assoc())
 			{
 				$
-			}
+			}*/
 			//var_dump($resultat);
 			return $lignes;
 		}
