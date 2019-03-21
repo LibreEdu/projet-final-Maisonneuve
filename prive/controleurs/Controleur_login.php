@@ -5,8 +5,7 @@
 		{
 			switch($params['action'])
 			{
-				//case 'index':
-				case 'login':
+				case 'index':
 				 $message = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
 						{
@@ -31,20 +30,18 @@
 								// On affiche la page login
 								$donnees['erreurs'] = $message;
 								$this->afficheVue('modeles/en-tete');
-								$vue = 'login';
-								$this->afficheVue($vue, $donnees);
+								$this->afficheVue('login/login', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
 							}
 						}
 						// Dans le cas qu’aucun paramètre n’est spécifié, on affiche la page login
 						$this->afficheVue('modeles/en-tete');
-						$vue = 'login';
-						$this->afficheVue($vue);
+						$this->afficheVue('login/login');
 						$this->afficheVue('modeles/bas-de-page');
 					break;
 				case 'Forminscription':
 						 $this->afficheVue('modeles/en-tete');
-						 $this->afficheVue('inscription');
+						 $this->afficheVue('login/inscription');
 						 $this->afficheVue('modeles/bas-de-page');
 					break;
 				default :
