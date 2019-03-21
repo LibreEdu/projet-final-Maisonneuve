@@ -14,7 +14,7 @@
 					</div>
 					<div class="mdl-card__actions">
 						<p>
-						<div class="options" data-id="<?php echo $cellier->id_cellier?>">
+						<div class="options" data-id="<?php echo $cellier->id_cellier ?>">
 							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Visiter</button>
 							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button>
 						</div>

@@ -9,6 +9,37 @@
  */
 
 window.addEventListener('load', function() {
+	document.querySelectorAll(".btnVisiterCellier").forEach(function(element){
+		element.addEventListener("click", function(evt){
+			let id = evt.target.parentElement.dataset.id;
+			/*let requete = new Request("index.php?cellier&action=visiterCellier-js", {method: 'POST', body: '{"id": '+id+'}'});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			});*/
+			window.location = "index.php?bouteille&action=visiterCellier-js&id="+id;
+		});
+	});
+
+	document.querySelectorAll(".btnSupprimerCellier").forEach(function(element){
+		element.addEventListener("click", function(evt){
+			let id = evt.target.parentElement.dataset.id;
+			let requete = new Request("index.php?cellier&action=supprimerCellier-js", {method: 'POST', body: '{"id": '+id+'}'});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			});
+		});
+	});
+
 	document.querySelectorAll(".btnBoire").forEach(function(element){
 		element.addEventListener("click", function(evt){
 			let id = evt.target.parentElement.dataset.id;
