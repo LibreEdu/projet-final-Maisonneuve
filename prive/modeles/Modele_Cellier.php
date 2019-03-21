@@ -28,8 +28,7 @@
 		public function supprimer_par_id($id)
 		{
 			$resultat = $this->supprimer($id);
-			$lesCelliers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Cellier');
-			return $lesCelliers;
+			return $resultat;
 		}
 
 		public function ajoutCellier()
