@@ -39,13 +39,13 @@ window.addEventListener('load', function() {
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
-					return response.text();
+					return response.json();
 				} else {
 					throw new Error('Erreur');
 				}
 			})
 			.then(response => {
-				console.log(response);
+				window.location = 'index.php?uCellier';
 			}).catch(error => {
 				console.error(error);
 			});
