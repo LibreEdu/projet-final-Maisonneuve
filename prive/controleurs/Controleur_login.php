@@ -22,6 +22,7 @@
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;
 								$this->afficheVue('modeles/en-tete');
+								$this->afficheVue('modeles/menu-usager');
 								$this->afficheVue('cellier', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
 							}
@@ -31,18 +32,21 @@
 								// On affiche la page login
 								$donnees['erreurs'] = $messageErreur;
 								$this->afficheVue('modeles/en-tete');
+								$this->afficheVue('modeles/menu-admin');
 								$this->afficheVue('login/login', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
 							}
 						}
 						// Dans le cas qu’aucun paramètre n’est spécifié, on affiche la page login
 						$this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/menu-admin');
 						$this->afficheVue('login/login');
 						$this->afficheVue('modeles/bas-de-page');
 					break;
 
 				case 'formulaire':
-						 $this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/menu-admin');
 						 $this->afficheVue('login/formulaire');
 						 $this->afficheVue('modeles/bas-de-page');
 					break;
@@ -79,6 +83,7 @@
 						} else
 						{
 							$this->afficheVue('modeles/en-tete');
+							$this->afficheVue('modeles/menu-admin');
 							$this->afficheFormInscription($messageErreur);
 							$this->afficheVue('modeles/bas-de-page');
 						} 

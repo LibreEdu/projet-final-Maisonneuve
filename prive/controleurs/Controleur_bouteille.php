@@ -9,6 +9,7 @@
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
@@ -17,6 +18,7 @@
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($_GET['id']);
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
@@ -32,6 +34,7 @@
 					$donnees['actionBouton'] = 'modifier';
 					$donnees['titreBouton'] = 'Modifier la bouteille';
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('bouteille/formulaire', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
@@ -42,6 +45,7 @@
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					echo '<script>alert("La bouteille a été modifiée.")</script>';
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
@@ -52,6 +56,7 @@
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					echo '<script>alert("La bouteille a été ajoutée.")</script>';
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
@@ -81,6 +86,7 @@
 					$donnees['actionBouton'] = 'ajouter';
 					$donnees['titreBouton'] = 'Ajouter la bouteille';
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('bouteille/formulaire', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;

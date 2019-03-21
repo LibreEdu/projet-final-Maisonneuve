@@ -1,5 +1,5 @@
 <?php
-	class Controleur_uUsager extends BaseControleur
+	class Controleur_Usager extends BaseControleur
 	{
 		public function traite(array $params)
 		{
@@ -11,6 +11,7 @@
 					$donnees['usager'] = $modeleUsager->obtenir_tous();
 					
 					$this->afficheVue('modeles/en-tete');
+					$this->afficheVue('modeles/menu-usager');
 					//$this->afficheVue('cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
