@@ -1,6 +1,7 @@
 <main id="inscription" class="mdl-layout__content">
 	<div id="conteneurinscription" class="mdl-layout__tab-panel is-active">
-		<form method="post">
+		<h2>Inscription</h2>
+		<form method="POST">
         Courriel : <input type="text" name="pseudo" placeholder="dupont@mail.com"> <br><br>
         
         Nom : <input type="text" name="nom" placeholder="Nom"><br><br>
@@ -15,10 +16,13 @@
         <input type="hidden" name="action" value="inscription">
     </form>
     <?php
-    if($donnees["erreurs"] != "")
+    if (isset($donnees["erreurs"])) {
+    	if($donnees["erreurs"] != "")
 			{
 				echo "<p class='message'><i class='fas fa-exclamation'></i>" . $donnees["erreurs"] . "</p>";
 			}
+    }
+    
 	?>
 	</div>
 </main>
