@@ -91,14 +91,14 @@
 		public function autocomplete($nom, $nb_resultat=10)
 		{
 			
-			$lignes = Array();
+			$listeBouteilles = Array();
 			// $nom = real_escape_string($nom);
 			// $nom = '*a*';
 			$nom = preg_replace('/\*/','%' , $nom);
 			// var_dump($nom);die;
 			
 			//echo $nom;
-			$sql ='SELECT id_bouteille_saq, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
+			$sql ='SELECT id_bouteille_saq AS id_bouteille, nom FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
 			// $sql ='SELECT * FROM vino_bouteille_saq';
 			//$sql ='SELECT * FROM vino_bouteille_saq WHERE id_bouteille_saq=?';
 			//$donnee = ['a'];
@@ -108,8 +108,20 @@
 			// echo "ddd";die;
 
 			$requete = $this->requete($sql);
-			$resultat = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			var_dump($resultat);die;
+			$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			
+
+			// var_dump($bouteilles);die;
+
+			foreach($bouteilles as $bouteille) {
+				$uneBouteille = array();
+				$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille;
+				$uneBouteille["nom"] = $bouteille->nom;
+				array_push($listeBouteilles, $uneBouteille);
+			}
+			// var_dump($listeBouteilles);die;
+			return $listeBouteilles;
+
 			//$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
 				//$laBouteille = $resultat->fetch();
 				//return $laBouteille; 
@@ -136,12 +148,12 @@
 				
 			// }
 			
-			while($lignes = $requete->fetch_assoc())
-			{
-				$
-			}
+			// while($lignes = $requete->fetch_assoc())
+			// {
+			// 	$
+			// }
 			//var_dump($resultat);
-			return $lignes;
+			// return $lignes;
 		}
 
 		public function modifierBouteille()

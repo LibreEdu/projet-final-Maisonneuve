@@ -127,10 +127,11 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				console.log(response);
+				// console.log(response);
 				response.forEach(function(element){
+					// console.log(element.id_bouteille_saq);
 					liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
-				})
+				} )
 			}).catch(error => {
 				console.error(error);
 			});
@@ -150,6 +151,7 @@ window.addEventListener('load', function() {
 	liste.addEventListener('click', function(evt){
 		console.dir(evt.target)
 		if(evt.target.tagName == 'LI'){
+			console.log(evt.target.dataset);
 			bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.innerHTML = evt.target.innerHTML;
 			
@@ -158,34 +160,35 @@ window.addEventListener('load', function() {
 
 		}
 	});
+	
 
-	// let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
-	// if(btnAjouter){
-	// 	btnAjouter.addEventListener('click', function(evt){
-	// 	var param = {
-	// 		'id_bouteille':bouteille.nom.dataset.id,
-	// 		'date_achat':bouteille.date_achat.value,
-	// 		'garde_jusqua':bouteille.garde_jusqua.value,
-	// 		'notes':bouteille.date_achat.value,
-	// 		'prix':bouteille.prix.value,
-	// 		'quantite':bouteille.quantite.value,
-	// 		'millesime':bouteille.millesime.value,
-	// 	};
-	// 	let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
-	// 		fetch(requete)
-	// 		.then(response => {
-	// 			if (response.status === 200) {
-	// 				return response.json();
-	// 			} else {
-	// 				throw new Error('Erreur');
-	// 			}
-	// 		})
-	// 		.then(response => {
-	// 		}).catch(error => {
-	// 			console.error(error);
-	// 		});		
-	// 	});
-	// }
+	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	if(btnAjouter){
+		btnAjouter.addEventListener('click', function(evt){
+		var param = {
+			'id_bouteille':bouteille.nom.dataset.id,
+			'date_achat':bouteille.date_achat.value,
+			'garde_jusqua':bouteille.garde_jusqua.value,
+			'notes':bouteille.date_achat.value,
+			'prix':bouteille.prix.value,
+			'quantite':bouteille.quantite.value,
+			'millesime':bouteille.millesime.value,
+		};
+		let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
+			fetch(requete)
+			.then(response => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Erreur');
+				}
+			})
+			.then(response => {
+			}).catch(error => {
+				console.error(error);
+			});		
+		});
+	}
 
 	// let bouteille2 = {
 	// 	id : document.querySelector('[name="id"]'),

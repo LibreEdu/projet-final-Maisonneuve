@@ -97,7 +97,6 @@
 					// echo "coucou";die;
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$listeBouteilles = $modeleBouteille->autocomplete('a');
-					// var_dump('a');die;
 					break;
 
 				default :
