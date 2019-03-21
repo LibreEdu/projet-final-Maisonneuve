@@ -9,6 +9,7 @@
  */
 
 window.addEventListener('load', function() {
+	//En cliquant sur le bouton ajouter cellier il le redirige vers le controleur cellier
 	let btnAjouterCellier = document.getElementById('btnAjouterCellier');
 	if(btnAjouterCellier){
 		btnAjouterCellier.addEventListener('click', function(){
@@ -16,22 +17,15 @@ window.addEventListener('load', function() {
 		});
 	};
 
+	//En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
 	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			/*let requete = new Request('index.php?uCellier&action=visiterCellier', {method: 'POST', body: '{'id': '+id+'}'});
-			fetch(requete)
-			.then(response => {
-				if (response.status === 200) {
-					return response.json();
-				} else {
-					throw new Error('Erreur');
-				}
-			});*/
 			window.location = 'index.php?bouteille&action=visiterCellier&id='+id;
 		});
 	});
 
+	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
@@ -51,6 +45,14 @@ window.addEventListener('load', function() {
 			});
 		});
 	});
+
+	//Recuperer le bouton ajouter et diriger vers le controleur bouteille
+	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
+	if(btnAjouterBouteille){
+		btnAjouterBouteille.addEventListener('click', function(){
+			window.location = 'index.php?bouteille&action=ajouter-form';
+		});
+	};
 
 	document.querySelectorAll('.btnBoire').forEach(function(element){
 		element.addEventListener('click', function(evt){
@@ -76,7 +78,6 @@ window.addEventListener('load', function() {
 		})
 
 	});
-
 
 	document.querySelectorAll('.btnAjouter').forEach(function(element){
 		element.addEventListener('click', function(evt){
@@ -161,7 +162,6 @@ window.addEventListener('load', function() {
 		}
 	});
 	
-
 	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
 	if(btnAjouter){
 		btnAjouter.addEventListener('click', function(evt){

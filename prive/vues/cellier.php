@@ -1,14 +1,9 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<div>
-				<?php // On affiche le message
-		if(isset($_SESSION["UserID"]))
-			{
-				echo "<p>Bonjour  " . $_SESSION["UserID"] ."   ". "</p>";
-				echo "<a href='index.php?login&action=logout'>Se déconnecter</a>";
-			}
-		?>
-			</div>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterBouteille">
+				<i class="material-icons" role="presentation">add</i>
+				<span class="visuallyhidden">Add</span>
+		  	</button>
 			<?php foreach ($donnees['bouteilles'] as $bouteille): ?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
