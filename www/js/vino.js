@@ -127,7 +127,7 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				// console.log(response);
+				//console.log(response);
 				response.forEach(function(element){
 					// console.log(element.id_bouteille_saq);
 					liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
@@ -140,20 +140,21 @@ window.addEventListener('load', function() {
 
 	let bouteille = {
 		nom : document.querySelector('.nom_bouteille'),
-		millesime : document.querySelector('[name="millesime"]'),
+		millesime : document.querySelector('.millesime'),
 		quantite : document.querySelector('[name="quantite"]'),
 		date_achat : document.querySelector('[name="date_achat"]'),
-		prix : document.querySelector('[name="prix"]'),
+		prix : document.querySelector('.prix'),
 		garde_jusqua : document.querySelector('[name="garde_jusqua"]'),
 		notes : document.querySelector('[name="notes"]'),
 	};
 
 	liste.addEventListener('click', function(evt){
-		console.dir(evt.target)
+		//console.dir(evt.target)
 		if(evt.target.tagName == 'LI'){
-			console.log(evt.target.dataset);
+			//console.log(evt.target.dataset);
 			bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.innerHTML = evt.target.innerHTML;
+			//bouteille.prix.innerHTML = response.prix;
 			
 			liste.innerHTML = '';
 			inputNomBouteille.value = '';

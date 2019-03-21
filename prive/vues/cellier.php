@@ -4,9 +4,10 @@
 				<?php // On affiche le message
 		if(isset($_SESSION["UserID"]))
 			{
-				echo "<p>Bonjour  " . $_SESSION["UserID"] ."   ". "</p>";
-				echo "<a href='index.php?login&action=logout'>Se déconnecter</a>";
+				echo "<p>Bonjour  vous êtes connecté en tant que  " . $_SESSION["UserID"] ."   ". "</p>";
+				//echo "<a href='index.php?login&action=logout'>Se déconnecter</a>";
 			}
+
 		?>
 			</div>
 			<?php foreach ($donnees['bouteilles'] as $bouteille): ?>
