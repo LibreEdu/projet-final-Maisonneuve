@@ -54,18 +54,18 @@
 
 		/*=====  Fonction d'affichage du formulaire d'ajout d'un sujet  ======*/
 		
-		public function afficheFormInscription($erreurs = "")
+		public function afficheFormInscription($erreurs = '')
 		{
 			// Récupérer le modèle sujets
-			$modeleUsager = $this->getDAO("Usager");
-			// Récupérer la liste des sujets
-			$donnees["usager"] = $modeleUsager->obtenir_tous();
-			// $donnees["Sujets"] = $modeleSujets->ObtenirTousParReponses();
+			$modeleUsager = $this->getDAO('Usager');
+			// Récupére la liste des sujets
+			$donnees['usager'] = $modeleUsager->obtenir_tous();
+			// $donnees['Sujets'] = $modeleSujets->ObtenirTousParReponses();
 
 			// Remplir le tableau erreurs
-			$donnees["erreurs"] = $erreurs;
+			$donnees['erreurs'] = $erreurs;
 			// Afficher le formulaire Ajouter un sujet
-			$vue = "inscription";
+			$vue = 'inscription';
 			$this->afficheVue($vue, $donnees);
 		}
 
@@ -74,7 +74,7 @@
 		public function valideFormInscription($courriel, $nom, $prenom, $hash ,$hash2)
 		{
 			// Initialiser le message d'erreur
-			$msgErreur = "";
+			$msgErreur = '';
 
 			// Récupérer le titre
 			$courriel = trim($courriel);
@@ -83,32 +83,32 @@
 			$prenom = trim($prenom);
 			$hash = trim($hash);
 			
-			if($courriel == "")
-				$msgErreur .= "Le champ Courriel est vide.<br>";
+			if($courriel == '')
+				$msgErreur .= 'Le champ Courriel est vide.<br>';
 			
-			if(!preg_match("#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#",$courriel))
-				$msgErreur .= "le format courriel doit être réspecter.<br>";
+			if(!preg_match('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',$courriel))
+				$msgErreur .= 'le format courriel doit être réspecter.<br>';
 			
-			if($nom == "")
-				$msgErreur .= "Le nom ne peut être vide.<br>";
+			if($nom == '')
+				$msgErreur .= 'Le nom ne peut être vide.<br>';
 
-			if(!preg_match("#^[a-zA-Z]+$#",$nom))
-				$msgErreur .= "Le texte ne peut être vide.<br>";
+			if(!preg_match('#^[a-zA-Z]+$#',$nom))
+				$msgErreur .= 'Le texte ne peut être vide.<br>';
 
-			if($prenom == "")
-				$msgErreur .= "Le prénom ne peut être vide.<br>";
+			if($prenom == '')
+				$msgErreur .= 'Le prénom ne peut être vide.<br>';
 
-			if(!preg_match("#^[a-zA-Z]+$#",$prenom))
-				$msgErreur .= "Le texte ne peut être vide.<br>";
+			if(!preg_match('#^[a-zA-Z]+$#',$prenom))
+				$msgErreur .= 'Le texte ne peut être vide.<br>';
 
-			if($hash == "")
-				$msgErreur .= "Le mot de passe ne doit pas être vide.<br>";
+			if($hash == '')
+				$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
 
 			if(strlen($hash)>12|| strlen($hash)<5)
-				$msgErreur .= "Le mot de passe doit etre ent 6 et 20 caractéres .<br>";
+				$msgErreur .= 'Le mot de passe doit être ent 6 et 20 caractéres.<br>';
 
 			if(trim($hash) != trim($hash2))
-				$msgErreur .= "Les mots de passe doivent ètre différent.<br>";
+				$msgErreur .= 'Les mots de passe doivent ètre différent.<br>';
 
 
 			
