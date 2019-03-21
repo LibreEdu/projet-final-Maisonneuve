@@ -39,12 +39,13 @@
 
 				case 'supprimerCellier':
 					$body = json_decode(file_get_contents('php://input'));
+					//var_dump($body);die;
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->supprimer_par_id($body->id);
-					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
-					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('cellier/liste', $donnees);
-					$this->afficheVue('modeles/bas-de-page');
+					//$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
+					//$this->afficheVue('modeles/en-tete');
+					//$this->afficheVue('cellier/liste', $donnees);
+					//	$this->afficheVue('modeles/bas-de-page');
 					break;
 
 				default :
