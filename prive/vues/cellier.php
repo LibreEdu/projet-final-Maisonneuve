@@ -5,7 +5,7 @@
 		if(isset($_SESSION["UserID"]))
 			{
 				echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p>";
-				echo "<a href='?uUsager&action=Logout'>Se déconnecter</a>";
+				echo "<a href='index.php?login&action=logout'>Se déconnecter</a>";
 			}
 		?>
 			</div>

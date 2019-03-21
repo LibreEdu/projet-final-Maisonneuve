@@ -6,16 +6,16 @@
 			switch($params['action'])
 			{
 				case 'index':
-				 $message = '';
+				 $messageErreur = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
 						{
 							//$usager = new Usager();
-							 $modeleUsager = $this->getDAO('Usager');
-							 $modeleBouteille = $this->getDAO('Bouteille');
-							 $donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-							 
+							$modeleUsager = $this->getDAO('Usager');
+							
 							if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 							{
+								$modeleBouteille = $this->getDAO('Bouteille');
+								$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 								// Mets le nom d’usager dans la variable session UserID,
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
@@ -26,9 +26,9 @@
 							}
 							else
 							{
-								$message = 'Mauvaise combinaison username/password';
+								$messageErreur = 'Mauvaise combinaison username/password';
 								// On affiche la page login
-								$donnees['erreurs'] = $message;
+								$donnees['erreurs'] = $messageErreur;
 								$this->afficheVue('modeles/en-tete');
 								$this->afficheVue('login/login', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
@@ -50,85 +50,60 @@
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					
-					$message="";
-
-					//$_SESSION['UserID'] = $_REQUEST['pseudo'];
-
-					//$AfficherFormulaire=1;
-				//traitement du formulaire:
+					$messageErreur="";
 					if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
 					{
 
-					  $message = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
+						$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
 						if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
 						{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
-							$message = 'Ce pseudo est déjà utilisé.';
+							$messageErreur = 'Ce pseudo est déjà utilisé.';
 								
-							$donnees['erreurs'] = $message;
+							$donnees['erreurs'] = $messageErreur;
 							//echo "Ce pseudo est déjà utilisé.";
 						} 
 
-						if($message == "")
-						 {
-						
-							
-							// if(!mysqli_query($mysqli,"INSERT INTO vino_usager SET courriel='".$_POST['pseudo']."', hash='".md5($_POST['mdp'])."'"))
-							$nouveauSujet = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], hash('sha512', $params["mdp"]));
-							//$donnees["usager"] = $modeleUsager->sauvegarde($nouveauSujet);
-							
-								
-								 //$donnees['erreurs'] = $message;
-								 $modeleUsager->sauvegarde($nouveauSujet);
+						if($messageErreur == "")
+						{
+							$nouveauSujet = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
-								 $message = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
-								 $donnees['erreurs'] = $message;
-								//echo "Vous êtes inscrit avec succès!";
-								//on affiche plus le formulaire
-								//$AfficherFormulaire=0;
-								//$_SESSION['UserID'] = $_REQUEST['pseudo'];
-								// $donnees["erreurs"] = $erreurs;
-								$this->afficheVue('modeles/en-tete');
-								$this->afficheVue('login', $donnees);
-								$this->afficheVue('modeles/bas-de-page');
+							$modeleUsager->sauvegarde($nouveauSujet);
 
-						 }
-							
-							else
-						 {//on crypte le mot de passe avec la fonction propre à PHP: md5()
-								//echo "Une erreur s'est produite: ".mysqli_error($mysqli);//je conseille de ne pas afficher les erreurs aux visiteurs mais de l'enregistrer dans un fichier log
-							 //$donnees["erreurs"] = $erreurs;
-								$this->afficheVue('modeles/en-tete');
-								// $vue = "inscription";
-		//             			$this->afficheVue($vue, $donnees);	
-								$this->afficheFormInscription($message);
-								$this->afficheVue('modeles/bas-de-page');
+							// $messageErreur = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
+							// $donnees['erreurs'] = $messageErreur;
+							// $this->afficheVue('modeles/en-tete');
+							// $this->afficheVue('');
+							// $this->afficheVue('modeles/bas-de-page');
+							header('Location: ' . BASEURL);
+
+						} else
+						{
+
+							$this->afficheVue('modeles/en-tete');
+							$this->afficheFormInscription($messageErreur);
+							$this->afficheVue('modeles/bas-de-page');
 						} 
-						//     else 
-						//     {
-						// //      	$message = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
-								
-								 // // $donnees['erreurs'] = $message;
-						// //         //echo "Vous êtes inscrit avec succès!";
-						// //         //on affiche plus le formulaire
-						// //        //$AfficherFormulaire=0;
-						// //     	//$_SESSION['UserID'] = $_REQUEST['pseudo'];
-						// //         $this->afficheVue('modeles/en-tete');
-						// //         $this->afficheVue('login', $donnees);
-						// //         $this->afficheVue('modeles/bas-de-page');
-							}
-						else{
-							$message = "Paramètres invalides.";
-
-							}
-					//var_dump($modeleUsager->obtenirUsager($_REQUEST['pseudo']));
-								
-					
-					
-					// $this->afficheVue('modeles/en-tete');
-					// $vue = "inscription";
-	 //                $this->afficheVue($vue, $donnees);					
-					// $this->afficheVue('modeles/bas-de-page');
+					}
+					else
+					{
+						$messageErreur = "Paramètres invalides.";
+					}
+					break;
+				case 'logout':
+					// Supprime la session en lui assignant un tableau vide
+					$_SESSION = array();
+			
+					// Supprime le cookie de session en créant un nouveau cookie
+					// avec la date d’expiration dans le passé
+					if(isset($_COOKIE[session_name()]))
+					{
+						setcookie(session_name(), '', time() - 3600);
+					}
+			
+					// Détruire la session
+					session_destroy();
+					header('Location: ' . BASEURL);
 					break;
 				default :
 					trigger_error('Action invalide.');
