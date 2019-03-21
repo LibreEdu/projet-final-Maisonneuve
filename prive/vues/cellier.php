@@ -4,7 +4,7 @@
 				<?php // On affiche le message
 		if(isset($_SESSION["UserID"]))
 			{
-				echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p>";
+				echo "<p>Bonjour  " . $_SESSION["UserID"] ."   ". "</p>";
 				echo "<a href='index.php?login&action=logout'>Se déconnecter</a>";
 			}
 		?>

@@ -31,7 +31,7 @@
 	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,500i,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-deep_purple.min.css">
-	<link rel="stylesheet" href="<?php echo BASEURL?>css/mdl-demo.css">
+	<link rel="stylesheet" href="<?php echo BASEURL?>css/vino.css">
 	<style>
 	#view-source {
 		position: fixed;

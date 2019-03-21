@@ -20,6 +20,12 @@
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
 
+								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
+								$_SESSION["idUsager"] =$user->id_usager;
+								// var_dump($_SESSION["idUsager"]);
+								//var_dump($user);
+
+
 								$this->afficheVue('modeles/en-tete');
 								$this->afficheVue('cellier', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
@@ -66,9 +72,9 @@
 
 						if($messageErreur == "")
 						{
-							$nouveauSujet = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
+							$nouveauUsager = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
-							$modeleUsager->sauvegarde($nouveauSujet);
+							$modeleUsager->sauvegarde($nouveauUsager);
 
 							// $messageErreur = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
 							// $donnees['erreurs'] = $messageErreur;
@@ -143,32 +149,29 @@
 			if($courriel == '')
 				$msgErreur .= 'Le champ Courriel est vide.<br>';
 			
-			if(!preg_match('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#',$courriel))
+			if(!preg_match("/^[A-Z0-9.]+@(([A-Z]+\\.)+[A-Z]{2,6})$/i",$courriel))
 				$msgErreur .= 'le format courriel doit être réspecter.<br>';
 			
 			if($nom == '')
 				$msgErreur .= 'Le nom ne peut être vide.<br>';
 
-			if(!preg_match('#^[a-zA-Z]+$#',$nom))
-				$msgErreur .= 'Le texte ne peut être vide.<br>';
+			if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
+				$msgErreur .= 'Entrez un nom valide.<br>';
 
 			if($prenom == '')
 				$msgErreur .= 'Le prénom ne peut être vide.<br>';
 
-			if(!preg_match('#^[a-zA-Z]+$#',$prenom))
-				$msgErreur .= 'Le texte ne peut être vide.<br>';
+			if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
+				$msgErreur .= 'Entrez un prénom valide.<br>';
 
 			if($hash == '')
 				$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
 
 			if(strlen($hash)>12|| strlen($hash)<5)
-				$msgErreur .= 'Le mot de passe doit être ent 6 et 20 caractéres.<br>';
+				$msgErreur .= 'Le mot de passe doit être ent 6 et 12 caractéres.<br>';
 
 			if(trim($hash) != trim($hash2))
-				$msgErreur .= 'Les mots de passe doivent ètre différent.<br>';
-
-
-			
+				$msgErreur .= 'Les mots de passe doivent ètre identique.<br>';
 
 			// Retourner un message d'erreur
 			return $msgErreur;
