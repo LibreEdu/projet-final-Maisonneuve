@@ -39,6 +39,7 @@
 			// Récuperer le résultat sous forme d'un objet
 			$result = $resultat->fetch(PDO::FETCH_OBJ);
 
+			
 			if($result)
 			{
 				if(password_verify($password, $result->hash))
