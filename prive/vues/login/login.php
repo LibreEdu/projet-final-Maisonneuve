@@ -15,7 +15,7 @@
 			<input type="submit" value="Login"/>
 			<input type="hidden" name="action" value="login">
 		</form>
-		<a href="?login&action=Forminscription">Créer un compte</a><br>
+		<a href="index.php?login&action=formulaire">Créer un compte</a><br>
 				
 		<?php
 			}
