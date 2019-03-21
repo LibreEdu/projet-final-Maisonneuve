@@ -89,7 +89,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?uCellier&action=supprimerCellier', {method: 'POST', body: '{'id': '+id+'}'});
+			let requete = new Request('index.php?uCellier&action=supprimerCellier', {method: 'POST', body: '{"id": ' + id+ '}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -105,7 +105,7 @@ window.addEventListener('load', function() {
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
 
-			let requete = new Request('index.php?uBouteille&action=boire-js', {method: 'POST', body: '{'id': '+id+'}'});
+			let requete = new Request('index.php?uBouteille&action=boire-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			fetch(requete)
@@ -130,7 +130,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnAjouter').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?uBouteille&action=ajouter-js', {method: 'POST', body: '{'id': '+id+'}'});
+			let requete = new Request('index.php?uBouteille&action=ajouter-js', {method: 'POST', body: '{"id": ' + id + '}'});
 			// récuperer la quantité avec l'id de la bouteille concerné 
 			let quantite = document.getElementById(id);
 			
@@ -188,7 +188,7 @@ window.addEventListener('load', function() {
 
 	let bouteille = {
 		nom : document.querySelector('.nom_bouteille'),
-		millesime : document.querySelector('[name='millesime']'),
+		millesime : document.querySelector('[name="millesime"]'),
 		quantite : document.querySelector('[name="quantite"]'),
 		date_achat : document.querySelector('[name="date_achat"]'),
 		prix : document.querySelector('[name="prix"]'),
