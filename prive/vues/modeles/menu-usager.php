@@ -13,7 +13,6 @@
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
 			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
-			<a href="index.php?bouteilleSaq" class="mdl-layout__tab is-active">Bouteille SAQ</a>
 			<a href="index.php?uCellier" class="mdl-layout__tab is-active">Celliers</a>
 			<a href="index.php?bouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 		</div>
