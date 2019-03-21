@@ -1,5 +1,5 @@
 <?php
-	class Controleur_cellier extends BaseControleur
+	class Controleur_uCellier extends BaseControleur
 	{
 		public function traite(array $params)
 		{
@@ -13,13 +13,13 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'formAjouterCellier':
+				case 'ajouter-form':
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier/ajouter');
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'ajouterCellier':
+				case 'ajouter':
 					echo "string";
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->ajoutCellier();

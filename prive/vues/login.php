@@ -15,7 +15,7 @@
 			<input type="submit" value="Login"/>
 			<input type="hidden" name="action" value="login">
 		</form>
-		<a href="?usager&action=Forminscription">Créer un compte</a><br>
+		<a href="?uUsager&action=Forminscription">Créer un compte</a><br>
 				
 		<?php
 			}
@@ -24,7 +24,7 @@
 			{
 				// // On affiche le message
 				// echo "<p>Vous êtes déjà connecté sous le nom " . $_SESSION["UserID"] ."   ". "</p><br>";
-				// echo "<a href='?usager&action=Logout'>Se déconnecter</a>";
+				// echo "<a href='?uUsager&action=Logout'>Se déconnecter</a>";
 			}
 			// On affiche le message
 			if($donnees["erreurs"] != "")

@@ -72,10 +72,10 @@
 			// if(isset($_SESSION["UserID"]))
 			// {
 			?>
-			<a href="index.php?bouteille" class="mdl-layout__tab is-active">Mon cellier</a>
-			<a href="index.php?bouteille_saq&action=ajouter" class="mdl-layout__tab is-active">Bouteille SAQ</a>
-			<a href="index.php?cellier" class="mdl-layout__tab is-active">Celliers</a>
-			<a href="index.php?bouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a>
+			<a href="index.php?uBouteille" class="mdl-layout__tab is-active">Mon cellier</a>
+			<a href="index.php?uBouteille_saq&action=ajouter" class="mdl-layout__tab is-active">Bouteille SAQ</a>
+			<a href="index.php?uCellier" class="mdl-layout__tab is-active">Celliers</a>
+			<a href="index.php?uBouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a>
 			<?php
 			// }
 			?>
