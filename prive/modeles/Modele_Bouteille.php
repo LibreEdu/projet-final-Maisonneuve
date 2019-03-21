@@ -21,8 +21,8 @@
 		public function obtenir_tous()
 		{
 			$resultat = $this->lireTous();
-			$lesRealisateurs = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			return $lesRealisateurs;
+			$lesBouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
+			return $lesBouteilles;
 		}
 
 		public function obtenir_par_id_cellier($id)
