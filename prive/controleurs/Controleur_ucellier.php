@@ -19,7 +19,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'ajouterCellier':
+				case 'ajouter':
 					echo "string";
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->ajoutCellier();

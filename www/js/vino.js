@@ -20,30 +20,6 @@ window.addEventListener('load', function() {
 		nom : document.querySelector('[name="nom"]'),
 	};
 
-	/*let btnAjouterCellier = document.querySelector('[name="ajouterCellier"]');
-	if(btnAjouterCellier){
-		btnAjouterCellier.addEventListener('click', function(evt){
-			var param = {
-				'id_usager':cellier.id_usager.value,
-				'nom':cellier.nom.value,
-			};
-			let requete = new Request('index.php?uCcellier&action=ajouterCellier', {method: 'POST', body: JSON.stringify(param)});
-			fetch(requete)
-			.then(response => {
-				if (response.status === 200) {
-					console.log(response);
-					return response.json();
-				} else {
-					throw new Error('Erreur');
-				}
-			})
-			.then(response => {
-				window.location = 'index.php?uCellier&action=ajouterCellier';
-			}).catch(error => {
-				console.error(error);
-			});
-		});
-	}*/	
 
 	document.querySelectorAll('.ajouterCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
@@ -51,7 +27,7 @@ window.addEventListener('load', function() {
 				'id_usager':cellier.id_usager.value,
 				'nom':cellier.nom.value,
 			};
-			let requete = new Request('index.php?uCellier&action=ajouterCellier', {method: 'POST', body: JSON.stringify(param)});
+			let requete = new Request('index.php?uCellier&action=ajouter', {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -63,7 +39,7 @@ window.addEventListener('load', function() {
 			})
 			.then(response => {
 				alert('safdadfe');
-				window.location = 'index.php?uCellier&action=ajouterCellier';
+				window.location = 'index.php?uCellier&action=ajouter';
 			}).catch(error => {
 				console.error(error);
 			});
