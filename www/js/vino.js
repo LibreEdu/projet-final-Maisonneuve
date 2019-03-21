@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
 	let btnAjouterCellier = document.getElementById('btnAjouterCellier');
 	if(btnAjouterCellier){
 		btnAjouterCellier.addEventListener('click', function(){
-			window.location = 'index.php?uCellier&action=ajouter-form';
+			window.location = 'index.php?cellier&action=ajouter-form';
 		});
 	};
 
@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?uCellier&action=supprimerCellier', {method: 'POST', body: '{"id": ' + id+ '}'});
+			let requete = new Request('index.php?cellier&action=supprimerCellier', {method: 'POST', body: '{"id": ' + id+ '}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -39,7 +39,7 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				window.location = 'index.php?uCellier';
+				window.location = 'index.php?cellier';
 			}).catch(error => {
 				console.error(error);
 			});
