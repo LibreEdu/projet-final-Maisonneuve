@@ -36,7 +36,7 @@
 	}
 	.mdl-demo .mdl-layout__header {
 		background-image: url('../images/vin-plaisir2.jpg');
-		height: 25%;
+		/*height: 25%;*/
 	}
   .mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
 	font-size: inherit;
