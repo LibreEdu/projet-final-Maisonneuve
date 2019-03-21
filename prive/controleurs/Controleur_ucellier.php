@@ -6,13 +6,13 @@
 			switch($params['action'])
 			{
 				case 'index':
-					$modeleUsager = $this->getDAO('Usager');
-					$modeleUsager->obtenir_tous();
-					//$_SESSION['UserID'] = $params['id_usager'];
-					//var_dump($_SESSION['UserID']);
-					//var_dump($modeleUsager->obtenir_tous());die;
+					//recuperation d'usager qui est connecter
+					$modeleUsager = $this->getDAO('Usager');		
+					$user = $modeleUsager->obtenirUsager($_SESSION["UserID"]);
+					$_SESSION['id_usager'] = $user->id_usager;
+					//afficher la liste des cellier d'usager qui est connecter
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
+					$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier/liste', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
@@ -26,21 +26,12 @@
 
 				case 'ajouter':
 					$modeleCellier = $this->getDAO('Cellier');
-					$modeleCellier->ajoutCellier();
-					$donnees['celliers'] = $modeleCellier->obtenir_par_id(1);
+					$modeleCellier->ajoutCellier($_SESSION['id_usager']);
+					$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('cellier/liste', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
-
-				/*case 'visiterCellier-js':
-					$body = json_decode(file_get_contents('php://input'));
-					$modeleBouteille = $this->getDAO('Bouteille');
-					$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($body->id);
-					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('cellier', $donnees);
-					$this->afficheVue('modeles/bas-de-page');
-					break;*/
 
 				case 'supprimerCellier':
 					$body = json_decode(file_get_contents('php://input'));

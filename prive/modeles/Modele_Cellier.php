@@ -31,10 +31,10 @@
 			return $resultat;
 		}
 
-		public function ajoutCellier()
+		public function ajoutCellier($idUsager)
 		{
 			$sql = 'INSERT INTO ' . $this->getTableName() . '(id_usager, nom) VALUES (?,?)';
-			$donnees = array($_POST['id_usager'], $_POST['nom']);
+			$donnees = array($idUsager, $_POST['nom']);
 			$resultat = $this->requete($sql, $donnees);
 		}	
 	}

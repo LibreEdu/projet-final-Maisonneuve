@@ -6,8 +6,7 @@
 	<form method="POST">
 		<div class="mdl-card__supporting-text">
 			<div class="mdl-textfield mdl-js-textfield">
-				Id usager : <input class="mdl-textfield__input" type="text" name="id_usager">
-				Nom de cellier : <input class="mdl-textfield__input" type="text" name="nom">
+				Nom du cellier : <input class="mdl-textfield__input" type="text" name="nom">
 			</div>
 			<div>
 				<input type="hidden" name="action" value="ajouter">

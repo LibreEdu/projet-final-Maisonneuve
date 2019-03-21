@@ -10,7 +10,6 @@
 				 $messageErreur = '';
 					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
 						{
-							//$usager = new Usager();
 							$modeleUsager = $this->getDAO('Usager');
 							
 							if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
@@ -20,14 +19,8 @@
 								// Mets le nom d’usager dans la variable session UserID,
 								// ce qui authentifie l’usager pour les pages protégées
 								$_SESSION['UserID'] = $_REQUEST['user'];
-								//var_dump($_SESSION['UserID']);
-
 								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
 								$_SESSION["idUsager"] =$user->id_usager;
-								 
-								// var_dump($user);
-
-
 								$this->afficheVue('modeles/en-tete');
 								$this->afficheVue('cellier', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
@@ -47,21 +40,21 @@
 						$this->afficheVue('login/login');
 						$this->afficheVue('modeles/bas-de-page');
 					break;
+
 				case 'formulaire':
 						 $this->afficheVue('modeles/en-tete');
 						 $this->afficheVue('login/formulaire');
 						 $this->afficheVue('modeles/bas-de-page');
 					break;
+
 				case "sinscrire":
 					$modeleUsager = $this->getDAO('Usager');
 					$donnees["usager"] = $modeleUsager->obtenir_tous();
 					$modeleBouteille = $this->getDAO('Bouteille');
-					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-					
+					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();					
 					$messageErreur="";
 					if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
 					{
-
 						$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
 						if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
@@ -77,17 +70,14 @@
 							$nouveauUsager = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
 							$modeleUsager->sauvegarde($nouveauUsager);
-
 							// $messageErreur = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
 							// $donnees['erreurs'] = $messageErreur;
 							// $this->afficheVue('modeles/en-tete');
 							// $this->afficheVue('');
 							// $this->afficheVue('modeles/bas-de-page');
 							header('Location: ' . BASEURL);
-
 						} else
 						{
-
 							$this->afficheVue('modeles/en-tete');
 							$this->afficheFormInscription($messageErreur);
 							$this->afficheVue('modeles/bas-de-page');
@@ -98,6 +88,7 @@
 						$messageErreur = "Paramètres invalides.";
 					}
 					break;
+
 				case 'logout':
 					// Supprime la session en lui assignant un tableau vide
 					$_SESSION = array();
@@ -118,8 +109,7 @@
 			}
 		}
 
-		/*=====  Fonction d'affichage du formulaire d'ajout d'un sujet  ======*/
-		
+		/*=====  Fonction d'affichage du formulaire d'ajout d'un sujet  ======*/		
 		public function afficheFormInscription($erreurs = '')
 		{
 			// Récupérer le modèle sujets
