@@ -9,7 +9,7 @@
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span> -->
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
-			  Ajouter un nouveau cellier
+			  Ajouter un cellier
 			</button>
 		  	<!-- </button> -->
 			<!-- Récupérer les données -->

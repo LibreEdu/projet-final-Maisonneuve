@@ -66,6 +66,10 @@
 	height: 64px;
 	line-height: 64px;
   }
+
+  .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab:hover{
+	color :#82B200;
+  }
   .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
 	background-color: white;
 	height: 4px;
@@ -118,14 +122,16 @@
   }
   #btnAjouterCellier {
 	position: absolute;
-	right: 40px;
-	top: 36px;
+	right: 3%;
+	top: 90%;
+	position: fixed;
 	z-index: 999;
   }
    #btnAjouterBouteille {
 	position: absolute;
-	right: 40px;
-	top: 36px;
+	right: 3%;
+	top: 90%;
+	position: fixed;
 	z-index: 999;
   }
   
