@@ -104,7 +104,6 @@
 
 			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
 			$laBouteille = $resultat->fetchALL();
-			var_dump($laBouteille);
 			return $laBouteille;    
 		}
 		
