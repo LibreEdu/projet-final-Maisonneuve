@@ -7,7 +7,8 @@
 			{
 				case 'index':
 					$messageErreur = '';
-					if(isset($_REQUEST['user']) && isset($_REQUEST['pass'])){
+					if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
+					{
 						// On vient du formulaire
 						$modeleUsager = $this->getDAO('Usager');
 						if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
@@ -16,8 +17,10 @@
 							// ce qui authentifie l’usager pour les pages protégées
 							$_SESSION['UserID'] = $_REQUEST['user'];
 							$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
+							
 							$_SESSION["idUsager"] = $user->id_usager;
-							$this->indexUsager();
+							$_SESSION["admin"] = $user->admin;
+							$_SESSION["prenom"] = $user->prenom;
 						}
 						else
 						{
@@ -29,15 +32,18 @@
 							$this->afficheVue('login/login', $donnees);
 							$this->afficheVue('modeles/bas-de-page');
 						}
-					} else {
-						// echo "coucou";die();
-						$this->indexUsager();
 					}
-					// echo "coucou";die();
-					// $this->afficheVue('modeles/en-tete');
-					// $this->afficheVue('modeles/menu-login');
-					// $this->afficheVue('login/login');
-					// $this->afficheVue('modeles/bas-de-page');
+					if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true)
+					{
+						header('Location: ' . BASEURL . 'index.php?admin');
+					} elseif ( isset($_SESSION["idUsager"]) && $_SESSION["idUsager"] == true)
+					{
+						header('Location: ' . BASEURL . 'index.php?cellier');
+					} else {
+						$this->afficheVue('modeles/menu-login');
+						$this->afficheVue('login/login');
+						$this->afficheVue('modeles/bas-de-page');
+					}
 				break;
 
 				case 'formulaire':
@@ -168,15 +174,5 @@
 
 			// Retourner un message d'erreur
 			return $msgErreur;
-		}
-
-		public function indexUsager()
-		{
-			$modeleBouteille = $this->getDAO('Bouteille');
-			$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-			$this->afficheVue('modeles/en-tete');
-			$this->afficheVue('modeles/menu-usager');
-			$this->afficheVue('cellier', $donnees);
-			$this->afficheVue('modeles/bas-de-page');
 		}
 	}
