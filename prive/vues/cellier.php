@@ -3,7 +3,7 @@
 			<!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterBouteille">
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span>
-		  	</button> -->
+		  	</button> -->		  
 		  	<h3>Mon cellier </h3>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
@@ -44,4 +44,5 @@
 			</section>
 			<?php endforeach; ?>
 		</div>
+	</main>
 
