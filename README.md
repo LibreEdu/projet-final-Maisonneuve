@@ -18,7 +18,7 @@ Structure utilisée :
 - MVC maison « Harvey ».
 
 ## Sprint
-- [Sprint 0](https://github.com/LibreEdu/projet-final-Maisonneuve/tree/6d8d6579cd1df7c418085bae9a541ef5f8a7bc03)
+- [Sprint 0](https://github.com/projetwebmaisonneuve/vino/tree/6d8d6579cd1df7c418085bae9a541ef5f8a7bc03)
   
 ## Équipe
 - [José Ignacio <span style="font-variant:small-caps;">Delgado</span>](https://github.com/jidelgado77)
