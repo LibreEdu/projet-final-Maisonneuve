@@ -21,7 +21,7 @@
 						<p>
 						<div class="options" data-id="<?php echo $cellier->id_cellier ?>">
 							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voir le cellier</button>
-							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer le celier</button>
+							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer le cellier</button>
 						</div>
 						</p>
 					</div>
