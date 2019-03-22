@@ -77,7 +77,7 @@
 
 						if($messageErreur == "")
 						{
-							$nouveauUsager = new Usager(0, 0, 1, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
+							$nouveauUsager = new Usager(0, 0, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
 							$modeleUsager->sauvegarde($nouveauUsager);
 							// $messageErreur = 'Vous êtes inscrit avec succès connectez-vous maintenant!';
