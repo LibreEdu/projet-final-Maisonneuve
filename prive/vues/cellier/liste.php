@@ -1,6 +1,10 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<h3>Mes celliers </h3>
+			<?php			
+				echo "<h5>Bonjour ".$_SESSION["prenom"]."</h5>";				
+			
+			?>
+			<h3>Mes celliers </h3>			
 			<!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterCellier">
 				<i class="material-icons" role="presentation">add</i>
 				<span class="visuallyhidden">Add</span> -->
@@ -44,4 +48,5 @@
 				}
 			?>
 		</div>
+</main>
 
