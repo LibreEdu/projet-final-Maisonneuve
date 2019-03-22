@@ -1,10 +1,6 @@
 	<main class="mdl-layout__content">
-		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterBouteille">
-				<i class="material-icons" role="presentation">add</i>
-				<span class="visuallyhidden">Add</span>
-		  	</button> -->		  
-		  	<h3>Mon cellier </h3>
+		<div class="mdl-layout__tab-panel is-active" id="overview">		  	
+			<h3>Bienvenue à votre cellier</h3>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
 			</button>
