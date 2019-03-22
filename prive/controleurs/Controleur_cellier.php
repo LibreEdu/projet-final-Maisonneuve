@@ -6,11 +6,12 @@
 			switch($params['action'])
 			{
 				case 'index':
-					//recuperation d'usager qui est connecter
+					// Récupère d’usager qui est connecté
 					$modeleUsager = $this->getDAO('Usager');		
 					$user = $modeleUsager->obtenirUsager($_SESSION["UserID"]);
 					$_SESSION['id_usager'] = $user->id_usager;
-					//afficher la liste des cellier d'usager qui est connecter
+					
+					// Affiche la liste des celliers de l’usager connecté
 					$modeleCellier = $this->getDAO('Cellier');
 					$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
 					$this->afficheVue('modeles/en-tete');
