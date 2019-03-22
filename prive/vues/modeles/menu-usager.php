@@ -12,8 +12,8 @@
 		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-			<a href="index.php?Cellier" class="mdl-layout__tab is-active">Celliers</a>
-			<a href="index.php?bouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a>
+			<a href="index.php?Cellier" class="mdl-layout__tab is-active">Mes celliers</a>
+			<!-- <a href="index.php?bouteille&action=ajouter-form" class="mdl-layout__tab is-active">Ajouter bouteille</a> -->
 			<a href="index.php?login&action=logout" class="mdl-layout__tab is-active" id="deconnexion">Déconnexion</a>
 		</div>
 	</header>
