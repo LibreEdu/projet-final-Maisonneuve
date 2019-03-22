@@ -25,7 +25,10 @@
 
 				</ul>
 			</div>
-			<form method="POST">
+			<div>
+				Faire une recherche dans les bouteilles de la SAQ : <input type="checkbox" name="recherche" id="afficher">
+			</div>
+			<form method="POST">				
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom : 
 					<span data-id='' class='nom_bouteille'>
