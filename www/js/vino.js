@@ -131,7 +131,15 @@ window.addEventListener('load', function() {
 				//console.log(response);
 				response.forEach(function(element){
 					// console.log(element.id_bouteille_saq);
-					liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
+					liste.innerHTML += '<li '
+					+ 'data-id="' + element.id_bouteille_saq + '" '
+					+ 'data-prix="' + element.prix + '"'
+					+ '>'
+					+ element.nom + '</li>';
+					// liste.innerHTML += '<li data-id="' + element.id_bouteille_saq 
+
+					// 	+ '>' 
+					// 	+ element.nom + '</li>';
 				} )
 			}).catch(error => {
 				console.error(error);
@@ -155,6 +163,7 @@ window.addEventListener('load', function() {
 			//console.log(evt.target.dataset);
 			bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.innerHTML = evt.target.innerHTML;
+			bouteille.prix.innerHTML = evt.target.dataset.prix;
 			//bouteille.prix.innerHTML = response.prix;
 			
 			liste.innerHTML = '';

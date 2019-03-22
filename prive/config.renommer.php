@@ -2,11 +2,11 @@
 	// Définition des constantes
 
 	// Pour le chargement automatique des classes
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/vino/prive/');
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/../prive/');
 
 	// Pour le chargement du CSS, JS et images
 	// Ce qui doit être directement accessible par le navigateur
-	define("BASEURL", 'http://127.0.0.1/vino/www/');
+	define("BASEURL", 'http://127.0.0.1/');
 
 
 	// Pour la connexion à la base de données
