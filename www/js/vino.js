@@ -167,22 +167,24 @@ window.addEventListener('load', function() {
 	});
 
 	let bouteille = {
-		nom : document.querySelector('.nom_bouteille'),
-		millesime : document.querySelector('.millesime'),
-		prix : document.querySelector('.prix'),
-		pays : document.querySelector('.pays'),
-		format : document.querySelector('.format'),
+		nom : document.getElementById('nom_bouteille'),
+		millesime : document.getElementById('millesime'),
+		prix : document.getElementById('prix'),
+		pays : document.getElementById('pays'),
+		format : document.getElementById('format'),
 		id_type : document.querySelector('[name="type"]')
 	};
 
 	liste.addEventListener('click', function(evt){
 		if(evt.target.tagName == 'LI'){			
-			bouteille.nom.dataset.id = evt.target.dataset.id;
-			bouteille.nom.innerHTML = evt.target.innerHTML;
-			bouteille.prix.innerHTML = evt.target.dataset.prix;
-			bouteille.millesime.innerHTML = evt.target.dataset.millesime;
-			bouteille.pays.innerHTML = evt.target.dataset.pays;
-			bouteille.format.innerHTML = evt.target.dataset.format;
+			//bouteille.nom.dataset.id = evt.target.dataset.id;
+			bouteille.nom.value = evt.target.innerHTML;
+			console.log(bouteille.millesime);
+			console.log(bouteille.prix);
+			bouteille.prix.value = evt.target.dataset.prix;
+			bouteille.millesime.value = evt.target.dataset.millesime;
+			bouteille.pays.value = evt.target.dataset.pays;
+			bouteille.format.value = evt.target.dataset.format;
 			
 			liste.innerHTML = '';
 			//quantite.style.display = "none";
