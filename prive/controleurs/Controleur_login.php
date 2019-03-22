@@ -38,13 +38,14 @@
 					// Le contrôleur login est le contrôleur par défaut,
 					// donc si quelqu’un de connecté va à la racine du site,
 					// il faut le rediriger correctement
-					if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true)
+					if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true )
 					{
 						header('Location: ' . BASEURL . 'index.php?admin');
-					} elseif ( isset($_SESSION["idUsager"]) && $_SESSION["idUsager"] == true)
+					} elseif ( isset($_SESSION["idUsager"]) && $_SESSION["idUsager"] == true )
 					{
-						header('Location: ' . BASEURL . 'index.php?cellier');
+						header('Location: ' . BASEURL . 'index.php?cellier' );
 					} else {
+						$this->afficheVue('modeles/en-tete');
 						$this->afficheVue('modeles/menu-login');
 						$this->afficheVue('login/login');
 						$this->afficheVue('modeles/bas-de-page');
@@ -55,8 +56,8 @@
 				case 'formulaire':
 						$this->afficheVue('modeles/en-tete');
 						$this->afficheVue('modeles/menu-login');
-						 $this->afficheVue('login/formulaire');
-						 $this->afficheVue('modeles/bas-de-page');
+						$this->afficheVue('login/formulaire');
+						$this->afficheVue('modeles/bas-de-page');
 					break;
 
 					/*Gestion de l'inscription*/ 
@@ -77,8 +78,7 @@
 						if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
 						{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
 							$messageErreur = ' Ce courriel est déjà utilisé.';
-								
-							$donnees['erreurs'] = $messageErreur;							
+							$donnees['erreurs'] = $messageErreur;
 						} 
 
 						if($messageErreur == "")

@@ -29,7 +29,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?cellier&action=supprimerCellier', {method: 'POST', body: '{"id": ' + id+ '}'});
+			let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id": ' + id+ '}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
@@ -70,9 +70,6 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				//affichage de la quantité
-				// console.log(response[0]);
-				// console.log(response[0].quantite);
 				quantite.innerHTML = 'Quantité : '+ response[0].quantite;
 			}).catch(error => {
 				console.error(error);

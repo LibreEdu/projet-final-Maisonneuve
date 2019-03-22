@@ -122,26 +122,10 @@
 		{
 			
 			$listeBouteilles = Array();
-			// $nom = real_escape_string($nom);
-			// $nom = '*a*';
 			$nom = preg_replace('/\*/','%' , $nom);
-			// var_dump($nom);die;
-			
-			//echo $nom;
 			$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
-			// $sql ='SELECT * FROM vino_bouteille_saq';
-			//$sql ='SELECT * FROM vino_bouteille_saq WHERE id_bouteille_saq=?';
-			//$donnee = ['a'];
-
-
-
-			// echo "ddd";die;
-
 			$requete = $this->requete($sql);
 			$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'BouteilleSaq');
-			
-
-			// var_dump($bouteilles);die;
 
 			foreach($bouteilles as $bouteille) {
 				$uneBouteille = array();
@@ -155,44 +139,7 @@
 				$uneBouteille["nom"] = $bouteille->nom;
 				array_push($listeBouteilles, $uneBouteille);
 			}
-			// var_dump($listeBouteilles);die;
 			return $listeBouteilles;
-
-
-
-			//$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-				//$laBouteille = $resultat->fetch();
-				//return $laBouteille; 
-			//var_dump($resultat);die;
-
-			// $lesNoms = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			// var_dump($lesNoms);die;
-			// return $lesCelliers;
-
-			// if(($res = $this->requete($requete)) ==	 true)
-			// {
-			// 	if($res->num_rows)
-			// 	{
-			//		while($row = $requete->fetch_assoc())
-			//		{
-			//			$row['nom'] = trim(utf8_encode($row['nom']));
-			//			$lignes[] = $row;
-			//		}
-			// 	}
-			// }
-			// else 
-			// {
-			// 	throw new Exception('Erreur de requête sur la base de données', 1);
-				
-			// }
-			
-
-			// while($lignes = $requete->fetch_assoc())
-			// {
-			// 	$
-			// }
-			//var_dump($resultat);
-			// return $lignes;
 		}
 
 		public function modifierBouteille()
@@ -237,7 +184,7 @@
 			// Récupère le résultat sous forme d’un objet
 			$result = $resultat->fetch(PDO::FETCH_OBJ);
 			return $result;
-		}	
+		}
 	}
 
 ?>
