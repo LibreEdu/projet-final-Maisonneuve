@@ -7,49 +7,38 @@
 			{
 				case 'index':
 					$messageErreur = '';
-					if(isset($_REQUEST['user']) && isset($_REQUEST['pass']))
-					// 
+					if(isset($_REQUEST['user']) && isset($_REQUEST['pass'])){
+						// On vient du formulaire
+						$modeleUsager = $this->getDAO('Usager');
+						if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 						{
-							$modeleUsager = $this->getDAO('Usager');
-							
-							if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
-							{
-								$modeleBouteille = $this->getDAO('Bouteille');
-								$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-								// Mets le nom d’usager dans la variable session UserID,
-								// ce qui authentifie l’usager pour les pages protégées
-								$_SESSION['UserID'] = $_REQUEST['user'];
-								$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
-								$_SESSION["idUsager"] =$user->id_usager;
-								
-								$this->afficheVue('modeles/en-tete');
-								$this->afficheVue('modeles/menu-usager');
-								$this->afficheVue('cellier', $donnees);
-								$this->afficheVue('modeles/bas-de-page');
-							}
-							else
-							{
-								$messageErreur = 'Mauvaise combinaison username/password';
-								// On affiche la page login
-								$donnees['erreurs'] = $messageErreur;
-								$this->afficheVue('modeles/en-tete');
-								$this->afficheVue('modeles/menu-login');
-								$this->afficheVue('login/login', $donnees);
-								$this->afficheVue('modeles/bas-de-page');
-							}
+							// Mets le nom d’usager dans la variable session UserID,
+							// ce qui authentifie l’usager pour les pages protégées
+							$_SESSION['UserID'] = $_REQUEST['user'];
+							$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
+							$_SESSION["idUsager"] = $user->id_usager;
+							$this->indexUsager();
 						}
-						// Dans le cas qu’aucun paramètre n’est spécifié, on affiche la page login
-						// die();
-						// echo "coucou";
-						
-						$this->afficheVue('modeles/en-tete');
-						
-						$this->afficheVue('modeles/menu-login');
-						
-						$this->afficheVue('login/login');
-						die();
-						$this->afficheVue('modeles/bas-de-page');
-					break;
+						else
+						{
+							$messageErreur = 'Mauvaise combinaison username/password';
+							// On affiche la page login
+							$donnees['erreurs'] = $messageErreur;
+							$this->afficheVue('modeles/en-tete');
+							$this->afficheVue('modeles/menu-login');
+							$this->afficheVue('login/login', $donnees);
+							$this->afficheVue('modeles/bas-de-page');
+						}
+					} else {
+						// echo "coucou";die();
+						$this->indexUsager();
+					}
+					// echo "coucou";die();
+					// $this->afficheVue('modeles/en-tete');
+					// $this->afficheVue('modeles/menu-login');
+					// $this->afficheVue('login/login');
+					// $this->afficheVue('modeles/bas-de-page');
+				break;
 
 				case 'formulaire':
 						$this->afficheVue('modeles/en-tete');
@@ -179,5 +168,15 @@
 
 			// Retourner un message d'erreur
 			return $msgErreur;
+		}
+
+		public function indexUsager()
+		{
+			$modeleBouteille = $this->getDAO('Bouteille');
+			$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+			$this->afficheVue('modeles/en-tete');
+			$this->afficheVue('modeles/menu-usager');
+			$this->afficheVue('cellier', $donnees);
+			$this->afficheVue('modeles/bas-de-page');
 		}
 	}
