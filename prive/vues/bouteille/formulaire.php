@@ -49,10 +49,10 @@
 					Quantité : <input class="mdl-textfield__input" type="number" min="0" name="quantite" value="<?php echo $quantite ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="date_achat">
-					Date d'achat : <input class="mdl-textfield__input" type="date" name="date_achat" value="<?php echo $date_achat ?>">
+					Date d'achat : <input class="mdl-textfield__input" type="date" required="required" name="date_achat" value="<?php echo $date_achat ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="boire_avant">
-					Boire avant : <input class="mdl-textfield__input" type="date" name="boire_avant" value="<?php echo $boire_avant ?>">
+					Boire avant : <input class="mdl-textfield__input" type="date" required="required" name="boire_avant" value="<?php echo $boire_avant ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Prix :
@@ -83,7 +83,7 @@
 					</select>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="note">
-					Note : <input class="mdl-textfield__input" type="text" size="3" name="note" value="<?php echo $note ?>">
+					Note : <input class="mdl-textfield__input" type="text" size="3" required="required" name="note" value="<?php echo $note ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="cellier">
 					Cellier : <select name="id_cellier">

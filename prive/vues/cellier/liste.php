@@ -15,13 +15,13 @@
 				</header>			
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 					<div class="mdl-card__supporting-text">
-						<h4 class="libelle"><?php echo $cellier->nom; ?></h4>
+						<h4 class="libelle">Cellier <?php echo $cellier->nom; ?></h4>
 					</div>
 					<div class="mdl-card__actions">
 						<p>
 						<div class="options" data-id="<?php echo $cellier->id_cellier ?>">
-							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voir le cellier</button>
-							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer le cellier</button>
+							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voir</button>
+							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button>
 						</div>
 						</p>
 					</div>

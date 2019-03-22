@@ -81,6 +81,17 @@
 					break;
 
 				case 'ajouter':
+					// var_dump($_POST);
+					// Recuperation de tous les bouteilles qui appartient a un cellier specifique
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$resultat = $modeleBouteille->obtenir_par_id_cellier($_POST['id_cellier']);
+					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_POST['type']);
+					// $resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
+					$monCellier = $resultat[0];
+					$donnees['cellier'] = $monCellier->nom;
+
+					// var_dump($donnees['cellier']);die;
+
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$modeleBouteille->ajouterUneBouteille();
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
@@ -103,11 +114,16 @@
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$modeleBouteille->modifierQuantiteBouteilleCellier($body->id, 1);
-					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
+					$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);
+					// var_dump($resultat);
 					echo json_encode($resultat);
 					break;
 					
 				case 'ajouter-form':
+
+
+
+
 					$modeleType = $this->getDAO('Type');
 					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
