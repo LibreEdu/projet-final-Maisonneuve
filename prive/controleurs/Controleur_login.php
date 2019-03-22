@@ -7,9 +7,9 @@
 			{
 				case 'index':
 					$messageErreur = '';
+					// Si on vient du formulaire
 					if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 					{
-						// On vient du formulaire
 						$modeleUsager = $this->getDAO('Usager');
 						if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 						{
@@ -33,6 +33,10 @@
 							$this->afficheVue('modeles/bas-de-page');
 						}
 					}
+
+					// Le contrôleur login est le contrôleur par défaut,
+					// donc si quelqu’un de connecté va à la racine du site,
+					// il faut le rediriger correctement
 					if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true)
 					{
 						header('Location: ' . BASEURL . 'index.php?admin');
