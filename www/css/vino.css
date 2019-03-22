@@ -32,8 +32,9 @@
 	.mdl-color--teal-100 .img img {
 		box-shadow: 2px 4px 2px  #7c4dff;
 		border-radius: 10px;
-		-webkit-border-radius: 10px;
+		-webkit-border-radius: 10px;		
 	}
+	
 	.mdl-demo .mdl-layout__header {
 		background-image: url('../images/vin-plaisir2.jpg');
 		/*height: 25%;*/
@@ -116,6 +117,12 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
   #btnAjouterCellier {
+	position: absolute;
+	right: 40px;
+	top: 36px;
+	z-index: 999;
+  }
+   #btnAjouterBouteille {
 	position: absolute;
 	right: 40px;
 	top: 36px;
@@ -281,9 +288,9 @@
     left: 0;
     z-index: 1;
 }
-#deconnexion{
+/*#deconnexion{
 	margin-left: 55%;
-}
+}*/
 
 .message{
 	color: red;
