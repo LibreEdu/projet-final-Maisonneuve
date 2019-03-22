@@ -113,6 +113,11 @@ window.addEventListener('load', function() {
 
 	let inputNomBouteille = document.querySelector('[name="nom_bouteille"]');
 	let liste = document.querySelector('.listeAutoComplete');
+	//let quantite = document.getElementById('quantite');
+	//let boire_avant = document.getElementById('boire_avant');
+	//let date_achat = document.getElementById('date_achat');
+	//let note = document.getElementById('note');
+	//let cellier = document.getElementById('cellier');
 	if(inputNomBouteille){
 	  	inputNomBouteille.addEventListener('keyup', function(evt){
 		let nom = inputNomBouteille.value;
@@ -128,18 +133,15 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				//console.log(response);
 				response.forEach(function(element){
-					// console.log(element.id_bouteille_saq);
 					liste.innerHTML += '<li '
 					+ 'data-id="' + element.id_bouteille_saq + '" '
 					+ 'data-prix="' + element.prix + '"'
+					+ 'data-millesime="' + element.millesime + '"'
+					+ 'data-pays="' + element.pays + '"'
+					+ 'data-format="' + element.format + '"'
 					+ '>'
 					+ element.nom + '</li>';
-					// liste.innerHTML += '<li data-id="' + element.id_bouteille_saq 
-
-					// 	+ '>' 
-					// 	+ element.nom + '</li>';
 				} )
 			}).catch(error => {
 				console.error(error);
@@ -150,23 +152,28 @@ window.addEventListener('load', function() {
 	let bouteille = {
 		nom : document.querySelector('.nom_bouteille'),
 		millesime : document.querySelector('.millesime'),
-		quantite : document.querySelector('[name="quantite"]'),
-		date_achat : document.querySelector('[name="date_achat"]'),
 		prix : document.querySelector('.prix'),
-		garde_jusqua : document.querySelector('[name="garde_jusqua"]'),
-		notes : document.querySelector('[name="notes"]'),
+		pays : document.querySelector('.pays'),
+		format : document.querySelector('.format'),
+		id_type : document.querySelector('[name="type"]')
 	};
 
 	liste.addEventListener('click', function(evt){
-		//console.dir(evt.target)
-		if(evt.target.tagName == 'LI'){
-			//console.log(evt.target.dataset);
+		if(evt.target.tagName == 'LI'){			
 			bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.innerHTML = evt.target.innerHTML;
 			bouteille.prix.innerHTML = evt.target.dataset.prix;
-			//bouteille.prix.innerHTML = response.prix;
+			bouteille.millesime.innerHTML = evt.target.dataset.millesime;
+			bouteille.pays.innerHTML = evt.target.dataset.pays;
+			bouteille.format.innerHTML = evt.target.dataset.format;
 			
 			liste.innerHTML = '';
+			//quantite.style.display = "none";
+			//boire_avant.style.display = "none";
+			//date_achat.style.display = "none";
+			//note.style.display = "none";
+			//cellier.style.display = "none";
+			document.getElementById('recherche').style.display = "none";
 			inputNomBouteille.value = '';
 
 		}
