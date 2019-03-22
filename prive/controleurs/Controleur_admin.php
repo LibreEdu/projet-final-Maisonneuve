@@ -3,6 +3,10 @@
 	{
 		public function traite(array $params)
 		{
+			if ( ! ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true) )
+			{
+				header('Location: ' . BASEURL );
+			}
 			switch($params['action'])
 			{
 				case 'index':

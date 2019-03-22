@@ -3,6 +3,11 @@
 	{
 		public function traite(array $params)
 		{
+			// On vérifie que l’usagé est bien connecté
+			if ( ! isset($_SESSION["idUsager"]) )
+			{
+				header('Location: ' . BASEURL );
+			}
 			switch($params['action'])
 			{
 				case 'index':
