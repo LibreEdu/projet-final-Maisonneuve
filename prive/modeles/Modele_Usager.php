@@ -60,7 +60,7 @@
 		 *  Fonction qui retourne le nom de l’usager username par son id
 		 *  @param integer $id l’id de l’usager
 		 *  @param string $colonne l’username de l’usager
-		 *  @return  $lUsager
+		 *  @return $lUsager
 		 */
 		public function obtenirUsager($id, $colonne = 'courriel')
 		{
@@ -70,6 +70,11 @@
 			return $lUsager;
 		}
 
+		/**
+		 *  Fonction qui insére un usager dans la table vino_usager id
+		 *  @param l’usager
+		 *  @return 
+		 */
 		public function sauvegarde(Usager $lUsager)
 		{
 			$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)";
