@@ -42,34 +42,34 @@
 				<div class="mdl-textfield mdl-js-textfield">
 					Millesime :  
 					<span data-id='' class='millesime'>
-						<input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" name="millesime" value="<?php echo $millesime ?>">
+						<input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" required="required"  name="millesime" value="<?php echo $millesime ?>">
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="quantite">
-					Quantité : <input class="mdl-textfield__input" type="number"  min="0" name="quantite" value="<?php echo $quantite ?>">
+					Quantité : <input class="mdl-textfield__input" type="number"  min="0" name="quantite" required="required" value="<?php echo $quantite ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="date_achat">
-					Date d'achat : <input class="mdl-textfield__input" type="date" name="date_achat" value="<?php echo $date_achat ?>">
+					Date d'achat : <input class="mdl-textfield__input" type="date" required="required" name="date_achat" value="<?php echo $date_achat ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="boire_avant">
-					Boire avant : <input class="mdl-textfield__input" type="date" name="boire_avant" value="<?php echo $boire_avant ?>">
+					Boire avant : <input class="mdl-textfield__input" type="date" required="required" name="boire_avant" value="<?php echo $boire_avant ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Prix :
 					<span data-id='' class='prix'>
-						<input class="mdl-textfield__input" type="text" name="prix" value="<?php echo $prix ?>">
+						<input class="mdl-textfield__input" type="text" required="required" name="prix" value="<?php echo $prix ?>">
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Pays :
 					<span data-id='' class='pays'> 
-						<input class="mdl-textfield__input" type="text" name="pays" value="<?php echo $pays ?>">
+						<input class="mdl-textfield__input" type="text" required="required" name="pays" value="<?php echo $pays ?>">
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Format : 
 					<span data-id='' class='format'>
-						<input class="mdl-textfield__input" type="text" name="format" value="<?php echo $format ?>">
+						<input class="mdl-textfield__input" type="text" required="required" name="format" value="<?php echo $format ?>">
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
@@ -83,7 +83,7 @@
 					</select>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="note">
-					Note : <input class="mdl-textfield__input" type="text" size="3" name="note" value="<?php echo $note ?>">
+					Note : <input class="mdl-textfield__input" type="text" size="3" required="required" name="note" value="<?php echo $note ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="cellier">
 					Cellier : <select name="id_cellier">

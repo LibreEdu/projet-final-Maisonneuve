@@ -71,7 +71,9 @@ window.addEventListener('load', function() {
 			})
 			.then(response => {
 				//affichage de la quantité
-				quantite.innerHTML = 'Quantité : '+ response.quantite;
+				// console.log(response[0]);
+				// console.log(response[0].quantite);
+				quantite.innerHTML = 'Quantité : '+ response[0].quantite;
 			}).catch(error => {
 				console.error(error);
 			});
@@ -96,7 +98,7 @@ window.addEventListener('load', function() {
 			})
 			.then(response => {
 				//affichage de la quantité
-				quantite.innerHTML = 'Quantité : '+ response.quantite;
+				quantite.innerHTML = 'Quantité : '+ response[0].quantite;
 			}).catch(error => {
 				console.error(error);
 			});
