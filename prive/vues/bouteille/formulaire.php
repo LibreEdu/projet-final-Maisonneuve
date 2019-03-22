@@ -1,21 +1,20 @@
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-	<?php 
-		if(isset($donnees['bouteille'])){
-		$bouteille = $donnees['bouteille'][0];
-		}
-
-		$nom = isset($bouteille->nom) ? $bouteille->nom : '';
-		$quantite = isset($bouteille->quantite) ? $bouteille->quantite : '';
-		$millesime = isset($bouteille->millesime) ? $bouteille->millesime : '';
-		$date_achat = isset($bouteille->date_achat) ? $bouteille->date_achat : '';
-		$boire_avant = isset($bouteille->boire_avant) ? $bouteille->boire_avant : '';
-		$prix = isset($bouteille->prix) ? $bouteille->prix : '';
-		$pays = isset($bouteille->pays) ? $bouteille->pays : '';
-		$format = isset($bouteille->format) ? $bouteille->format : '';
-		$note = isset($bouteille->note) ? $bouteille->note : '';
-		$id_bouteille = isset($bouteille->id_bouteille) ? $bouteille->id_bouteille : '';
-	?>
+		<?php 
+			if(isset($donnees['bouteille'])){
+				$bouteille = $donnees['bouteille'][0];
+			}
+			$nom          = isset($bouteille->nom) ? $bouteille->nom : '';
+			$quantite     = isset($bouteille->quantite) ? $bouteille->quantite : '';
+			$millesime    = isset($bouteille->millesime) ? $bouteille->millesime : '';
+			$date_achat   = isset($bouteille->date_achat) ? $bouteille->date_achat : '';
+			$boire_avant  = isset($bouteille->boire_avant) ? $bouteille->boire_avant : '';
+			$prix         = isset($bouteille->prix) ? $bouteille->prix : '';
+			$pays         = isset($bouteille->pays) ? $bouteille->pays : '';
+			$format       = isset($bouteille->format) ? $bouteille->format : '';
+			$note         = isset($bouteille->note) ? $bouteille->note : '';
+			$id_bouteille = isset($bouteille->id_bouteille) ? $bouteille->id_bouteille : '';
+		?>
 		<div class="mdl-card__title">	
 			<h2 class="mdl-card__title-text"><?php echo $donnees['titre'] ?></h2>		
 		</div>
