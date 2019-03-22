@@ -72,7 +72,7 @@
 						<input class="mdl-textfield__input" type="text" name="format" value="<?php echo $format ?>">
 					</span>
 				</div>
-				<div class="styled-select blue semi-square">
+				<div class="mdl-textfield mdl-js-textfield">
 					Type : <select name="type">
 					<?php
 						foreach ($donnees['types'] as $unType)
