@@ -73,7 +73,7 @@
 
 
 		 public function sauvegarde(Usager $lUsager)
-        {
+		{
 
 		$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, actif, nom, prenom, hash) VALUES (?, ?, ?, ?, ?, ?)";
 				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->actif, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
