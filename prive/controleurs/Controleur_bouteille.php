@@ -20,17 +20,24 @@
 					break;
 
 				case 'visiterCellier':
-					// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-					$modeleBouteille = $this->getDAO('Bouteille');					
-					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
-					// Recuperation de nom de cellier pour l'afficher en haut de la page
-					$nomCellier = $this->getDAO('Cellier');
-					$resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
-					$idCellier = $nomCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
-					$IdCellier2 = $idCellier[0];
-					//var_dump($IdCellier2);die;
+					// Recuperation de nom de cellier pour l'afficher en haut de la page
+					$modeleCellier = $this->getDAO('Cellier');
+					$idCellier = $modeleCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
+
+					if ($idCellier == null) {
+						header('Location: ' . BASEURL . 'index.php?login&action=logout');
+					}
+
+					// Recuperation de tous les bouteilles qui appartient a un cellier specifique
+					$modeleBouteille = $this->getDAO('Bouteille');
+					$resultat = $modeleCellier->obtenir_par_id_cellier($_GET['id']);
+					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
+					// $resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
+					$monCellier = $resultat[0];
 					$donnees['cellier'] = $monCellier->nom;
+
+
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier/cellier', $donnees);
@@ -38,7 +45,16 @@
 					break;
 
 				case 'modifier-form':
+
 					$modeleBouteille = $this->getDAO('Bouteille');
+					$idBouteille = $modeleBouteille->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
+
+					if ($idBouteille == null) {
+						header('Location: ' . BASEURL . 'index.php?login&action=logout');
+					}
+
+
+					
 					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
 					$modeleType = $this->getDAO('Type');
 					$donnees['types'] = $modeleType->obtenir_tous();

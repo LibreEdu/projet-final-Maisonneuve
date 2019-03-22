@@ -223,6 +223,22 @@
 			$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier']);
 			$resultat = $this->requete($sql, $donnees);
 		}
+
+		public function verifParUsager($idBouteille,$idUsager)
+		{
+			$sql = 'SELECT id_bouteille FROM ' . $this->getTableName() .'
+			INNER JOIN vino_cellier cellier
+				ON ' . $this->getTableName() .'.id_cellier = cellier.id_cellier
+			WHERE id_bouteille = ? 
+			AND id_usager = ?';
+
+			$donnees = array($idBouteille,$idUsager);
+			
+			$resultat = $this->requete($sql,$donnees);
+			// Récupère le résultat sous forme d’un objet
+			$result = $resultat->fetch(PDO::FETCH_OBJ);
+			return $result;
+		}	
 	}
 
 ?>
