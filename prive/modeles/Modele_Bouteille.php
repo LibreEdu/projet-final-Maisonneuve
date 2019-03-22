@@ -31,7 +31,41 @@
 			$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
 			return $maBouteille;
 		}
-		
+
+		/**
+		 * Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type
+		 * 
+		 * @param int $id id cellier_bouteille 
+		 * 
+		 * @return $laBouteille details des bouteilles ainsi que le type de bouteille.
+		 */
+		public function lireAvecType($idCellier)
+		{			
+			//Requete de tous les details des bouteilles
+			$requete = "SELECT b.id_bouteille,
+						b.id_cellier,
+						b.code_saq,
+						b.prix,
+						b.millesime,
+						b.pays,
+						b.format,
+						b.nom,
+						b.note,
+						b.quantite,
+						b.date_achat,
+						b.boire_avant,
+						t.type
+						FROM vino_bouteille b
+						INNER JOIN vino_type t
+						ON b.id_type = t.id_type
+						WHERE id_cellier = ?
+						ORDER BY id_bouteille";
+			$donnees = array($idCellier);
+			$resultat = $this->requete($requete, $donnees);
+			$laBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');			
+			return $laBouteille;    
+		}
+
 		/**
 		 * Cette méthode change la quantité d’une bouteille en particulier dans le cellier
 		 * 
@@ -69,12 +103,9 @@
 			$resultat = $this->requete($requete);
 
 			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-				$laBouteille = $resultat->fetch();
-				return $laBouteille;    
-				
-			// $ligne = $res->fetch_ASSOC(); 
-			// // retourner une ligne
-			// return $ligne;
+			$laBouteille = $resultat->fetchALL();
+			var_dump($laBouteille);
+			return $laBouteille;    
 		}
 		
 		/**
