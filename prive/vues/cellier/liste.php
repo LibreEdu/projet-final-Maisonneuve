@@ -1,15 +1,20 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterCellier">
+			<h3>Mes celliers </h3>
+			<!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterCellier">
 				<i class="material-icons" role="presentation">add</i>
-				<span class="visuallyhidden">Add</span>
-		  	</button>
+				<span class="visuallyhidden">Add</span> -->
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
+			  Ajouter un nouveau cellier
+			</button>
+		  	<!-- </button> -->
 			<!-- Récupérer les données -->
 			<?php
 				foreach ($donnees["celliers"] as $cellier) {
 			?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">					
+					<img src="images/cellier-vin.jpg" alt="" />
 				</header>
 			
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
@@ -19,8 +24,8 @@
 					<div class="mdl-card__actions">
 						<p>
 						<div class="options" data-id="<?php echo $cellier->id_cellier ?>">
-							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Visiter</button>
-							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button>
+							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voir le cellier</button>
+							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer le celier</button>
 						</div>
 						</p>
 					</div>

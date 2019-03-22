@@ -19,30 +19,33 @@
 			<h2 class="mdl-card__title-text"><?php echo $donnees['titre'] ?></h2>		
 		</div>
 		<div class="mdl-card__supporting-text">
-			<div class="mdl-textfield mdl-js-textfield">
+			<div class="mdl-textfield mdl-js-textfield" id="recherche">
 				Recherche : <input class="mdl-textfield__input" type="text" name="nom_bouteille">
 				<ul class="listeAutoComplete">
 
 				</ul>
-				<div class="infos">
-
-				</div>
 			</div>
 			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
-					Nom : <span data-id='' class='nom_bouteille'><input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required">
-					<span class="mdl-textfield__error">Entrez le nom de la bouteille</span></span>
+					Nom : 
+					<span data-id='' class='nom_bouteille'>
+						<input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required">
+						<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>
+					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Millesime :  <span data-id='' class='millesime'><input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" name="millesime" value="<?php echo $millesime ?>"></span>
+					Millesime :  
+					<span data-id='' class='millesime'>
+						<input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" name="millesime" value="<?php echo $millesime ?>">
+					</span>
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield" id="quantite">
 					Quantité : <input class="mdl-textfield__input" type="number"  min="0" name="quantite" value="<?php echo $quantite ?>">
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
-					Date d\'achat : <input class="mdl-textfield__input" type="date" name="date_achat" value="<?php echo $date_achat ?>">
+				<div class="mdl-textfield mdl-js-textfield" id="date_achat">
+					Date d'achat : <input class="mdl-textfield__input" type="date" name="date_achat" value="<?php echo $date_achat ?>">
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield" id="boire_avant">
 					Boire avant : <input class="mdl-textfield__input" type="date" name="boire_avant" value="<?php echo $boire_avant ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
@@ -52,10 +55,16 @@
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Pays : <input class="mdl-textfield__input" type="text" name="pays" value="<?php echo $pays ?>">
+					Pays :
+					<span data-id='' class='pays'> 
+						<input class="mdl-textfield__input" type="text" name="pays" value="<?php echo $pays ?>">
+					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Format : <input class="mdl-textfield__input" type="text" name="format" value="<?php echo $format ?>">
+					Format : 
+					<span data-id='' class='format'>
+						<input class="mdl-textfield__input" type="text" name="format" value="<?php echo $format ?>">
+					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Type : <select name="type">
@@ -67,10 +76,10 @@
 					?>
 					</select>
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield" id="note">
 					Note : <input class="mdl-textfield__input" type="text" size="3" name="note" value="<?php echo $note ?>">
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield" id="cellier">
 					Cellier : <select name="id_cellier">
 					<?php
 						foreach ($donnees['celliers'] as $unCellier)
