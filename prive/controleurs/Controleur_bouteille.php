@@ -21,13 +21,15 @@
 
 				case 'visiterCellier':
 					// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-					$modeleBouteille = $this->getDAO('Bouteille');
+					$modeleBouteille = $this->getDAO('Bouteille');					
 					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
-
 					// Recuperation de nom de cellier pour l'afficher en haut de la page
 					$nomCellier = $this->getDAO('Cellier');
 					$resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
-					$monCellier = $resultat[0];
+					$idCellier = $nomCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
+
+					$IdCellier2 = $idCellier[0];
+					//var_dump($IdCellier2);die;
 					$donnees['cellier'] = $monCellier->nom;
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
