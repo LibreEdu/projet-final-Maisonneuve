@@ -2,8 +2,10 @@
 		<div class="mdl-layout__tab-panel is-active" id="overview">			
 			<h3>Bienvenue <?php echo $_SESSION['prenom'] ?></h3>
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
-			  Ajouter un nouveau cellier
-			</button>	
+			  Ajouter un cellier
+			</button>
+		  	<!-- </button> -->
+			<!-- Récupérer les données -->
 			<?php
 				foreach ($donnees["celliers"] as $cellier) {
 			?>		
