@@ -40,11 +40,11 @@
 		box-shadow: 2px 4px 2px  #7c4dff;
 	}
 	h3 {		
-	font-family: 'IBM Plex Serif', serif !important;
+	font-family: 'IBM Plex Serif', serif;
 	}
-  .mdl-demo .mdl-layout__header-row {
-	padding-left: 40px;	
-	text-shadow: 2px 2px 2px #5F04B4;
+	.mdl-demo .mdl-layout__header-row {
+		padding-left: 40px;	
+		text-shadow: 2px 2px 2px #5F04B4;
 	}
 	.mdl-color--teal-100 {
 		background-color: #7b1fa2 !important;
@@ -342,3 +342,8 @@
 	.demo-card-wide > .mdl-card__menu {
 		color: #fff;
 	}
+
+/********CSS Cellier ***********/
+.mdl-layout__tab-panel h3{
+	font-family: 'Roboto', 'Helvetica', sans-serif;
+}
