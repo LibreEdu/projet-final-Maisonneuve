@@ -23,13 +23,11 @@
 			$classe = "Modele_" . $nomModele;
 			if(class_exists($classe))
 			{
-				
 				// On fait une connexion à la BD
 				$connexion = DBFactory::getDB(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
 				
 				// On crée une instance de la classe Modele_$classe
 				$objetModele = new $classe($connexion);
-
 
 				if($objetModele instanceof BaseDAO)
 				{

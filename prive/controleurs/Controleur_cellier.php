@@ -25,6 +25,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
+				// Affichage du formulaire
 				case 'ajouter-form':
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
@@ -32,6 +33,7 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
+				// Ajout d’un cellier
 				case 'ajouter':
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->ajoutCellier($_SESSION['id_usager']);
@@ -42,7 +44,8 @@
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
-				case 'supprimerCellier':
+				// Suppression de cellier
+				case 'supprimer':
 					$body = json_decode(file_get_contents('php://input'));
 					$modeleCellier = $this->getDAO('Cellier');
 					$modeleCellier->supprimer_par_id($body->id);

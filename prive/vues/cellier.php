@@ -1,9 +1,5 @@
 	<main class="mdl-layout__content">
-		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="btnAjouterBouteille">
-				<i class="material-icons" role="presentation">add</i>
-				<span class="visuallyhidden">Add</span>
-		  	</button> -->		  
+		<div class="mdl-layout__tab-panel is-active" id="overview">	  
 		  	<h3>Mon cellier </h3>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
@@ -27,13 +23,11 @@
 					</div>
 					<div class="mdl-card__actions">
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
-						<!-- <p> -->
 						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
 							<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>+ 1</button>
 							<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>- 1</button>
 						</div>
-						<!-- </p> -->
 					</div>
 				</div>
 				<ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">

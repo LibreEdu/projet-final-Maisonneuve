@@ -8,7 +8,6 @@
 		public $prenom;
 		public $hash;
 		
-		
 		public function __construct($id_usager = 0,  $admin = '', $courriel = '', $nom = '', $prenom = '', $hash = '')
 		{
 			$this->id_usager = $id_usager;

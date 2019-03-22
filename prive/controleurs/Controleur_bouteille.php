@@ -33,7 +33,6 @@
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$resultat = $modeleCellier->obtenir_par_id_cellier($_GET['id']);
 					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
-					// $resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
 					$monCellier = $resultat[0];
 					$donnees['cellier'] = $monCellier->nom;
 
@@ -52,8 +51,6 @@
 					if ($idBouteille == null) {
 						header('Location: ' . BASEURL . 'index.php?login&action=logout');
 					}
-
-
 					
 					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
 					$modeleType = $this->getDAO('Type');
@@ -81,17 +78,12 @@
 					break;
 
 				case 'ajouter':
-					// var_dump($_POST);
 					// Recuperation de tous les bouteilles qui appartient a un cellier specifique
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$resultat = $modeleBouteille->obtenir_par_id_cellier($_POST['id_cellier']);
 					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_POST['type']);
-					// $resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
 					$monCellier = $resultat[0];
 					$donnees['cellier'] = $monCellier->nom;
-
-					// var_dump($donnees['cellier']);die;
-
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$modeleBouteille->ajouterUneBouteille();
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
@@ -120,10 +112,6 @@
 					break;
 					
 				case 'ajouter-form':
-
-
-
-
 					$modeleType = $this->getDAO('Type');
 					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
@@ -139,16 +127,9 @@
 
 				case 'saisie-semi-automatique':
 					$body = json_decode(file_get_contents('php://input'));
-					//var_dump($body->nom);die;
 					$modeleBouteille = $this->getDAO('Bouteille');
 					$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
 					echo json_encode($listeBouteilles);
-					break;
-
-				case 'alex':
-					// echo "coucou";die;
-					$modeleBouteille = $this->getDAO('Bouteille');
-					$listeBouteilles = $modeleBouteille->autocomplete('a');
 					break;
 
 				default :

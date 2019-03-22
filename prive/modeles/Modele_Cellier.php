@@ -1,6 +1,6 @@
 <?php
 	class Modele_Cellier extends BaseDAO
-	{       
+	{
 		public function getTableName()
 		{
 			return 'vino_cellier';
