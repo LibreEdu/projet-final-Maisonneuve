@@ -33,7 +33,7 @@
 								// On affiche la page login
 								$donnees['erreurs'] = $messageErreur;
 								$this->afficheVue('modeles/en-tete');
-								$this->afficheVue('modeles/menu-admin');
+								$this->afficheVue('modeles/menu-login');
 								$this->afficheVue('login/login', $donnees);
 								$this->afficheVue('modeles/bas-de-page');
 							}
@@ -44,7 +44,7 @@
 						
 						$this->afficheVue('modeles/en-tete');
 						
-						$this->afficheVue('modeles/menu-admin');
+						$this->afficheVue('modeles/menu-login');
 						
 						$this->afficheVue('login/login');
 						die();
@@ -53,7 +53,7 @@
 
 				case 'formulaire':
 						$this->afficheVue('modeles/en-tete');
-						$this->afficheVue('modeles/menu-admin');
+						$this->afficheVue('modeles/menu-login');
 						 $this->afficheVue('login/formulaire');
 						 $this->afficheVue('modeles/bas-de-page');
 					break;
