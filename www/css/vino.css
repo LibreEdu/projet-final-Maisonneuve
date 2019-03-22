@@ -19,10 +19,18 @@
 	margin: 0;
 	padding: 0;
 	}
+	input, textarea, select, button {
+		width : 300px;
+		margin: 0;
+	
+		-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+			 -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+						box-sizing: border-box;
+	}
 	h3 {		
 	font-family: 'IBM Plex Serif', serif !important;
 	}
-  .mdl-demo .mdl-layout__header-row {
+	.mdl-demo .mdl-layout__header-row {
 	padding-left: 40px;	
 	text-shadow: 2px 2px 2px #5F04B4;
 	}

@@ -25,8 +25,11 @@
 
 				</ul>
 			</div>
-			<div>
-				Faire une recherche dans les bouteilles de la SAQ : <input type="checkbox" name="recherche" id="afficher">
+			<div class="case">
+				<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="afficher">
+					<input type="checkbox" class="mdl-checkbox__input" name="recherche" id="afficher">
+					<span class="mdl-checkbox__label">Faire une recherche dans les bouteilles de la SAQ</span>
+				</label>
 			</div>
 			<form method="POST">				
 				<div class="mdl-textfield mdl-js-textfield">
@@ -69,7 +72,7 @@
 						<input class="mdl-textfield__input" type="text" name="format" value="<?php echo $format ?>">
 					</span>
 				</div>
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="styled-select blue semi-square">
 					Type : <select name="type">
 					<?php
 						foreach ($donnees['types'] as $unType)
