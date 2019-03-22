@@ -14,12 +14,12 @@
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 					<div class="mdl-card__supporting-text">
 						<h4 class='nom'><?php echo $bouteille->nom; ?> <?php echo $bouteille->millesime; ?></h4>
-						<p class='type'><?php echo $bouteille->id_type; ?></p>
+						<p class='type'><?php echo $bouteille->type; ?></p>
 						<p class='pays'><?php echo $bouteille->pays; ?>, <?php echo $bouteille->format; ?></p>
 						<p class='boireAvant'>Boire avant : <?php echo $bouteille->boire_avant ?></p>
 						<p class='quantite' id='<?php echo $bouteille->id_bouteille; ?>'>Quantité : <?php echo $bouteille->quantite ?></p>
 						<p class='dateAchat'>Date d’achat : <?php echo $bouteille->date_achat ?></p>
-						<p class='prix'>Prix : <?php echo number_format($bouteille->prix, 2, ',', ' ') ?> $</p>
+						<p class='prix'><?php echo number_format($bouteille->prix, 2, ',', ' ') ?> $</p>
 					</div>
 					<div class="mdl-card__actions">
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>

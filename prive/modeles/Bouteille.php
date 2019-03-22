@@ -7,6 +7,7 @@
 		public $prix;
 		public $millesime;
 		public $id_type;
+		public $type;
 		public $pays;
 		public $format;
 		public $nom;
@@ -15,7 +16,7 @@
 		public $date_achat;
 		public $boire_avant;
 		
-		public function __construct($id_bouteille = 0, $id_cellier = 0, $code_saq = '', $prix = 0, $millesime = 0, $id_type = 0, $pays ='', $format = '', $nom = '', $note = '', $quantite = 0, $date_achat = '', $boire_avant = '')
+		public function __construct($id_bouteille = 0, $id_cellier = 0, $code_saq = '', $prix = 0, $millesime = 0, $id_type = 0, $type = 0, $pays ='', $format = '', $nom = '', $note = '', $quantite = 0, $date_achat = '', $boire_avant = '')
 		{
 			$this->id_bouteille = $id_bouteille;
 			$this->id_cellier = $id_cellier;
@@ -23,6 +24,7 @@
 			$this->prix = $prix;
 			$this->millesime = $millesime;
 			$this->id_type = $id_type;
+			$this->type = $type;
 			$this->pays = $pays;
 			$this->format = $format;
 			$this->nom = $nom;

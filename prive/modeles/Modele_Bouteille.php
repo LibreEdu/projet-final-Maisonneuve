@@ -60,9 +60,9 @@
 						ON b.id_type = t.id_type
 						WHERE id_cellier = ?
 						ORDER BY id_bouteille";
-			$resultat = $this->requete($requete, $idCellier);
-			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			$laBouteille = $resultat->fetch();
+			$donnees = array($idCellier);
+			$resultat = $this->requete($requete, $donnees);
+			$laBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');			
 			return $laBouteille;    
 		}
 
@@ -103,12 +103,9 @@
 			$resultat = $this->requete($requete);
 
 			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-				$laBouteille = $resultat->fetch();
-				return $laBouteille;    
-				
-			// $ligne = $res->fetch_ASSOC(); 
-			// // retourner une ligne
-			// return $ligne;
+			$laBouteille = $resultat->fetchALL();
+			var_dump($laBouteille);
+			return $laBouteille;    
 		}
 		
 		/**
