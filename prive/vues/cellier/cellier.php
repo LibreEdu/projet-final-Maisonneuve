@@ -1,6 +1,6 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">		  	
-			<h3>Bienvenue à votre cellier</h3>
+			<h3>Bienvenue à votre cellier : <?php echo $donnees['cellier'] ?></h3>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
 			</button>

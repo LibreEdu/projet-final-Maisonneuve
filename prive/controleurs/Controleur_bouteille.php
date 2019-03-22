@@ -26,7 +26,9 @@
 
 					// Recuperation de nom de cellier pour l'afficher en haut de la page
 					$nomCellier = $this->getDAO('Cellier');
-					$donnees['cellier'] = $nomCellier->obtenir_par_id_cellier($_GET['id']);
+					$resultat = $nomCellier->obtenir_par_id_cellier($_GET['id']);
+					$monCellier = $resultat[0];
+					$donnees['cellier'] = $monCellier->nom;
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier/cellier', $donnees);
