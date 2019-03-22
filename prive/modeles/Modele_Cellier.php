@@ -18,6 +18,13 @@
 			return $monCellier;
 		}
 
+		public function obtenir_par_id_cellier($idCellier)
+		{
+			$resultat = $this->lire($idCellier, 'id_cellier');
+			$monCellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Cellier');
+			return $monCellier;
+		}
+
 		public function obtenir_tous()
 		{
 			$resultat = $this->obtenirTous();
