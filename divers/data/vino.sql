@@ -26,7 +26,6 @@ CREATE TABLE vino_bouteille_saq (
 CREATE TABLE vino_usager (
 	id_usager SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	admin BOOLEAN NOT NULL,
-	actif BOOLEAN NOT NULL,
 	courriel VARCHAR(255) NOT NULL,
 	nom VARCHAR(30) NOT NULL,
 	prenom VARCHAR(30) NOT NULL,
@@ -76,11 +75,11 @@ INSERT INTO vino_bouteille_saq VALUES(8, '13802571', 18.25, 2015, 3, 'Espagne', 
 INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, 2016, 3, 'France', '750 ml', 'Tessellae Old Vines Côtes du Roussillon');
 INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
 
-INSERT INTO vino_usager VALUES(1, true, true, 'aa@aa.aa', 'Fatemeh', 'Homatash', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(2, false, true, 'bb@bb.bb', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(3, false, true, 'cc@cc.cc', 'Jose', 'Ignacio', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(4, false, true, 'dd@dd.dd', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(5, false, true, 'ee@ee.ee', 'Mina', 'Amir', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(1, true, 'aa@aa.aa', 'Fatemeh', 'Homatash', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(2, false, 'bb@bb.bb', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(3, false, 'cc@cc.cc', 'Jose', 'Ignacio', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(4, false, 'dd@dd.dd', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(5, false, 'ee@ee.ee', 'Mina', 'Amir', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
 
 INSERT INTO vino_cellier VALUES(1, 1, 'Domicile');
 INSERT INTO vino_cellier VALUES(2, 2, 'Chalet');

@@ -31,12 +31,12 @@
 		 *  @param string $password le mot de passe de l’usager
 		 *  @return  boolean 
 		 */
-		public function  Authentification($username, $password)
+		public function Authentification($username, $password)
 		{
 		
 			$query = 'SELECT id_usager, hash from '. $this->getTableName() .' WHERE courriel = "' . $username . '"';
 			$resultat = $this->requete($query);
-			// Récuperer le résultat sous forme d'un objet
+			// Récupère le résultat sous forme d’un objet
 			$result = $resultat->fetch(PDO::FETCH_OBJ);
 
 			
@@ -46,7 +46,7 @@
 					return true;
 				else
 				{
-					//ce n'est pas le bon mot de passe
+					// Ce n’est pas le bon mot de passe
 					return false;
 				}
 			}
@@ -62,26 +62,19 @@
 		 *  @param string $colonne l’username de l’usager
 		 *  @return  $lUsager
 		 */
-		 public function obtenirUsager($id, $colonne = 'courriel')
+		public function obtenirUsager($id, $colonne = 'courriel')
 		{
-			
 			$resultat = $this->lire($id, $colonne);
 			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
 			$lUsager = $resultat->fetch();
 			return $lUsager;
 		}
 
-
-		 public function sauvegarde(Usager $lUsager)
-        {
-
-		$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, actif, nom, prenom, hash) VALUES (?, ?, ?, ?, ?, ?)";
-				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->actif, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
+		public function sauvegarde(Usager $lUsager)
+		{
+			$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)";
+				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
 				return $this->requete($query, $donnees);
-
 		}
-		
-		
 	}
-
 ?>
