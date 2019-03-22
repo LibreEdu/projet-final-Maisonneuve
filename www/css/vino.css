@@ -19,7 +19,7 @@
 	margin: 0;
 	padding: 0;
 	}
-	input, textarea, select, button {
+	input, textarea, select {
 		width : 300px;
 		margin: 0;
 	
@@ -27,10 +27,22 @@
 			 -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
 						box-sizing: border-box;
 	}
+	select {
+		margin-top: 5px;
+		border-radius: 5px;
+		height: 30px;
+		background-color: #7b1fa2;
+		color: #fff;
+		padding: 3px;
+		font-family: 'Roboto', 'Helvetica', sans-serif;
+		font-size: 16px;
+		border: none;
+		box-shadow: 2px 4px 2px  #7c4dff;
+	}
 	h3 {		
 	font-family: 'IBM Plex Serif', serif !important;
 	}
-	.mdl-demo .mdl-layout__header-row {
+  .mdl-demo .mdl-layout__header-row {
 	padding-left: 40px;	
 	text-shadow: 2px 2px 2px #5F04B4;
 	}
@@ -40,9 +52,9 @@
 	.mdl-color--teal-100 .img img {
 		box-shadow: 2px 4px 2px  #7c4dff;
 		border-radius: 10px;
-		-webkit-border-radius: 10px;				
+		-webkit-border-radius: 10px;		
 	}
-
+	
 	.mdl-demo .mdl-layout__header {
 		background-image: url('../images/vin-plaisir2.jpg');
 		/*height: 25%;*/
@@ -73,10 +85,6 @@
   .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab {
 	height: 64px;
 	line-height: 64px;
-  }
-
-  .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab:hover{
-	color :#82B200;
   }
   .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
 	background-color: white;
@@ -130,17 +138,17 @@
   }
   #btnAjouterCellier {
 	position: absolute;
-	right: 3%;
-	top: 90%;
-	position: fixed;
+	right: 40px;
+	top: 36px;
 	z-index: 999;
+	width: 200px;
   }
-   #btnAjouterBouteille {
+  #btnAjouterBouteille {
 	position: absolute;
-	right: 3%;
-	top: 90%;
-	position: fixed;
+	right: 40px;
+	top: 36px;
 	z-index: 999;
+	width: 200px;
   }
   
   .mdl-demo .mdl-layout__content section:not(:last-of-type) {
