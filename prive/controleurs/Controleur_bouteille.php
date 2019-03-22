@@ -54,9 +54,9 @@
 					
 					$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
 					$modeleType = $this->getDAO('Type');
-					$donnees['types'] = $modeleType->obtenir_tous();
+					$donnees['types'] = $modeleType->obtenir_tous($_SESSION["idUsager"]);
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees['celliers'] = $modeleCellier->obtenir_tous();
+					$donnees['celliers'] = $modeleCellier->obtenir_par_id();
 					$donnees['titre'] = 'Modifier Bouteille';
 					$donnees['actionBouton'] = 'modifier';
 					$donnees['titreBouton'] = 'Modifier la bouteille';
@@ -115,7 +115,7 @@
 					$modeleType = $this->getDAO('Type');
 					$donnees['types'] = $modeleType->obtenir_tous();
 					$modeleCellier = $this->getDAO('Cellier');
-					$donnees['celliers'] = $modeleCellier->obtenir_tous();
+					$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION["idUsager"]);
 					$donnees['titre'] = 'Ajouter Bouteille';
 					$donnees['actionBouton'] = 'ajouter';
 					$donnees['titreBouton'] = 'Ajouter la bouteille';
