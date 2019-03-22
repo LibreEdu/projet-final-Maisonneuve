@@ -15,7 +15,7 @@
 					$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('cellier/cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
@@ -25,7 +25,7 @@
 					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('cellier/cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
@@ -52,7 +52,7 @@
 					echo '<script>alert("La bouteille a été modifiée.")</script>';
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('cellier/cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 
@@ -63,7 +63,7 @@
 					echo '<script>alert("La bouteille a été ajoutée.")</script>';
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('cellier', $donnees);
+					$this->afficheVue('cellier/cellier', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 					break;
 

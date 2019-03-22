@@ -1,17 +1,16 @@
 	<main class="mdl-layout__content">
-		<div class="mdl-layout__tab-panel is-active" id="overview">
-			<?php
-				foreach ($donnees["celliers"] as $cellier) {
-			?>
-			<h3>Bienvenue à votre cellier :  <?php echo $cellier->nom; ?></h3>
+		<div class="mdl-layout__tab-panel is-active" id="overview">			
+			<h3>Bienvenue <?php echo $_SESSION['prenom'] ?></h3>
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
 			  Ajouter un nouveau cellier
-			</button>			
+			</button>	
+			<?php
+				foreach ($donnees["celliers"] as $cellier) {
+			?>		
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">					
 					<img src="images/cellier-vin.jpg" alt="" />
-				</header>
-			
+				</header>			
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 					<div class="mdl-card__supporting-text">
 						<h4 class="libelle"><?php echo $cellier->nom; ?></h4>
