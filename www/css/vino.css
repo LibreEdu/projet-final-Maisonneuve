@@ -137,18 +137,20 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
   #btnAjouterCellier {
-	position: absolute;
-	right: 40px;
-	top: 36px;
-	z-index: 999;
-	width: 200px;
+		position: absolute;
+		right: 3%;
+		top: 90%;
+		position: fixed;
+		z-index: 999;
+		width: 200px;
   }
   #btnAjouterBouteille {
-	position: absolute;
-	right: 40px;
-	top: 36px;
-	z-index: 999;
-	width: 200px;
+		position: absolute;
+		right: 3%;
+		top: 90%;
+		position: fixed;
+		z-index: 999;
+		width: 200px;
   }
   
   .mdl-demo .mdl-layout__content section:not(:last-of-type) {
