@@ -21,7 +21,8 @@
 
 				case 'visiterCellier':
 					$modeleBouteille = $this->getDAO('Bouteille');
-					$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($_GET['id']);
+					//$donnees['bouteilles'] = $modeleBouteille->obtenir_par_id_cellier($_GET['id']);
+					$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
 					$this->afficheVue('cellier', $donnees);
