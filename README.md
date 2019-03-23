@@ -18,7 +18,7 @@ Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmais
   
 - [Sprint 1](https://github.com/projet-web-Maisonneuve/vino/tree/b5d5b1b921cf37b12bad82042e0af7f1a352426a) : création de comptes utilisateurs, création de celliers, ajout de bouteilles.
 
-## Compétences
+## Technologies
 - Agile
 - Ajax
 - CSS
