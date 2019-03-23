@@ -1,0 +1,11 @@
+CELLIER:id, date création, libellé
+CONTIENT [1N], 11 BOUTEILLE, 0N CELLIER
+BOUTEILLE:id, code SAQ, prix, millésime, pays, format, nom, boire avant, note, quantité, date d’achat
+
+A [1N], 11 CELLIER, 0N USAGER
+USAGER: id, admin, courriel, nom, prénom, mot de passe
+EST [1N], 0N TYPE, 01 BOUTEILLE
+
+BOUTEILLE SAQ:id, code SAQ, prix, millésime, pays, format, nom
+EST  [1N], 0N TYPE, 01 BOUTEILLE SAQ
+TYPE: id, libellé
