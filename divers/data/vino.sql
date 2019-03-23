@@ -92,5 +92,3 @@ INSERT INTO vino_bouteille VALUES(4, 2, '12375942', 17.10, 2017, 3, 'Espagne', '
 INSERT INTO vino_bouteille VALUES(5, 3, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
 INSERT INTO vino_bouteille VALUES(6, 4, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
 INSERT INTO vino_bouteille VALUES(7, 1, '11676671', 12.50, NULL, 3, 'Espagne', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01', NULL);
-
-
