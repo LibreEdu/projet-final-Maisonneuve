@@ -4,22 +4,31 @@
 
 Projet final de la formation en [Conception et programmation de sites Web](https://fc.cmaisonneuve.qc.ca/repertoire/ti/aec/developpement-sites-web "Description du programme") du Collège de Maisonneuve.
 
-## Projet
+## Description
 
-Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmaisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) a été fourni aux étudiants qui étaient répartis en quatre groupes de quatre. On devait corriger les bogues existants puis faire toute une application Web qui puisse gérer des celliers avec leurs bouteilles ainsi qu’importer des données du site de la Société des alcools du Québec.
+Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmaisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) a été fourni aux étudiants qui étaient répartis en quatre groupes de quatre. On devait corriger les bogues existants puis faire toute une application Web qui puisse gérer des celliers avec leurs bouteilles ainsi qu’importer des données du site de la Société des alcools du Québec (SAQ).
 
-## Orientation
-
-Le sprint 0 a permis de corriger les bogues, modifier le modèle conceptuel des données et créer une première maquette avec Material Design Lite.
-
-Structure utilisée :
+## Structure utilisée
 - ~~CodeIgniter~~ (jugée trop complexe par la majorité de l’équipe) ;
 - ~~WordPress~~ (jugée inadaptée par la totalité de l’équipe) ;
-- MVC maison « Harvey ».
+- MVC maison « Harvey » (inspirée de CodeIgniter).
 
-## Sprint
-- [Sprint 0](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9)
-- [Sprint 1](https://github.com/projet-web-Maisonneuve/vino/tree/b5d5b1b921cf37b12bad82042e0af7f1a352426a)
+## Sprints
+- [Sprint 0](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) : correction des bogues, modification du modèle conceptuel des données, création de la maquette graphique et Material Design Lite, importation des bouteilles de la SAQ.
+  
+- [Sprint 1](https://github.com/projet-web-Maisonneuve/vino/tree/b5d5b1b921cf37b12bad82042e0af7f1a352426a) : création de comptes utilisateurs, création de celliers, ajout de bouteilles.
+
+## Compétences
+- Agile
+- Ajax
+- CSS
+- Git
+- HTML
+- Javascript
+- Material Design Lite
+- Photoshop
+- PHP Objet (MVC)
+- ScrumDesk
   
 ## Équipe
 - [José Ignacio <span style="font-variant:small-caps;">Delgado</span>](https://github.com/jidelgado77)
