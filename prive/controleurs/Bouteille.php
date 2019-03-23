@@ -1,5 +1,5 @@
 <?php
-	class Controleur_Bouteille extends BaseControleur
+	class Bouteille extends Controleur
 	{
 		public function traite(array $params)
 		{

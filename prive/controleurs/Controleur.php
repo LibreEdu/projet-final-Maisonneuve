@@ -1,5 +1,5 @@
 <?php
-	abstract class BaseControleur
+	abstract class Controleur
 	{
 		// La fonction qui sera appelée par le routeur
 		public abstract function traite(array $params);

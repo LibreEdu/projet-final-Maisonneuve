@@ -25,17 +25,14 @@
 			if($controleur == '')
 				$controleur = 'login';
 
-			// Détermin la classe du controleur
-			$classe = 'Controleur_' . $controleur;
-
-			// Si la classe existe
-			if(class_exists($classe))
+			// Si le controleur existe
+			if(class_exists($controleur))
 			{
 				// Crée une nouvelle instance de la classe
-				$objetControleur = new $classe;
+				$objetControleur = new $controleur;
 
 				// Si l’objet est instancié d’une classe qui hérite de BaseControleur
-				if($objetControleur instanceof BaseControleur)
+				if($objetControleur instanceof Controleur)
 				{
 					// Traite la requête
 					$objetControleur->traite($_REQUEST);
