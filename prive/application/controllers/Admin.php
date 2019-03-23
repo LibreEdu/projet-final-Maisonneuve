@@ -1,5 +1,5 @@
 <?php
-	class Controleur_Admin extends BaseControleur
+	class Admin extends CI_Controller
 	{
 		public function traite(array $params)
 		{

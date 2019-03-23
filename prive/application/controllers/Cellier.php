@@ -1,5 +1,5 @@
 <?php
-	class Controleur_Cellier extends BaseControleur
+	class Cellier extends CI_Controller
 	{
 		public function traite(array $params)
 		{
