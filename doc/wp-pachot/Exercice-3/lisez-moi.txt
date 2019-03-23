@@ -1,4 +1,0 @@
-Adresse du site : https://e1795854.webdev.cmaisonneuve.qc.ca/exo3/
-
-Login           : mot de passe
-admin           : 12345
