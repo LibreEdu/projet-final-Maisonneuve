@@ -25,10 +25,10 @@ class Login extends CI_Controller
 				$messageErreur = 'Mauvaise combinaison username/password';
 				// On affiche la page login
 				$donnees['erreurs'] = $messageErreur;
-				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-login');
-				$this->afficheVue('login/login', $donnees);
-				$this->afficheVue('modeles/bas-de-page');
+				$this->load->view('modeles/en-tete');
+				$this->load->view('modeles/menu-login');
+				$this->load->view('login/login', $donnees);
+				$this->load->view('modeles/bas-de-page');
 			}
 		}
 
@@ -42,20 +42,20 @@ class Login extends CI_Controller
 		{
 			header('Location: ' . BASEURL . 'index.php?cellier' );
 		} else {
-			$this->afficheVue('modeles/en-tete');
-			$this->afficheVue('modeles/menu-login');
-			$this->afficheVue('login/login');
-			$this->afficheVue('modeles/bas-de-page');
+			$this->load->view('modeles/en-tete');
+			$this->load->view('modeles/menu-login');
+			$this->load->view('login/login');
+			$this->load->view('modeles/bas-de-page');
 		}
 	}
 
 	// Affichage du formulaire d'inscription
 	public function formulaire()
 	{
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-login');
-		$this->afficheVue('login/formulaire');
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-login');
+		$this->load->view('login/formulaire');
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	/*Gestion de l'inscription*/ 
@@ -89,10 +89,10 @@ class Login extends CI_Controller
 				header('Location: ' . BASEURL);
 			} else
 			{
-				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-admin');
+				$this->load->view('modeles/en-tete');
+				$this->load->view('modeles/menu-admin');
 				$this->afficheFormInscription($messageErreur);
-				$this->afficheVue('modeles/bas-de-page');
+				$this->load->view('modeles/bas-de-page');
 			} 
 		}
 		else
@@ -129,7 +129,7 @@ class Login extends CI_Controller
 		// Remplir le tableau erreurs
 		$donnees['erreurs'] = $erreurs;
 		// Afficher le formulaire du login
-		$this->afficheVue('login/formulaire', $donnees);
+		$this->load->view('login/formulaire', $donnees);
 	}
 
 		/*=====  Fonction de validation du formulaire d'inscription ======*/

@@ -5,10 +5,10 @@ class Bouteille extends CI_Controller
 	{
 		$modeleBouteille = $this->getDAO('Bouteille');
 		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/cellier', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function visiterCellier()
@@ -29,10 +29,10 @@ class Bouteille extends CI_Controller
 		$donnees['cellier'] = $monCellier->nom;
 
 
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/cellier', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function modifier_form()
@@ -52,10 +52,10 @@ class Bouteille extends CI_Controller
 		$donnees['titre'] = 'Modifier Bouteille';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier la bouteille';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('bouteille/formulaire', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('bouteille/formulaire', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function modifier()
@@ -64,10 +64,10 @@ class Bouteille extends CI_Controller
 		$modeleBouteille->modifierBouteille();
 		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été modifiée.")</script>';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/cellier', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function ajouter()
@@ -82,10 +82,10 @@ class Bouteille extends CI_Controller
 		$modeleBouteille->ajouterUneBouteille();
 		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été ajoutée.")</script>';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/cellier', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function boire_js()
@@ -116,10 +116,10 @@ class Bouteille extends CI_Controller
 		$donnees['titre'] = 'Ajouter Bouteille';
 		$donnees['actionBouton'] = 'ajouter';
 		$donnees['titreBouton'] = 'Ajouter la bouteille';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('bouteille/formulaire', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('bouteille/formulaire', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function saisie_semi_automatique()

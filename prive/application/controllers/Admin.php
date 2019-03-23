@@ -4,10 +4,10 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$donnees['prenom'] = $_SESSION["prenom"];
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-admin');
-		$this->afficheVue('admin/principal', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-admin');
+		$this->load->view('admin/principal', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 
 	public function importer()

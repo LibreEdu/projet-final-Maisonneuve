@@ -11,18 +11,18 @@ class Cellier extends CI_Controller
 		// Affiche la liste des celliers de l’usager connecté
 		$modeleCellier = $this->getDAO('Cellier');
 		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/liste', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/liste', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 	
 	public function ajouter_form()
 	{
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/ajouter');
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/ajouter');
+		$this->load->view('modeles/bas-de-page');
 	}
 	
 	public function ajouter()
@@ -30,10 +30,10 @@ class Cellier extends CI_Controller
 		$modeleCellier = $this->getDAO('Cellier');
 		$modeleCellier->ajoutCellier($_SESSION['id_usager']);
 		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/liste', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$this->load->view('modeles/en-tete');
+		$this->load->view('modeles/menu-usager');
+		$this->load->view('cellier/liste', $donnees);
+		$this->load->view('modeles/bas-de-page');
 	}
 	
 	public function supprimer()
