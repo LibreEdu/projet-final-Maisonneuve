@@ -25,7 +25,7 @@
 			if($controleur == '')
 				$controleur = 'login';
 
-			// Si le controleur existe
+			// Si le contrôleur existe
 			if(class_exists($controleur))
 			{
 				// Crée une nouvelle instance de la classe
