@@ -64,10 +64,10 @@ class Login extends Controleur
 		// il faut le rediriger correctement
 		if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true )
 		{
-			header('Location: ' . BASEURL . 'index.php?admin');
+			header('Location: ' . site_url('admin') );
 		} elseif ( isset($_SESSION["idUsager"]) && $_SESSION["idUsager"] == true )
 		{
-			header('Location: ' . BASEURL . 'index.php?cellier' );
+			header('Location: ' .  site_url('cellier') );
 		} else {
 			$this->afficheVue('modeles/en-tete');
 			$this->afficheVue('modeles/menu-login');
@@ -113,7 +113,7 @@ class Login extends Controleur
 
 				$modeleUsager->sauvegarde($nouveauUsager);
 				//Affichage
-				header('Location: ' . BASEURL);
+				header( 'Location: ' . base_url() );
 			} else
 			{
 				$this->afficheVue('modeles/en-tete');
@@ -142,7 +142,7 @@ class Login extends Controleur
 
 		// Détruire la session
 		session_destroy();
-		header('Location: ' . BASEURL);
+		header( 'Location: ' . base_url() );
 	}
 
 	/*=====  Fonction d'affichage du formulaire d'ajout d'un usager  ======*/		

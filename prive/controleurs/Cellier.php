@@ -6,7 +6,7 @@ class Cellier extends Controleur
 		// On vérifie que l’usagé est bien connecté
 		if ( ! isset($_SESSION["idUsager"]) )
 		{
-			header('Location: ' . BASEURL );
+			header('Location: ' . base_url() );
 		}
 		switch($params['action'])
 		{

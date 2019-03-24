@@ -10,16 +10,16 @@ class Routeur
 		$chaineRequete = $_SERVER['QUERY_STRING'];
 
 		// Cherche la position de la première occurrence de & dans la chaine de caractères
-		$posEperluette = strpos($chaineRequete, '&');
+		$positionEsperluette = strpos($chaineRequete, '&');
 
 		// Initialise le controleur
 		$controleur = '';
 
 		// Récupère le controleur
-		if($posEperluette === false)
+		if($positionEsperluette === false)
 			$controleur = $chaineRequete;
 		else
-			$controleur = substr($chaineRequete, 0, $posEperluette);
+			$controleur = substr($chaineRequete, 0, $positionEsperluette);
 
 		// Si aucun contrôleur n’est spécifié, mettre le contrôleur par défaut
 		if($controleur == '')
@@ -34,6 +34,8 @@ class Routeur
 			// Si l’objet est instancié d’une classe qui hérite de BaseControleur
 			if($objetControleur instanceof Controleur)
 			{
+				require_once('Fonctions.php');
+
 				// Traite la requête
 				$objetControleur->traite($_REQUEST);
 			}
