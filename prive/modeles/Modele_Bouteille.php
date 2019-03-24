@@ -172,9 +172,9 @@
 
 		public function verifParUsager($idBouteille,$idUsager)
 		{
-			$sql = 'SELECT id_bouteille FROM ' . $this->getTableName() .'
+			$sql = 'SELECT id_bouteille FROM vino_bouteille bouteille
 			INNER JOIN vino_cellier cellier
-				ON ' . $this->getTableName() .'.id_cellier = cellier.id_cellier
+				ON bouteille.id_cellier = cellier.id_cellier
 			WHERE id_bouteille = ? 
 			AND id_usager = ?';
 
