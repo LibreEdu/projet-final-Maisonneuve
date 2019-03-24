@@ -21,7 +21,14 @@
 						<p class='prix'><?php echo number_format($bouteille->prix, 2, ',', ' ') ?> $</p>
 					</div>
 					<div class="mdl-card__actions">
+						<?php
+							if($bouteille->code_saq != null)
+							{
+						?>
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
+						<?php
+							}
+						?>
 						<!-- <p> -->
 						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>

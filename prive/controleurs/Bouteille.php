@@ -108,6 +108,7 @@ class Bouteille extends Controleur
 		$donnees['titre'] = 'Modifier Bouteille';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier la bouteille';
+		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('bouteille/formulaire', $donnees);
@@ -164,6 +165,7 @@ class Bouteille extends Controleur
 		$donnees['titre'] = 'Ajouter Bouteille';
 		$donnees['actionBouton'] = 'ajouter';
 		$donnees['titreBouton'] = 'Ajouter la bouteille';
+		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('bouteille/formulaire', $donnees);

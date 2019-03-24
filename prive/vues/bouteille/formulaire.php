@@ -96,9 +96,16 @@
 					</select>
 				</div>
 				<div>
+					<?php
+						if(isset($id_bouteille))
+						{
+					?>
 					<input type="hidden" name="id_bouteille" value="<?php echo $id_bouteille ?>">
+					<?php
+						}
+					?>
 					<input type="hidden" name="action" value="<?php echo $donnees['actionBouton'] ?>">
-					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="mdl-button mdl-js-button mdl-button--raised">
+					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="<?php echo $donnees['classeBouton'] ?>">
 				</div>
 			</form>
 	</div>
