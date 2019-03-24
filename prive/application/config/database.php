@@ -74,19 +74,19 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=email_test',
+	'dsn'	=> 'mysql:host=localhost;dbname=vino',
 	'hostname' => '',
 	'username' => 'root',
 	'password' => 'root',
 	'database' => '',
 	'dbdriver' => 'pdo',
-	'dbprefix' => '',
+	'dbprefix' => 'vino_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8mb4',
-	'dbcollat' => 'utf8mb4_general_ci',
+	'dbcollat' => '',
 	'swap_pre' => '',
 	'encrypt' => FALSE,
 	'compress' => FALSE,
