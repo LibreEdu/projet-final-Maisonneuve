@@ -1,6 +1,10 @@
 <?php
 class Modele_Usager extends CI_Model
 {
+	public function __construct()
+	{
+		$this->load->database();
+	}
 
 	/**
 	 *  Fonction qui authentifie un utilisateur et qui retourne un 
@@ -11,16 +15,12 @@ class Modele_Usager extends CI_Model
 	 */
 	public function Authentification($username, $password)
 	{
-	
-		$query = 'SELECT id_usager, hash from vino_usager WHERE courriel = "' . $username . '"';
-		$resultat = $this->requete($query);
-		// Récupère le résultat sous forme d’un objet
-		$result = $resultat->fetch(PDO::FETCH_OBJ);
-
+		$requete = $this->db->get_where('usager', array('courriel' => $username));
+		$resultat = $requete->row();
 		
-		if($result)
+		if($resultat)
 		{
-			if(password_verify($password, $result->hash))
+			if(password_verify($password, $resultat->hash))
 				return true;
 			else
 			{
