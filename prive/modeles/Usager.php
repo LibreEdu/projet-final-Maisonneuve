@@ -6,15 +6,15 @@
 		public $courriel;		
 		public $nom;
 		public $prenom;
-		public $hash;
+		public $mot_de_passe;
 		
-		public function __construct($id_usager = 0,  $admin = '', $courriel = '', $nom = '', $prenom = '', $hash = '')
+		public function __construct($id_usager = 0,  $admin = '', $courriel = '', $nom = '', $prenom = '', $mot_de_passe = '')
 		{
 			$this->id_usager = $id_usager;
 			$this->admin = $admin;
 			$this->courriel = $courriel;
 			$this->nom = $nom;
 			$this->prenom = $prenom;
-			$this->hash = $hash;			
+			$this->mot_de_passe = $mot_de_passe;			
 		}
 	}
