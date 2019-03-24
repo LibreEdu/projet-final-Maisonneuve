@@ -2,19 +2,25 @@
 /* Controleur login qui gére la connexion et l'inscription d'un usager*/
 class Login extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('modele_usager');
+		$this->load->model('modele_bouteille');
+	}
+	
 	public function index()
 	{
 		$messageErreur = '';
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 		{
-			$modeleUsager = $this->load->model('Modele_Usager');
-			if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
+			if($this->modele_usager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
 				// ce qui authentifie l’usager pour les pages protégées
 				$_SESSION['UserID'] = $_REQUEST['user'];
-				$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
+				$user = $this->modele_usager->obtenirUsager($_REQUEST["user"]);
 				// Mets le'id de l’usager dans la variable session idUsager,
 				$_SESSION["idUsager"] = $user->id_usager;
 				$_SESSION["admin"] = $user->admin;
@@ -62,11 +68,9 @@ class Login extends CI_Controller
 	public function sinscrire()
 	{
 		//Récupérer le modele usager
-		$modeleUsager = $this->load->model('Usager');
-		$donnees["usager"] = $modeleUsager->obtenir_tous();
+		$donnees["usager"] = $this->modele_usager->obtenir_tous();
 		//Récupérer le modele bouteille 
-		$modeleBouteille = $this->load->model('Bouteille');
-		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 
 		$messageErreur="";
 		if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
@@ -74,7 +78,7 @@ class Login extends CI_Controller
 			//Appel de la fonction valideFormInscription et verifier quesqu'elle retourne 
 			$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
-			if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
+			if(($this->modele_usager->obtenirUsager($_REQUEST['pseudo'])))
 			{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
 				$messageErreur = ' Ce courriel est déjà utilisé.';
 				$donnees['erreurs'] = $messageErreur;
@@ -84,7 +88,7 @@ class Login extends CI_Controller
 			{// Procéder à l'insertion dans la table vino_usager
 				$nouveauUsager = new Usager(0, 0, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
-				$modeleUsager->sauvegarde($nouveauUsager);
+				$this->modele_usager->sauvegarde($nouveauUsager);
 				//Affichage
 				header('Location: ' . base_url());
 			} else
@@ -121,10 +125,8 @@ class Login extends CI_Controller
 	/*=====  Fonction d'affichage du formulaire d'ajout d'un usager  ======*/		
 	public function afficheFormInscription($erreurs = '')
 	{
-		// Récupérer le modèle udager
-		$modeleUsager = $this->load->model('Usager');
 		// Récupére la liste des usager
-		$donnees['usager'] = $modeleUsager->obtenir_tous();
+		$donnees['usager'] = $this->modele_usager->obtenir_tous();
 
 		// Remplir le tableau erreurs
 		$donnees['erreurs'] = $erreurs;
