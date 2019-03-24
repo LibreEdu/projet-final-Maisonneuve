@@ -8,7 +8,7 @@ class Login extends CI_Controller
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 		{
-			$modeleUsager = $this->getDAO('Usager');
+			$modeleUsager = $this->load->model('Usager');
 			if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
@@ -62,10 +62,10 @@ class Login extends CI_Controller
 	public function sinscrire()
 	{
 		//Récupérer le modele usager
-		$modeleUsager = $this->getDAO('Usager');
+		$modeleUsager = $this->load->model('Usager');
 		$donnees["usager"] = $modeleUsager->obtenir_tous();
 		//Récupérer le modele bouteille 
-		$modeleBouteille = $this->getDAO('Bouteille');
+		$modeleBouteille = $this->load->model('Bouteille');
 		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 
 		$messageErreur="";
@@ -122,7 +122,7 @@ class Login extends CI_Controller
 	public function afficheFormInscription($erreurs = '')
 	{
 		// Récupérer le modèle udager
-		$modeleUsager = $this->getDAO('Usager');
+		$modeleUsager = $this->load->model('Usager');
 		// Récupére la liste des usager
 		$donnees['usager'] = $modeleUsager->obtenir_tous();
 
