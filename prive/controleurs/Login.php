@@ -2,6 +2,15 @@
 /* Controleur login qui gére la connexion et l’inscription d’un usager*/
 class Login extends Controleur
 {
+	protected $modele_usager;
+	protected $modele_bouteille;
+
+	public function __construct()
+	{
+		$this->modele_usager = $this->modele('modele_usager');
+		$this->modele_bouteille = $this->modele('modele_bouteille');
+	}
+
 	public function traite(array $params)
 	{
 		switch($params['action'])
@@ -35,13 +44,12 @@ class Login extends Controleur
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 		{
-			$modeleUsager = $this->modele('Modele_Usager');
-			if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
+			if($this->modele_usager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
 				// ce qui authentifie l’usager pour les pages protégées
 				$_SESSION['UserID'] = $_REQUEST['user'];
-				$user = $modeleUsager->obtenirUsager($_REQUEST["user"]);
+				$user = $this->modele_usager->obtenirUsager($_REQUEST["user"]);
 				// Mets le'id de l’usager dans la variable session idUsager,
 				$_SESSION["idUsager"] = $user->id_usager;
 				$_SESSION["admin"] = $user->admin;
@@ -88,12 +96,8 @@ class Login extends Controleur
 	/*Gestion de l'inscription*/ 
 	public function sinscrire()
 	{
-		//Récupérer le modele usager
-		$modeleUsager = $this->modele('Modele_Usager');
-		$donnees["usager"] = $modeleUsager->obtenir_tous();
-		//Récupérer le modele bouteille 
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+		$donnees["usager"] = $this->modele_usager->obtenir_tous();
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 
 		$messageErreur="";
 		if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
@@ -101,7 +105,7 @@ class Login extends Controleur
 			//Appel de la fonction valideFormInscription et verifier quesqu'elle retourne 
 			$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
-			if(($modeleUsager->obtenirUsager($_REQUEST['pseudo'])))
+			if(($this->modele_usager->obtenirUsager($_REQUEST['pseudo'])))
 			{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
 				$messageErreur = ' Ce courriel est déjà utilisé.';
 				$donnees['erreurs'] = $messageErreur;
@@ -111,7 +115,7 @@ class Login extends Controleur
 			{// Procéder à l'insertion dans la table vino_usager
 				$nouveauUsager = new Usager(0, 0, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
 
-				$modeleUsager->sauvegarde($nouveauUsager);
+				$this->modele_usager->sauvegarde($nouveauUsager);
 				//Affichage
 				header( 'Location: ' . base_url() );
 			} else
@@ -148,10 +152,8 @@ class Login extends Controleur
 	/*=====  Fonction d'affichage du formulaire d'ajout d'un usager  ======*/		
 	public function afficheFormInscription($erreurs = '')
 	{
-		// Récupérer le modèle udager
-		$modeleUsager = $this->modele('Modele_Usager');
 		// Récupére la liste des usager
-		$donnees['usager'] = $modeleUsager->obtenir_tous();
+		$donnees['usager'] = $this->modele_usager->obtenir_tous();
 
 		// Remplir le tableau erreurs
 		$donnees['erreurs'] = $erreurs;
@@ -159,8 +161,7 @@ class Login extends Controleur
 		$this->afficheVue('login/formulaire', $donnees);
 	}
 
-		/*=====  Fonction de validation du formulaire d'inscription ======*/
-
+	/*=====  Fonction de validation du formulaire d'inscription ======*/
 	public function valideFormInscription($courriel, $nom, $prenom, $hash ,$hash2)
 	{
 		// Initialiser le message d'erreur

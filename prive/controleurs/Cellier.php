@@ -1,6 +1,15 @@
 <?php
 class Cellier extends Controleur
 {
+	protected $modele_usager;
+	protected $modele_cellier;
+
+	public function __construct()
+	{
+		$this->modele_usager = $this->modele('modele_usager');
+		$this->modele_cellier = $this->modele('modele_cellier');
+	}
+
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
@@ -36,14 +45,12 @@ class Cellier extends Controleur
 
 	public function index()
 	{
-		// Récupère d’usager qui est connecté
-		$modeleUsager = $this->modele('Modele_Usager');		
-		$user = $modeleUsager->obtenirUsager($_SESSION["UserID"]);
+		// Récupère d’usager qui est connecté	
+		$user = $this->modele_usager->obtenirUsager($_SESSION["UserID"]);
 		$_SESSION['id_usager'] = $user->id_usager;
 		
 		// Affiche la liste des celliers de l’usager connecté
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('cellier/liste', $donnees);
@@ -60,9 +67,8 @@ class Cellier extends Controleur
 	
 	public function ajouter()
 	{
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$modeleCellier->ajoutCellier($_SESSION['id_usager']);
-		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION['id_usager']);
+		$this->modele_cellier->ajoutCellier($_SESSION['id_usager']);
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('cellier/liste', $donnees);
@@ -72,8 +78,7 @@ class Cellier extends Controleur
 	public function supprimer()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$modeleCellier->supprimer_par_id($body->id);
+		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
 	}
 	
