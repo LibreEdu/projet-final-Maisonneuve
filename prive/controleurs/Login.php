@@ -35,7 +35,7 @@ class Login extends Controleur
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 		{
-			$modeleUsager = $this->getDAO('Usager');
+			$modeleUsager = $this->modele('Usager');
 			if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
@@ -89,10 +89,10 @@ class Login extends Controleur
 	public function sinscrire()
 	{
 		//Récupérer le modele usager
-		$modeleUsager = $this->getDAO('Usager');
+		$modeleUsager = $this->modele('Usager');
 		$donnees["usager"] = $modeleUsager->obtenir_tous();
 		//Récupérer le modele bouteille 
-		$modeleBouteille = $this->getDAO('Bouteille');
+		$modeleBouteille = $this->modele('Bouteille');
 		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
 
 		$messageErreur="";
@@ -149,7 +149,7 @@ class Login extends Controleur
 	public function afficheFormInscription($erreurs = '')
 	{
 		// Récupérer le modèle udager
-		$modeleUsager = $this->getDAO('Usager');
+		$modeleUsager = $this->modele('Usager');
 		// Récupére la liste des usager
 		$donnees['usager'] = $modeleUsager->obtenir_tous();
 

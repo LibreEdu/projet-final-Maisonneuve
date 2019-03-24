@@ -1,5 +1,5 @@
 <?php
-	abstract class BaseDao
+	abstract class Modele
 	{
 		protected $db;
 

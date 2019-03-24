@@ -18,7 +18,7 @@ abstract class Controleur
 		}
 	}
 
-	protected function getDAO($nomModele)
+	protected function modele($nomModele)
 	{
 		$classe = "Modele_" . $nomModele;
 		if(class_exists($classe))
@@ -29,7 +29,7 @@ abstract class Controleur
 			// On crée une instance de la classe Modele_$classe
 			$objetModele = new $classe($connexion);
 
-			if($objetModele instanceof BaseDAO)
+			if($objetModele instanceof Modele)
 			{
 				return $objetModele;
 			}
