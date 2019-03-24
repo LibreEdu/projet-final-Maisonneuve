@@ -1,15 +1,6 @@
 <?php
 class Cellier extends Controleur
 {
-	protected $modele_usager;
-	protected $modele_cellier;
-
-	public function __construct()
-	{
-		$this->modele_usager = $this->modele('modele_usager');
-		$this->modele_cellier = $this->modele('modele_cellier');
-	}
-
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté

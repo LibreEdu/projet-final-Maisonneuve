@@ -2,15 +2,6 @@
 /* Controleur login qui gére la connexion et l’inscription d’un usager*/
 class Login extends Controleur
 {
-	protected $modele_usager;
-	protected $modele_bouteille;
-
-	public function __construct()
-	{
-		$this->modele_usager = $this->modele('modele_usager');
-		$this->modele_bouteille = $this->modele('modele_bouteille');
-	}
-
 	public function traite(array $params)
 	{
 		switch($params['action'])
