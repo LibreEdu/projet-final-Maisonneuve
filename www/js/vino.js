@@ -134,34 +134,35 @@ window.addEventListener('load', function() {
 	
 	if(inputNomBouteille){
 	  	inputNomBouteille.addEventListener('keyup', function(evt){
-		let nom = inputNomBouteille.value;
-		liste.innerHTML = '';
-		if(nom){
-			let requete = new Request('index.php?bouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
-			fetch(requete)
-			.then(response => {
-				if (response.status === 200) {
-					return response.json();
-				} else {
-				throw new Error('Erreur');
-				}
-			})
-			.then(response => {
-				response.forEach(function(element){
-					liste.innerHTML += '<li '
-					+ 'data-id="' + element.id_bouteille_saq + '" '
-					+ 'data-prix="' + element.prix + '"'
-					+ 'data-millesime="' + element.millesime + '"'
-					+ 'data-pays="' + element.pays + '"'
-					+ 'data-format="' + element.format + '"'
-					+ '>'
-					+ element.nom + '</li>';
-				} )
-			}).catch(error => {
-				console.error(error);
-			});
-		}
-	});
+			let nom = inputNomBouteille.value;
+			liste.innerHTML = '';
+			if(nom){
+				let requete = new Request('index.php?bouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+				fetch(requete)
+				.then(response => {
+					if (response.status === 200) {
+						return response.json();
+					} else {
+					throw new Error('Erreur');
+					}
+				})
+				.then(response => {
+					response.forEach(function(element){
+						liste.innerHTML += '<li '
+						+ 'data-id="' + element.id_bouteille_saq + '" '
+						+ 'data-prix="' + element.prix + '"'
+						+ 'data-millesime="' + element.millesime + '"'
+						+ 'data-pays="' + element.pays + '"'
+						+ 'data-format="' + element.format + '"'
+						+ '>'
+						+ element.nom + '</li>';
+					} )
+				}).catch(error => {
+					console.error(error);
+				});
+			}
+		} );
+	}
 
 	let bouteille = {
 		nom : document.getElementById('nom_bouteille'),
@@ -213,8 +214,6 @@ window.addEventListener('load', function() {
 			});		
 		});
 	}
-}
 
-
-});
+} );
 
