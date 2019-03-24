@@ -1,6 +1,11 @@
 <?php
 	class Modele_Cellier extends CI_Model
 	{
+		public function __construct()
+		{
+			$this->load->database();
+		}
+		
 		public function ajoutCellier($idUsager)
 		{
 			$sql = 'INSERT INTO ' . $this->getTableName() . '(id_usager, nom) VALUES (?,?)';
@@ -19,4 +24,3 @@
 			return $result;
 		}	
 	}
-?>

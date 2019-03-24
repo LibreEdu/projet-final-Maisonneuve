@@ -1,6 +1,11 @@
 <?php
 	class Modele_Bouteille extends CI_Model
 	{
+		public function __construct()
+		{
+			$this->load->database();
+		}
+		
 		/**
 		 * Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type
 		 * 
@@ -155,5 +160,3 @@
 			return $result;
 		}
 	}
-
-?>

@@ -1,6 +1,7 @@
 <?php
 	class Modele_Usager extends CI_Model
 	{
+
 		/**
 		 *  Fonction qui authentifie un utilisateur et qui retourne un 
 		 *  booléen
@@ -59,4 +60,3 @@
 				return $this->requete($query, $donnees);
 		}
 	}
-?>
