@@ -75,25 +75,20 @@ INSERT INTO vino_bouteille_saq VALUES(8, '13802571', 18.25, 2015, 3, 'Espagne', 
 INSERT INTO vino_bouteille_saq VALUES(9, '12216562', 21.95, 2016, 3, 'France', '750 ml', 'Tessellae Old Vines Côtes du Roussillon');
 INSERT INTO vino_bouteille_saq VALUES(10, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG');
 
-INSERT INTO vino_usager VALUES(1, true, 'aa@aa.aa', 'Fatemeh', 'Homatash', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(2, false, 'bb@bb.bb', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(3, false, 'cc@cc.cc', 'Jose', 'Ignacio', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(4, false, 'dd@dd.dd', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
-INSERT INTO vino_usager VALUES(5, false, 'ee@ee.ee', 'Mina', 'Amir', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(1, true, 'aa@aa.aa', 'José', 'Delgado', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(2, false, 'bb@bb.bb', 'Fatemeh', 'Homatash', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(3, false, 'cc@cc.cc', 'Alexandre', 'Pachot', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+INSERT INTO vino_usager VALUES(4, false, 'dd@dd.dd', 'Charef', 'Yagoubi', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
 
-INSERT INTO vino_cellier VALUES(1, 1, 'Domicile');
+INSERT INTO vino_cellier VALUES(1, 2, 'Domicile');
 INSERT INTO vino_cellier VALUES(2, 2, 'Chalet');
 INSERT INTO vino_cellier VALUES(3, 3, 'Domicile');
 INSERT INTO vino_cellier VALUES(4, 4, 'Domicile');
-INSERT INTO vino_cellier VALUES(5, 1, 'Home');
-INSERT INTO vino_cellier VALUES(6, 2, 'Maison');
-INSERT INTO vino_cellier VALUES(7, 5, 'Amis');
 
-INSERT INTO vino_bouteille VALUES(1, 1, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01', NULL);
-INSERT INTO vino_bouteille VALUES(2, 2, '12375942', 17.10, NULL, 3, 'Italie', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
-INSERT INTO vino_bouteille VALUES(3, 3, '11676671', 12.50, 2015, 3, 'Italie', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01', NULL);
-INSERT INTO vino_bouteille VALUES(4, 4, '12216562', 21.95, 2015, 3, 'Italie', '750 ml', 'Tessellae Old Vines Côtes du Roussillon', 'Une bonne bouteille', 5, '2016-04-11', NULL);
-INSERT INTO vino_bouteille VALUES(5, 1, '13802571', 18.25, 2015, 3, 'Espagne', '750 ml', 'Dominio de Tares Estay Castilla y Léon', 'Une bonne bouteille', 25, '2018-10-01', NULL);
-INSERT INTO vino_bouteille VALUES(6, 2, '13675841', 22.65, 2017, 3, 'Autriche', '750 ml', 'Huber Riesling Engelsberg', 'Une mauvaise bouteille', 7, '2016-10-22', NULL);
-INSERT INTO vino_bouteille VALUES(7, 3, '11676671', 12.50, 2015, 3, 'Italie', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01', NULL);
-INSERT INTO vino_bouteille VALUES(8, 4, '12216562', 21.95, 2015, 3, 'Italie', '750 ml', 'Tessellae Old Vines Côtes du Roussillon', 'Une bonne bouteille', 5, '2016-04-11', NULL);
+INSERT INTO vino_bouteille VALUES(1, 1, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01', '2020-01-01');
+INSERT INTO vino_bouteille VALUES(2, 2, '13637422', 34.75, 2015, 3, 'Italie', '750 ml', 'Tenuta Il Falchetto Bricco Paradiso - Barbera d’Asti Superiore DOCG', 'Une bonne bouteille', 10, '2019-01-01', NULL);
+INSERT INTO vino_bouteille VALUES(3, 1, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
+INSERT INTO vino_bouteille VALUES(4, 2, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
+INSERT INTO vino_bouteille VALUES(5, 3, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
+INSERT INTO vino_bouteille VALUES(6, 4, '12375942', 17.10, 2017, 3, 'Espagne', '750 ml', 'Bodegas Atalaya Laya', 'Une bonne bouteille', 15, '2014-09-22', NULL);
+INSERT INTO vino_bouteille VALUES(7, 1, '11676671', 12.50, NULL, 3, 'Espagne', '750 ml', 'Castano Hecula', 'Une bonne bouteille', 20, '2019-06-01', NULL);

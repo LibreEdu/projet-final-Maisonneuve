@@ -6,7 +6,7 @@ Projet final de la formation en [Conception et programmation de sites Web](https
 
 ## Description
 
-Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmaisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) a été fourni aux étudiants qui étaient répartis en quatre groupes de quatre. On devait corriger les bogues existants puis faire toute une application Web qui puisse gérer des celliers avec leurs bouteilles ainsi qu’importer des données du site de la Société des alcools du Québec (SAQ).
+Un [site web](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) avec le [MVC maison « Martel »](https://github.com/projet-web-Maisonneuve/simpleMVCStructure) a été fourni aux étudiants qui étaient répartis en quatre groupes de quatre. On devait corriger les bogues existants puis faire toute une application Web qui puisse gérer des celliers avec leurs bouteilles ainsi qu’importer des données du site de la Société des alcools du Québec (SAQ).
 
 ## Structure utilisée
 - ~~CodeIgniter~~ (jugée trop complexe par la majorité de l’équipe) ;
@@ -14,7 +14,7 @@ Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmais
 - MVC maison « Harvey » (inspirée de CodeIgniter).
 
 ## Sprints
-- [Sprint 0](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a8b76a6d4a4b50c6333712ea5f9) : correction des bogues, modification du modèle conceptuel des données, création de la maquette graphique et Material Design Lite, importation des bouteilles de la SAQ.
+- [Sprint 0](https://github.com/projet-web-Maisonneuve/vino/tree/6d8d6579cd1df7c418085bae9a541ef5f8a7bc03) : correction des bogues, modification du modèle conceptuel des données, création de la maquette graphique et Material Design Lite, importation des bouteilles de la SAQ.
   
 - [Sprint 1](https://github.com/projet-web-Maisonneuve/vino/tree/b5d5b1b921cf37b12bad82042e0af7f1a352426a) : création de comptes utilisateurs, création de celliers, ajout de bouteilles.
 
@@ -31,7 +31,7 @@ Un site web avec le [MVC maison « Martel »](https://github.com/projetwebmais
 - ScrumDesk
   
 ## Équipe
-- [José Ignacio <span style="font-variant:small-caps;">Delgado</span>](https://github.com/jidelgado77)
-- [Fatemeh <span style="font-variant:small-caps;">Homatash</span>](https://github.com/FatemehHo)
-- [Alexandre <span style="font-variant:small-caps;">Pachot</span>](https://github.com/LibreEdu)
-- [Charef Eddine <span style="font-variant:small-caps;">Yagoubi</span>](https://github.com/charefeddine)
+- [José Ignacio Delgado](https://github.com/jidelgado77)
+- [Fatemeh Homatash](https://github.com/FatemehHo)
+- [Alexandre Pachot](https://github.com/LibreEdu)
+- [Charef Eddine Yagoubi](https://github.com/charefeddine)

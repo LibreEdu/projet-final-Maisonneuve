@@ -6,7 +6,7 @@ class Bouteille extends Controleur
 		// On vérifie que l’usagé est bien connecté
 		if ( ! isset($_SESSION["idUsager"]) )
 		{
-			header('Location: ' . BASEURL );
+			header('Location: ' . base_url() );
 		}
 
 		switch($params['action'])
@@ -69,7 +69,7 @@ class Bouteille extends Controleur
 		$idCellier = $modeleCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idCellier == null) {
-			header('Location: ' . BASEURL . 'index.php?login&action=logout');
+			header('Location: ' . site_url('login&action=logout') );
 		}
 
 		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
@@ -92,7 +92,7 @@ class Bouteille extends Controleur
 		$idBouteille = $modeleBouteille->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idBouteille == null) {
-			header('Location: ' . BASEURL . 'index.php?login&action=logout');
+			header('Location: ' .  site_url('login&action=logout') );
 		}
 		
 		$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);

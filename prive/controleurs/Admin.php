@@ -5,7 +5,7 @@ class Admin extends Controleur
 	{
 		if ( ! ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true) )
 		{
-			header('Location: ' . BASEURL );
+			header( 'Location: ' . base_url() );
 		}
 		switch($params['action'])
 		{
