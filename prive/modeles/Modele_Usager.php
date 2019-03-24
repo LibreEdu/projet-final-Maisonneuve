@@ -10,19 +10,19 @@
 		{
 			return 'id_usager';
 		}
-		public function obtenir_par_id($id)
-		{
-			$resultat = $this->lire($id);
-			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-			$Usager = $resultat->fetch();
-			return $Usager;
-		}
-		public function obtenir_tous()
-		{
-			$resultat = $this->lireTous();
-			$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-			return $lesUsagers;
-		}
+		// public function obtenir_par_id($id)
+		// {
+		// 	$resultat = $this->lire($id);
+		// 	$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
+		// 	$usager = $resultat->fetch();
+		// 	return $Usager;
+		// }
+		// public function obtenir_tous()
+		// {
+		// 	$resultat = $this->lireTous();
+		// 	$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
+		// 	return $lesUsagers;
+		// }
 
 		/**
 		 *  Fonction qui authentifie un utilisateur et qui retourne un 
@@ -31,18 +31,15 @@
 		 *  @param string $password le mot de passe de l’usager
 		 *  @return  boolean 
 		 */
-		public function Authentification($username, $password)
+		public function Authentification($courriel, $mot_de_passe)
 		{
-		
-			$query = 'SELECT id_usager, hash from vino_usager WHERE courriel = "' . $username . '"';
-			$resultat = $this->requete($query);
-			// Récupère le résultat sous forme d’un objet
-			$result = $resultat->fetch(PDO::FETCH_OBJ);
-
+			$resultat = $this->lire($courriel, 'courriel');
+			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
+			$usager = $resultat->fetch();
 			
-			if($result)
+			if($usager)
 			{
-				if(password_verify($password, $result->hash))
+				if(password_verify($mot_de_passe, $usager->mot_de_passe))
 					return true;
 				else
 				{

@@ -2,15 +2,6 @@
 /* Controleur login qui gére la connexion et l’inscription d’un usager*/
 class Login extends Controleur
 {
-	protected $modele_usager;
-	protected $modele_bouteille;
-
-	public function __construct()
-	{
-		$this->modele_usager = $this->modele('modele_usager');
-		$this->modele_bouteille = $this->modele('modele_bouteille');
-	}
-
 	public function traite(array $params)
 	{
 		switch($params['action'])
@@ -42,16 +33,16 @@ class Login extends Controleur
 	{
 		$messageErreur = '';
 		// Si on vient du formulaire
-		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
+		if ( isset($_REQUEST['courriel']) && isset($_REQUEST['mot_de_passe']) )
 		{
-			if($this->modele_usager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
+			if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
 				// ce qui authentifie l’usager pour les pages protégées
-				$_SESSION['UserID'] = $_REQUEST['user'];
-				$user = $this->modele_usager->obtenirUsager($_REQUEST["user"]);
+				//$_SESSION['UserID'] = $_REQUEST['courriel'];
+				$user = $this->modele_usager->obtenirUsager($_REQUEST["courriel"]);
 				// Mets le'id de l’usager dans la variable session idUsager,
-				$_SESSION["idUsager"] = $user->id_usager;
+				$_SESSION["id_usager"] = $user->id_usager;
 				$_SESSION["admin"] = $user->admin;
 				$_SESSION["prenom"] = $user->prenom;
 			}
@@ -73,7 +64,7 @@ class Login extends Controleur
 		if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true )
 		{
 			header('Location: ' . site_url('admin') );
-		} elseif ( isset($_SESSION["idUsager"]) && $_SESSION["idUsager"] == true )
+		} elseif ( isset($_SESSION["id_usager"]) && $_SESSION["id_usager"] == true )
 		{
 			header('Location: ' .  site_url('cellier') );
 		} else {

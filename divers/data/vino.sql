@@ -29,7 +29,7 @@ CREATE TABLE vino_usager (
 	courriel VARCHAR(255) NOT NULL,
 	prenom VARCHAR(30) NOT NULL,
 	nom VARCHAR(30) NOT NULL,
-	hash CHAR(128) NOT NULL,
+	mot_de_passe CHAR(128) NOT NULL,
 	PRIMARY KEY (id_usager)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
