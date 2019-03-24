@@ -34,7 +34,7 @@
 		public function Authentification($username, $password)
 		{
 		
-			$query = 'SELECT id_usager, hash from '. $this->getTableName() .' WHERE courriel = "' . $username . '"';
+			$query = 'SELECT id_usager, hash from vino_usager WHERE courriel = "' . $username . '"';
 			$resultat = $this->requete($query);
 			// Récupère le résultat sous forme d’un objet
 			$result = $resultat->fetch(PDO::FETCH_OBJ);
@@ -77,7 +77,7 @@
 		 */
 		public function sauvegarde(Usager $lUsager)
 		{
-			$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)";
+			$query = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)';
 				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
 				return $this->requete($query, $donnees);
 		}

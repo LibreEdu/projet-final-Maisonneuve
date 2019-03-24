@@ -1,6 +1,17 @@
 <?php
 class Bouteille extends Controleur
 {
+	protected $modele_bouteille;
+	protected $modele_cellier;
+	protected $modele_type;
+	
+	public function __construct()
+	{
+		$this->modele_bouteille = $this->modele('modele_bouteille');
+		$this->modele_cellier = $this->modele('modele_cellier');
+		$this->modele_type = $this->modele('modele_type');
+	}
+
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
@@ -54,8 +65,7 @@ class Bouteille extends Controleur
 
 	public function index()
 	{
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('cellier/cellier', $donnees);
@@ -65,20 +75,18 @@ class Bouteille extends Controleur
 	public function visiterCellier()
 	{
 		// Recuperation de nom de cellier pour l'afficher en haut de la page
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$idCellier = $modeleCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
+
+		$idCellier = $this->modele_cellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idCellier == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
 
 		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$resultat = $modeleCellier->obtenir_par_id_cellier($_GET['id']);
-		$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_GET['id']);
+		$resultat = $this->modele_cellier->obtenir_par_id_cellier($_GET['id']);
+		$donnees['bouteilles'] = $this->modele_bouteille->lireAvecType($_GET['id']);
 		$monCellier = $resultat[0];
 		$donnees['cellier'] = $monCellier->nom;
-
 
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -88,18 +96,15 @@ class Bouteille extends Controleur
 
 	public function modifier_form()
 	{
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$idBouteille = $modeleBouteille->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
+		$idBouteille = $this->modele_bouteille->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idBouteille == null) {
 			header('Location: ' .  site_url('login&action=logout') );
 		}
 		
-		$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
-		$modeleType = $this->modele('Modele_Type');
-		$donnees['types'] = $modeleType->obtenir_tous();
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION["idUsager"]);
+		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
+		$donnees['types'] = $this->modele_type->obtenir_tous();
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION["idUsager"]);
 		$donnees['titre'] = 'Modifier Bouteille';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier la bouteille';
@@ -111,9 +116,8 @@ class Bouteille extends Controleur
 
 	public function modifier()
 	{
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$modeleBouteille->modifierBouteille();
-		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+		$this->modele_bouteille->modifierBouteille();
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été modifiée.")</script>';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -124,14 +128,12 @@ class Bouteille extends Controleur
 	public function ajouter()
 	{
 		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$resultat = $modeleBouteille->obtenir_par_id_cellier($_POST['id_cellier']);
-		$donnees['bouteilles'] = $modeleBouteille->lireAvecType($_POST['type']);
+		$resultat = $this->modele_bouteille->obtenir_par_id_cellier($_POST['id_cellier']);
+		$donnees['bouteilles'] = $this->modele_bouteille->lireAvecType($_POST['type']);
 		$monCellier = $resultat[0];
 		$donnees['cellier'] = $monCellier->nom;
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$modeleBouteille->ajouterUneBouteille();
-		$donnees['bouteilles'] = $modeleBouteille->obtenir_tous();
+		$this->modele_bouteille->ajouterUneBouteille();
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été ajoutée.")</script>';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -142,28 +144,23 @@ class Bouteille extends Controleur
 	public function boire_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$modeleBouteille->modifierQuantiteBouteilleCellier($body->id,-1);
-		$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);	
+		$this->modele_bouteille->modifierQuantiteBouteilleCellier($body->id,-1);
+		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);	
 		echo json_encode($resultat);
 	}
 
 	public function ajouter_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$modeleBouteille->modifierQuantiteBouteilleCellier($body->id, 1);
-		$resultat = $modeleBouteille->recupererQuantiteBouteilleCellier($body->id);
-		// var_dump($resultat);
+		$this->modele_bouteille->modifierQuantiteBouteilleCellier($body->id, 1);
+		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);
 		echo json_encode($resultat);
 	}
 
 	public function ajouter_form()
 	{
-		$modeleType = $this->modele('Modele_Type');
-		$donnees['types'] = $modeleType->obtenir_tous();
-		$modeleCellier = $this->modele('Modele_Cellier');
-		$donnees['celliers'] = $modeleCellier->obtenir_par_id($_SESSION["idUsager"]);
+		$donnees['types'] = $this->modele_type->obtenir_tous();
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION["idUsager"]);
 		$donnees['titre'] = 'Ajouter Bouteille';
 		$donnees['actionBouton'] = 'ajouter';
 		$donnees['titreBouton'] = 'Ajouter la bouteille';
@@ -176,8 +173,7 @@ class Bouteille extends Controleur
 	public function saisie_semi_automatique()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$modeleBouteille = $this->modele('Modele_Bouteille');
-		$listeBouteilles = $modeleBouteille->autocomplete($body->nom);
+		$listeBouteilles = $this->modele_bouteille->autocomplete($body->nom);
 		echo json_encode($listeBouteilles);
 	}
 }
