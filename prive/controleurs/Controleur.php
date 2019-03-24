@@ -20,14 +20,13 @@ abstract class Controleur
 
 	protected function modele($nomModele)
 	{
-		$classe = "Modele_" . $nomModele;
-		if(class_exists($classe))
+		if(class_exists($nomModele))
 		{
 			// On fait une connexion à la BD
 			$connexion = DBFactory::getDB(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
 			
 			// On crée une instance de la classe Modele_$classe
-			$objetModele = new $classe($connexion);
+			$objetModele = new $nomModele($connexion);
 
 			if($objetModele instanceof Modele)
 			{
@@ -40,7 +39,7 @@ abstract class Controleur
 		}
 		else
 		{
-			trigger_error("La classe $classe est invalide.");
+			trigger_error("Le modèle $nomModele est invalide.");
 		}
 	}
 }
