@@ -118,19 +118,24 @@ window.addEventListener('load', function() {
 	//let note = document.getElementById('note');
 	//let cellier = document.getElementById('cellier');
 
-	var element = document.getElementById('afficher');
-	document.getElementById('recherche').style.display = "none";
+	if(document.getElementById('recherche')){
+		document.getElementById('recherche').style.display = "none";
+	};
 
-    element.onclick = function() {
-        if(document.getElementById('afficher').checked == true){
-			document.getElementById('recherche').style.display = "initial";
-			console.log('visible');
-		}
-		else{
-			document.getElementById('recherche').style.display = "none";
-			console.log('non visible');
+	var element = document.getElementById('afficher');
+	if(element){
+		element.onclick = function() {
+			if(document.getElementById('afficher').checked == true){
+				document.getElementById('recherche').style.display = "initial";
+				console.log('visible');
+			}
+			else{
+				document.getElementById('recherche').style.display = "none";
+				console.log('non visible');
+			};
 		};
-    };
+	};
+
 	
 	if(inputNomBouteille){
 	  	inputNomBouteille.addEventListener('keyup', function(evt){
