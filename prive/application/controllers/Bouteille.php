@@ -18,7 +18,7 @@ class Bouteille extends CI_Controller
 		$idCellier = $modeleCellier->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idCellier == null) {
-			header('Location: ' . BASEURL . 'index.php?login&action=logout');
+			header('Location: ' . site_url('login/logout'));
 		}
 
 		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
@@ -41,7 +41,7 @@ class Bouteille extends CI_Controller
 		$idBouteille = $modeleBouteille->verifParUsager($_GET['id'],$_SESSION["idUsager"]);
 
 		if ($idBouteille == null) {
-			header('Location: ' . BASEURL . 'index.php?login&action=logout');
+			header('Location: ' . site_url('login/logout'));
 		}
 		
 		$donnees['bouteille'] = $modeleBouteille->obtenir_par_id($_GET['id']);
