@@ -4,7 +4,7 @@ class Cellier extends Controleur
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
-		if ( ! isset($_SESSION["idUsager"]) )
+		if ( ! isset($_SESSION["id_usager"]) )
 		{
 			header('Location: ' . base_url() );
 		}
@@ -36,10 +36,6 @@ class Cellier extends Controleur
 
 	public function index()
 	{
-		// Récupère d’usager qui est connecté	
-		$user = $this->modele_usager->obtenirUsager($_SESSION["UserID"]);
-		$_SESSION['id_usager'] = $user->id_usager;
-		
 		// Affiche la liste des celliers de l’usager connecté
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
