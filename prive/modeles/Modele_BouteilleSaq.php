@@ -1,5 +1,5 @@
 <?php
-	class Modele_BouteilleSaq extends BaseDAO
+	class Modele_BouteilleSaq extends Modele
 	{
 		public function getTableName()
 		{

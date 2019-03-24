@@ -1,5 +1,5 @@
 <?php
-	class Modele_Usager extends BaseDAO
+	class Modele_Usager extends Modele
 	{
 		public function getTableName()
 		{
