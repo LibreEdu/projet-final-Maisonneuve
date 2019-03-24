@@ -133,7 +133,7 @@ window.addEventListener('load', function() {
 
 	
 	if(inputNomBouteille){
-	  	inputNomBouteille.addEventListener('keyup', function(evt){
+		inputNomBouteille.addEventListener('keyup', function(evt){
 			let nom = inputNomBouteille.value;
 			liste.innerHTML = '';
 			if(nom){
