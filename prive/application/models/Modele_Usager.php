@@ -55,7 +55,7 @@ class Modele_Usager extends CI_Model
 	 */
 	public function sauvegarde(Usager $lUsager)
 	{
-		$query = "INSERT INTO " . $this->getTableName() . " (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)";
+		$query = "INSERT INTO vino_usager (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)";
 			$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
 			return $this->requete($query, $donnees);
 	}
