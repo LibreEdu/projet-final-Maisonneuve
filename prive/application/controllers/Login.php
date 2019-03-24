@@ -8,7 +8,7 @@ class Login extends CI_Controller
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['user']) && isset($_REQUEST['pass']) )
 		{
-			$modeleUsager = $this->load->model('Usager');
+			$modeleUsager = $this->load->model('Modele_Usager');
 			if($modeleUsager->Authentification($_REQUEST['user'], $_REQUEST['pass']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
