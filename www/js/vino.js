@@ -112,11 +112,6 @@ window.addEventListener('load', function() {
 
 	let inputNomBouteille = document.querySelector('[name="nom_bouteille"]');
 	let liste = document.querySelector('.listeAutoComplete');
-	//let quantite = document.getElementById('quantite');
-	//let boire_avant = document.getElementById('boire_avant');
-	//let date_achat = document.getElementById('date_achat');
-	//let note = document.getElementById('note');
-	//let cellier = document.getElementById('cellier');
 
 	if(document.getElementById('recherche')){
 		document.getElementById('recherche').style.display = "none";
@@ -179,24 +174,13 @@ window.addEventListener('load', function() {
 
 	liste.addEventListener('click', function(evt){
 		if(evt.target.tagName == 'LI'){			
-			//bouteille.nom.dataset.id = evt.target.dataset.id;
 			bouteille.nom.value = evt.target.innerHTML;
-			console.log(bouteille.millesime);
-			console.log(bouteille.prix);
 			bouteille.prix.value = evt.target.dataset.prix;
 			bouteille.millesime.value = evt.target.dataset.millesime;
 			bouteille.pays.value = evt.target.dataset.pays;
 			bouteille.format.value = evt.target.dataset.format;
 			
 			liste.innerHTML = '';
-			//quantite.style.display = "none";
-			//boire_avant.style.display = "none";
-			//date_achat.style.display = "none";
-			//note.style.display = "none";
-			//cellier.style.display = "none";
-			//document.getElementById('recherche').style.display = "none";
-			//document.getElementById('afficher').removeAttr('checked');
-			//document.getElementById('afficher').checked == false;
 			inputNomBouteille.value = '';
 
 		}
@@ -229,59 +213,6 @@ window.addEventListener('load', function() {
 			});		
 		});
 	}
-
-	// let bouteille2 = {
-	// 	id : document.querySelector('[name="id"]'),
-	// 	nom : document.querySelector('[name="nom"]'),
-	// 	millesime : document.querySelector('[name="millesime"]'),
-	// 	quantite : document.querySelector('[name="quantite"]'),
-	// 	date_achat : document.querySelector('[name="date_achat"]'),
-	// 	prix : document.querySelector('[name="prix"]'),
-	// 	garde_jusqua : document.querySelector('[name="garde_jusqua"]'),
-	// 	notes : document.querySelector('[name="notes"]'),
-	// 	code_saq : document.querySelector('[name="code_saq"]'),
-	// 	prix_saq : document.querySelector('[name="prix_saq"]'),
-	// 	format : document.querySelector('[name="format"]'),
-	// 	description : document.querySelector('[name="description"]'),
-	// 	pays : document.querySelector('[name="pays"]'),
-	// 	id_type : document.querySelector('[name="id_type"]'),
-	// };
-	
-	// let btnModifier = document.querySelector('[name="modifierBouteilleCellier"]');
-	// if(btnModifier){
-	// 	btnModifier.addEventListener('click', function(evt){
-	// 	  var params = {
-	// 		'id':bouteille2.id.value,
-	// 		'nom':bouteille2.nom.value,
-	// 		'date_achat':bouteille2.date_achat.value,
-	// 		'garde_jusqua':bouteille2.garde_jusqua.value,
-	// 		'notes':bouteille2.date_achat.value,
-	// 		'prix':bouteille2.prix.value,
-	// 		'quantite':bouteille2.quantite.value,
-	// 		'millesime':bouteille2.millesime.value,
-	// 		'code_saq':bouteille2.code_saq.value,
-	// 		'prix_saq':bouteille2.prix_saq.value,
-	// 		'format':bouteille2.format.value,
-	// 		'description':bouteille2.description.value,
-	// 		'pays':bouteille2.pays.value,
-	// 		'id_type':bouteille2.type.value,
-	// 	};
-	// 	let requete = new Request('index.php?requete=modifier', {method: 'POST', body: JSON.stringify(params)});
-	// 		fetch(requete)
-	// 			.then(response => {
-	// 				if (response.status === 200) {
-	// 					return response.json();
-	// 				} else {
-	// 					throw new Error('Erreur');
-	// 				}
-	// 			})
-	// 			.then(response => {
-	// 			}).catch(error => {
-	// 				console.error(error);
-	// 			});
-		
-	// 	});
-	// }
 }
 
 
