@@ -12,7 +12,7 @@ class Modele_Usager extends CI_Model
 	public function Authentification($username, $password)
 	{
 	
-		$query = 'SELECT id_usager, hash from '. $this->getTableName() .' WHERE courriel = "' . $username . '"';
+		$query = 'SELECT id_usager, hash from vino_usager WHERE courriel = "' . $username . '"';
 		$resultat = $this->requete($query);
 		// Récupère le résultat sous forme d’un objet
 		$result = $resultat->fetch(PDO::FETCH_OBJ);
