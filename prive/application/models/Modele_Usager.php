@@ -1,29 +1,6 @@
 <?php
-	class Modele_Usager extends BaseDAO
+	class Modele_Usager extends CI_Model
 	{
-		public function getTableName()
-		{
-			return 'vino_usager';
-		}
-		
-		public function getClePrimaire()
-		{
-			return 'id_usager';
-		}
-		public function obtenir_par_id($id)
-		{
-			$resultat = $this->lire($id);
-			$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-			$Usager = $resultat->fetch();
-			return $Usager;
-		}
-		public function obtenir_tous()
-		{
-			$resultat = $this->lireTous();
-			$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-			return $lesUsagers;
-		}
-
 		/**
 		 *  Fonction qui authentifie un utilisateur et qui retourne un 
 		 *  booléen
