@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
- html, body {
+	/* ---- Styles de base ---- */
+ 	html, body {
 	font-family: 'Roboto', 'Helvetica', sans-serif;
 	margin: 0;
 	padding: 0;
@@ -22,63 +23,16 @@
 	input, textarea, select {
 		width : 300px;
 		margin: 0;	
-		-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
-		-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+		-webkit-box-sizing: border-box; /* Pour les anciens navigateurs WebKit */
+		-moz-box-sizing: border-box; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-box-sizing: border-box; /* Pour les navigateurs Internet Explorer */
 		box-sizing: border-box;
-	}
-	@media (max-width: 480px) {
-		input, textarea, select {
-			width : 280px;
-			margin: 0;
-			font-size: 14px;		
-			-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
-			-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
-			box-sizing: border-box;
-		}
-		.mdl-textfield {
-			position: relative;
-			font-size: 14px;
-			display: block;
-			box-sizing: border-box;
-			width: 280px !important;
-			margin: 0;
-			padding: 20px 0;
-		}
-		.demo-card-wide.mdl-card {
-			width: 365px !important;
-			padding-bottom: 5px;
-		}
-		.mdl-textfield__input {
-			font-size: 14px;
-		}
-		.mdl-checkbox__label {
-			font-size: 14px;
-			line-height: 18px;
-		}
-		select {
-			font-size: 14px !important;
-		}
-		.mdl-demo .mdl-layout__tab-bar {
-			padding: 0;
-			padding-left: 16px;
-			box-sizing: border-box;
-			height: 100%;
-			width: 100%;
-		}
-		h4 {
-			font-size: 16px;
-		}
-		.mdl-demo .mdl-card .mdl-card__supporting-text {
-			margin: 5px !important;
-			margin-left: 40px !important;
-		}
 	}
 	select {
 		margin-top: 5px;
 		border-radius: 5px;
 		height: 30px;
 		background-image: linear-gradient(#7b1fa2, rgb(166, 52, 232));
-		/*background-color: #7b1fa2;*/
 		color: #fff;
 		padding: 3px;
 		font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -92,101 +46,56 @@
 	h3 {		
 	font-family: 'IBM Plex Serif', serif;
 	}
-	.mdl-demo .mdl-layout__header-row {
-		padding-left: 40px;	
-		text-shadow: 2px 2px 2px #5F04B4;
-	}
+
 	.mdl-color--teal-100 {
 		background-color: #7b1fa2 !important;
 	}
 	.mdl-color--teal-100 .img img {
 		box-shadow: 2px 4px 2px  #7c4dff;
+		-webkit-box-shadow: 2px 4px 2px  #7c4dff; /* Pour les anciens navigateurs WebKit */
+		-moz-box-shadow: 2px 4px 2px  #7c4dff; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-box-shadow: 2px 4px 2px  #7c4dff; /* Pour les navigateurs Internet Explorer */
 		border-radius: 10px;
-		-webkit-border-radius: 10px;		
+		-webkit-border-radius: 10px; /* Pour les anciens navigateurs WebKit */
+		-moz-border-radius: 10px; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-border-radius: 10px; /* Pour les navigateurs Internet Explorer */
 	}
 	
-	.mdl-demo .mdl-layout__header {
-		background-image: url('../images/en-tete.jpg');
-		/*height: 25%;*/
-	}
-  .mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
-	font-size: inherit;
-  }
+	/*******Styles pour le menu *******/
   .mdl-demo .mdl-layout__tab-bar-button {
-	display: none;
+		display: none;
   }
   .mdl-demo .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
-	display: none;
-  }
+		display: none;
+	}
   .mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,
   .mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
-	overflow: visible;
+		overflow: visible;
   }
   .mdl-demo .mdl-layout__tab-bar-container {
-	height: 64px;
+		height: 64px;
   }
   .mdl-demo .mdl-layout__tab-bar {
-	padding: 0;
-	padding-left: 16px;
-	box-sizing: border-box;
-	height: 100%;
-	width: 100%;
+		padding: 0;
+		padding-left: 16px;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
   }
   .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab {
-	height: 64px;
-	line-height: 64px;
+		height: 64px;
+		line-height: 64px;
   }
   .mdl-demo .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
-	background-color: white;
-	height: 4px;
+		background-color: white;
+		height: 4px;
   }
   .mdl-demo main > .mdl-layout__tab-panel {
-	padding: 8px;
+		padding: 8px;
 	}
-  .mdl-demo .mdl-card {
-	height: auto;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-			flex-direction: column;
-  }
-  .mdl-demo .mdl-card > * {
-	height: auto;
-  }
-  .mdl-demo .mdl-card .mdl-card__supporting-text {
-	margin: 40px;
-	-webkit-flex-grow: 1;
-		-ms-flex-positive: 1;
-			flex-grow: 1;
-	padding: 0;
-	color: inherit;
-	width: calc(100% - 80px);
-  }
-  .mdl-demo.mdl-demo .mdl-card__supporting-text h4 {
-	margin-top: 0;
-	margin-bottom: 20px;
-  }
-  .mdl-demo .mdl-card__actions {
-	margin: 0;
-	padding: 4px 40px;
-	color: inherit;
-  }
-  .mdl-demo .mdl-card__actions a {
-	color: #00BCD4;
-	margin: 0;
-  }
-  .mdl-demo .mdl-card__actions a:hover,
-  .mdl-demo .mdl-card__actions a:active {
-	color: inherit;
-	background-color: transparent;
-  }
-  .mdl-demo .mdl-card__supporting-text + .mdl-card__actions {
-	border-top: 1px solid rgba(0, 0, 0, 0.12);
-  }
+
+  /********Styles des boutons ajouter Cellier et ajouter Bouteille *********/
   #btnAjouterCellier {
-		position: absolute;
 		right: 3%;
 		top: 90%;
 		position: fixed;
@@ -194,204 +103,318 @@
 		width: 200px;
   }
   #btnAjouterBouteille {
-		position: absolute;
 		right: 3%;
 		top: 90%;
 		position: fixed;
 		z-index: 999;
 		width: 200px;
+	}
+	
+	/********Styles pour le corps de la page ********/
+	.mdl-demo .mdl-card {
+		height: auto;
+		display: -webkit-flex; /* Pour les anciens navigateurs WebKit */
+		display: -ms-flexbox; /* Pour les navigateurs Internet Explorer */
+		display: -moz-flexbox; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		display: flex;
+		-webkit-flex-direction: column; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-direction: column; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-direction: column; /* Pour les navigateurs Internet Explorer */
+		flex-direction: column;
   }
-  
+  .mdl-demo .mdl-card > * {
+		height: auto;
+  }
+  .mdl-demo .mdl-card .mdl-card__supporting-text {
+		margin: 40px;
+		-webkit-flex-grow: 1; /* Pour les anciens navigateurs WebKit */
+		-ms-flex-positive: 1; /* Pour les navigateurs Internet Explorer */
+		-moz-flex-positive: 1; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		flex-grow: 1;
+		padding: 0;
+		color: inherit;
+		width: calc(100% - 80px);
+  }
+  .mdl-demo.mdl-demo .mdl-card__supporting-text h4 {
+		margin-top: 0;
+		margin-bottom: 20px;
+  }
+  .mdl-demo .mdl-card__actions {
+		margin: 0;
+		padding: 4px 40px;
+		color: inherit;
+  }
+  .mdl-demo .mdl-card__actions a {
+		color: #00BCD4;
+		margin: 0;
+  }
+  .mdl-demo .mdl-card__actions a:hover,
+  .mdl-demo .mdl-card__actions a:active {
+		color: inherit;
+		background-color: transparent;
+  }
+  .mdl-demo .mdl-card__supporting-text + .mdl-card__actions {
+		border-top: 1px solid rgba(0, 0, 0, 0.12);
+	}
   .mdl-demo .mdl-layout__content section:not(:last-of-type) {
-	position: relative;
-	margin-bottom: 48px;
-  }
-  
+		position: relative;
+		margin-bottom: 48px;
+  }  
   .mdl-layout__content {
-	margin-top: 48px;
-	margin-bottom: 48px;
+		margin-top: 48px;
+		margin-bottom: 48px;
   }
   .mdl-demo section.section--center {
-	max-width: 860px;
+		max-width: 860px;
   }
   .mdl-demo #features section.section--center {
-	max-width: 620px;
+		max-width: 620px;
   }
   .mdl-demo section > header{
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-align-items: center;
-		-ms-flex-align: center;
-			align-items: center;
-	-webkit-justify-content: center;
-		-ms-flex-pack: center;
-			justify-content: center;
+		display: -webkit-flex; /* Pour les anciens navigateurs WebKit */
+		display: -moz-flexbox; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		display: -ms-flexbox; /* Pour les navigateurs Internet Explorer */
+		display: flex;
+		-webkit-align-items: center; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-align: center; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-align: center; /* Pour les navigateurs Internet Explorer */
+		align-items: center;
+		-webkit-justify-content: center; /* Pour les anciens navigateurs WebKit */
+		-moz-justify-content: center; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-pack: center; /* Pour les navigateurs Internet Explorer */
+		justify-content: center;
   }
   .mdl-demo section > .section__play-btn {
-	min-height: 200px;
+		min-height: 200px;
   }
   .mdl-demo section > header > .material-icons {
-	font-size: 3rem;
+		font-size: 3rem;
   }
   .mdl-demo section > button {
-	position: absolute;
-	z-index: 99;
-	top: 8px;
-	right: 8px;
+		position: absolute;
+		z-index: 99;
+		top: 8px;
+		right: 8px;
   }
   .mdl-demo section .section__circle {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-align-items: center;
-		-ms-flex-align: center;
-			align-items: center;
-	-webkit-justify-content: flex-start;
-		-ms-flex-pack: start;
-			justify-content: flex-start;
-	-webkit-flex-grow: 0;
-		-ms-flex-positive: 0;
-			flex-grow: 0;
-	-webkit-flex-shrink: 1;
-		-ms-flex-negative: 1;
-			flex-shrink: 1;
+		display: -webkit-flex; /* Pour les anciens navigateurs WebKit */
+		display: -moz-flexbox; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		display: -ms-flexbox; /* Pour les navigateurs Internet Explorer */
+		display: flex;
+		-webkit-align-items: center; /* Pour les anciens navigateurs WebKit */
+		-moz-align-items: center; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-align: center; /* Pour les navigateurs Internet Explorer */
+		align-items: center;
+		-webkit-justify-content: flex-start; /* Pour les anciens navigateurs WebKit */
+		-moz-justify-content: flex-start; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-pack: start; /* Pour les navigateurs Internet Explorer */
+		justify-content: flex-start;
+		-webkit-flex-grow: 0; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-grow: 0; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-positive: 0; /* Pour les navigateurs Internet Explorer */
+		flex-grow: 0;
+		-webkit-flex-shrink: 1; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-shrink: 1; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-negative: 1; /* Pour les navigateurs Internet Explorer */
+		flex-shrink: 1;
   }
   .mdl-demo section .section__text {
-	-webkit-flex-grow: 1;
-		-ms-flex-positive: 1;
-			flex-grow: 1;
-	-webkit-flex-shrink: 0;
-		-ms-flex-negative: 0;
-			flex-shrink: 0;
-	padding-top: 8px;
+		-webkit-flex-grow: 1; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-grow: 1; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-positive: 1; /* Pour les navigateurs Internet Explorer */
+		flex-grow: 1;
+		-webkit-flex-shrink: 0; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-shrink: 0; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-negative: 0; /* Pour les navigateurs Internet Explorer */
+		flex-shrink: 0;
+		padding-top: 8px;
   }
   .mdl-demo section .section__text h5 {
-	font-size: inherit;
-	margin: 0;
-	margin-bottom: 0.5em;
+		font-size: inherit;
+		margin: 0;
+		margin-bottom: 0.5em;
   }
   .mdl-demo section .section__text a {
-	text-decoration: none;
+		text-decoration: none;
   }
   .mdl-demo section .section__circle-container > .section__circle-container__circle {
-	width: 64px;
-	height: 64px;
-	border-radius: 32px;
-	margin: 8px 0;
-  }
-  .mdl-demo section.section--footer .section__circle--big {
-	width: 100px;
-	height: 100px;
-	border-radius: 50px;
-	margin: 8px 32px;
-  }
-  .mdl-demo .is-small-screen section.section--footer .section__circle--big {
-	width: 50px;
-	height: 50px;
-	border-radius: 25px;
-	margin: 8px 16px;
-  }
-  .mdl-demo section.section--footer {
-	padding: 64px 0;
-	margin: 0 -8px -8px -8px;
-  }
+		width: 64px;
+		height: 64px;
+		border-radius: 32px;
+		margin: 8px 0;
+	}
   .mdl-demo section.section--center .section__text:not(:last-child) {
-	border-bottom: 1px solid rgba(0,0,0,.13);
+		border-bottom: 1px solid rgba(0,0,0,.13);
   }
   .mdl-demo .mdl-card .mdl-card__supporting-text > h3:first-child {
-	margin-bottom: 24px;
+		margin-bottom: 24px;
   }
   .mdl-demo .mdl-layout__tab-panel:not(#overview) {
-	background-color: white;
+		background-color: white;
   }
   .mdl-demo #features section {
-	margin-bottom: 72px;
+		margin-bottom: 72px;
   }
   .mdl-demo #features h4, #features h5 {
-	margin-bottom: 16px;
+		margin-bottom: 16px;
   }
   .mdl-demo .toc {
-	border-left: 4px solid #C1EEF4;
-	margin: 24px;
-	padding: 0;
-	padding-left: 8px;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-			flex-direction: column;
+		border-left: 4px solid #C1EEF4;
+		margin: 24px;
+		padding: 0;
+		padding-left: 8px;
+		display: -webkit-flex; /* Pour les anciens navigateurs WebKit */
+		display: -moz-flexbox; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		display: -ms-flexbox; /* Pour les navigateurs Internet Explorer */
+		display: flex;
+		-webkit-flex-direction: column; /* Pour les anciens navigateurs WebKit */
+		-moz-flex-direction: column; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-flex-direction: column; /* Pour les navigateurs Internet Explorer */
+		flex-direction: column;
   }
   .mdl-demo .toc h4 {
-	font-size: 0.9rem;
-	margin-top: 0;
+		font-size: 0.9rem;
+		margin-top: 0;
   }
   .mdl-demo .toc a {
-	color: #4DD0E1;
-	text-decoration: none;
-	font-size: 16px;
-	line-height: 28px;
-	display: block;
+		color: #4DD0E1;
+		text-decoration: none;
+		font-size: 16px;
+		line-height: 28px;
+		display: block;
   }
   .mdl-demo .mdl-menu__container {
-	z-index: 99;
-  }
+		z-index: 99;
+	}	
+	
+	/********Styles pour le pied de page ********/
+  .mdl-demo section.section--footer .section__circle--big {
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		margin: 8px 32px;
+	}
+	.mdl-demo .is-small-screen section.section--footer .section__circle--big {
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		margin: 8px 16px;
+	}
+	.mdl-demo section.section--footer {
+		padding: 64px 0;
+		margin: 0 -8px -8px -8px;
+	}
 
 /****************Code Bootstap pour les formulaires login et formulaire***********/
-  .divider-text {
-    position: relative;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
+ .divider-text {
+   position: relative;
+   text-align: center;
+   margin-top: 15px;
+   margin-bottom: 15px;
 }
 .divider-text span {
-    padding: 7px;
-    font-size: 12px;
-    position: relative;   
-    z-index: 2;
+   padding: 7px;
+   font-size: 12px;
+   position: relative;   
+   z-index: 2;
 }
 .divider-text:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
+   content: "";
+   position: absolute;
+   width: 100%;
+   border-bottom: 1px solid #ddd;
+   top: 55%;
+   left: 0;
+   z-index: 1;
 }
-/*#deconnexion{
-	margin-left: 55%;
-}*/
-
 .message{
 	color: red;
 }
-/********CSS Entete*************/
+
+/********Styles pour l'entête *********/
 #view-source {
-		position: fixed;
-		display: block;
-		right: 0;
-		bottom: 0;
-		margin-right: 40px;
-		margin-bottom: 40px;
-		z-index: 900;
-	}
-
-	.demo-card-wide.mdl-card {
-		width: 600px;
-		margin: 0 auto;
-	}
-	.demo-card-wide > .mdl-card__title {
-		color: #000;
-		height: 100px;
-		border-bottom: 2px solid lightgrey;
-	}
-	.demo-card-wide > .mdl-card__menu {
-		color: #fff;
-	}
-
+	position: fixed;
+	display: block;
+	right: 0;
+	bottom: 0;
+	margin-right: 40px;
+	margin-bottom: 40px;
+	z-index: 900;
+}
+.demo-card-wide.mdl-card {
+	width: 600px;
+	margin: 0 auto;
+}
+.demo-card-wide > .mdl-card__title {
+	color: #000;
+	height: 100px;
+	border-bottom: 2px solid lightgrey;
+}
+.demo-card-wide > .mdl-card__menu {
+	color: #fff;
+}
+.mdl-demo .mdl-layout__header-row {
+	padding-left: 40px;	
+	text-shadow: 2px 2px 2px #5F04B4;
+}	
+.mdl-demo .mdl-layout__header {
+	background-image: url('../images/en-tete.jpg');
+}
+.mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+	font-size: inherit;
+}
+	
 /********CSS Cellier ***********/
 .mdl-layout__tab-panel h3{
 	font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+/********PETITS ÉCRANS ********/
+@media (max-width: 480px) {
+	input, textarea, select {
+		width : 280px;
+		margin: 0;
+		font-size: 14px;		
+		-webkit-box-sizing: border-box; /* Pour les anciens navigateurs WebKit */
+		-moz-box-sizing: border-box; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-box-sizing: border-box; /* Pour les navigateurs Internet Explorer */
+		box-sizing: border-box;
+	}
+	.mdl-textfield {
+		position: relative;
+		font-size: 14px;
+		display: block;
+		box-sizing: border-box;
+		width: 280px !important;
+		margin: 0;
+		padding: 20px 0;
+	}
+	.demo-card-wide.mdl-card {
+		width: 365px !important;
+		padding-bottom: 5px;
+	}
+	.mdl-textfield__input {
+		font-size: 14px;
+	}
+	.mdl-checkbox__label {
+		font-size: 14px;
+		line-height: 18px;
+	}
+	select {
+		font-size: 14px !important;
+	}
+	.mdl-demo .mdl-layout__tab-bar {
+		padding: 0;
+		padding-left: 16px;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+	}
+	h4 {
+		font-size: 16px;
+	}
+	.mdl-demo .mdl-card .mdl-card__supporting-text {
+		margin: 5px !important;
+		margin-left: 40px !important;
+	}
 }
