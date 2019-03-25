@@ -60,7 +60,7 @@ class Controleur_Bouteille extends Controleur
 		$idBouteille = $this->modele_bouteille->appartient($_GET['id'],$_SESSION['id_usager']);
 
 		if ($idBouteille == null) {
-			header('Location: ' .  site_url('login&action=logout') );
+			header('Location: ' . site_url('login&action=logout') );
 		}
 		
 		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
@@ -80,14 +80,14 @@ class Controleur_Bouteille extends Controleur
 	{
 		$this->modele_bouteille->modifier();
 		echo '<script>alert("La bouteille a été modifiée.")</script>';
-		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
 	public function ajouter()
 	{
 		$this->modele_bouteille->ajouter();
 		echo '<script>alert("La bouteille a été ajoutée.")</script>';
-		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
 	public function boire_js()
