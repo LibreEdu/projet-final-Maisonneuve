@@ -19,7 +19,7 @@ class Modele_Bouteille_SAQ extends Modele
 	 * 
 	 * @throws Exception Erreur de requête sur la base de données 
 	 * 
-	 * @return array id et nom de la bouteille trouvée dans le catalogue
+	 * @return array tous les données de la bouteille trouvée dans le catalogue
 	 */
 	
 	public function autocomplete($nom, $nb_resultat=10)
