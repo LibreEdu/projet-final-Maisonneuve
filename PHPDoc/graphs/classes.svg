@@ -23,9 +23,9 @@
 <!-- \\Modele -->
 <g id="node2" class="node">
 <title>\\Modele</title>
-<polygon fill="none" stroke="#000000" points="98.0161,-538 15.9946,-538 15.9946,-502 98.0161,-502 98.0161,-538"/>
-<text text-anchor="start" x="24" y="-522.2" font-family="Courier,monospace" font-size="11.00" fill="#000000">«abstract»</text>
-<text text-anchor="start" x="37.2021" y="-511.2" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele</text>
+<polygon fill="none" stroke="#000000" points="98.0161,-484 15.9946,-484 15.9946,-448 98.0161,-448 98.0161,-484"/>
+<text text-anchor="start" x="24" y="-468.2" font-family="Courier,monospace" font-size="11.00" fill="#000000">«abstract»</text>
+<text text-anchor="start" x="37.2021" y="-457.2" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele</text>
 </g>
 <!-- \\Classe_Cellier -->
 <g id="node3" class="node">
@@ -39,65 +39,65 @@
 <polygon fill="none" stroke="#000000" points="318.043,-700 170,-700 170,-664 318.043,-664 318.043,-700"/>
 <text text-anchor="middle" x="244.0215" y="-678.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Bouteille_SAQ</text>
 </g>
-<!-- \\Modele_Usager -->
+<!-- \\BaseDeDonnees -->
 <g id="node5" class="node">
-<title>\\Modele_Usager</title>
+<title>\\BaseDeDonnees</title>
 <polygon fill="none" stroke="#000000" points="294.8356,-646 193.2073,-646 193.2073,-610 294.8356,-610 294.8356,-646"/>
-<text text-anchor="middle" x="244.0215" y="-624.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Usager</text>
+<text text-anchor="middle" x="244.0215" y="-624.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">BaseDeDonnees</text>
+</g>
+<!-- \\Modele_Usager -->
+<g id="node6" class="node">
+<title>\\Modele_Usager</title>
+<polygon fill="none" stroke="#000000" points="294.8356,-592 193.2073,-592 193.2073,-556 294.8356,-556 294.8356,-592"/>
+<text text-anchor="middle" x="244.0215" y="-570.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Usager</text>
 </g>
 <!-- \\Modele_Usager&#45;&gt;\\Modele -->
 <g id="edge1" class="edge">
 <title>\\Modele_Usager&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M193.063,-611.4932C185.1882,-608.3511 177.2675,-604.8321 170.0107,-601 139.7276,-585.0082 108.3021,-561.8636 86.3016,-544.4061"/>
-<polygon fill="none" stroke="#000000" points="88.3411,-541.555 78.3531,-538.0205 83.9569,-547.0121 88.3411,-541.555"/>
+<path fill="none" stroke="#000000" d="M193.063,-557.4932C185.1882,-554.3511 177.2675,-550.8321 170.0107,-547 139.7276,-531.0082 108.3021,-507.8636 86.3016,-490.4061"/>
+<polygon fill="none" stroke="#000000" points="88.3411,-487.555 78.3531,-484.0205 83.9569,-493.0121 88.3411,-487.555"/>
 </g>
 <!-- \\Modele_Cellier -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>\\Modele_Cellier</title>
-<polygon fill="none" stroke="#000000" points="298.4373,-592 189.6056,-592 189.6056,-556 298.4373,-556 298.4373,-592"/>
-<text text-anchor="middle" x="244.0215" y="-570.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Cellier</text>
+<polygon fill="none" stroke="#000000" points="298.4373,-538 189.6056,-538 189.6056,-502 298.4373,-502 298.4373,-538"/>
+<text text-anchor="middle" x="244.0215" y="-516.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Cellier</text>
 </g>
 <!-- \\Modele_Cellier&#45;&gt;\\Modele -->
 <g id="edge2" class="edge">
 <title>\\Modele_Cellier&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M189.6775,-558.3084C163.8762,-550.8584 133.2195,-542.0065 107.8784,-534.6893"/>
-<polygon fill="none" stroke="#000000" points="108.6701,-531.275 98.0916,-531.8634 106.7281,-538.0003 108.6701,-531.275"/>
+<path fill="none" stroke="#000000" d="M189.6775,-504.3084C163.8762,-496.8584 133.2195,-488.0065 107.8784,-480.6893"/>
+<polygon fill="none" stroke="#000000" points="108.6701,-477.275 98.0916,-477.8634 106.7281,-484.0003 108.6701,-477.275"/>
 </g>
 <!-- \\Modele_Bouteille -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>\\Modele_Bouteille</title>
-<polygon fill="none" stroke="#000000" points="304.6393,-538 183.4037,-538 183.4037,-502 304.6393,-502 304.6393,-538"/>
-<text text-anchor="middle" x="244.0215" y="-516.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Bouteille</text>
+<polygon fill="none" stroke="#000000" points="304.6393,-484 183.4037,-484 183.4037,-448 304.6393,-448 304.6393,-484"/>
+<text text-anchor="middle" x="244.0215" y="-462.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Bouteille</text>
 </g>
 <!-- \\Modele_Bouteille&#45;&gt;\\Modele -->
 <g id="edge3" class="edge">
 <title>\\Modele_Bouteille&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M183.3027,-520C159.1628,-520 131.6847,-520 108.5371,-520"/>
-<polygon fill="none" stroke="#000000" points="108.2341,-516.5001 98.234,-520 108.234,-523.5001 108.2341,-516.5001"/>
+<path fill="none" stroke="#000000" d="M183.3027,-466C159.1628,-466 131.6847,-466 108.5371,-466"/>
+<polygon fill="none" stroke="#000000" points="108.2341,-462.5001 98.234,-466 108.234,-469.5001 108.2341,-462.5001"/>
 </g>
 <!-- \\Classe_Bouteille -->
-<g id="node8" class="node">
-<title>\\Classe_Bouteille</title>
-<polygon fill="none" stroke="#000000" points="304.6393,-484 183.4037,-484 183.4037,-448 304.6393,-448 304.6393,-484"/>
-<text text-anchor="middle" x="244.0215" y="-462.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Bouteille</text>
-</g>
-<!-- \\Modele_BouteilleSaq -->
 <g id="node9" class="node">
-<title>\\Modele_BouteilleSaq</title>
-<polygon fill="none" stroke="#000000" points="314.9425,-430 173.1004,-430 173.1004,-394 314.9425,-394 314.9425,-430"/>
-<text text-anchor="middle" x="244.0215" y="-408.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_BouteilleSaq</text>
+<title>\\Classe_Bouteille</title>
+<polygon fill="none" stroke="#000000" points="304.6393,-430 183.4037,-430 183.4037,-394 304.6393,-394 304.6393,-430"/>
+<text text-anchor="middle" x="244.0215" y="-408.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Bouteille</text>
 </g>
-<!-- \\Modele_BouteilleSaq&#45;&gt;\\Modele -->
-<g id="edge4" class="edge">
-<title>\\Modele_BouteilleSaq&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M189.125,-430.109C182.5664,-432.8306 176.0581,-435.8066 170.0107,-439 139.7276,-454.9918 108.3021,-478.1364 86.3016,-495.5939"/>
-<polygon fill="none" stroke="#000000" points="83.9569,-492.9879 78.3531,-501.9795 88.3411,-498.445 83.9569,-492.9879"/>
-</g>
-<!-- \\DBFactory -->
+<!-- \\Modele_Bouteille_SAQ -->
 <g id="node10" class="node">
-<title>\\DBFactory</title>
-<polygon fill="none" stroke="#000000" points="281.9323,-376 206.1107,-376 206.1107,-340 281.9323,-340 281.9323,-376"/>
-<text text-anchor="middle" x="244.0215" y="-354.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">DBFactory</text>
+<title>\\Modele_Bouteille_SAQ</title>
+<polygon fill="none" stroke="#000000" points="318.043,-376 170,-376 170,-340 318.043,-340 318.043,-376"/>
+<text text-anchor="middle" x="244.0215" y="-354.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Bouteille_SAQ</text>
+</g>
+<!-- \\Modele_Bouteille_SAQ&#45;&gt;\\Modele -->
+<g id="edge4" class="edge">
+<title>\\Modele_Bouteille_SAQ&#45;&gt;\\Modele</title>
+<path fill="none" stroke="#000000" d="M189.125,-376.109C182.5664,-378.8306 176.0581,-381.8066 170.0107,-385 139.7276,-400.9918 108.3021,-424.1364 86.3016,-441.5939"/>
+<polygon fill="none" stroke="#000000" points="83.9569,-438.9879 78.3531,-447.9795 88.3411,-444.445 83.9569,-438.9879"/>
 </g>
 <!-- \\Modele_Type -->
 <g id="node11" class="node">
@@ -108,8 +108,8 @@
 <!-- \\Modele_Type&#45;&gt;\\Modele -->
 <g id="edge5" class="edge">
 <title>\\Modele_Type&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M199.9063,-314.5595C189.3543,-318.515 178.6545,-323.8535 170.0107,-331 116.637,-375.1286 82.2157,-451.4403 66.6498,-492.293"/>
-<polygon fill="none" stroke="#000000" points="63.2922,-491.2811 63.0986,-501.8742 69.8559,-493.714 63.2922,-491.2811"/>
+<path fill="none" stroke="#000000" d="M199.8771,-315.8263C189.5543,-319.7218 178.9678,-324.7153 170.0107,-331 128.2891,-360.2739 92.9739,-408.6894 73.4208,-438.8897"/>
+<polygon fill="none" stroke="#000000" points="70.2731,-437.3176 67.869,-447.6361 76.1831,-441.069 70.2731,-437.3176"/>
 </g>
 <!-- \\Controleur -->
 <g id="node12" class="node">
