@@ -116,7 +116,7 @@ class Controleur_Bouteille extends Controleur
 	public function saisie_semi_automatique()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille->autocomplete($body->nom);
+		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
 		echo json_encode($listeBouteilles);
 	}
 }
