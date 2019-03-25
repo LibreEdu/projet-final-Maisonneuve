@@ -21,11 +21,57 @@
 	}
 	input, textarea, select {
 		width : 300px;
-		margin: 0;
-	
+		margin: 0;	
 		-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
-			 -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
-						box-sizing: border-box;
+		-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+		box-sizing: border-box;
+	}
+	@media (max-width: 480px) {
+		input, textarea, select {
+			width : 280px;
+			margin: 0;
+			font-size: 14px;		
+			-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+			-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+			box-sizing: border-box;
+		}
+		.mdl-textfield {
+			position: relative;
+			font-size: 14px;
+			display: block;
+			box-sizing: border-box;
+			width: 280px !important;
+			margin: 0;
+			padding: 20px 0;
+		}
+		.demo-card-wide.mdl-card {
+			width: 365px !important;
+			padding-bottom: 5px;
+		}
+		.mdl-textfield__input {
+			font-size: 14px;
+		}
+		.mdl-checkbox__label {
+			font-size: 14px;
+			line-height: 18px;
+		}
+		select {
+			font-size: 14px !important;
+		}
+		.mdl-demo .mdl-layout__tab-bar {
+			padding: 0;
+			padding-left: 16px;
+			box-sizing: border-box;
+			height: 100%;
+			width: 100%;
+		}
+		h4 {
+			font-size: 16px;
+		}
+		.mdl-demo .mdl-card .mdl-card__supporting-text {
+			margin: 5px !important;
+			margin-left: 40px !important;
+		}
 	}
 	select {
 		margin-top: 5px;
@@ -39,6 +85,9 @@
 		font-size: 16px;
 		border: none;
 		box-shadow: 2px 2px 4px  #7c4dff;
+	}
+	select option {
+		color: #000;
 	}
 	h3 {		
 	font-family: 'IBM Plex Serif', serif;
@@ -93,7 +142,6 @@
   }
   .mdl-demo main > .mdl-layout__tab-panel {
 	padding: 8px;
-	padding-top: 48px;
 	}
   .mdl-demo .mdl-card {
 	height: auto;
@@ -157,7 +205,6 @@
   .mdl-demo .mdl-layout__content section:not(:last-of-type) {
 	position: relative;
 	margin-bottom: 48px;
-	margin-top: 48px;
   }
   
   .mdl-layout__content {
