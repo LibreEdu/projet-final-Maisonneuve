@@ -25,6 +25,9 @@ class Routeur
 		if($controleur == '')
 			$controleur = 'login';
 
+		// Détermin la classe du controleur
+		$controleur = 'Controleur_' . $controleur;
+
 		// Si le contrôleur existe
 		if(class_exists($controleur))
 		{
@@ -48,3 +51,6 @@ class Routeur
 		}
 	}
 }
+
+
+

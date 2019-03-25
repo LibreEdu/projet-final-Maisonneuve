@@ -1,0 +1,122 @@
+<?php
+class Controleur_Bouteille extends Controleur
+{
+	public function traite(array $params)
+	{
+		// On vérifie que l’usagé est bien connecté
+		if ( ! isset($_SESSION['id_usager']) )
+		{
+			header('Location: ' . base_url() );
+		}
+
+		switch($params['action'])
+		{
+			case 'visiterCellier':
+				$this->visiterCellier();
+				break;
+
+			case 'modifier-form':
+				$this->modifier_form();
+				break;
+
+			case 'modifier':
+				$this->modifier();
+				break;
+
+			case 'ajouter':
+				$this->ajouter();
+				break;
+
+			case 'boire-js':
+				$this->boire_js();
+				break;
+				
+			case 'ajouter-js':
+				$this->ajouter_js();
+				break;
+				
+			case 'ajouter-form':
+				$this->ajouter_form();
+				break;
+
+			case 'saisie-semi-automatique':
+				$this->saisie_semi_automatique();
+				break;
+
+			default :
+				trigger_error('Action invalide.');
+		}
+	}
+
+	public function modifier_form()
+	{
+		$idBouteille = $this->modele_bouteille->appartient($_GET['id'],$_SESSION['id_usager']);
+
+		if ($idBouteille == null) {
+			header('Location: ' .  site_url('login&action=logout') );
+		}
+		
+		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
+		$donnees['types'] = $this->modele_type->obtenir_tous();
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		$donnees['titre'] = 'Modifier bouteille';
+		$donnees['actionBouton'] = 'modifier';
+		$donnees['titreBouton'] = 'Modifier la bouteille';
+		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/formulaire', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function modifier()
+	{
+		$this->modele_bouteille->modifier();
+		echo '<script>alert("La bouteille a été modifiée.")</script>';
+		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+	}
+
+	public function ajouter()
+	{
+		$this->modele_bouteille->ajouter();
+		echo '<script>alert("La bouteille a été ajoutée.")</script>';
+		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+	}
+
+	public function boire_js()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$this->modele_bouteille->modifierQuantite($body->id,-1);
+		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);	
+		echo json_encode($resultat);
+	}
+
+	public function ajouter_js()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$this->modele_bouteille->modifierQuantite($body->id, 1);
+		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);
+		echo json_encode($resultat);
+	}
+
+	public function ajouter_form()
+	{
+		$donnees['types'] = $this->modele_type->obtenir_tous();
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		$donnees['titre'] = 'Ajouter Bouteille';
+		$donnees['actionBouton'] = 'ajouter';
+		$donnees['titreBouton'] = 'Ajouter la bouteille';
+		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored';
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/formulaire', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function saisie_semi_automatique()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
+		echo json_encode($listeBouteilles);
+	}
+}
