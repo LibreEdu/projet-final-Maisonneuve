@@ -72,12 +72,8 @@ class Bouteille extends Controleur
 	public function modifier()
 	{
 		$this->modele_bouteille->modifier();
-		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été modifiée.")</script>';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
 	public function ajouter()
@@ -90,7 +86,7 @@ class Bouteille extends Controleur
 	public function boire_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_bouteille->modifierQuantiteBouteilleCellier($body->id,-1);
+		$this->modele_bouteille->modifierQuantite($body->id,-1);
 		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);	
 		echo json_encode($resultat);
 	}
@@ -98,7 +94,7 @@ class Bouteille extends Controleur
 	public function ajouter_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_bouteille->modifierQuantiteBouteilleCellier($body->id, 1);
+		$this->modele_bouteille->modifierQuantite($body->id, 1);
 		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);
 		echo json_encode($resultat);
 	}
