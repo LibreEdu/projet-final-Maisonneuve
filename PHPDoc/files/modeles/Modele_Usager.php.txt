@@ -56,7 +56,7 @@ class Modele_Usager extends Modele
 	public function obtenirUsager($id, $colonne = 'courriel')
 	{
 		$resultat = $this->lire($id, $colonne);
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
 		$lUsager = $resultat->fetch();
 		return $lUsager;
 	}

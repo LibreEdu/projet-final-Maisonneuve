@@ -36,7 +36,7 @@ abstract class Controleur
 		if(class_exists($nomModele))
 		{
 			// On fait une connexion à la BD
-			$connexion = DBFactory::getDB(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
+			$connexion = BaseDeDonnees::obtenirBD(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
 			
 			// On crée une instance de la classe Modele_$classe
 			$objetModele = new $nomModele($connexion);

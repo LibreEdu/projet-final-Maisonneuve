@@ -1,5 +1,5 @@
 <?php
-class Modele_BouteilleSaq extends Modele
+class Modele_Bouteille_SAQ extends Modele
 {
 	public function getTableName()
 	{
