@@ -27,6 +27,7 @@ Un [site web](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a
 - Javascript
 - Material Design Lite
 - Photoshop
+- PHPDoc
 - PHP Objet (MVC)
 - ScrumDesk
   
