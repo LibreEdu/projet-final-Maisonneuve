@@ -2,8 +2,26 @@
 // Ouverture de la session
 session_start();
 
+/**
+ * Routeur permet de réorienter la requête vers le contrôleur demandé.
+ *
+ * Cette classe est appelée une seule fois, à partir de la page index du site.
+ *
+ * Exemple d’utilisation :
+ * Routeur::route();
+ *
+ * @package  Vino
+ * @author   Guillaume Harvey
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Routeur
 {
+	/**
+	 * Cette méthode permet d’appeler le contrôleur demandé
+	 *
+	 * @return void
+	 */
 	public static function route()
 	{
 		// Récupére la chaine de caractères de l’URL ou des données du formulaire
@@ -51,6 +69,3 @@ class Routeur
 		}
 	}
 }
-
-
-
