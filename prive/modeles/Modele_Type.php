@@ -10,4 +10,11 @@ class Modele_Type extends Modele
 	{
 		return 'id_type';
 	}
+
+	public function obtenir_tous()
+	{
+		$resultat = $this->lireTous();
+		$lesTypes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
+		return $lesTypes;
+	}
 }
