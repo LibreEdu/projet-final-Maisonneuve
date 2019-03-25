@@ -1,6 +1,17 @@
 <?php
 class Controleur_Bouteille extends Controleur
 {
+	protected $modele_bouteille;
+	protected $modele_cellier;
+	protected $modele_type;
+	
+	public function __construct()
+	{
+		$this->modele_bouteille = $this->modele('modele_bouteille');
+		$this->modele_cellier = $this->modele('modele_cellier');
+		$this->modele_type = $this->modele('modele_type');
+	}
+
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
