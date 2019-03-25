@@ -1,4 +1,13 @@
 <?php
+/**
+ * Classe Bouteille
+ * @package  Vino  
+ * @author   José Ignacio Delgado
+ *.@author...Fatemeh Homatash
+ * @author   Alexandre Pachot
+ *.@author...Charef Eddine Yagoubi
+ * @version  1.0
+ */
 class Classe_Bouteille
 {
 	public $id_bouteille;

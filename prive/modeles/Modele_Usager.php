@@ -1,16 +1,36 @@
 <?php
+/**
+ * Permet de gérer les utilisateurs.
+ *
+ * @package  Vino 
+ * @author   Alexandre Pachot
+ *.@author...Charef Eddine Yagoubi
+ * @version  1.0
+ */
 class Modele_Usager extends Modele
 {
+	/**
+	 * Fonction qui retourne le nom de la table usager
+	 * @return  le nom de la table
+	 */
 	public function getTableName()
 	{
 		return 'vino_usager';
 	}
-	
+
+	/**
+	 * Fonction qui retourne la clé primaire de l'usager
+	 * @return la clé primaire
+	 */
 	public function getClePrimaire()
 	{
 		return 'id_usager';
 	}
 
+	/**
+	 * Fonction qui retourne tous les usagers
+	 * @return $lesUsagers
+	 */
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
@@ -19,11 +39,11 @@ class Modele_Usager extends Modele
 	}
 
 	/**
-	 *  Fonction qui authentifie un utilisateur et qui retourne un 
-	 *  booléen
-	 *  @param string $username l’username de l’usager
-	 *  @param string $password le mot de passe de l’usager
-	 *  @return  boolean 
+	 * Fonction qui authentifie un utilisateur et qui retourne un 
+	 * booléen
+	 * @param string $username l’username de l’usager
+	 * @param string $password le mot de passe de l’usager
+	 * @return  boolean 
 	 */
 	public function Authentification($courriel, $mot_de_passe)
 	{
@@ -48,10 +68,10 @@ class Modele_Usager extends Modele
 	}
 
 	/**
-	 *  Fonction qui retourne le nom de l’usager username par son id
-	 *  @param integer $id l’id de l’usager
-	 *  @param string $colonne l’username de l’usager
-	 *  @return $lUsager
+	 * Fonction qui retourne le nom de l’usager courriel par son id
+	 * @param integer $id l’id de l’usager
+	 * @param string $colonne le courriel de l’usager
+	 * @return $lUsager
 	 */
 	public function obtenirUsager($id, $colonne = 'courriel')
 	{
@@ -62,9 +82,9 @@ class Modele_Usager extends Modele
 	}
 
 	/**
-	 *  Fonction qui insére un usager dans la table vino_usager id
-	 *  @param usager
-	 *  @return 
+	 * Fonction qui insére un usager dans la table vino_usager id
+	 * @param usager
+	 * @return 
 	 */
 	public function inscrire(Usager $usager)
 	{

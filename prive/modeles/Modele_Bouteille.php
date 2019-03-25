@@ -1,16 +1,38 @@
 <?php
+/**
+ * Permet de gérer les celliers.
+ *
+ * @package  Vino 
+ * @author   José Ignacio Delgado
+ *.@author...Fatemeh Homatash
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Modele_Bouteille extends Modele
 {
+	/**
+	 * Fonction qui retourne le nom de la table vino_bouteille
+	 * @return  le nom de la table
+	 */
 	public function getTableName()
 	{
 		return 'vino_bouteille';
 	}
-	
+
+	/**
+	 * Fonction qui retourne la clé primaire de la bouteille
+	 * @return la clé primaire
+	 */
 	public function getClePrimaire()
 	{
 		return 'id_bouteille';
 	}
 
+	/**
+	 * Fonction qui retourne la bouteille par son id
+	 * @param $id
+	 * @return $maBouteille
+	 */
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_bouteille');
@@ -93,6 +115,11 @@ class Modele_Bouteille extends Modele
 		return $laBouteille;    
 	}
 
+	/**
+	 * Fonction qui modifie la bouteille
+	 * @param 
+	 * @return 
+	 */
 	public function modifier()
 	{
 		$sql = 'UPDATE vino_bouteille 
@@ -114,6 +141,11 @@ class Modele_Bouteille extends Modele
 		$resultat = $this->requete($sql, $donnees);
 	}
 
+	/**
+	 * Fonction qui ajoute une bouteille
+	 * @param 
+	 * @return 
+	 */
 	public function ajouter()
 	{
 		$sql = 'INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
@@ -121,6 +153,12 @@ class Modele_Bouteille extends Modele
 		$resultat = $this->requete($sql, $donnees);
 	}
 
+	/**
+	 * Fonction qui retourne la bouteille par rapport à un usager
+	 * @param $idBouteille
+	  * @param $idUsager
+	 * @return $result;
+	 */
 	public function appartient($idBouteille, $idUsager)
 	{
 		$sql = 'SELECT id_bouteille FROM vino_bouteille bouteille
