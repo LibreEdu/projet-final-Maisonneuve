@@ -1,4 +1,14 @@
+
 <?php
+/**
+ * Classe Bouteille_SAQ
+ * @package  Vino  
+ * @author   José Ignacio Delgado
+ *.@author...Fatemeh Homatash
+ * @author   Alexandre Pachot
+ *.@author...Charef Eddine Yagoubi
+ * @version  1.0
+ */
 class Classe_Bouteille_SAQ
 {
 	public $id_bouteille_saq;
