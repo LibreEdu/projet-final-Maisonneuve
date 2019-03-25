@@ -1,5 +1,5 @@
 <?php
-class Cellier extends Controleur
+class Controleur_Cellier extends Controleur
 {
 	public function traite(array $params)
 	{

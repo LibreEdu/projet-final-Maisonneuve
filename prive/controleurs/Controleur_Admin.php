@@ -1,5 +1,5 @@
 <?php
-class Admin extends Controleur
+class Controleur_Admin extends Controleur
 {
 	public function traite(array $params)
 	{

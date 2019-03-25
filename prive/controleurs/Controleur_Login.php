@@ -1,6 +1,6 @@
 <?php
 /* Controleur login qui gére la connexion et l’inscription d’un usager*/
-class Login extends Controleur
+class Controleur_Login extends Controleur
 {
 	public function traite(array $params)
 	{
