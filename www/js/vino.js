@@ -138,7 +138,7 @@ window.addEventListener('load', function() {
 			let nom = inputNomBouteille.value;
 			liste.innerHTML = '';
 			if(nom){
-				let requete = new Request('index.php?bouteille&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+				let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
 				fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
