@@ -22,10 +22,6 @@ class Controleur_Bouteille extends Controleur
 
 		switch($params['action'])
 		{
-			case 'visiterCellier':
-				$this->visiterCellier();
-				break;
-
 			case 'modifier-form':
 				$this->modifier_form();
 				break;

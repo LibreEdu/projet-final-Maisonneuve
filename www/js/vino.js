@@ -18,13 +18,13 @@ window.addEventListener('load', function() {
 	};
 
 	//En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
-	let btnVisiterCellier = document.getElementById('btnVisiterCellier');
-	if(btnVisiterCellier){
-		btnVisiterCellier.addEventListener('click', function(evt){
+	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
+		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
-			window.location = 'index.php?cellier&action=voir&id_cellier=' + id_cellier;
+			window.location = 'index.php?cellier&action=voir&id_cellier='+id_cellier;
 		});
-	};
+	});
+
 
 	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){

@@ -38,7 +38,7 @@ class Modele_Cellier extends Modele
 		$resultat = $this->requete($sql, $donnees);
 	}	
 
-	public function verifParUsager($idCellier, $idUsager)
+	public function verif_usager($idCellier, $idUsager)
 	{
 		$sql = 'SELECT id_cellier FROM vino_cellier WHERE id_cellier = ? AND id_usager = ?';
 		$donnees = array($idCellier,$idUsager);
