@@ -1,19 +1,6 @@
 <?php
 abstract class Controleur
 {
-	protected $modele_bouteille;
-	protected $modele_cellier;
-	protected $modele_type;
-	protected $modele_usager;
-	
-	public function __construct()
-	{
-		$this->modele_bouteille = $this->modele('modele_bouteille');
-		$this->modele_cellier = $this->modele('modele_cellier');
-		$this->modele_type = $this->modele('modele_type');
-		$this->modele_usager = $this->modele('modele_usager');
-	}
-
 	// La fonction qui sera appelée par le routeur
 	public abstract function traite(array $params);
 	

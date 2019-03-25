@@ -2,6 +2,13 @@
 /* Controleur login qui gére la connexion et l’inscription d’un usager*/
 class Controleur_Login extends Controleur
 {
+	protected $modele_usager;
+	
+	public function __construct()
+	{
+		$this->modele_usager = $this->modele('modele_usager');
+	}
+
 	public function traite(array $params)
 	{
 		switch($params['action'])
