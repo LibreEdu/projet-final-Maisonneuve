@@ -60,9 +60,7 @@ class Controleur_Cellier extends Controleur
 	public function voir()
 	{
 		// Recuperation de nom de cellier pour l'afficher en haut de la page
-
-		$idCellier = $this->modele_cellier->verifParUsager($_GET['id_cellier'],$_SESSION['id_usager']);
-
+		$idCellier = $this->modele_cellier->verif_usager($_GET['id_cellier'],$_SESSION['id_usager']);
 		if ($idCellier == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
