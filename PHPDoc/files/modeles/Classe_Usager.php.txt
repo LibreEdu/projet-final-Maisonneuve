@@ -1,4 +1,11 @@
 <?php
+/**
+ * Classe Usager
+ * @package  Vino 
+ * @author   Alexandre Pachot
+ *.@author...Charef Eddine Yagoubi
+ * @version  1.0
+ */
 class Classe_Usager
 {
 	public $id_usager;

@@ -15,7 +15,7 @@ Un [site web](https://github.com/projet-web-Maisonneuve/vino/tree/21a6436d9c307a
 
 ## Sprints
 - [Sprint 0](https://github.com/projet-web-Maisonneuve/vino/tree/6d8d6579cd1df7c418085bae9a541ef5f8a7bc03) : correction des bogues, modification du modèle conceptuel des données, création de la maquette graphique et Material Design Lite, importation des bouteilles de la SAQ.
-  
+
 - [Sprint 1](https://github.com/projet-web-Maisonneuve/vino/tree/b5d5b1b921cf37b12bad82042e0af7f1a352426a) : création de comptes utilisateurs, création de celliers, ajout de bouteilles.
 
 ## Technologies
