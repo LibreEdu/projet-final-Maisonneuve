@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Modèle pour les contrôleurs.
+ *
+ * @package  Vino
+ * @author   Guillaume Harvey
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 abstract class Controleur
 {
 	// La fonction qui sera appelée par le routeur

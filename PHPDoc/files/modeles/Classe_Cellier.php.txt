@@ -1,4 +1,10 @@
 <?php
+/**
+ * Classe Cellier
+ * @package  Vino 
+ * @author   
+ * @version  1.0
+ */
 class Classe_Cellier
 {
 	public $id_cellier;

@@ -1,5 +1,11 @@
 ﻿<?php
-
+/**
+ * Classe BaseDeDonnees
+ * @package  Vino  
+ * @author   Guillaume Harvey
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 	class BaseDeDonnees
 	{
 		public static function obtenirBD($typeBD, $host, $dbName, $charset, $user, $pwd)

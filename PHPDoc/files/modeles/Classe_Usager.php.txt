@@ -1,6 +1,7 @@
 <?php
 /**
- * Classe Usager
+ * Classe prise en compte lors de la récupération du jeu de résultat PDO
+ * 
  * @package  Vino 
  * @author   Alexandre Pachot
  *.@author...Charef Eddine Yagoubi
