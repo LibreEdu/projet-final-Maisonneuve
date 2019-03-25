@@ -15,7 +15,7 @@
 	<!----- Le formulaire avec validation des champs html et php dans le contrôleur ----->
 	<form method='POST' action='index.php?login&action=inscrire'>
 
-		<div class="form-group input-group">
+	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
@@ -25,44 +25,44 @@
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		</div>
-	<input name="nom" class="form-control" placeholder="Nom" type="text"  pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ\s-]+" required>
+		<input name="nom" class="form-control" placeholder="Nom" type="text"  pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ\s-]+" required>
 	</div>
 
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-	<input name="prenom" class="form-control" placeholder="Prénom" type="text"  pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ\s-]+" required>
+		<input name="prenom" class="form-control" placeholder="Prénom" type="text"  pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ\s-]+" required>
 	</div>
 
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-	<input name="mdp" class="form-control" placeholder="Mot de passe" type="password">
+		<input name="mdp" class="form-control" placeholder="Mot de passe" type="password">
 	</div>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-	<input name="mdp2" class="form-control" placeholder="Confirmer mot de passe" type="password">
+		<input name="mdp2" class="form-control" placeholder="Confirmer mot de passe" type="password">
 	</div> <!-- form-group// -->
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary btn-block"> S’inscrire </button>
 	</div> <!-- form-group// -->
 
-</form>
-<!-- Récupération des messages d'erreurs -->
-<?php
-	if (isset($donnees['erreurs']))
-	{
-		if($donnees['erreurs'] != '')
-			{
-				echo '<p class="message"><i class="fas fa-exclamation"> </i>' . $donnees['erreurs'] . '</p>';
-			}
-	}
-	
-?>
+	</form>
+	<!-- Récupération des messages d'erreurs -->
+	<?php
+		if (isset($donnees['erreurs']))
+		{
+			if($donnees['erreurs'] != '')
+				{
+					echo '<p class="message"><i class="fas fa-exclamation"> </i>' . $donnees['erreurs'] . '</p>';
+				}
+		}
+		
+	?>
 </article>
 </div> 
 </main>
