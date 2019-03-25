@@ -4,7 +4,6 @@
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
 			  Ajouter un cellier
 			</button>
-		  	<!-- </button> -->
 			<!-- Récupérer les données -->
 			<?php
 				foreach ($donnees["celliers"] as $cellier) {
@@ -20,20 +19,12 @@
 					<div class="mdl-card__actions">
 						<p>
 						<div class="options" data-id_cellier="<?php echo $cellier->id_cellier ?>">
-							<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnVisiterCellier">Voir</button>
+							<button class="btnVisiterCellier mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voir</button>
 							<button class="btnSupprimerCellier mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button>
 						</div>
-						</p>
+						<p>
 					</div>
 				</div>
-			<!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn1">
-			  <i class="material-icons">more_vert</i>
-			</button> -->
-				<ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">
-					<li class="mdl-menu__item">Lorem</li>
-					<li class="mdl-menu__item" disabled>Ipsum</li>
-					<li class="mdl-menu__item">Dolor</li>
-				</ul>
 			</section>
 
 			<?php

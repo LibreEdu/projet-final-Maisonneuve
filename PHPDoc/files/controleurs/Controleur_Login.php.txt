@@ -1,7 +1,22 @@
 <?php
-/* Controleur login qui gére la connexion et l’inscription d’un usager*/
+	/**
+	 * Gére la connexion et l’inscription d’un usager.
+	 *
+	 * Le contrôleur login est le contrôleur par défaut,
+	 * donc si quelqu’un se connecte va à la racine du site,
+	.*.il faut le rediriger correctement
+	 */
 class Controleur_Login extends Controleur
 {
+	protected $modele_usager;
+	/**
+	 * 
+	 */
+	public function __construct()
+	{
+		$this->modele_usager = $this->modele('modele_usager');
+	}
+
 	public function traite(array $params)
 	{
 		switch($params['action'])
@@ -10,12 +25,10 @@ class Controleur_Login extends Controleur
 				$this->index();
 			break;
 
-			// Affichage du formulaire d’inscription
 			case 'formulaire':
 				$this->formulaire();
 				break;
 
-			// Gestion de l'inscription
 			case 'inscrire':
 				$this->inscrire($params);
 				break;
@@ -29,12 +42,16 @@ class Controleur_Login extends Controleur
 		}
 	}
 
+	/**
+	 * Fonction appeler par défaut qui affiche la page login
+	 */
 	public function index()
 	{
 		$messageErreur = '';
 		// Si on vient du formulaire
 		if ( isset($_REQUEST['courriel']) && isset($_REQUEST['mot_de_passe']) )
 		{
+			//Si l'usager est authentifier
 			if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
@@ -58,16 +75,16 @@ class Controleur_Login extends Controleur
 			}
 		}
 
-		// Le contrôleur login est le contrôleur par défaut,
-		// donc si quelqu’un de connecté va à la racine du site,
-		// il faut le rediriger correctement
+		// Si je suis connecté en tant qu'administrateur
 		if ( isset($_SESSION['admin']) && $_SESSION['admin'] == true )
 		{
 			header('Location: ' . site_url('admin') );
+		// Si je suis connecté en tant qu'usager
 		} elseif ( isset($_SESSION['id_usager']) && $_SESSION['id_usager'] == true )
 		{
 			header('Location: ' .  site_url('cellier') );
 		} else {
+			//vue par défaut
 			$this->afficheVue('modeles/en-tete');
 			$this->afficheVue('modeles/menu-login');
 			$this->afficheVue('login/login');
@@ -75,7 +92,9 @@ class Controleur_Login extends Controleur
 		}
 	}
 
-	// Affichage du formulaire d'inscription
+	/**
+	 * Fonction Affichage du formulaire d'inscription
+	 */
 	public function formulaire()
 	{
 		$this->afficheVue('modeles/en-tete');
@@ -84,7 +103,9 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
-	// Gestion de l’inscription
+	/**
+	 * Foncton inscrire qui gére l'inscription d'un nouvel usager
+	 */
 	public function inscrire($params)
 	{
 		$donnees['usager'] = $this->modele_usager->obtenir_tous();
@@ -96,21 +117,21 @@ class Controleur_Login extends Controleur
 			$messageErreur = $this->valideFormInscription($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
 			if(($this->modele_usager->obtenirUsager($_REQUEST['courriel'])))
-			{// Nn vérifie que ce courriel n’est pas déjà utilisé par un autre membre
+			{// vérifie que ce courriel n’est pas déjà utilisé par un autre membre
 				$messageErreur = ' Ce courriel est déjà utilisé.';
 				$donnees['erreurs'] = $messageErreur;
 			} 
-
+			// Si il n'y a pas de message d'erreur
 			if($messageErreur == '')
-			{// Procéder à l’insertion dans la table vino_usager
+			{
 				$nouveauUsager = new Usager(0, 0, $params['courriel'], $params['nom'], $params['prenom'], password_hash($params['mdp'], PASSWORD_DEFAULT) );
-
+				// Procéder à l’insertion dans la table vino_usager
 				$this->modele_usager->inscrire($nouveauUsager);
 
-				//Affichage
+				//Renvoi à la page par défaut pour se logger
 				header( 'Location: ' . base_url() );
 			} else
-			{
+			{//Affichage de la page login avec l'erreur
 				$this->afficheVue('modeles/en-tete');
 				$this->afficheVue('modeles/menu-admin');
 				$this->afficheFormInscription($messageErreur);
@@ -123,6 +144,9 @@ class Controleur_Login extends Controleur
 		}
 	}
 
+	/**
+	 * Foncton logout qui gére la déconnexion
+	 */
 	public function logout()
 	{
 		// Supprime la session en lui assignant un tableau vide
@@ -140,10 +164,13 @@ class Controleur_Login extends Controleur
 		header( 'Location: ' . base_url() );
 	}
 
-	/*=====  Fonction d'affichage du formulaire d'ajout d'un usager  ======*/		
+	/**
+	 * Fonction d'affichage du formulaire d'ajout d'un usager
+	 * @param $erreurs le message d'ereur
+	 */
 	public function afficheFormInscription($erreurs = '')
 	{
-		// Récupére la liste des usager
+		// Récupére la liste des usagers
 		$donnees['usager'] = $this->modele_usager->obtenir_tous();
 
 		// Remplir le tableau erreurs
@@ -152,18 +179,25 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('login/formulaire', $donnees);
 	}
 
-	/*=====  Fonction de validation du formulaire d'inscription ======*/
+	/**
+	 * Fonction de validation du formulaire d'inscription
+	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
+	 * @return retourne le message d'erreur
+	 */
 	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
 
-		// Récupérer le titre
+		// Récupérer le courriel
 		$courriel = trim($courriel);
-		// et le texte
+		// et le nom
 		$nom = trim($nom);
+		// et le prenom
 		$prenom = trim($prenom);
+		// et le premier mot de passe
 		$mdp = trim($mdp);
+		// et le deuxiéme mot de passe
 		$mdp2 = trim($mdp2);
 		
 		if($courriel == '')

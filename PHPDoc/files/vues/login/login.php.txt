@@ -2,11 +2,11 @@
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 			<main id='inscription'>
 				<article class="card-body mx-auto" style="max-width: 400px;">
-<?php
-	// Si la variable session n'est pas remplie
-	if(!isset($_SESSION["UserID"]))
-	{
-?>
+				<?php
+					// Si la variable session n'est pas remplie
+					if(!isset($_SESSION["UserID"]))
+					{
+				?>
 					<h4 class="card-title mt-3 text-center">Connexion</h4>
 					<form method="POST" action="index.php?login">
 						<div class="form-group input-group">
@@ -26,18 +26,20 @@
 						</div>
 						<p class="text-center">Vous n'avez pas de compte ? <a href="index.php?login&action=formulaire">Créer un Compte</a> </p> 
 					</form>
-<?php
-	}
-	
-	// Gestion des erreurs
-	if (isset($donnees['erreurs'])) {
-		if($donnees['erreurs'] != '')
-			{
-				echo '<p class="message"><i class="fas fa-exclamation"></i>' . $donnees['erreurs'] . '</p>';
-			}
-	}
-	
-?>
+				<?php
+					}
+					
+					// Gestion des erreurs
+					if (isset($donnees['erreurs'])) 
+					{
+						if($donnees['erreurs'] != '')
+							{
+								echo '<p class="message"><i class="fas fa-exclamation"></i>' . $donnees['erreurs'] . '</p>';
+							}
+					}
+					
+				?>
 				</article>
 				<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			</main>
 
