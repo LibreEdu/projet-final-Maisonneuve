@@ -11,7 +11,6 @@ session_start();
  * @author   Guillaume Harvey
  * @author   Alexandre Pachot
  * @version  1.0
- * @example  Routeur::route();
  */
 class Routeur
 {
