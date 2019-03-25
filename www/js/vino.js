@@ -18,12 +18,13 @@ window.addEventListener('load', function() {
 	};
 
 	//En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
-	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
-		element.addEventListener('click', function(evt){
-			let id = evt.target.parentElement.dataset.id;
-			window.location = 'index.php?bouteille&action=visiterCellier&id='+id;
+	let btnVisiterCellier = document.getElementById('btnVisiterCellier');
+	if(btnVisiterCellier){
+		btnVisiterCellier.addEventListener('click', function(evt){
+			let id_cellier = evt.target.parentElement.dataset.id_cellier;
+			window.location = 'index.php?cellier&action=voir&id_cellier=' + id_cellier;
 		});
-	});
+	};
 
 	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
@@ -162,30 +163,30 @@ window.addEventListener('load', function() {
 				});
 			}
 		} );
+
+		let bouteille = {
+				nom : document.getElementById('nom_bouteille'),
+				millesime : document.getElementById('millesime'),
+				prix : document.getElementById('prix'),
+				pays : document.getElementById('pays'),
+				format : document.getElementById('format'),
+				id_type : document.querySelector('[name="type"]')
+			};
+
+		liste.addEventListener('click', function(evt){
+			if(evt.target.tagName == 'LI'){			
+				bouteille.nom.value = evt.target.innerHTML;
+				bouteille.prix.value = evt.target.dataset.prix;
+				bouteille.millesime.value = evt.target.dataset.millesime;
+				bouteille.pays.value = evt.target.dataset.pays;
+				bouteille.format.value = evt.target.dataset.format;
+				
+				liste.innerHTML = '';
+				inputNomBouteille.value = '';
+
+			}
+		});
 	}
-
-	let bouteille = {
-		nom : document.getElementById('nom_bouteille'),
-		millesime : document.getElementById('millesime'),
-		prix : document.getElementById('prix'),
-		pays : document.getElementById('pays'),
-		format : document.getElementById('format'),
-		id_type : document.querySelector('[name="type"]')
-	};
-
-	liste.addEventListener('click', function(evt){
-		if(evt.target.tagName == 'LI'){			
-			bouteille.nom.value = evt.target.innerHTML;
-			bouteille.prix.value = evt.target.dataset.prix;
-			bouteille.millesime.value = evt.target.dataset.millesime;
-			bouteille.pays.value = evt.target.dataset.pays;
-			bouteille.format.value = evt.target.dataset.format;
-			
-			liste.innerHTML = '';
-			inputNomBouteille.value = '';
-
-		}
-	});
 	
 	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
 	if(btnAjouter){

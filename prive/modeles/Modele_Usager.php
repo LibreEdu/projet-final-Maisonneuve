@@ -10,19 +10,13 @@
 		{
 			return 'id_usager';
 		}
-		// public function obtenir_par_id($id)
-		// {
-		// 	$resultat = $this->lire($id);
-		// 	$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-		// 	$usager = $resultat->fetch();
-		// 	return $Usager;
-		// }
-		// public function obtenir_tous()
-		// {
-		// 	$resultat = $this->lireTous();
-		// 	$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
-		// 	return $lesUsagers;
-		// }
+
+		public function obtenir_tous()
+		{
+			$resultat = $this->lireTous();
+			$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Usager');
+			return $lesUsagers;
+		}
 
 		/**
 		 *  Fonction qui authentifie un utilisateur et qui retourne un 
@@ -69,14 +63,14 @@
 
 		/**
 		 *  Fonction qui insére un usager dans la table vino_usager id
-		 *  @param l’usager
+		 *  @param usager
 		 *  @return 
 		 */
-		public function sauvegarde(Usager $lUsager)
+		public function inscrire(Usager $usager)
 		{
-			$query = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, hash) VALUES (?, ?, ?, ?, ?)';
-				$donnees = array($lUsager->courriel, $lUsager->admin, $lUsager->nom, $lUsager->prenom, $lUsager->hash);
-				return $this->requete($query, $donnees);
+			$query = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, mot_de_passe) VALUES (?, ?, ?, ?, ?)';
+			$donnees = array($usager->courriel, $usager->admin, $usager->nom, $usager->prenom, $usager->mot_de_passe);
+			return $this->requete($query, $donnees);
 		}
 	}
 ?>

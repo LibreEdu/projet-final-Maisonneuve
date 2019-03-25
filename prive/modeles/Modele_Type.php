@@ -10,12 +10,7 @@
 		{
 			return 'id_type';
 		}
-		public function obtenir_par_id($id)
-		{
-			$resultat = $this->lire($id, 'id_type');
-			$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Type');
-			return $maBouteille;
-		}
+
 		public function obtenir_tous()
 		{
 			$resultat = $this->lireTous();

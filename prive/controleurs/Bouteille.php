@@ -4,17 +4,13 @@ class Bouteille extends Controleur
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
-		if ( ! isset($_SESSION["id_usager"]) )
+		if ( ! isset($_SESSION['id_usager']) )
 		{
 			header('Location: ' . base_url() );
 		}
 
 		switch($params['action'])
 		{
-			case 'index':
-				$this->index();
-				break;
-
 			case 'visiterCellier':
 				$this->visiterCellier();
 				break;
@@ -52,40 +48,9 @@ class Bouteille extends Controleur
 		}
 	}
 
-	public function index()
-	{
-		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
-	}
-
-	public function visiterCellier()
-	{
-		// Recuperation de nom de cellier pour l'afficher en haut de la page
-
-		$idCellier = $this->modele_cellier->verifParUsager($_GET['id'],$_SESSION["id_usager"]);
-
-		if ($idCellier == null) {
-			header('Location: ' . site_url('login&action=logout') );
-		}
-
-		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-		$resultat = $this->modele_cellier->obtenir_par_id_cellier($_GET['id']);
-		$donnees['bouteilles'] = $this->modele_bouteille->lireAvecType($_GET['id']);
-		$monCellier = $resultat[0];
-		$donnees['cellier'] = $monCellier->nom;
-
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
-	}
-
 	public function modifier_form()
 	{
-		$idBouteille = $this->modele_bouteille->verifParUsager($_GET['id'],$_SESSION["id_usager"]);
+		$idBouteille = $this->modele_bouteille->appartient($_GET['id'],$_SESSION['id_usager']);
 
 		if ($idBouteille == null) {
 			header('Location: ' .  site_url('login&action=logout') );
@@ -93,8 +58,8 @@ class Bouteille extends Controleur
 		
 		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
 		$donnees['types'] = $this->modele_type->obtenir_tous();
-		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION["id_usager"]);
-		$donnees['titre'] = 'Modifier Bouteille';
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		$donnees['titre'] = 'Modifier bouteille';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier la bouteille';
 		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
@@ -106,7 +71,7 @@ class Bouteille extends Controleur
 
 	public function modifier()
 	{
-		$this->modele_bouteille->modifierBouteille();
+		$this->modele_bouteille->modifier();
 		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
 		echo '<script>alert("La bouteille a été modifiée.")</script>';
 		$this->afficheVue('modeles/en-tete');
@@ -117,18 +82,9 @@ class Bouteille extends Controleur
 
 	public function ajouter()
 	{
-		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
-		$resultat = $this->modele_bouteille->obtenir_par_id_cellier($_POST['id_cellier']);
-		$donnees['bouteilles'] = $this->modele_bouteille->lireAvecType($_POST['type']);
-		$monCellier = $resultat[0];
-		$donnees['cellier'] = $monCellier->nom;
-		$this->modele_bouteille->ajouterUneBouteille();
-		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
+		$this->modele_bouteille->ajouter();
 		echo '<script>alert("La bouteille a été ajoutée.")</script>';
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		header('Location: ' .  site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
 	public function boire_js()
@@ -150,7 +106,7 @@ class Bouteille extends Controleur
 	public function ajouter_form()
 	{
 		$donnees['types'] = $this->modele_type->obtenir_tous();
-		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION["id_usager"]);
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		$donnees['titre'] = 'Ajouter Bouteille';
 		$donnees['actionBouton'] = 'ajouter';
 		$donnees['titreBouton'] = 'Ajouter la bouteille';

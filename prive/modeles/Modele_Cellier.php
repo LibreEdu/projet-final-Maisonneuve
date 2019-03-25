@@ -11,25 +11,18 @@
 			return 'id_cellier';
 		}
 
-		public function obtenir_par_id($id)
+		public function obtenir_par_id($id_cellier)
 		{
-			$resultat = $this->lire($id, 'id_usager');
+			$resultat = $this->lire($id_cellier);
 			$monCellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Cellier');
 			return $monCellier;
 		}
-
-		public function obtenir_par_id_cellier($idCellier)
+		
+		public function obtenir_par_usager($id_usager)
 		{
-			$resultat = $this->lire($idCellier, 'id_cellier');
+			$resultat = $this->lire($id_usager, 'id_usager');
 			$monCellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Cellier');
 			return $monCellier;
-		}
-
-		public function obtenir_tous()
-		{
-			$resultat = $this->obtenirTous();
-			$lesCelliers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Cellier');
-			return $lesCelliers;
 		}
 		
 		public function supprimer_par_id($id)
@@ -38,14 +31,14 @@
 			return $resultat;
 		}
 
-		public function ajoutCellier($idUsager)
+		public function ajouter($idUsager)
 		{
 			$sql = 'INSERT INTO vino_cellier (id_usager, nom) VALUES (?,?)';
 			$donnees = array($idUsager, $_POST['nom']);
 			$resultat = $this->requete($sql, $donnees);
 		}	
 
-		public function verifParUsager($idCellier,$idUsager)
+		public function verifParUsager($idCellier, $idUsager)
 		{
 			$sql = 'SELECT id_cellier FROM vino_cellier WHERE id_cellier = ? AND id_usager = ?';
 			$donnees = array($idCellier,$idUsager);

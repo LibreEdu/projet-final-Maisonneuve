@@ -13,13 +13,13 @@
 	<p class="divider-text">
 	</p>
 	<!----- Le formulaire avec validation des champs html et php dans le contrôleur ----->
-	<form method='POST' action='index.php?login&action=sinscrire'>
+	<form method='POST' action='index.php?login&action=inscrire'>
 
 		<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-		<input name="pseudo" class="form-control" placeholder="Dupont@mail.com" type="email" required>
+		<input name="courriel" class="form-control" placeholder="Dupont@mail.com" type="email" required>
 	</div> 
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
@@ -48,7 +48,7 @@
 	<input name="mdp2" class="form-control" placeholder="Confirmer mot de passe" type="password">
 	</div> <!-- form-group// -->
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary btn-block"> S'inscrire </button>
+		<button type="submit" class="btn btn-primary btn-block"> S’inscrire </button>
 	</div> <!-- form-group// -->
 
 </form>
