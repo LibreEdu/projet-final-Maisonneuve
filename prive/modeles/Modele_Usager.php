@@ -1,6 +1,7 @@
 <?php
 /**
- * Modele_Usager permet de gérer les utilisateurs.
+ * Permet de gérer les utilisateurs.
+ *
  * @package  Vino 
  * @author   Alexandre Pachot
  *.@author...Charef Eddine Yagoubi
