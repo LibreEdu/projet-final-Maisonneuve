@@ -18,13 +18,6 @@
 			return $maBouteille;
 		}
 
-		public function obtenir_tous()
-		{
-			$resultat = $this->lireTous();
-			$lesBouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			return $lesBouteilles;
-		}
-
 		/**
 		 * Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type
 		 * 
@@ -67,7 +60,7 @@
 		 * 
 		 * @return Boolean Succès ou échec de l’ajout.
 		 */
-		public function modifierQuantiteBouteilleCellier($id, $nombre)
+		public function modifierQuantite($id, $nombre)
 		{
 			//TODO : Valider les données.
 				
