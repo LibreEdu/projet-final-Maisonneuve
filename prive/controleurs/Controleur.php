@@ -19,7 +19,7 @@ abstract class Controleur
 	
 	protected function afficheVue($nomVue, $donnees = null)
 	{
-		$cheminVue = RACINE . "vues/" . $nomVue . ".php";
+		$cheminVue = RACINE . 'vues/' . $nomVue . '.php';
 		
 		if(file_exists($cheminVue))
 		{
@@ -27,7 +27,7 @@ abstract class Controleur
 		}
 		else
 		{
-			trigger_error("Erreur 404! La vue $nomVue n'existe pas.");
+			trigger_error('Erreur 404! La vue $nomVue n’existe pas.');
 		}
 	}
 
@@ -47,12 +47,12 @@ abstract class Controleur
 			}
 			else
 			{
-				trigger_error("Modèle invalide.");
+				trigger_error('Modèle invalide.');
 			}
 		}
 		else
 		{
-			trigger_error("Le modèle $nomModele est invalide.");
+			trigger_error('Le modèle $nomModele est invalide.');
 		}
 	}
 }

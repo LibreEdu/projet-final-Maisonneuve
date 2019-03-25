@@ -25,13 +25,6 @@
 			return $lesBouteilles;
 		}
 
-		public function obtenir_par_id_cellier($id)
-		{
-			$resultat = $this->lire($id, 'id_cellier');
-			$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Bouteille');
-			return $maBouteille;
-		}
-
 		/**
 		 * Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type
 		 * 
@@ -39,7 +32,7 @@
 		 * 
 		 * @return $laBouteille details des bouteilles ainsi que le type de bouteille.
 		 */
-		public function lireAvecType($idCellier)
+		public function obtenir_par_id_t($idCellier)
 		{			
 			//Requete de tous les details des bouteilles
 			$requete = "SELECT b.id_bouteille,
@@ -142,7 +135,7 @@
 			return $listeBouteilles;
 		}
 
-		public function modifierBouteille()
+		public function modifier()
 		{
 			$sql = 'UPDATE vino_bouteille 
 				SET date_achat=?,
@@ -163,14 +156,14 @@
 			$resultat = $this->requete($sql, $donnees);
 		}
 
-		public function ajouterUneBouteille()
+		public function ajouter()
 		{
 			$sql = 'INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
 			$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier']);
 			$resultat = $this->requete($sql, $donnees);
 		}
 
-		public function verifParUsager($idBouteille,$idUsager)
+		public function appartient($idBouteille, $idUsager)
 		{
 			$sql = 'SELECT id_bouteille FROM vino_bouteille bouteille
 			INNER JOIN vino_cellier cellier

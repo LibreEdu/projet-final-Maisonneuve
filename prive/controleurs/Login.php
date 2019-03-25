@@ -16,8 +16,8 @@ class Login extends Controleur
 				break;
 
 			// Gestion de l'inscription
-			case ’sinscrire’:
-				$this->’sinscrire’();
+			case 'inscrire':
+				$this->inscrire($params);
 				break;
 
 			case 'logout':
@@ -40,11 +40,11 @@ class Login extends Controleur
 				// Mets le nom d’usager dans la variable session UserID,
 				// ce qui authentifie l’usager pour les pages protégées
 				//$_SESSION['UserID'] = $_REQUEST['courriel'];
-				$user = $this->modele_usager->obtenirUsager($_REQUEST["courriel"]);
+				$user = $this->modele_usager->obtenirUsager($_REQUEST['courriel']);
 				// Mets le'id de l’usager dans la variable session idUsager,
-				$_SESSION["id_usager"] = $user->id_usager;
-				$_SESSION["admin"] = $user->admin;
-				$_SESSION["prenom"] = $user->prenom;
+				$_SESSION['id_usager'] = $user->id_usager;
+				$_SESSION['admin'] = $user->admin;
+				$_SESSION['prenom'] = $user->prenom;
 			}
 			else
 			{
@@ -61,10 +61,10 @@ class Login extends Controleur
 		// Le contrôleur login est le contrôleur par défaut,
 		// donc si quelqu’un de connecté va à la racine du site,
 		// il faut le rediriger correctement
-		if ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true )
+		if ( isset($_SESSION['admin']) && $_SESSION['admin'] == true )
 		{
 			header('Location: ' . site_url('admin') );
-		} elseif ( isset($_SESSION["id_usager"]) && $_SESSION["id_usager"] == true )
+		} elseif ( isset($_SESSION['id_usager']) && $_SESSION['id_usager'] == true )
 		{
 			header('Location: ' .  site_url('cellier') );
 		} else {
@@ -84,29 +84,29 @@ class Login extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
-	/*Gestion de l'inscription*/ 
-	public function sinscrire()
+	// Gestion de l’inscription
+	public function inscrire($params)
 	{
-		$donnees["usager"] = $this->modele_usager->obtenir_tous();
-		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_tous();
+		$donnees['usager'] = $this->modele_usager->obtenir_tous();
 
-		$messageErreur="";
-		if(isset($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
+		$messageErreur='';
+		if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
 		{
-			//Appel de la fonction valideFormInscription et verifier quesqu'elle retourne 
-			$messageErreur = $this->valideFormInscription($_REQUEST['pseudo'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
+			// Appel de la fonction valideFormInscription et verifier ce qu’elle retourne 
+			$messageErreur = $this->valideFormInscription($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
-			if(($this->modele_usager->obtenirUsager($_REQUEST['pseudo'])))
-			{//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+			if(($this->modele_usager->obtenirUsager($_REQUEST['courriel'])))
+			{// Nn vérifie que ce courriel n’est pas déjà utilisé par un autre membre
 				$messageErreur = ' Ce courriel est déjà utilisé.';
 				$donnees['erreurs'] = $messageErreur;
 			} 
 
-			if($messageErreur == "")
-			{// Procéder à l'insertion dans la table vino_usager
-				$nouveauUsager = new Usager(0, 0, $params["pseudo"], $params["nom"], $params["prenom"], password_hash($params["mdp"], PASSWORD_DEFAULT) );
+			if($messageErreur == '')
+			{// Procéder à l’insertion dans la table vino_usager
+				$nouveauUsager = new Usager(0, 0, $params['courriel'], $params['nom'], $params['prenom'], password_hash($params['mdp'], PASSWORD_DEFAULT) );
 
-				$this->modele_usager->sauvegarde($nouveauUsager);
+				$this->modele_usager->inscrire($nouveauUsager);
+
 				//Affichage
 				header( 'Location: ' . base_url() );
 			} else
@@ -119,7 +119,7 @@ class Login extends Controleur
 		}
 		else
 		{
-			$messageErreur = "Paramètres invalides.";
+			$messageErreur = 'Paramètres invalides.';
 		}
 	}
 
@@ -153,7 +153,7 @@ class Login extends Controleur
 	}
 
 	/*=====  Fonction de validation du formulaire d'inscription ======*/
-	public function valideFormInscription($courriel, $nom, $prenom, $hash ,$hash2)
+	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
@@ -163,34 +163,35 @@ class Login extends Controleur
 		// et le texte
 		$nom = trim($nom);
 		$prenom = trim($prenom);
-		$hash = trim($hash);
+		$mdp = trim($mdp);
+		$mdp2 = trim($mdp2);
 		
 		if($courriel == '')
 			$msgErreur .= 'Le champ Courriel est vide.<br>';
 		
 		if(!preg_match("/^[A-Z0-9.]+@(([A-Z]+\\.)+[A-Z]{2,6})$/i",$courriel))
-			$msgErreur .= 'le format courriel doit être réspecter.<br>';
+			$msgErreur .= 'Le format courriel doit être réspecter.<br>';
 		
 		if($nom == '')
 			$msgErreur .= 'Le nom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
-			$msgErreur .= 'Entrez au moins deux caractéres.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères.<br>';
 
 		if($prenom == '')
 			$msgErreur .= 'Le prénom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
-			$msgErreur .= 'Entrez au moins deux caractéres.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères.<br>';
 
-		if($hash == '')
+		if($mdp == '')
 			$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
 
-		if(strlen($hash)>12|| strlen($hash)<5)
-			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractéres.<br>';
+		if(strlen($mdp)>12|| strlen($mdp)<5)
+			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractères.<br>';
 
-		if(trim($hash) != trim($hash2))
-			$msgErreur .= 'Les mots de passe doivent ètre identique.<br>';
+		if($mdp != $mdp2)
+			$msgErreur .= 'Les mots de passe doivent ètre identiques.<br>';
 
 		// Retourner un message d'erreur
 		return $msgErreur;

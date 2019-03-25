@@ -4,7 +4,7 @@ class Cellier extends Controleur
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
-		if ( ! isset($_SESSION["id_usager"]) )
+		if ( ! isset($_SESSION['id_usager']) )
 		{
 			header('Location: ' . base_url() );
 		}
@@ -12,6 +12,10 @@ class Cellier extends Controleur
 		{
 			case 'index':
 				$this->index();
+				break;
+
+			case 'voir':
+				$this->voir();
 				break;
 
 			// Affichage du formulaire
@@ -37,10 +41,32 @@ class Cellier extends Controleur
 	public function index()
 	{
 		// Affiche la liste des celliers de l’usager connecté
-		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION['id_usager']);
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('cellier/liste', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function voir()
+	{
+		// Recuperation de nom de cellier pour l'afficher en haut de la page
+
+		$idCellier = $this->modele_cellier->verifParUsager($_GET['id_cellier'],$_SESSION['id_usager']);
+
+		if ($idCellier == null) {
+			header('Location: ' . site_url('login&action=logout') );
+		}
+
+		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
+		$resultat = $this->modele_cellier->obtenir_par_id($_GET['id_cellier']);
+		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_par_id_t($_GET['id_cellier']);
+		$monCellier = $resultat[0];
+		$donnees['cellier'] = $monCellier->nom;
+
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('cellier/cellier', $donnees);
 		$this->afficheVue('modeles/bas-de-page');
 	}
 	
@@ -54,8 +80,8 @@ class Cellier extends Controleur
 	
 	public function ajouter()
 	{
-		$this->modele_cellier->ajoutCellier($_SESSION['id_usager']);
-		$donnees['celliers'] = $this->modele_cellier->obtenir_par_id($_SESSION['id_usager']);
+		$this->modele_cellier->ajouter($_SESSION['id_usager']);
+		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('cellier/liste', $donnees);
