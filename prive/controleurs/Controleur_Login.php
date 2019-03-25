@@ -1,6 +1,7 @@
 <?php
 	/**
-	 * Controleur login qui gére la connexion et l’inscription d’un usager
+	 * Gére la connexion et l’inscription d’un usager.
+	 *
 	 * Le contrôleur login est le contrôleur par défaut,
 	 * donc si quelqu’un se connecte va à la racine du site,
 	.*.il faut le rediriger correctement

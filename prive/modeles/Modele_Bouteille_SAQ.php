@@ -1,11 +1,27 @@
 <?php
+/**
+ * Modele_Cllier permet de gérer les celliers.
+ * @package  Vino 
+ * @author   José Ignacio Delgado
+ *.@author...Fatemeh Homatash
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Modele_Bouteille_SAQ extends Modele
 {
+	/**
+	 * Fonction qui retourne le nom de la table vino_bouteille_saq
+	 * @return  le nom de la table
+	 */
 	public function getTableName()
 	{
 		return 'vino_bouteille_saq';
 	}
-	
+
+	/**
+	 * Fonction qui retourne la clé primaire de la bouteille_saq
+	 * @return la clé primaire
+	 */
 	public function getClePrimaire()
 	{
 		return 'id_bouteille_saq';
