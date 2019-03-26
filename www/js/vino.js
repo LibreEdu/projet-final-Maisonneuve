@@ -95,7 +95,6 @@ window.addEventListener('load', function() {
 				}
 			})
 			.then(response => {
-				//affichage de la quantité
 				quantite.innerHTML = 'Quantité : '+ response[0].quantite;
 			}).catch(error => {
 				console.error(error);
@@ -123,11 +122,9 @@ window.addEventListener('load', function() {
 		element.onclick = function() {
 			if(document.getElementById('afficher').checked == true){
 				document.getElementById('recherche').style.display = "initial";
-				//console.log('visible');
 			}
 			else{
 				document.getElementById('recherche').style.display = "none";
-				//console.log('non visible');
 			};
 		};
 	};
@@ -244,39 +241,15 @@ window.addEventListener('load', function() {
 		} );
 
 		let mes_achats = document.getElementById('mes_achats');
-		//console.log(mes_achats.innerHTML);
-
 		la_liste.addEventListener('click', function(evt){
-			if(evt.target.tagName == 'LI'){			
-				/*bouteille.nom.value = evt.target.innerHTML;
-				bouteille.nom.value = evt.target.dataset.prix;
-				bouteille.millesime.value = evt.target.dataset.millesime;
-				bouteille.pays.value = evt.target.dataset.pays;
-				bouteille.format.value = evt.target.dataset.format;*/
-
-				mes_achats.innerHTML += '<div><input type="text" id_bouteille_saq="' + evt.target.dataset.id + '" name="bouteille" value="' + evt.target.innerHTML + '" /> <button class="btnSuppBouteille" id="' + evt.target.dataset.id + '" >Supprimer</button></div>';
-				
-				//la_liste.innerHTML = '';
-				//NomBouteille.value = '';
-
+			if(evt.target.tagName == 'LI'){
+				mes_achats.innerHTML += '<div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id + '" name="bouteille' + evt.target.dataset.id + '" value="' + evt.target.innerHTML + '" /> <button class="btnSuppBouteille">Supprimer</button></div>';
 			}
 		});
 
-		document.querySelectorAll('.btnSuppBouteille').forEach(function(element){
-			element.addEventListener('click', function(evt){			
-				//let id = evt.target.parentElement.dataset.id_bouteille_saq;
-				//let bouteille_SAQ = document.getElementById(id_bouteille_saq);
-				//let bouteille_SAQ = document.querySelectorAll('[name="bouteille"]');
-				console.log('bonjour');
-			});
+		mes_achats.addEventListener('click', function(evt){
+			evt.target.parentElement.innerHTML = '';
 		});
-
-		let mes_achats2 = document.getElementById('mes_achats');
-		if(mes_achats2){
-			mes_achats2.addEventListener('click', function(evt){
-				console.log(evt.srcElement.id);
-			});
-		};
 	}	
 
 } );
