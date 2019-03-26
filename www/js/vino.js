@@ -10,12 +10,12 @@
 
 window.addEventListener('load', function() {
 	//En cliquant sur le bouton ajouter cellier il le redirige vers le controleur cellier
-	let btnAjouterCellier = document.getElementById('btnAjouterCellier');
-	if(btnAjouterCellier){
-		btnAjouterCellier.addEventListener('click', function(){
-			window.location = 'index.php?cellier&action=ajouter-form';
-		});
-	};
+	// let btnAjouterCellier = document.getElementById('btnAjouterCellier');
+	// if(btnAjouterCellier){
+	// 	btnAjouterCellier.addEventListener('click', function(){
+	// 		window.location = 'index.php?cellier&action=ajouter-form';
+	// 	});
+	// };
 
 	//En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
 	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
