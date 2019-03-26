@@ -4,7 +4,7 @@
 	 *
 	 * Le contrôleur login est le contrôleur par défaut,
 	 * donc si quelqu’un se connecte va à la racine du site,
-	.*.il faut le rediriger correctement
+	 * il faut le rediriger correctement
 	 */
 class Controleur_Login extends Controleur
 {
@@ -43,7 +43,7 @@ class Controleur_Login extends Controleur
 	}
 
 	/**
-	 * Fonction appeler par défaut qui affiche la page login
+	 * Fonction appelée par défaut qui affiche la page login
 	 */
 	public function index()
 	{

@@ -1,6 +1,7 @@
 <?php
 /**
- * Modele_Cllier permet de gérer les celliers.
+ * Permet de gérer les bouteilles de la SAQ.
+ * 
  * @package  Vino 
  * @author   José Ignacio Delgado
  *.@author...Fatemeh Homatash
