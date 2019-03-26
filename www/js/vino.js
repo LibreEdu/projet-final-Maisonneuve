@@ -123,11 +123,11 @@ window.addEventListener('load', function() {
 		element.onclick = function() {
 			if(document.getElementById('afficher').checked == true){
 				document.getElementById('recherche').style.display = "initial";
-				console.log('visible');
+				//console.log('visible');
 			}
 			else{
 				document.getElementById('recherche').style.display = "none";
-				console.log('non visible');
+				//console.log('non visible');
 			};
 		};
 	};
@@ -215,6 +215,69 @@ window.addEventListener('load', function() {
 			});		
 		});
 	}
+
+	let NomBouteille = document.querySelector('[name="une_bouteille"]');
+	let la_liste = document.querySelector('.listeBouteilles');
+	
+	if(NomBouteille){
+		NomBouteille.addEventListener('keyup', function(evt){
+			let un_nom = NomBouteille.value;
+			la_liste.innerHTML = '';
+			if(un_nom){
+				let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + un_nom + '"}'});
+				fetch(requete)
+				.then(response => {
+					if (response.status === 200) {
+						return response.json();
+					} else {
+					throw new Error('Erreur');
+					}
+				})
+				.then(response => {
+					response.forEach(function(element){
+						la_liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
+					} )
+				}).catch(error => {
+					console.error(error);
+				});
+			}
+		} );
+
+		let mes_achats = document.getElementById('mes_achats');
+		//console.log(mes_achats.innerHTML);
+
+		la_liste.addEventListener('click', function(evt){
+			if(evt.target.tagName == 'LI'){			
+				/*bouteille.nom.value = evt.target.innerHTML;
+				bouteille.nom.value = evt.target.dataset.prix;
+				bouteille.millesime.value = evt.target.dataset.millesime;
+				bouteille.pays.value = evt.target.dataset.pays;
+				bouteille.format.value = evt.target.dataset.format;*/
+
+				mes_achats.innerHTML += '<div><input type="text" id_bouteille_saq="' + evt.target.dataset.id + '" name="bouteille" value="' + evt.target.innerHTML + '" /> <button class="btnSuppBouteille" id="' + evt.target.dataset.id + '" >Supprimer</button></div>';
+				
+				//la_liste.innerHTML = '';
+				//NomBouteille.value = '';
+
+			}
+		});
+
+		document.querySelectorAll('.btnSuppBouteille').forEach(function(element){
+			element.addEventListener('click', function(evt){			
+				//let id = evt.target.parentElement.dataset.id_bouteille_saq;
+				//let bouteille_SAQ = document.getElementById(id_bouteille_saq);
+				//let bouteille_SAQ = document.querySelectorAll('[name="bouteille"]');
+				console.log('bonjour');
+			});
+		});
+
+		let mes_achats2 = document.getElementById('mes_achats');
+		if(mes_achats2){
+			mes_achats2.addEventListener('click', function(evt){
+				console.log(evt.srcElement.id);
+			});
+		};
+	}	
 
 } );
 

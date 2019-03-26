@@ -49,6 +49,9 @@ class Controleur_Bouteille extends Controleur
 			case 'saisie-semi-automatique':
 				$this->saisie_semi_automatique();
 				break;
+			case 'liste_form':
+				$this->liste_form();
+				break;
 
 			default :
 				trigger_error('Action invalide.');
@@ -126,4 +129,13 @@ class Controleur_Bouteille extends Controleur
 		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
 		echo json_encode($listeBouteilles);
 	}
+
+	public function liste_form()
+	{
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/formulaire.1');
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
 }
