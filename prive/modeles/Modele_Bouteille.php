@@ -1,6 +1,6 @@
 <?php
 /**
- * Permet de gérer les celliers.
+ * Permet de gérer les bouteilles des usagers.
  *
  * @package  Vino 
  * @author   José Ignacio Delgado
