@@ -243,7 +243,7 @@ window.addEventListener('load', function() {
 		let mes_achats = document.getElementById('mes_achats');
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id_bouteille_saq + '" name="bouteille' + evt.target.dataset.id_bouteille_saq + '" value="' + evt.target.innerHTML + '" /> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id_bouteille_saq + '" name="bouteille' + evt.target.dataset.id_bouteille_saq + '" value="' + evt.target.innerHTML + '" /> <button class="btnSupprimerItem">Supprimer</button></div>';
 			}
 		});
 
