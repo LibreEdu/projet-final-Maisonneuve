@@ -31,11 +31,11 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script>
 			// Gestionnaire d’évènements
-		/*	window.addEventListener("load", () =>
+			window.addEventListener("load", () =>
 			{
 				document.getElementById("btnAjouterCellier").addEventListener("click", ()=>
 				{
 					vino.ajouterCellier();
 				}, false);
-			}, false)*/
+			}, false)
 		</script>
