@@ -12,7 +12,8 @@
 		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
 		</div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-			<a href="index.php?Cellier" class="mdl-layout__tab">Mes celliers</a>
+			<a href="index.php?Cellier" class="mdl-layout__tab is-active">Mes celliers</a>
+			<a href="index.php?bouteille_SAQ&action=liste_form" class="mdl-layout__tab is-active">Liste d'achats</a>
 			<a href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>" class="mdl-layout__tab " id="moncompte">Mon Compte</a>
 			<a href="index.php?login&action=logout" class="mdl-layout__tab " id="deconnexion">Déconnexion</a>
 		</div>
