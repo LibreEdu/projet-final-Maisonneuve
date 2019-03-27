@@ -37,6 +37,14 @@ class Controleur_Login extends Controleur
 				$this->logout();
 				break;
 
+				case 'formulaireModification':
+				$this->formulaireModification();
+				break;
+
+			case 'modifier':
+				$this->modifier($_REQUEST['mdp2']);
+				break;
+
 			default :
 				trigger_error('Action invalide.');
 		}
@@ -102,6 +110,52 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('login/formulaire');
 		$this->afficheVue('modeles/bas-de-page');
 	}
+	/**
+	 * Fonction Affichage du formulaire de modification
+	 */
+	public function formulaireModification()
+	{
+		//$donnees['usager'] = $this->modele_usager->obtenir_tous();
+		$idUsager= $_SESSION['id_usager'];
+		
+		//var_dump($idUsager);die;
+
+		if ($idUsager == null) {
+			header('Location: ' . site_url('login&action=logout') );
+		}
+		
+		 $donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
+		 //var_dump($donnees['usager']);die;
+		// $donnees['types'] = $this->modele_type->obtenir_tous();
+		// $donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		$donnees['titre'] = 'Modifier Votre compte';
+		$donnees['actionBouton'] = 'modifier';
+		$donnees['titreBouton'] = 'Modifier l’usager';
+		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('login/formulaire-modification', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+		/**
+	 * Foncton inscrire qui gére la modification d'un usager connecté
+	 */
+	public function modifier($params)
+	{
+		$donnees['usager'] = $this->modele_usager->obtenir_tous();
+
+		$messageErreur='';
+		$this->modele_usager->modifier();
+		echo '<script>alert("Les informations ont été modifier.")</script>';
+		//header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('login/formulaire-modification', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+
 
 	/**
 	 * Foncton inscrire qui gére l'inscription d'un nouvel usager
