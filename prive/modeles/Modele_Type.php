@@ -5,6 +5,7 @@
  * @package  Vino
  *.@author...José Ignacio Delgado
  * @author   Alexandre Pachot
+ *.@author...Fatemeh Homatash
  * @version  1.0
  */
 class Modele_Type extends Modele

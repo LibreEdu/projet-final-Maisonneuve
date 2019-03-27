@@ -1,4 +1,11 @@
 <?php
+/**
+ * Controleur cellier, gere la creation, supression et voir le cellier
+ *
+ * @package  Vino
+ * @author   Fatemeh Homatash
+ * @version  1.0
+ */
 class Controleur_Cellier extends Controleur
 {
 	protected $modele_bouteille;
@@ -47,9 +54,12 @@ class Controleur_Cellier extends Controleur
 		}
 	}
 
+	/**
+	 * Fonction qui affiche la liste des celliers d'usager
+	 * 
+	 */
 	public function index()
 	{
-		// Affiche la liste des celliers de l’usager connecté
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -57,15 +67,17 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+	/**
+	 * Fonction qui vérifie si l'usager est conécté et puis il récupére tous les bouteilles qui appartient a un cellier
+	 * 
+	 */
 	public function voir()
 	{
-		// Recuperation de nom de cellier pour l'afficher en haut de la page
 		$idCellier = $this->modele_cellier->verif_usager($_GET['id_cellier'],$_SESSION['id_usager']);
 		if ($idCellier == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
 
-		// Recuperation de tous les bouteilles qui appartient a un cellier specifique
 		$resultat = $this->modele_cellier->obtenir_par_id($_GET['id_cellier']);
 		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_par_id_t($_GET['id_cellier']);
 		$monCellier = $resultat[0];
@@ -77,6 +89,10 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 	
+	/**
+	 * Fonction qui affiche le formulaire d'ajout de cellier
+	 * 
+	 */
 	public function ajouter_form()
 	{
 		$this->afficheVue('modeles/en-tete');
@@ -84,7 +100,11 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('cellier/ajouter');
 		$this->afficheVue('modeles/bas-de-page');
 	}
-	
+
+	/**
+	 * Fonction qui ajout un cellier pour l'usager
+	 * 
+	 */	
 	public function ajouter()
 	{
 		$this->modele_cellier->ajouter($_SESSION['id_usager']);
@@ -94,12 +114,15 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('cellier/liste', $donnees);
 		$this->afficheVue('modeles/bas-de-page');
 	}
-	
+
+	/**
+	 * Fonction qui supprime un cellier de l'usager
+	 * 
+	 */	
 	public function supprimer()
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
-	}
-	
+	}	
 }

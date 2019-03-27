@@ -4,9 +4,9 @@
  *
  * @package  Vino 
  * @author   José Ignacio Delgado
- *.@author...Fatemeh Homatash
+ *.@author   Fatemeh Homatash
  * @author   Alexandre Pachot
- *.@author...Charef Eddine Yagoubi
+ *.@author   Charef Eddine Yagoubi
  * @version  1.0
  */
 class Modele_Cellier extends Modele
@@ -42,7 +42,7 @@ class Modele_Cellier extends Modele
 	}
 
 	/**
-	 * Fonction qui retourne le cellier par son usafer
+	 * Fonction qui retourne le cellier par son usager
 	 * @param $id_usager
 	 * @return $monCellier
 	 */
