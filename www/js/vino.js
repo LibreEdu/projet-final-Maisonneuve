@@ -25,7 +25,6 @@ window.addEventListener('load', function() {
 		});
 	});
 
-
 	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
