@@ -10,7 +10,10 @@
 
 				</ul>
 			</div>
-			<form method="POST" id="mes_achats">				
+			<form method="POST">
+				<div id="mes_achats">
+				
+				</div>				
 				<div>
 					<input type="hidden" name="action" value="ajouter-liste">
 					<input type="submit" value="Ajouter liste" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">

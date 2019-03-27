@@ -232,7 +232,7 @@ window.addEventListener('load', function() {
 				})
 				.then(response => {
 					response.forEach(function(element){
-						la_liste.innerHTML += '<li data-id="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
+						la_liste.innerHTML += '<li data-id_bouteille_saq="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
 					} )
 				}).catch(error => {
 					console.error(error);
@@ -243,13 +243,21 @@ window.addEventListener('load', function() {
 		let mes_achats = document.getElementById('mes_achats');
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id + '" name="bouteille' + evt.target.dataset.id + '" value="' + evt.target.innerHTML + '" /> <button class="btnSuppBouteille">Supprimer</button></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id_bouteille_saq + '" name="bouteille' + evt.target.dataset.id_bouteille_saq + '" value="' + evt.target.innerHTML + '" /> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Supprimer</button></div>';
 			}
 		});
 
+		let les_bouteilles = document.getElementsByName('laDiv');
 		mes_achats.addEventListener('click', function(evt){
-			evt.target.parentElement.innerHTML = '';
-		});
+			if(evt.target.tagName == 'BUTTON'){
+				evt.target.parentElement.innerHTML = "";
+				for(var i=0; i<les_bouteilles.length; i++){
+					if(les_bouteilles[i].innerHTML == '') {
+						mes_achats.removeChild(les_bouteilles[i]);
+					}
+				}
+			}			
+		});			
 	}	
 
 } );
