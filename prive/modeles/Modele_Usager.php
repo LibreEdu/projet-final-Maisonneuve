@@ -92,4 +92,36 @@ class Modele_Usager extends Modele
 		$donnees = array($usager->courriel, $usager->admin, $usager->nom, $usager->prenom, $usager->mot_de_passe);
 		return $this->requete($query, $donnees);
 	}
+
+		/**
+	 * Fonction qui retourne la bouteille par son id
+	 * @param $id
+	 * @return $maBouteille
+	 */
+	public function obtenir_par_id($id)
+	{
+		$resultat = $this->lire($id, 'id_usager');
+		$lUsager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		return $lUsager;
+	}
+
+	/**
+	 * Fonction qui modifie l'usager'
+	 * @param 
+	 * @return 
+	 */
+	public function modifier()
+	{
+		var_dump($_POST);die;
+		$sql = 'UPDATE vino_usager 
+			SET courriel=?,
+				nom=?,
+				prenom=?,
+				mot_de_passe=?
+			WHERE id_usager=?';
+			
+		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'], $_POST['mot_de_passe']);
+
+		$resultat = $this->requete($sql, $donnees);
+	}
 }
