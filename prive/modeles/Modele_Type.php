@@ -3,9 +3,8 @@
  * Permet de gérer les types de vin.
  *
  * @package  Vino
- *.@author...José Ignacio Delgado
  * @author   Alexandre Pachot
- *.@author...Fatemeh Homatash
+ * @author   Charef Eddine Yagoubi
  * @version  1.0
  */
 class Modele_Type extends Modele
@@ -21,13 +20,14 @@ class Modele_Type extends Modele
 	}
 
 	/**
-	 * Fonction qui retourne tous les types
-	 * @return $lesUsagers
+	 * Retourne tous les types de bouteilles
+	 * 
+	 * @return array Les données de la table des types de bouteilles.
 	 */
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$lesTypes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
-		return $lesTypes;
+		$types = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
+		return $types;
 	}
 }
