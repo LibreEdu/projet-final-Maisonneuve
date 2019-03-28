@@ -1,7 +1,19 @@
 <?php
+
+/**
+ * Gestion des bouteilles de la SAQ.
+ *
+ * @package  Vino
+ * @author   José Ignacio Delgado
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Controleur_Bouteille_SAQ extends Controleur
 {
-	protected $modele_bouteille_saq;
+	/**
+	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
+	 */
+	private $modele_bouteille_saq;
 	
 	public function __construct()
 	{

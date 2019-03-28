@@ -1,4 +1,9 @@
 <?php
+/**
+ * @package  Vino
+ * @version  1.0
+ */
+
 
 /**
  * Renvoie l’URL complète de la racine du site Web.
@@ -9,6 +14,7 @@ function base_url()
 {
 	return BASEURL;
 }
+
 
 /**
  * Renvoie l’URL complète de la racine du site Web avec l’appel du contrôleur et de la méthode.

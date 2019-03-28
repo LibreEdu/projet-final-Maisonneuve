@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Modèle pour les contrôleurs.
+ * Classe parente des contrôleurs.
  *
  * @package  Vino
  * @author   Guillaume Harvey
@@ -10,9 +10,22 @@
  */
 abstract class Controleur
 {
-	// La fonction qui sera appelée par le routeur
+	/**
+	 * Traite la requête du contrôleur.
+	 * 
+	 * Lorsque le routeur a trouvé le contrôleur demandé, il appelle la méthode traite() du contrôleur. Cette méthode est la porte d’entrée de toutes les requêtes du contrôleur. Méthode abstraite qui doit être redéfinie dans chaque contrôleur.
+	 * 
+	 * @param array $params Variables de la requête HTTP ($_REQUEST).
+	 */
 	public abstract function traite(array $params);
 	
+
+	/**
+	 * Affiche la vue demandée.
+	 * 
+	 * @param string $nomVue Chemin et nom de la vue demandée.
+	 * @param array $donnees Tableau contenant l’ensemble des données qui seront appelées par la vue.
+	 */
 	protected function afficheVue($nomVue, $donnees = null)
 	{
 		$cheminVue = RACINE . 'vues/' . $nomVue . '.php';
@@ -27,12 +40,18 @@ abstract class Controleur
 		}
 	}
 
+
+	/**
+	 * Établit une connexion à la base de données et charge le modèle demandé. 
+	 * 
+	 * @param string $nomModele Nom de la classe du modèle demandé (non sensible à la casse).
+	 */
 	protected function modele($nomModele)
 	{
 		if(class_exists($nomModele))
 		{
 			// On fait une connexion à la BD
-			$connexion = BaseDeDonnees::obtenirBD(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
+			$connexion = BaseDeDonnees::obtenirBD(DBTYPE, HOST, DBNAME, CHARSET, USERNAME, PASSWD);
 			
 			// On crée une instance de la classe Modele_$classe
 			$objetModele = new $nomModele($connexion);

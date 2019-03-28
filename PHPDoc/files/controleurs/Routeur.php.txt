@@ -15,7 +15,7 @@ session_start();
 class Routeur
 {
 	/**
-	 * Cette méthode permet d’appeler le contrôleur demandé
+	 * Permet d’appeler le contrôleur demandé
 	 *
 	 * @return void
 	 */
