@@ -12,17 +12,9 @@ class Modele_Type extends Modele
 {
 	public function getTableName()
 	{
-	/**
-	 * Fonction qui retourne le nom de la table vino_type
-	 * @return  le nom de la table
-	 */
 		return 'vino_type';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire du type
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_type';

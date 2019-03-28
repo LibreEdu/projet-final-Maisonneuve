@@ -83,6 +83,8 @@ abstract class Modele
 	 * @return array $donnees Données pour la requête qui a été préparée.
 	 * 
 	 * @return mixed Jeu de résultats si la requête a été correctement exécutée, false sinon.
+	 * 
+	 * @throws PDOException Si la préparation de la requête donne une erreur.
 	 */
 	final protected function requete($sql, $donnees = array())
 	{

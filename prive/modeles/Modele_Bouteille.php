@@ -10,19 +10,11 @@
  */
 class Modele_Bouteille extends Modele
 {
-	/**
-	 * Fonction qui retourne le nom de la table vino_bouteille
-	 * @return  le nom de la table
-	 */
 	public function getTableName()
 	{
 		return 'vino_bouteille';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire de la bouteille
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_bouteille';
