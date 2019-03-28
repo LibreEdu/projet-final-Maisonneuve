@@ -1,6 +1,6 @@
 <?php
 /**
- * Classe prise en compte lors de la récupération du jeu de résultat PDO
+ * Classe prise en compte lors de la récupération du jeu de résultat PDO.
  * 
  * @package  Vino 
  * @version  1.0
