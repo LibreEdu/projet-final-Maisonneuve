@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Modèle pour les contrôleurs.
+ * Classe abstraite des contrôleurs.
  *
  * @package  Vino
  * @author   Guillaume Harvey
@@ -32,7 +32,7 @@ abstract class Controleur
 		if(class_exists($nomModele))
 		{
 			// On fait une connexion à la BD
-			$connexion = BaseDeDonnees::obtenirBD(DBTYPE, HOST, DBNAME, CHARSET, USER, PWD);
+			$connexion = BaseDeDonnees::obtenirBD(DBTYPE, HOST, DBNAME, CHARSET, USERNAME, PASSWD);
 			
 			// On crée une instance de la classe Modele_$classe
 			$objetModele = new $nomModele($connexion);

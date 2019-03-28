@@ -1,5 +1,9 @@
 <?php
 	/**
+	 * @package  Vino
+	 */
+
+	 /**
 	 * Racine du répertoire PHP.
 	 * Pour le chargement automatique des classes.
 	 */
@@ -42,13 +46,13 @@
 	/** 
 	 * Nom d’utilisateur de la base de données.
 	 */
-	define("USER", 'root');
+	define("USERNAME", 'root');
 
 
 	/** 
 	 * Mot de passe de la base de données.
 	 */
-	define("PWD", '');
+	define("PASSWD", '');
 	
 
 	/**
@@ -76,7 +80,7 @@
 		}
 	}
 
-	
+
 	// Enregistre une fonction en tant qu’implémentation de __autoload()
 	spl_autoload_register('chargement_automatique_des_classes');
 
