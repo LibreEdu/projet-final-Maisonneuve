@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1756675004"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-205328494"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1756675004" class="accordion-body collapse in">
+            <div id="namespace-205328494" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -250,7 +250,8 @@
                         <dt>File</dt>
                             <dd><a href="../files/modeles.Modele_Cellier.html"><div class="path-wrapper">modeles/Modele_Cellier.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Vino</div></dd>
+                            <dd><div class="namespace-wrapper">Vino
+.@author   Fatemeh Homatash</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                                                                                                                                                 
@@ -270,8 +271,6 @@
                                 author
                             </th>
                             <td>
-                                                                    <p>José Ignacio Delgado
-.@author   Fatemeh Homatash</p>
                                                                     <p>Alexandre Pachot
 .@author   Charef Eddine Yagoubi</p>
                                                             </td>
@@ -430,22 +429,23 @@
             <article class="method">
                 <h3 class="public ">obtenir_par_id()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">obtenir_par_id(  <span class="argument">$id_cellier</span>) : \$monCellier</pre>
-                <p><em>Fonction qui retourne le cellier par son id</em></p>
+                <pre class="signature" style="margin-right: 54px;">obtenir_par_id(integer  <span class="argument">$id_cellier</span>) : array</pre>
+                <p><em>Récupère les donnes d’un cellier.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>integer</td>
                                 <td>$id_cellier </td>
-                                <td></td>
+                                <td><p>Identifiant du cellier.</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    \$monCellier
+                    array
+                                            &mdash; <p>Les données du cellier.</p>
                                     				
                             </article>
         </div>
@@ -466,22 +466,23 @@
             <article class="method">
                 <h3 class="public ">obtenir_par_usager()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">obtenir_par_usager(  <span class="argument">$id_usager</span>) : \$monCellier</pre>
-                <p><em>Fonction qui retourne le cellier par son usager</em></p>
+                <pre class="signature" style="margin-right: 54px;">obtenir_par_usager(integer  <span class="argument">$id_usager</span>) : array</pre>
+                <p><em>Récupère les donnes des celliers d’un usager.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>integer</td>
                                 <td>$id_usager </td>
-                                <td></td>
+                                <td><p>Identifiant de l’usager.</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    \$monCellier
+                    array
+                                            &mdash; <p>Les données des celliers de l’usager.</p>
                                     				
                             </article>
         </div>
@@ -820,7 +821,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 28th, 2019 at 17:22.
+                    on March 28th, 2019 at 17:44.
                 </section>
             </section>
         </section>
