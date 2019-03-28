@@ -115,3 +115,4 @@ abstract class Modele
 	 */
 	abstract function getTableName();	
 }
+
