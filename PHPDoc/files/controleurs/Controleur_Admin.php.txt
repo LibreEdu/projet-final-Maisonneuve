@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Fonctionnalités de l’administrateur.
+ *
+ * @package  Vino
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Controleur_Admin extends Controleur
 {
 	public function traite(array $params)

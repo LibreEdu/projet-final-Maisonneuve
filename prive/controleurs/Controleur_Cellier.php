@@ -1,15 +1,24 @@
 <?php
+
 /**
- * Controleur cellier, gere la creation, supression et voir le cellier
+ * Création, suppression et affichage du cellier.
  *
  * @package  Vino
  * @author   Fatemeh Homatash
+ * @author   Alexandre Pachot
  * @version  1.0
  */
 class Controleur_Cellier extends Controleur
 {
-	protected $modele_bouteille;
-	protected $modele_cellier;
+	/**
+	 * @var object $modele_bouteille Le modèle Modele_Bouteille.
+	 */
+	private $modele_bouteille;
+
+	/**
+	 * @var object $modele_cellier Le modèle Modele_Cellier.
+	 */
+	private $modele_cellier;
 	
 	public function __construct()
 	{

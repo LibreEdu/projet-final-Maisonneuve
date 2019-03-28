@@ -1,5 +1,30 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
+			<section class="section--center mdl-grid mdl-grid--no-spacing">				
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+					<div class="mdl-textfield mdl-js-textfield">
+						Recherche par  
+						<select name="recherchePar">
+							<option value='nom'>nom</option>
+							<option value='code_SAQ'>code SAQ</option>
+							<option value='prix'>prix</option>
+							<option value='millesime'>millesime</option>
+							<option value='type'>type</option>
+							<option value='pays'>pays</option>
+							<option value='format'>format</option>	
+						</select>
+					</div>
+					<label class="mdl-button mdl-js-button mdl-button--icon" id="iconRecherche" for="btnRecherche">
+						<i class="material-icons">search</i>
+					</label>
+					<div class="mdl-textfield__expandable-holder">						
+						<input class="mdl-textfield__input" type="search" id="btnRecherche" name="nom_bouteille"/>
+						<label class="mdl-textfield__label" for="btnRecherche">Recherche</label>
+					</div>
+					<ul class="rechercheParr"></ul>
+					<ul class="autoComplete"></ul>
+				</div>
+			</section>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
 			</button>
@@ -54,6 +79,9 @@
 				</ul>
 			</section>
 			<?php endforeach; ?>
+
+
+
 		</div>
 	</main>
 

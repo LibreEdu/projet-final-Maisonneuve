@@ -1,9 +1,29 @@
 <?php
-class Controleur_Bouteille extends Controleur
+
+/**
+ * Gestion des bouteilles des usagers.
+ *
+ * @package  Vino
+ * @author   José Ignacio Delgado
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
+ class Controleur_Bouteille extends Controleur
 {
-	protected $modele_bouteille;
-	protected $modele_cellier;
-	protected $modele_type;
+	/**
+	 * @var object $modele_bouteille Le modèle Modele_Bouteille.
+	 */
+	private $modele_bouteille;
+
+	/**
+	 * @var object $modele_cellier Le modèle Modele_Cellier.
+	 */
+	private $modele_cellier;
+
+	/**
+	 * @var object $modele_type Le modèle Modele_Type.
+	 */
+	private $modele_type;
 	
 	public function __construct()
 	{

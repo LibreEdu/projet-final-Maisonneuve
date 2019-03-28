@@ -21,6 +21,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
+			console.log(id_cellier);
 			window.location = 'index.php?cellier&action=voir&id_cellier='+id_cellier;
 		});
 	});
@@ -46,7 +47,7 @@ window.addEventListener('load', function() {
 		});
 	});
 
-	//Recuperer le bouton ajouter et diriger vers le controleur bouteille
+	//Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
 	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
 	if(btnAjouterBouteille){
 		btnAjouterBouteille.addEventListener('click', function(){
@@ -54,6 +55,57 @@ window.addEventListener('load', function() {
 		});
 	};
 
+	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
+	/*let iconRecherche = document.getElementById('iconRecherche');
+	iconRecherche.addEventListener('click', function(element){
+		alert('ssss');
+		let recherchePar = document.querySelector('.recherchePar');
+		recherchePar.innerHTML = 'Par <select>'
+						+'<option value="nom">nom</option>'
+						+'<option value="type">type</option>'
+						+'</select>';
+	});*/
+	let btnRechercheBouteille = document.getElementById('btnRecherche');
+	if(btnRechercheBouteille){
+		btnRechercheBouteille.addEventListener('keyup', function(){	
+			let recherchePar = document.querySelector('[name="recherchePar"]');
+			alert(recherchePar.value);		
+			let inputNomBouteille = document.querySelector('[name="nom_bouteille"]');
+			let nom = inputNomBouteille.value;			
+			let liste = document.querySelector('.autoComplete');
+			if(liste){
+				liste.innerHTML = '';				
+				var params = {
+					'valeur':recherchePar.value,
+					'nom':inputNomBouteille.value						
+				};
+				let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: JSON.stringify(params)});
+				fetch(requete)
+				.then(response => {
+					if (response.status === 200) {
+						return response.json();
+					} else {
+					throw new Error('Erreur');
+					}
+				})
+				.then(response => {
+					response.forEach(function(element){
+						liste.innerHTML += '<li '
+						+ 'data-id="' + element.id_bouteille_saq + '" '
+						+ 'data-prix="' + element.prix + '"'
+						+ 'data-millesime="' + element.millesime + '"'
+						+ 'data-pays="' + element.pays + '"'
+						+ 'data-format="' + element.format + '"'
+						+ '>'
+						+ element.nom + '</li>';
+					} )
+				}).catch(error => {
+					console.error(error);
+				});				
+			};
+		});
+	};
+	
 	document.querySelectorAll('.btnBoire').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
@@ -132,33 +184,35 @@ window.addEventListener('load', function() {
 	if(inputNomBouteille){
 		inputNomBouteille.addEventListener('keyup', function(evt){
 			let nom = inputNomBouteille.value;
-			liste.innerHTML = '';
-			if(nom){
-				let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
-				fetch(requete)
-				.then(response => {
-					if (response.status === 200) {
-						return response.json();
-					} else {
-					throw new Error('Erreur');
-					}
-				})
-				.then(response => {
-					response.forEach(function(element){
-						liste.innerHTML += '<li '
-						+ 'data-id="' + element.id_bouteille_saq + '" '
-						+ 'data-prix="' + element.prix + '"'
-						+ 'data-millesime="' + element.millesime + '"'
-						+ 'data-pays="' + element.pays + '"'
-						+ 'data-format="' + element.format + '"'
-						+ '>'
-						+ element.nom + '</li>';
-					} )
-				}).catch(error => {
-					console.error(error);
-				});
-			}
-		} );
+			if (liste) {
+				liste.innerHTML = '';
+				if(nom){
+					let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+					fetch(requete)
+					.then(response => {
+						if (response.status === 200) {
+							return response.json();
+						} else {
+						throw new Error('Erreur');
+						}
+					})
+					.then(response => {
+						response.forEach(function(element){
+							liste.innerHTML += '<li '
+							+ 'data-id="' + element.id_bouteille_saq + '" '
+							+ 'data-prix="' + element.prix + '"'
+							+ 'data-millesime="' + element.millesime + '"'
+							+ 'data-pays="' + element.pays + '"'
+							+ 'data-format="' + element.format + '"'
+							+ '>'
+							+ element.nom + '</li>';
+						} )
+					}).catch(error => {
+						console.error(error);
+					});
+				};
+			};
+		});
 
 		let bouteille = {
 				nom : document.getElementById('nom_bouteille'),
@@ -168,20 +222,19 @@ window.addEventListener('load', function() {
 				format : document.getElementById('format'),
 				id_type : document.querySelector('[name="type"]')
 			};
-
-		liste.addEventListener('click', function(evt){
-			if(evt.target.tagName == 'LI'){			
-				bouteille.nom.value = evt.target.innerHTML;
-				bouteille.prix.value = evt.target.dataset.prix;
-				bouteille.millesime.value = evt.target.dataset.millesime;
-				bouteille.pays.value = evt.target.dataset.pays;
-				bouteille.format.value = evt.target.dataset.format;
-				
-				liste.innerHTML = '';
-				inputNomBouteille.value = '';
-
-			}
-		});
+		if(liste){
+			liste.addEventListener('click', function(evt){
+				if(evt.target.tagName == 'LI'){			
+					bouteille.nom.value = evt.target.innerHTML;
+					bouteille.prix.value = evt.target.dataset.prix;
+					bouteille.millesime.value = evt.target.dataset.millesime;
+					bouteille.pays.value = evt.target.dataset.pays;
+					bouteille.format.value = evt.target.dataset.format;
+					liste.innerHTML = '';
+					inputNomBouteille.value = '';
+				}
+			});
+		};
 	}
 	
 	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
@@ -258,6 +311,5 @@ window.addEventListener('load', function() {
 			}			
 		});			
 	}	
-
-} );
+});
 

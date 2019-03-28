@@ -1,14 +1,21 @@
 <?php
-	/**
-	 * Gére la connexion et l’inscription d’un usager.
-	 *
-	 * Le contrôleur login est le contrôleur par défaut,
-	 * donc si quelqu’un se connecte va à la racine du site,
-	 * il faut le rediriger correctement
-	 */
+
+/**
+ * Gestion de la connexion et de l’inscription de l’usager.
+ * 
+ * @package  Vino
+ * @author   Charef Eddine Yagoubi
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
 class Controleur_Login extends Controleur
 {
-	protected $modele_usager;
+	/**
+	 * @var object $modele_usager Le modèle Modele_Usager.
+	 */
+	private $modele_usager;
+
+
 	/**
 	 * 
 	 */
@@ -37,7 +44,7 @@ class Controleur_Login extends Controleur
 				$this->logout();
 				break;
 
-				case 'formulaireModification':
+			case 'formulaireModification':
 				$this->formulaireModification();
 				break;
 
@@ -52,6 +59,10 @@ class Controleur_Login extends Controleur
 
 	/**
 	 * Fonction appelée par défaut qui affiche la page login
+	 *
+	 * Le contrôleur login est le contrôleur par défaut,
+	 * donc si quelqu’un se connecte va à la racine du site,
+	 * il faut le rediriger correctement
 	 */
 	public function index()
 	{

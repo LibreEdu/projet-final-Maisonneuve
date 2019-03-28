@@ -1,5 +1,30 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
+			<section class="section--center mdl-grid mdl-grid--no-spacing">				
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+					<div class="mdl-textfield mdl-js-textfield">
+						Recherche par  
+						<select name="recherchePar">
+							<option value='nom'>nom</option>
+							<option value='code_SAQ'>code SAQ</option>
+							<option value='prix'>prix</option>
+							<option value='millesime'>millesime</option>
+							<option value='type'>type</option>
+							<option value='pays'>pays</option>
+							<option value='format'>format</option>	
+						</select>
+					</div>
+					<label class="mdl-button mdl-js-button mdl-button--icon" id="iconRecherche" for="btnRecherche">
+						<i class="material-icons">search</i>
+					</label>
+					<div class="mdl-textfield__expandable-holder">						
+						<input class="mdl-textfield__input" type="search" id="btnRecherche" name="nom_bouteille"/>
+						<label class="mdl-textfield__label" for="btnRecherche">Recherche</label>
+					</div>
+					<ul class="rechercheParr"></ul>
+					<ul class="autoComplete"></ul>
+				</div>
+			</section>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
 			</button>
@@ -7,7 +32,18 @@
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
 					<div class='img'>
+					<?php
+						if(isset($bouteille->code_saq)) {
+					?>
 						<img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille->code_saq; ?>_is?$saq-rech-prod-gril$'>
+					<?php
+						}
+						else {
+					?>
+						<img src='../divers/images/bouteille.jpg'>
+					<?php
+						}
+					?>
 					</div>
 				</header>
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
@@ -29,13 +65,11 @@
 						<?php
 							}
 						?>
-						<!-- <p> -->
 						<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 							<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
 							<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>+ 1</button>
 							<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>- 1</button>
 						</div>
-						<!-- </p> -->
 					</div>
 				</div>
 				<ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">
@@ -45,6 +79,9 @@
 				</ul>
 			</section>
 			<?php endforeach; ?>
+
+
+
 		</div>
 	</main>
 

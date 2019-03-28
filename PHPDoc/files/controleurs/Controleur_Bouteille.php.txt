@@ -1,9 +1,29 @@
 <?php
-class Controleur_Bouteille extends Controleur
+
+/**
+ * Gestion des bouteilles des usagers.
+ *
+ * @package  Vino
+ * @author   José Ignacio Delgado
+ * @author   Alexandre Pachot
+ * @version  1.0
+ */
+ class Controleur_Bouteille extends Controleur
 {
-	protected $modele_bouteille;
-	protected $modele_cellier;
-	protected $modele_type;
+	/**
+	 * @var object $modele_bouteille Le modèle Modele_Bouteille.
+	 */
+	private $modele_bouteille;
+
+	/**
+	 * @var object $modele_cellier Le modèle Modele_Cellier.
+	 */
+	private $modele_cellier;
+
+	/**
+	 * @var object $modele_type Le modèle Modele_Type.
+	 */
+	private $modele_type;
 	
 	public function __construct()
 	{
@@ -48,6 +68,9 @@ class Controleur_Bouteille extends Controleur
 
 			case 'saisie-semi-automatique':
 				$this->saisie_semi_automatique();
+				break;
+			case 'liste_form':
+				$this->liste_form();
 				break;
 
 			default :
@@ -126,5 +149,14 @@ class Controleur_Bouteille extends Controleur
 		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
 		echo json_encode($listeBouteilles);
 	}
+
+	public function liste_form()
+	{
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/formulaire.1');
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
 }
 
