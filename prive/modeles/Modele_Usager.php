@@ -86,7 +86,7 @@ class Modele_Usager extends Modele
 	 * @param usager
 	 * @return 
 	 */
-	public function inscrire(Usager $usager)
+	public function inscrire(Classe_Usager $usager)
 	{
 		$query = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, mot_de_passe) VALUES (?, ?, ?, ?, ?)';
 		$donnees = array($usager->courriel, $usager->admin, $usager->nom, $usager->prenom, $usager->mot_de_passe);
@@ -112,7 +112,7 @@ class Modele_Usager extends Modele
 	 */
 	public function modifier()
 	{
-		var_dump($_POST);die;
+		// var_dump($_POST);die;
 		$sql = 'UPDATE vino_usager 
 			SET courriel=?,
 				nom=?,
@@ -120,7 +120,7 @@ class Modele_Usager extends Modele
 				mot_de_passe=?
 			WHERE id_usager=?';
 			
-		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'], $_POST['mot_de_passe']);
+		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'], password_hash($_POST['mdp2'], PASSWORD_DEFAULT),$_POST['id_usager']);
 
 		$resultat = $this->requete($sql, $donnees);
 	}
