@@ -204,6 +204,7 @@ window.addEventListener('load', function() {
 							+ 'data-millesime="' + element.millesime + '"'
 							+ 'data-pays="' + element.pays + '"'
 							+ 'data-format="' + element.format + '"'
+							+ 'data-code_saq="' + element.code_saq + '"'
 							+ '>'
 							+ element.nom + '</li>';
 						} )
@@ -220,7 +221,8 @@ window.addEventListener('load', function() {
 				prix : document.getElementById('prix'),
 				pays : document.getElementById('pays'),
 				format : document.getElementById('format'),
-				id_type : document.querySelector('[name="type"]')
+				id_type : document.querySelector('[name="type"]'),
+				code_saq : document.querySelector('[name="code_saq"]')
 			};
 		if(liste){
 			liste.addEventListener('click', function(evt){
@@ -230,6 +232,7 @@ window.addEventListener('load', function() {
 					bouteille.millesime.value = evt.target.dataset.millesime;
 					bouteille.pays.value = evt.target.dataset.pays;
 					bouteille.format.value = evt.target.dataset.format;
+					bouteille.code_saq.value = evt.target.dataset.code_saq;
 					liste.innerHTML = '';
 					inputNomBouteille.value = '';
 				}
@@ -295,7 +298,7 @@ window.addEventListener('load', function() {
 		let mes_achats = document.getElementById('mes_achats');
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id_bouteille_saq="' + evt.target.dataset.id_bouteille_saq + '" name="bouteille' + evt.target.dataset.id_bouteille_saq + '" value="' + evt.target.innerHTML + '" /> <button class="btnSupprimerItem">Supprimer</button></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
 			}
 		});
 

@@ -13,6 +13,7 @@
 			$pays         = isset($bouteille->pays) ? $bouteille->pays : '';
 			$format       = isset($bouteille->format) ? $bouteille->format : '';
 			$note         = isset($bouteille->note) ? $bouteille->note : '';
+			$code_saq     = isset($bouteille->code_saq) ? $bouteille->code_saq : '';
 			$id_bouteille = isset($bouteille->id_bouteille) ? $bouteille->id_bouteille : '';
 		?>
 		<div class="mdl-card__title">	
@@ -31,22 +32,17 @@
 					<span class="mdl-checkbox__label">Faire une recherche dans les bouteilles de la SAQ</span>
 				</label>
 			</div>
-			<form method="POST">				
+			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom : 
-					<!--<span data-id='' class='nom_bouteille'>-->
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" value="<?php echo $nom ?>" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Millesime :  
-					<!--<span data-id='' class='millesime'>-->
-						<input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" id="millesime" name="millesime" value="<?php echo $millesime ?>">
-					<!--</span>-->
+						<input class="mdl-textfield__input" type="number" min="1900" max="<?php echo date('Y') ?>" id="millesime" name="millesime" value="<?php echo $millesime ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="quantite">
-					Quantité : <input class="mdl-textfield__input" type="number" min="0" name="quantite" value="<?php echo $quantite ?>">
+					Quantité : <input class="mdl-textfield__input" type="number" min="0" name="quantite" value="<?php echo $quantite ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="date_achat">
 					Date d'achat : <input class="mdl-textfield__input" type="date" required="required" name="date_achat" value="<?php echo $date_achat ?>">
@@ -56,21 +52,15 @@
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Prix :
-					<!--<span data-id='' class='prix'>-->
-						<input class="mdl-textfield__input" type="text" id="prix" name="prix" value="<?php echo $prix ?>">
-					<!--</span>-->
+						<input class="mdl-textfield__input" type="text" id="prix" name="prix" value="<?php echo $prix ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Pays :
-					<!--<span data-id='' class='pays'> -->
-						<input class="mdl-textfield__input" type="text" id="pays" name="pays" value="<?php echo $pays ?>">
-					<!--</span>-->
+						<input class="mdl-textfield__input" type="text" id="pays" name="pays" value="<?php echo $pays ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Format : 
-					<!--<span data-id='' class='format'>-->
-						<input class="mdl-textfield__input" type="text" id="format" name="format" value="<?php echo $format ?>">
-					<!--</span>-->
+						<input class="mdl-textfield__input" type="text" id="format" name="format" value="<?php echo $format ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Type : <select name="type">
@@ -83,7 +73,7 @@
 					</select>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="note">
-					Note : <input class="mdl-textfield__input" type="text" size="3" required="required" name="note" value="<?php echo $note ?>">
+					Note : <input class="mdl-textfield__input" type="text" size="3" required="required" name="note" value="<?php echo $note ?>" required="required">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="cellier">
 					Cellier : <select name="id_cellier">
@@ -95,15 +85,25 @@
 					?>
 					</select>
 				</div>
-				<div>
+				<div>	
 					<?php
-						if(isset($id_bouteille))
-						{
+						if(isset($id_bouteille)) {
 					?>
 					<input type="hidden" name="id_bouteille" value="<?php echo $id_bouteille ?>">
 					<?php
 						}
 					?>
+					<?php
+						if(isset($code_saq)) {
+					?>
+					<input type="hidden" name="code_saq" value="<?php echo $code_saq ?>">
+					<?php
+						} else {
+					?>
+					<input type="hidden" name="code_saq" value="">
+					<?php
+						}
+					?>		
 					<input type="hidden" name="action" value="<?php echo $donnees['actionBouton'] ?>">
 					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="<?php echo $donnees['classeBouton'] ?>">
 				</div>

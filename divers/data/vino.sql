@@ -60,6 +60,16 @@ CREATE TABLE vino_bouteille (
 	FOREIGN KEY (id_type) REFERENCES vino_type(id_type)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+CREATE TABLE vino_liste_achat (
+	id_liste_achat MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	id_bouteille_saq MEDIUMINT unsigned NOT NULL,
+	id_usager SMALLINT unsigned NOT NULL,
+	nom VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id_liste_achat),
+	FOREIGN KEY (id_bouteille_saq) REFERENCES vino_bouteille_saq(id_bouteille_saq),
+	FOREIGN KEY (id_usager) REFERENCES vino_usager(id_usager)
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 INSERT INTO vino_type VALUES(1, 'Vin blanc');
 INSERT INTO vino_type VALUES(2, 'Vin rosé');
 INSERT INTO vino_type VALUES(3, 'Vin rouge');
