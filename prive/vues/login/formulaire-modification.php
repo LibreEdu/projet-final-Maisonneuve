@@ -41,14 +41,14 @@
 				<div class="mdl-textfield mdl-js-textfield">
 					Tapez votre ancien mot de passe : 
 					<span data-id='' class='nom_bouteille'>
-						<input class="mdl-textfield__input" type="password" name="mdp" value="" required="required">
-						<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>
+						<input class="mdl-textfield__input" type="password" name="mot_de_passe" value="" required="required">
+						<!-- <span class="mdl-textfield__error">Entrez votre ancien mot de passe</span> -->
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Tapez votre nouveau mot de passe : 
 					<!--<span data-id='' class='nom_bouteille'>-->
-						<input class="mdl-textfield__input" type="password"  name="mdp2" value="" required="required">
+						<input class="mdl-textfield__input" type="password"  name="mdp1" value="" required="required">
 						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
 					<!--</span>-->
 				</div>
@@ -56,7 +56,7 @@
 					<div class="mdl-textfield mdl-js-textfield">
 					Confirmer votre mot de passe : 
 					<!--<span data-id='' class='nom_bouteille'>-->
-						<input class="mdl-textfield__input" type="password" name="mdp3"  value="" required="required">
+						<input class="mdl-textfield__input" type="password" name="mdp2"  value="" required="required">
 						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
 					<!--</span>-->
 				</div>
@@ -75,5 +75,17 @@
 					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="<?php echo $donnees['classeBouton'] ?>">
 				</div>
 			</form>
+			<?php
+					
+					// Gestion des erreurs
+					if (isset($donnees['erreurs'])) 
+					{
+						if($donnees['erreurs'] != '')
+							{
+								echo '<p class="message"><i class="fas fa-exclamation"></i>' . $donnees['erreurs'] . '</p>';
+							}
+					}
+					
+				?>
 	</div>
 </main>
