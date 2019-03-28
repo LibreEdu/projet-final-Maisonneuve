@@ -9,19 +9,11 @@
  */
 class Modele_Usager extends Modele
 {
-	/**
-	 * Fonction qui retourne le nom de la table usager
-	 * @return  le nom de la table
-	 */
 	public function getTableName()
 	{
 		return 'vino_usager';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire de l'usager
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_usager';
