@@ -336,121 +336,123 @@
 		margin: 0 -8px -8px -8px;
 	}
 
-/****************Code Bootstap pour les formulaires login et formulaire***********/
- .divider-text {
-   position: relative;
-   text-align: center;
-   margin-top: 15px;
-   margin-bottom: 15px;
-}
-.divider-text span {
-   padding: 7px;
-   font-size: 12px;
-   position: relative;   
-   z-index: 2;
-}
-.divider-text:after {
-   content: "";
-   position: absolute;
-   width: 100%;
-   border-bottom: 1px solid #ddd;
-   top: 55%;
-   left: 0;
-   z-index: 1;
-}
-.message{
-	color: red;
-}
-
-/********Styles pour l'entête *********/
-#view-source {
-	position: fixed;
-	display: block;
-	right: 0;
-	bottom: 0;
-	margin-right: 40px;
-	margin-bottom: 40px;
-	z-index: 900;
-}
-.demo-card-wide.mdl-card {
-	width: 600px;
-	margin: 0 auto;
-}
-.demo-card-wide > .mdl-card__title {
-	color: #000;
-	height: 100px;
-	border-bottom: 2px solid lightgrey;
-}
-.demo-card-wide > .mdl-card__menu {
-	color: #fff;
-}
-.mdl-demo .mdl-layout__header-row {
-	padding-left: 40px;	
-	text-shadow: 2px 2px 2px #5F04B4;
-}	
-.mdl-demo .mdl-layout__header {
-	background-image: url('../images/en-tete.jpg');
-}
-.mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
-	font-size: inherit;
-}
-	
-/********CSS Cellier ***********/
-.mdl-layout__tab-panel h3{
-	font-family: 'Roboto', 'Helvetica', sans-serif;
-}
-
-/********PETITS ÉCRANS ********/
-@media (max-width: 480px) {
-	input, textarea, select {
-		width : 280px;
-		margin: 0;
-		font-size: 14px;		
-		-webkit-box-sizing: border-box; /* Pour les anciens navigateurs WebKit */
-		-moz-box-sizing: border-box; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
-		-ms-box-sizing: border-box; /* Pour les navigateurs Internet Explorer */
-		box-sizing: border-box;
+	/****************Code Bootstap pour les formulaires login et formulaire***********/
+	 .divider-text {
+	   position: relative;
+	   text-align: center;
+	   margin-top: 15px;
+	   margin-bottom: 15px;
 	}
-	.mdl-textfield {
-		position: relative;
-		font-size: 14px;
+	.divider-text span {
+	   padding: 7px;
+	   font-size: 12px;
+	   position: relative;   
+	   z-index: 2;
+	}
+	.divider-text:after {
+	   content: "";
+	   position: absolute;
+	   width: 100%;
+	   border-bottom: 1px solid #ddd;
+	   top: 55%;
+	   left: 0;
+	   z-index: 1;
+	}
+	.message{
+		color: red;
+	}
+
+	/********Styles pour l'entête *********/
+	#view-source {
+		position: fixed;
 		display: block;
-		box-sizing: border-box;
-		width: 280px !important;
-		margin: 0;
-		padding: 20px 0;
+		right: 0;
+		bottom: 0;
+		margin-right: 40px;
+		margin-bottom: 40px;
+		z-index: 900;
 	}
 	.demo-card-wide.mdl-card {
-		width: 365px !important;
-		padding-bottom: 5px;
+		width: 600px;
+		margin: 0 auto;
 	}
-	.mdl-textfield__input {
-		font-size: 14px;
+	.demo-card-wide > .mdl-card__title {
+		color: #000;
+		height: 100px;
+		border-bottom: 2px solid lightgrey;
 	}
-	.mdl-checkbox__label {
-		font-size: 14px;
-		line-height: 18px;
+	.demo-card-wide > .mdl-card__menu {
+		color: #fff;
 	}
-	select {
-		font-size: 14px !important;
+	.mdl-demo .mdl-layout__header-row {
+		padding-left: 40px;	
+		text-shadow: 2px 2px 2px #5F04B4;
+	}	
+	.mdl-demo .mdl-layout__header {
+		background-image: url('../images/en-tete.jpg');
 	}
-	.mdl-demo .mdl-layout__tab-bar {
-		padding: 0;
-		padding-left: 16px;
-		box-sizing: border-box;
-		height: 100%;
-		width: 100%;
+	.mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+		font-size: inherit;
 	}
-	h4 {
-		font-size: 16px;
+		
+	/********CSS Cellier ***********/
+	.mdl-layout__tab-panel h3{
+		font-family: 'Roboto', 'Helvetica', sans-serif;
 	}
-	.mdl-demo .mdl-card .mdl-card__supporting-text {
-		margin: 5px !important;
-		margin-left: 40px !important;
+
+	/********PETITS ÉCRANS ********/
+	@media (max-width: 480px) {
+		input, textarea, select {
+			width : 280px;
+			margin: 0;
+			font-size: 14px;		
+			-webkit-box-sizing: border-box; /* Pour les anciens navigateurs WebKit */
+			-moz-box-sizing: border-box; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+			-ms-box-sizing: border-box; /* Pour les navigateurs Internet Explorer */
+			box-sizing: border-box;
+		}
+		.mdl-textfield {
+			position: relative;
+			font-size: 14px;
+			display: block;
+			box-sizing: border-box;
+			width: 280px !important;
+			margin: 0;
+			padding: 20px 0;
+		}
+		.demo-card-wide.mdl-card {
+			width: 365px !important;
+			padding-bottom: 5px;
+		}
+		.mdl-textfield__input {
+			font-size: 14px;
+		}
+		.mdl-checkbox__label {
+			font-size: 14px;
+			line-height: 18px;
+		}
+		select {
+			font-size: 14px !important;
+		}
+		.mdl-demo .mdl-layout__tab-bar {
+			padding: 0;
+			padding-left: 16px;
+			box-sizing: border-box;
+			height: 100%;
+			width: 100%;
+		}
+		h4 {
+			font-size: 16px;
+		}
+		.mdl-demo .mdl-card .mdl-card__supporting-text {
+			margin: 5px !important;
+			margin-left: 40px !important;
+		}
+		.btnSupprimerItem {		
+			left: 85px !important;		
+			position: relative;
+			top: 10px;		
+		}
 	}
-	.btnSupprimerItem {		
-		left: 85px !important;		
-		position: relative;
-		top: 10px;		
-	}
-}
+
+	/********Bouton recherche ********/
