@@ -3,8 +3,8 @@
  * Permet de gérer les utilisateurs.
  *
  * @package  Vino 
+ * @author   Charef Eddine Yagoubi
  * @author   Alexandre Pachot
- *.@author...Charef Eddine Yagoubi
  * @version  1.0
  */
 class Modele_Usager extends Modele
@@ -19,23 +19,27 @@ class Modele_Usager extends Modele
 		return 'id_usager';
 	}
 
+
 	/**
-	 * Fonction qui retourne tous les usagers
-	 * @return $lesUsagers
+	 * Retourne les données de tous les usagers.
+	 * 
+	 * @return array Les données de tous les usagers.
 	 */
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$lesUsagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
-		return $lesUsagers;
+		$usagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		return $usagers;
 	}
 
+
 	/**
-	 * Fonction qui authentifie un utilisateur et qui retourne un 
-	 * booléen
-	 * @param string $username l’username de l’usager
-	 * @param string $password le mot de passe de l’usager
-	 * @return  boolean 
+	 * Vérifie l’exactitude du mot de passe.
+	 * 
+	 * @param string $courriel Le courriel de l’usager.
+	 * @param string $mot_de_passe Le mot de passe de l’usager.
+	 * 
+	 * @return boolean Vrai si c’est le bon usager avec le bon mot de passe, sinon faux.
 	 */
 	public function Authentification($courriel, $mot_de_passe)
 	{
@@ -46,6 +50,7 @@ class Modele_Usager extends Modele
 		if($usager)
 		{
 			if(password_verify($mot_de_passe, $usager->mot_de_passe))
+				// C’est le bon mot de passe
 				return true;
 			else
 			{
@@ -59,52 +64,59 @@ class Modele_Usager extends Modele
 		}
 	}
 
-	/**
-	 * Fonction qui retourne le nom de l’usager courriel par son id
-	 * @param integer $id l’id de l’usager
-	 * @param string $colonne le courriel de l’usager
-	 * @return $lUsager
-	 */
-	public function obtenirUsager($id, $colonne = 'courriel')
-	{
-		$resultat = $this->lire($id, $colonne);
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
-		$lUsager = $resultat->fetch();
-		return $lUsager;
-	}
 
 	/**
-	 * Fonction qui insére un usager dans la table vino_usager id
-	 * @param usager
-	 * @return 
+	 * Retourne les données de l’usager.
+	 * 
+	 * @param integer $id L’identifiant de l’usager.
+	 * 
+	 * @return array Les données de l’usager.
+	 */
+	public function obtenirUsager($id)
+	{
+		$resultat = $this->lire($id, 'courriel');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		return $resultat->fetch();
+	}
+
+
+	/**
+	 * Insère les données de l’usager dans la base de données.
+	 * 
+	 * @param object $usager Une instance de la classe Classe_Usager
+	 * 
+	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
 	public function inscrire(Classe_Usager $usager)
 	{
-		$query = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, mot_de_passe) VALUES (?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO vino_usager (courriel, admin, nom, prenom, mot_de_passe) VALUES (?, ?, ?, ?, ?)';
 		$donnees = array($usager->courriel, $usager->admin, $usager->nom, $usager->prenom, $usager->mot_de_passe);
-		return $this->requete($query, $donnees);
+
+		return $this->requete($sql, $donnees);
 	}
 
-		/**
-	 * Fonction qui retourne la bouteille par son id
-	 * @param $id
-	 * @return $maBouteille
+
+	/**
+	 * Retourne les données de l’usager.
+	 * 
+	 * @param integer $id Identifiant de l’usager.
+	 * 
+	 * @return array Les données de l’usager.
 	 */
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_usager');
-		$lUsager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
-		return $lUsager;
+		$usager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		return $usager;
 	}
 
 	/**
-	 * Fonction qui modifie l'usager'
-	 * @param 
-	 * @return 
+	 * Modifie les données de l’usager.
+	 * 
+	 * @return void
 	 */
 	public function modifier()
 	{
-		// var_dump($_POST);die;
 		$sql = 'UPDATE vino_usager 
 			SET courriel=?,
 				nom=?,
