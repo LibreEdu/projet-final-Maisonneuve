@@ -3,7 +3,6 @@
  * Permet de gérer les celliers.
  *
  * @package  Vino 
- * @author   José Ignacio Delgado
  *.@author   Fatemeh Homatash
  * @author   Alexandre Pachot
  *.@author   Charef Eddine Yagoubi
@@ -11,47 +10,46 @@
  */
 class Modele_Cellier extends Modele
 {
-	/**
-	 * Fonction qui retourne le nom de la table vino_cellier
-	 * @return  le nom de la table
-	 */
 	public function getTableName()
 	{
 		return 'vino_cellier';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire du cellier
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_cellier';
 	}
 
+
 	/**
-	 * Fonction qui retourne le cellier par son id
-	 * @param $id_cellier
-	 * @return $monCellier
+	 * Récupère les donnes d’un cellier.
+	 * 
+	 * @param integer $id_cellier Identifiant du cellier.
+	 * 
+	 * @return array Les données du cellier.
 	 */
 	public function obtenir_par_id($id_cellier)
 	{
 		$resultat = $this->lire($id_cellier);
-		$monCellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
-		return $monCellier;
+		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
+		return $cellier;
 	}
 
+
 	/**
-	 * Fonction qui retourne le cellier par son usager
-	 * @param $id_usager
-	 * @return $monCellier
+	 * Récupère les donnes des celliers d’un usager.
+	 * 
+	 * @param integer $id_usager Identifiant de l’usager.
+	 * 
+	 * @return array Les données des celliers de l’usager.
 	 */
 	public function obtenir_par_usager($id_usager)
 	{
 		$resultat = $this->lire($id_usager, 'id_usager');
-		$monCellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
-		return $monCellier;
+		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
+		return $cellier;
 	}
+
 
 	/**
 	 * Fonction qui supprime le cellier par son id

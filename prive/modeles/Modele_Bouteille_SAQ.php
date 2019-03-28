@@ -10,26 +10,18 @@
  */
 class Modele_Bouteille_SAQ extends Modele
 {
-	/**
-	 * Fonction qui retourne le nom de la table vino_bouteille_saq
-	 * @return  le nom de la table
-	 */
 	public function getTableName()
 	{
 		return 'vino_bouteille_saq';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire de la bouteille_saq
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_bouteille_saq';
 	}
 
 	/**
-	 * Cette méthode permet de retourner les résultats de recherche pour la fonction d’autocomplete de l’ajout des bouteilles dans le cellier
+	 * Retourne le résultat de la recherche pour la fonction d’autocomplete
 	 * 
 	 * @param string $nom La chaine de caractère à rechercher
 	 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
@@ -44,7 +36,7 @@ class Modele_Bouteille_SAQ extends Modele
 		
 		$listeBouteilles = Array();
 		$nom = preg_replace('/\*/','%' , $nom);
-		$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%'.$nom.'%") LIMIT 0,'. $nb_resultat;
+		$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%' . $nom . '%") LIMIT 0,'. $nb_resultat;
 		$requete = $this->requete($sql);
 		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
 
