@@ -134,7 +134,7 @@ class Controleur_Login extends Controleur
 			header('Location: ' . site_url('login&action=logout') );
 		}
 		
-		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);		 
+		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
 		$donnees['titre'] = 'Modifier Votre compte';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier l’usager';
@@ -156,8 +156,7 @@ class Controleur_Login extends Controleur
 		if ($idUsager == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		$donnees['usager'] = $this->modele_usager->obtenir_tous();
-		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);		
+		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
 		$donnees['titre'] = 'Modifier Votre compte';
 		$donnees['actionBouton'] = 'modifier';
 		$donnees['titreBouton'] = 'Modifier l’usager';
@@ -180,14 +179,14 @@ class Controleur_Login extends Controleur
 					
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('login/formulaire-modification', $donnees);					
+					$this->afficheVue('login/formulaire-modification', $donnees);
 					$this->afficheVue('modeles/bas-de-page');
 				}
 				else
 				{//Affichage de la page form-modification avec l'erreurr
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
-					$this->afficheFormModification($messageErreur,$donnees);				
+					$this->afficheFormModification($messageErreur,$donnees);
 					$this->afficheVue('modeles/bas-de-page');
 				}
 			}
