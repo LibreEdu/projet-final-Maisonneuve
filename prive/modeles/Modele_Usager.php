@@ -110,10 +110,11 @@ class Modele_Usager extends Modele
 		return $usager;
 	}
 
+
 	/**
 	 * Modifie les données de l’usager.
 	 * 
-	 * @return void
+	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
 	public function modifier()
 	{

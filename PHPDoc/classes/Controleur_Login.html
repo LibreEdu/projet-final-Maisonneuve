@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">157</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">175</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1197930537"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1514113790"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1197930537" class="accordion-body collapse in">
+            <div id="namespace-1514113790" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -209,7 +209,9 @@
                                                                     <a href="../classes/Controleur_Login.html#method_inscrire" class="">inscrire()</a><br />
                                                                     <a href="../classes/Controleur_Login.html#method_logout" class="">logout()</a><br />
                                                                     <a href="../classes/Controleur_Login.html#method_afficheFormInscription" class="">afficheFormInscription()</a><br />
+                                                                    <a href="../classes/Controleur_Login.html#method_afficheFormModification" class="">afficheFormModification()</a><br />
                                                                     <a href="../classes/Controleur_Login.html#method_valideFormInscription" class="">valideFormInscription()</a><br />
+                                                                    <a href="../classes/Controleur_Login.html#method_valideFormModification" class="">valideFormModification()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -472,18 +474,11 @@ il faut le rediriger correctement</p>
             <article class="method">
                 <h3 class="public ">modifier()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">modifier(  <span class="argument">$params</span>) </pre>
-                <p><em>Foncton inscrire qui gére la modification d&#039;un usager connecté</em></p>
+                <pre class="signature" style="margin-right: 54px;">modifier() </pre>
+                <p><em>Foncton modifier qui gére la modification des informations
+d&#039;un usager connecté</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$params </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
                 
                 				
@@ -596,6 +591,40 @@ il faut le rediriger correctement</p>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
+            <a id="method_afficheFormModification" name="method_afficheFormModification" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">afficheFormModification()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">afficheFormModification(  <span class="argument">$erreurs = &#039;&#039;</span>) </pre>
+                <p><em>Fonction d&#039;affichage du formulaire de modification</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$erreurs </td>
+                                <td><p>le message d'ereur</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
             <a id="method_valideFormInscription" name="method_valideFormInscription" class="anchor"></a>
             <article class="method">
                 <h3 class="public ">valideFormInscription()</h3>
@@ -624,6 +653,68 @@ il faut le rediriger correctement</p>
                                                     <tr>
                                 <td></td>
                                 <td>$mdp </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$mdp2 </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \retourne
+                                            &mdash; <p>le message d'erreur</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_valideFormModification" name="method_valideFormModification" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">valideFormModification()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">valideFormModification(  <span class="argument">$courriel</span>,   <span class="argument">$nom</span>,   <span class="argument">$prenom</span>,   <span class="argument">$mot_de_passe</span>,   <span class="argument">$mdp1</span>,   <span class="argument">$mdp2</span>) : \retourne</pre>
+                <p><em>Fonction de validation du formulaire d&#039;inscription</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$courriel </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$nom </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$prenom </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$mot_de_passe </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$mdp1 </td>
                                 <td></td>
                             </tr>
                                                     <tr>
@@ -780,7 +871,7 @@ il faut le rediriger correctement</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 28th, 2019 at 15:21.
+                    on March 28th, 2019 at 17:22.
                 </section>
             </section>
         </section>
