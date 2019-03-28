@@ -14,8 +14,8 @@
 	define("HOST", 'localhost');
 	define("DBNAME", 'vino');
 	define("CHARSET", 'utf8mb4');
-	define("USER", 'root');
-	define("PWD", 'root');
+	define("USERNAME", 'root');
+	define("PASSWD", 'root');
 	
 
 	// Fonction d’autoload
