@@ -1,24 +1,63 @@
 <?php
-	// Définition des constantes
-
-	// Pour le chargement automatique des classes
+	/**
+	 * Racine du répertoire PHP.
+	 * Pour le chargement automatique des classes.
+	 */
 	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . '/../prive/');
 
-	// Pour le chargement du CSS, JS et images
-	// Ce qui doit être directement accessible par le navigateur
+
+	/**
+	 * URL de la racine du site.
+	 * Cette URL est nécessaire pour le chargement du CSS, JS et images :
+	 * en bref, tout ce qui doit être directement accessible par le navigateur.
+	 */
 	define("BASEURL", 'http://127.0.0.1/');
 
 
-	// Pour la connexion à la base de données
+	/**
+	 * Type de base de données.
+	 * Nous avons le choix entre mysql et oracle.
+	 */
 	define("DBTYPE", 'mysql'); // mysql ou oracle
+
+
+	/**
+	 * Adresse du serveur contenant la base de données.
+	 */
 	define("HOST", 'localhost');
+
+
+	/**
+	 * Nom de la base de données.
+	 */
 	define("DBNAME", 'vino');
+
+
+	/** 
+	 * Jeu de caractères utilisé pour l’encodage des données.
+	 */
 	define("CHARSET", 'utf8mb4');
+
+
+	/** 
+	 * Nom d’utilisateur de la base de données.
+	 */
 	define("USER", 'root');
+
+
+	/** 
+	 * Mot de passe de la base de données.
+	 */
 	define("PWD", '');
 	
 
-	// Fonction d’autoload
+	/**
+	 * Fonction de chargement automatique des classes.
+	 * 
+	 * @param object $classe Classe que l’on veut charger dynamiquement
+	 * 
+	 * @return void
+	 */
 	function chargement_automatique_des_classes($classe)
 	{
 		$repertoires = array(
@@ -37,6 +76,7 @@
 		}
 	}
 
+	
 	// Enregistre une fonction en tant qu’implémentation de __autoload()
 	spl_autoload_register('chargement_automatique_des_classes');
 
