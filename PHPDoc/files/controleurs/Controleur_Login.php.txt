@@ -44,7 +44,7 @@ class Controleur_Login extends Controleur
 				$this->logout();
 				break;
 
-				case 'formulaireModification':
+			case 'formulaireModification':
 				$this->formulaireModification();
 				break;
 

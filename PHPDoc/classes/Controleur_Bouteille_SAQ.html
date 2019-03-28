@@ -106,7 +106,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">170</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">157</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-87156025"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1776909835"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-87156025" class="accordion-body collapse in">
+            <div id="namespace-1776909835" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -326,9 +326,9 @@
             <article class="method">
                 <h3 class="public ">traite()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">traite(array  <span class="argument">$params</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">traite(array  <span class="argument">$params</span>) : void</pre>
                 <p><em>Traite la requête du contrôleur.</em></p>
-                <p>Lorsque le routeur a trouvé le contrôleur demandé, il appelle la méthode traite() du contrôleur. Cette méthode est la porte d’entrée de toutes les requêtes du contrôleur. Méthode abstraite qui doit être redéfinie dans chaque contrôleur.</p>
+                <p>Lorsque le routeur a trouvé le contrôleur demandé, il appelle la méthode traite() du contrôleur. Cette méthode est la porte d’entrée de toutes les requêtes du contrôleur.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -438,7 +438,7 @@
             <article class="method">
                 <h3 class="protected ">afficheVue()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">afficheVue(string  <span class="argument">$nomVue</span>, array  <span class="argument">$donnees = null</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">afficheVue(string  <span class="argument">$nomVue</span>, array  <span class="argument">$donnees = null</span>) : void</pre>
                 <p><em>Affiche la vue demandée.</em></p>
                 
 
@@ -479,7 +479,7 @@
             <article class="method">
                 <h3 class="protected ">modele()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">modele(string  <span class="argument">$nomModele</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">modele(string  <span class="argument">$nomModele</span>) : object</pre>
                 <p><em>Établit une connexion à la base de données et charge le modèle demandé.</em></p>
                 
 
@@ -493,7 +493,10 @@
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>Une instance du modèle demandée.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -558,7 +561,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 28th, 2019 at 10:57.
+                    on March 28th, 2019 at 15:21.
                 </section>
             </section>
         </section>
