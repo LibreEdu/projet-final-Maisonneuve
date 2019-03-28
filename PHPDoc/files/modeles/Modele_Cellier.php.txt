@@ -11,19 +11,11 @@
  */
 class Modele_Cellier extends Modele
 {
-	/**
-	 * Fonction qui retourne le nom de la table vino_cellier
-	 * @return  le nom de la table
-	 */
 	public function getTableName()
 	{
 		return 'vino_cellier';
 	}
 
-	/**
-	 * Fonction qui retourne la clé primaire du cellier
-	 * @return la clé primaire
-	 */
 	public function getClePrimaire()
 	{
 		return 'id_cellier';
