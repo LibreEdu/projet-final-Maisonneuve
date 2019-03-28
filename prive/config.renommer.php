@@ -1,9 +1,10 @@
 <?php
 /**
  * @package  Vino
+ * @version  1.0
  */
 
-	/**
+/**
  * Racine du répertoire PHP.
  * Pour le chargement automatique des classes.
  */
@@ -22,7 +23,7 @@ define('BASEURL', 'http://127.0.0.1/');
  * Type de base de données.
  * Nous avons le choix entre mysql et oracle.
  */
-define('DBTYPE', 'mysql'); // mysql ou oracle
+define('DBTYPE', 'mysql');
 
 
 /**

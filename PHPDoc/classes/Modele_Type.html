@@ -106,7 +106,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">170</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">157</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1015292908"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-189647236"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1015292908" class="accordion-body collapse in">
+            <div id="namespace-189647236" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -217,11 +217,10 @@
                                                                     <a href="../classes/Modele.html#method_supprimer" class="">supprimer()</a><br />
                                                                     <a href="../classes/Modele.html#method_lire" class="">lire()</a><br />
                                                                     <a href="../classes/Modele.html#method_lireTous" class="">lireTous()</a><br />
-                                                                    <a href="../classes/Modele.html#method_obtenirTous" class="">obtenirTous()</a><br />
                                                                     <a href="../classes/Modele.html#method_requete" class="">requete()</a><br />
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/Modele.html#property_bd" class="">$bd</a><br />
+                                                                    <em>No protected properties found</em>
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -232,7 +231,7 @@
                                                                     <em>No private methods found</em>
                                                             </section>
                             <section class="span4">
-                                                                    <em>No private properties found</em>
+                                                                    <a href="../classes/Modele.html#property_bd" class="">$bd</a><br />
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -293,18 +292,18 @@
                 <aside class="span4 detailsbar"></aside>
             </div>
 
-                                                    <div class="row-fluid">
+                                                                    <div class="row-fluid">
         <div class="span8 content class">
             <a id="property_bd" name="property_bd" class="anchor"></a>
             <article class="property">
-                <h3 class="protected ">$bd</h3>
-                <pre class="signature">$bd : </pre>
+                <h3 class="private ">$bd</h3>
+                <pre class="signature">$bd : object</pre>
                 <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                object
+                &mdash; Connexion à la base de données                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -319,7 +318,7 @@
         </aside>
     </div>
 
-                                            
+                            
                                     <a id="methods" name="methods"></a>
             <div class="row-fluid">
                 <div class="span8 content class"><h2>Methods</h2></div>
@@ -332,16 +331,16 @@
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(\PDO  <span class="argument">$bd_PDO</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__construct(object  <span class="argument">$bd_PDO</span>) : void</pre>
+                <p><em>Initialisation de la connexion à la base de données</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>\PDO</td>
+                                <td>object</td>
                                 <td>$bd_PDO </td>
-                                <td></td>
+                                <td><p>Connexion à la base de données</p></td>
                             </tr>
                                             </table>
                 
@@ -397,13 +396,16 @@
             <article class="method">
                 <h3 class="public ">getTableName()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getTableName() </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">getTableName() : string</pre>
+                <p><em>Retourne le nom de la table.</em></p>
                 
 
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Le nom de la table.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -451,21 +453,24 @@
             <article class="method">
                 <h3 class="protected ">supprimer()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">supprimer(  <span class="argument">$clePrimaire</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">supprimer(string  <span class="argument">$clePrimaire</span>) : boolean</pre>
+                <p><em>Suppression d’un ou plusieurs tuples d’une table de la base de données.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>string</td>
                                 <td>$clePrimaire </td>
-                                <td></td>
+                                <td><p>Clé primaire servant à filtrer les données qu’on veur supprimer.</p></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Indique si la requête a correctement fonctionné.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -487,26 +492,29 @@
             <article class="method">
                 <h3 class="protected ">lire()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">lire(  <span class="argument">$valeurCherchee</span>,   <span class="argument">$colonne = NULL</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">lire(string  <span class="argument">$valeurCherchee</span>, string  <span class="argument">$colonne = NULL</span>) : mixed</pre>
+                <p><em>Récupère les tuples d’une table selon un critère précis.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>string</td>
                                 <td>$valeurCherchee </td>
-                                <td></td>
+                                <td><p>Condition de la clause WHERE</p></td>
                             </tr>
                                                     <tr>
-                                <td></td>
+                                <td>string</td>
                                 <td>$colonne </td>
-                                <td></td>
+                                <td><p>Colonne sur laquelle on fait la recherche. Par défaut la recherche s’effectue sur la clé primaire.</p></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Jeu de résultats si la requête a été correctement exécutée, false sinon.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -528,41 +536,16 @@
             <article class="method">
                 <h3 class="protected ">lireTous()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">lireTous() </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">lireTous() : mixed</pre>
+                <p><em>Récupère tous les tuples d’une table.</em></p>
                 
 
                 
                 
-                				
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                    <dt>Inherited from</dt>
-                    <dd><a href="../classes/Modele.html"><div class="path-wrapper">\Modele</div></a></dd>
-                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_obtenirTous" name="method_obtenirTous" class="anchor"></a>
-            <article class="method">
-                <h3 class="protected ">obtenirTous()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">obtenirTous() </pre>
-                <p><em></em></p>
-                
-
-                
-                
-                				
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>Jeu de résultats si la requête a été correctement exécutée, false sinon.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -584,26 +567,29 @@
             <article class="method">
                 <h3 class="protected ">requete()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">requete(  <span class="argument">$query</span>,   <span class="argument">$data = array()</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">requete(string  <span class="argument">$sql</span>,   <span class="argument">$donnees = array()</span>) : array</pre>
+                <p><em>Exécute une requête sur la base de données.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
-                                <td>$query </td>
-                                <td></td>
+                                <td>string</td>
+                                <td>$sql </td>
+                                <td><p>Requête SQL</p></td>
                             </tr>
                                                     <tr>
                                 <td></td>
-                                <td>$data </td>
+                                <td>$donnees </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>$donnees Données pour la requête qui a été préparée.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -669,7 +655,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 28th, 2019 at 10:57.
+                    on March 28th, 2019 at 15:21.
                 </section>
             </section>
         </section>
