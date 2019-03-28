@@ -19,6 +19,7 @@ class Modele_Type extends Modele
 		return 'id_type';
 	}
 
+	
 	/**
 	 * Retourne tous les types de bouteilles
 	 * 
