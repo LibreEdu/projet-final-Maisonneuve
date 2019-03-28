@@ -110,6 +110,7 @@ class Modele_Usager extends Modele
 		return $usager;
 	}
 
+
 	/**
 	 * Modifie les données de l’usager.
 	 * 
