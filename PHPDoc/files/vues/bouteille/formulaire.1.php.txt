@@ -1,3 +1,6 @@
+<?php
+	$usager = $_SESSION['id_usager'];
+?>
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">		
 		<div class="mdl-card__title">	
@@ -11,11 +14,16 @@
 				</ul>
 			</div>
 			<form method="POST">
+				<div class="mdl-textfield mdl-js-textfield">
+					Nom de liste d'achats : 
+						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" required="required">
+				</div>
 				<div id="mes_achats">
 				
 				</div>				
 				<div>
-					<input type="hidden" name="action" value="ajouter-liste">
+					<input type="hidden" name="action" value="ajouter_liste">
+					<input type="hidden" name="id_usager" value="<?php echo $usager ?>">
 					<input type="submit" value="Ajouter liste" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</div>
 			</form>

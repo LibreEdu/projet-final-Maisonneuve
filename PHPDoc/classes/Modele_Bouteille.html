@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">175</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">174</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1758758891"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1544151661"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1758758891" class="accordion-body collapse in">
+            <div id="namespace-1544151661" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -204,9 +204,9 @@
                                                                     <a href="../classes/Modele_Bouteille.html#method_getClePrimaire" class="">getClePrimaire()</a><br />
                                                                     <a href="../classes/Modele_Bouteille.html#method_getTableName" class="">getTableName()</a><br />
                                                                     <a href="../classes/Modele_Bouteille.html#method_obtenir_par_id" class="">obtenir_par_id()</a><br />
-                                                                    <a href="../classes/Modele_Bouteille.html#method_obtenir_par_id_t" class="">obtenir_par_id_t()</a><br />
-                                                                    <a href="../classes/Modele_Bouteille.html#method_modifierQuantite" class="">modifierQuantite()</a><br />
-                                                                    <a href="../classes/Modele_Bouteille.html#method_recupererQuantiteBouteilleCellier" class="">recupererQuantiteBouteilleCellier()</a><br />
+                                                                    <a href="../classes/Modele_Bouteille.html#method_bouteilles_cellier" class="">bouteilles_cellier()</a><br />
+                                                                    <a href="../classes/Modele_Bouteille.html#method_modifier_quantite" class="">modifier_quantite()</a><br />
+                                                                    <a href="../classes/Modele_Bouteille.html#method_recuperer_quantite" class="">recuperer_quantite()</a><br />
                                                                     <a href="../classes/Modele_Bouteille.html#method_modifier" class="">modifier()</a><br />
                                                                     <a href="../classes/Modele_Bouteille.html#method_ajouter" class="">ajouter()</a><br />
                                                                     <a href="../classes/Modele_Bouteille.html#method_appartient" class="">appartient()</a><br />
@@ -272,8 +272,8 @@
                                 author
                             </th>
                             <td>
-                                                                    <p>José Ignacio Delgado
-.@author...Fatemeh Homatash</p>
+                                                                    <p>Fatemeh Homatash</p>
+                                                                    <p>José Ignacio Delgado</p>
                                                                     <p>Alexandre Pachot</p>
                                                             </td>
                         </tr>
@@ -431,22 +431,23 @@
             <article class="method">
                 <h3 class="public ">obtenir_par_id()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">obtenir_par_id(  <span class="argument">$id</span>) : \$maBouteille</pre>
-                <p><em>Fonction qui retourne la bouteille par son id</em></p>
+                <pre class="signature" style="margin-right: 54px;">obtenir_par_id(integer  <span class="argument">$id_bouteille</span>) : object</pre>
+                <p><em>Retourne les données d’une bouteille.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
-                                <td>$id </td>
-                                <td></td>
+                                <td>integer</td>
+                                <td>$id_bouteille </td>
+                                <td><p>Identifiants de la bouteille</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    \$maBouteille
+                    object
+                                            &mdash; <p>Les données d’une bouteille.</p>
                                     				
                             </article>
         </div>
@@ -463,27 +464,27 @@
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_obtenir_par_id_t" name="method_obtenir_par_id_t" class="anchor"></a>
+            <a id="method_bouteilles_cellier" name="method_bouteilles_cellier" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">obtenir_par_id_t()</h3>
+                <h3 class="public ">bouteilles_cellier()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">obtenir_par_id_t(  <span class="argument">$idCellier</span>) : \$laBouteille</pre>
-                <p><em>Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type</em></p>
+                <pre class="signature" style="margin-right: 54px;">bouteilles_cellier(integer  <span class="argument">$id_cellier</span>) : array</pre>
+                <p><em>Récupère les données des bouteilles d’un cellier.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
-                                <td>$idCellier </td>
-                                <td></td>
+                                <td>integer</td>
+                                <td>$id_cellier </td>
+                                <td><p>Identifiant du cellier.</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    \$laBouteille
-                                            &mdash; <p>details des bouteilles ainsi que le type de bouteille.</p>
+                    array
+                                            &mdash; <p>Les données des bouteilles d’un cellier.</p>
                                     				
                             </article>
         </div>
@@ -500,32 +501,32 @@
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_modifierQuantite" name="method_modifierQuantite" class="anchor"></a>
+            <a id="method_modifier_quantite" name="method_modifier_quantite" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">modifierQuantite()</h3>
+                <h3 class="public ">modifier_quantite()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">modifierQuantite(integer  <span class="argument">$id</span>, integer  <span class="argument">$nombre</span>) : Boolean</pre>
-                <p><em>Cette méthode change la quantité d’une bouteille en particulier dans le cellier</em></p>
+                <pre class="signature" style="margin-right: 54px;">modifier_quantite(integer  <span class="argument">$id_bouteille</span>, integer  <span class="argument">$delta</span>) : mixed</pre>
+                <p><em>Change la quantité de bouteilles.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>integer</td>
-                                <td>$id </td>
-                                <td><p>id de la bouteille</p></td>
+                                <td>$id_bouteille </td>
+                                <td><p>Identifiant de la bouteille.</p></td>
                             </tr>
                                                     <tr>
                                 <td>integer</td>
-                                <td>$nombre </td>
+                                <td>$delta </td>
                                 <td><p>Nombre de bouteille à ajouter ou à retirer</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    Boolean
-                                            &mdash; <p>Succès ou échec de l’ajout.</p>
+                    mixed
+                                            &mdash; <p>Jeu de résultat si la requête a été correctement exécutée, false sinon.</p>
                                     				
                             </article>
         </div>
@@ -542,27 +543,27 @@
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_recupererQuantiteBouteilleCellier" name="method_recupererQuantiteBouteilleCellier" class="anchor"></a>
+            <a id="method_recuperer_quantite" name="method_recuperer_quantite" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">recupererQuantiteBouteilleCellier()</h3>
+                <h3 class="public ">recuperer_quantite()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">recupererQuantiteBouteilleCellier(integer  <span class="argument">$id</span>) : \$laBouteille</pre>
-                <p><em>Cette méthode récupére la quantité d’une bouteille en particulier dans le cellier</em></p>
+                <pre class="signature" style="margin-right: 54px;">recuperer_quantite(integer  <span class="argument">$id_bouteille</span>) : object</pre>
+                <p><em>Récupère la quantité de bouteilles.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
                                 <td>integer</td>
-                                <td>$id </td>
-                                <td><p>id  cellier_bouteille</p></td>
+                                <td>$id_bouteille </td>
+                                <td><p>Identifiant de la bouteille.</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    \$laBouteille
-                                            &mdash; <p>la ligne de la quantité de la bouteille en question.</p>
+                    object
+                                            &mdash; <p>Les données d’une bouteille.</p>
                                     				
                             </article>
         </div>
@@ -887,7 +888,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 28th, 2019 at 17:44.
+                    on March 29th, 2019 at 11:40.
                 </section>
             </section>
         </section>

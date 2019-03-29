@@ -54,4 +54,16 @@ class Modele_Bouteille_SAQ extends Modele
 		}
 		return $listeBouteilles;
 	}
+
+	/**
+	 * Fonction qui ajoute une liste d'achats
+	 * @param 
+	 * @return 
+	 */
+	public function ajouter_liste()
+	{
+		$sql = 'INSERT INTO vino_liste_achat (id_usager, id_bouteille_saq, nom) VALUES (?,?,?)';
+		$donnees = array($_POST['id_usager'], $_POST['id_bouteille_saq'], $_POST['nom']);
+		$resultat = $this->requete($sql, $donnees);
+	}
 }

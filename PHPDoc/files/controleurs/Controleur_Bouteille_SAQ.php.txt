@@ -36,6 +36,9 @@ class Controleur_Bouteille_SAQ extends Controleur
 			case 'liste_form':
 				$this->liste_form();
 				break;
+			case 'ajouter_liste':
+				$this->ajouter_liste();
+				break;
 
 			default :
 				trigger_error('Action invalide.');
@@ -55,6 +58,13 @@ class Controleur_Bouteille_SAQ extends Controleur
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('bouteille/formulaire.1');
 		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function ajouter_liste()
+	{
+		$this->modele_bouteille_saq->ajouter_liste();
+		echo '<script>alert("La liste d\'achats a été créée.")</script>';
+		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=1') );
 	}
 
 }
