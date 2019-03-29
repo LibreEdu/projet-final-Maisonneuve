@@ -3,8 +3,8 @@
  * Permet de gérer les bouteilles des usagers.
  *
  * @package  Vino 
+ * @author   Fatemeh Homatash
  * @author   José Ignacio Delgado
- *.@author...Fatemeh Homatash
  * @author   Alexandre Pachot
  * @version  1.0
  */
@@ -20,72 +20,70 @@ class Modele_Bouteille extends Modele
 		return 'id_bouteille';
 	}
 
-	/**
-	 * Fonction qui retourne la bouteille par son id
-	 * @param $id
-	 * @return $maBouteille
-	 */
-	public function obtenir_par_id($id)
-	{
-		$resultat = $this->lire($id, 'id_bouteille');
-		$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-		return $maBouteille;
-	}
 
 	/**
-	 * Cette méthode récupére les details des bouteilles en montrant le type a la place de id de type
-	 * 
-	 * @param int $id id cellier_bouteille 
-	 * 
-	 * @return $laBouteille details des bouteilles ainsi que le type de bouteille.
+	 * Retourne les données d’une bouteille.
+	 * @param integer $id_bouteille Identifiants de la bouteille
+	 * @return object Les données d’une bouteille.
 	 */
-	public function obtenir_par_id_t($idCellier)
-	{			
+	public function obtenir_par_id($id_bouteille)
+	{
+		$resultat = $this->lire($id_bouteille, 'id_bouteille');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		return $resultat->fetch();
+	}
+
+
+	/**
+	 * Récupère les données des bouteilles d’un cellier.
+	 * 
+	 * @param int $id_cellier Identifiant du cellier.
+	 * 
+	 * @return array Les données des bouteilles d’un cellier.
+	 */
+	public function bouteilles_cellier($id_cellier)
+	{
 		//Requete de tous les details des bouteilles
-		$requete = "SELECT b.id_bouteille,
-					b.id_cellier,
-					b.code_saq,
-					b.prix,
-					b.millesime,
-					b.pays,
-					b.format,
-					b.nom,
-					b.note,
-					b.quantite,
-					b.date_achat,
-					b.boire_avant,
-					t.type
-					FROM vino_bouteille b
-					INNER JOIN vino_type t
-					ON b.id_type = t.id_type
-					WHERE id_cellier = ?
-					ORDER BY id_bouteille";
-		$donnees = array($idCellier);
-		$resultat = $this->requete($requete, $donnees);
-		$laBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');			
-		return $laBouteille;    
+		$sql = 'SELECT b.id_bouteille,
+				b.id_cellier,
+				b.code_saq,
+				b.prix,
+				b.millesime,
+				b.pays,
+				b.format,
+				b.nom,
+				b.note,
+				b.quantite,
+				b.date_achat,
+				b.boire_avant,
+				t.type
+			FROM vino_bouteille b
+			INNER JOIN vino_type t
+				ON b.id_type = t.id_type
+			WHERE id_cellier = ?
+			ORDER BY id_bouteille';
+		$donnees = array($id_cellier);
+		$resultat = $this->requete($sql, $donnees);
+		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');	
+		return $bouteilles;
 	}
 
+
 	/**
-	 * Cette méthode change la quantité d’une bouteille en particulier dans le cellier
+	 * Change la quantité de bouteilles.
 	 * 
-	 * @param int $id id de la bouteille
-	 * @param int $nombre Nombre de bouteille à ajouter ou à retirer
+	 * @param int $id_bouteille Identifiant de la bouteille.
+	 * @param int $delta Nombre de bouteille à ajouter ou à retirer
 	 * 
-	 * @return Boolean Succès ou échec de l’ajout.
+	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
-	public function modifierQuantite($id, $nombre)
+	public function modifier_quantite($id_bouteille, $delta)
 	{
-		//TODO : Valider les données.
-			
-			
-		$requete = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + '. $nombre. ', 0) WHERE id_bouteille = '. $id;
-		//echo $requete;
-		$res = $this->requete($requete);
-		// var_dump($res);
-		// die();
+		$sql = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + ?, 0) WHERE id_bouteille = ?' ;
+		$donnees = array($delta, $id_bouteille);
+		$resultat = $this->requete($sql, $donnees);
 		
-		return $res;
+		return $resultat;
 	}
 
 	/**

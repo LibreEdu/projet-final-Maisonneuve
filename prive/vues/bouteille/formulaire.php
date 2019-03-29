@@ -2,7 +2,7 @@
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 		<?php 
 			if(isset($donnees['bouteille'])){
-				$bouteille = $donnees['bouteille'][0];
+				$bouteille = $donnees['bouteille'];
 			}
 			$nom          = isset($bouteille->nom) ? $bouteille->nom : '';
 			$quantite     = isset($bouteille->quantite) ? $bouteille->quantite : '';
