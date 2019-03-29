@@ -33,9 +33,9 @@
 			// Gestionnaire d’évènements
 			window.addEventListener("load", () =>
 			{
-				document.getElementById("btnAjouterCellier").addEventListener("click", ()=>
-				{
-					vino.ajouterCellier();
-				}, false);
+				// document.getElementById("btnAjouterCellier").addEventListener("click", ()=>
+				// {
+				// 	vino.ajouterCellier();
+				// }, false);
 			}, false)
 		</script>
