@@ -7,58 +7,43 @@
 			$courriel     = isset($usager->courriel) ? $usager->courriel : '';
 			$nom          = isset($usager->nom) ? $usager->nom : '';
 			$prenom       = isset($usager->prenom) ? $usager->prenom : '';
-			$mot_de_passe       = isset($usager->mot_de_passe) ? $usager->mot_de_passe : '';
+			//$mot_de_passe       = isset($usager->mot_de_passe) ? $usager->mot_de_passe : '';
 			$id_usager = isset($usager->id_usager) ? $usager->id_usager : '';
 			//var_dump($id_usager);
 		?>
 		<div class="mdl-card__title">	
-			<h2 class="mdl-card__title-text"><?php echo $donnees['titre'] ?></h2>
+			<h2 class="mdl-card__title-text">Modifier votre compte</h2>
 		</div>
 		<div class="mdl-card__supporting-text">
 			
 			<form method="POST">				
 				<div class="mdl-textfield mdl-js-textfield">
 					Courriel : 
-					<!--<span data-id='' class='nom_bouteille'>-->
 						<input class="mdl-textfield__input" type="text" name="courriel" value="<?php echo $courriel ?>" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					nom : 
-					<!--<span data-id='' class='nom_bouteille'>-->
 						<input class="mdl-textfield__input" type="text" name="nom" value="<?php echo $nom ?>" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					prenom : 
-					<!--<span data-id='' class='nom_bouteille'>-->
 						<input class="mdl-textfield__input" type="text" name="prenom" value="<?php echo $prenom ?>" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					Tapez votre ancien mot de passe : 
 					<span data-id='' class='nom_bouteille'>
-						<input class="mdl-textfield__input" type="password" name="mot_de_passe" value="" required="required">
-						<!-- <span class="mdl-textfield__error">Entrez votre ancien mot de passe</span> -->
+						<input class="mdl-textfield__input" type="password" name="mot_de_passe" value="">
 					</span>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					Tapez votre nouveau mot de passe : 
-					<!--<span data-id='' class='nom_bouteille'>-->
-						<input class="mdl-textfield__input" type="password"  name="mdp1" value="" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
+					Tapez votre nouveau mot de passe :
+						<input class="mdl-textfield__input" type="password"  name="mdp1" value="">
 				</div>
 
-					<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield">
 					Confirmer votre mot de passe : 
-					<!--<span data-id='' class='nom_bouteille'>-->
-						<input class="mdl-textfield__input" type="password" name="mdp2"  value="" required="required">
-						<!--<span class="mdl-textfield__error">Entrez le nom de la bouteille</span>-->
-					<!--</span>-->
+					
+						<input class="mdl-textfield__input" type="password" name="mdp2"  value="">
 				</div>
 				
 			
@@ -71,8 +56,8 @@
 					<?php
 						}
 					?>
-					<input type="hidden" name="action" value="<?php echo $donnees['actionBouton'] ?>">
-					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="<?php echo $donnees['classeBouton'] ?>">
+					<input type="hidden" name="action" value="modifier">
+					<input type="submit" value="Modifier l’usager" class="mdl-button mdl-js-button mdl-button--raised btnModifierUsager">
 				</div>
 			</form>
 			<?php
