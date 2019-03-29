@@ -355,7 +355,7 @@ window.addEventListener('load', function() {
 			let un_nom = NomBouteille.value;
 			la_liste.innerHTML = '';
 			if(un_nom){
-				let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + un_nom + '"}'});
+				let requete = new Request('index.php?liste_achat&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + un_nom + '"}'});
 				fetch(requete)
 				.then(response => {
 					if (response.status === 200) {
@@ -367,6 +367,7 @@ window.addEventListener('load', function() {
 				.then(response => {
 					response.forEach(function(element){
 						la_liste.innerHTML += '<li data-id_bouteille_saq="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
+						//console.log(response);
 					} )
 				}).catch(error => {
 					console.error(error);
@@ -377,7 +378,7 @@ window.addEventListener('load', function() {
 		let mes_achats = document.getElementById('mes_achats');
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
 			}
 		});
 
@@ -391,7 +392,23 @@ window.addEventListener('load', function() {
 					}
 				}
 			}			
-		});			
+		});	
+		
+		if(document.querySelectorAll('.details')){
+			document.querySelectorAll('.details').style.display = "none";
+			console.log(document.querySelectorAll('.details')[0]);
+		};
+	
+		document.querySelectorAll('.afficher_details').forEach(function(element){
+			element.addEventListener('click', function(evt){
+				if(document.querySelectorAll('details') == "none"){
+					evt.target.parentElement.style.display = "initial";
+				}
+				else {
+					evt.target.style.display = "none";
+				}
+			});
+		});
 	}	
 });
 

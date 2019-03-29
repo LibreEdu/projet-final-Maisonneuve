@@ -5,19 +5,20 @@
  *
  * @package  Vino
  * @author   José Ignacio Delgado
- * @author   Alexandre Pachot
  * @version  1.0
  */
-class Controleur_Bouteille_SAQ extends Controleur
+class Controleur_Liste_Achat extends Controleur
 {
 	/**
-	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
+	 * @var object $modele_liste Le modèle Modele_Liste.
+	 * @var object $modele_affichage Le modèle Modele_Affichage.
 	 */
-	private $modele_bouteille_saq;
+	private $modele_liste;
 	
 	public function __construct()
 	{
-		$this->modele_bouteille_saq = $this->modele('modele_bouteille_SAQ');
+		$this->modele_liste = $this->modele('modele_liste');
+		$this->modele_affichage = $this->modele('modele_affichage');
 	}
 
 	public function traite(array $params)
@@ -50,7 +51,7 @@ class Controleur_Bouteille_SAQ extends Controleur
 	public function saisie_semi_automatique()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
+		$listeBouteilles = $this->modele_liste->autocomplete($body->nom);
 		echo json_encode($listeBouteilles);
 	}
 
@@ -71,9 +72,13 @@ class Controleur_Bouteille_SAQ extends Controleur
 
 	public function ajouter_liste()
 	{
-		$this->modele_bouteille_saq->ajouter_liste();
-		echo '<script>alert("La liste d\'achats a été créée.")</script>';
-		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=1') );
+		$this->modele_liste->ajouter_liste();
+		echo '<script>alert("La liste a été créée.")</script>';
+		$donnees['listes'] = $this->modele_liste->obtenir_liste($_SESSION['id_usager']);
+		$donnees['noms'] = $this->modele_liste->obtenir_tous();
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/achat', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
 	}
-
 }
