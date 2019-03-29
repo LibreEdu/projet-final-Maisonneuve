@@ -52,13 +52,16 @@ class Modele_Cellier extends Modele
 
 
 	/**
-	 * Fonction qui supprime le cellier par son id
-	 * @param $id
-	 * @return $resultat
+	 * Supprime un cellier
+	 * 
+	 * @param integer $id_cellier
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
-	public function supprimer_par_id($id)
+	public function supprimer($id_cellier)
 	{
-		$resultat = $this->supprimer($id);
+		$resultat = $this->supprimer($id_cellier);
 		return $resultat;
 	}
 
