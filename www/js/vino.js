@@ -67,6 +67,15 @@ window.addEventListener('load', function() {
 					liste.innerHTML = '';	
 					var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
 					var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+					//ajouter un champ de recherche suplemetaire pour les recherche en numerique
+					
+					if (recherchePar.value === 'prix') {
+						var rechercheSpecifique = document.getElementById('recherchePlusSpecifique');
+						rechercheSpecifique.innerHTML += '<select>'
+						+ '<option valeur="plusGrandQue">plus grand que</option>'
+						+ '<option valeur="plusPetitQue">plus petit que</option>'
+						+ '</select>';
+					};
 					var params = {
 						'id_cellier':id_cellier,
 						'recherchePar':recherchePar.value,

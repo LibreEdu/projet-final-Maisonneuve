@@ -4,10 +4,7 @@
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 					<div class="mdl-textfield mdl-js-textfield">
 						Recherche par  
-						<select name="recherchePar">
-							<option value='boire_avant'>boire avant</option>							
-							<option value='code_SAQ'>code SAQ</option>
-							<option value='date_achat'>date d'achat</option>							
+						<select name="recherchePar">							
 							<option value='format'>format</option>	
 							<option value='millesime'>millesime</option>
 							<option value='nom'>nom</option>
@@ -16,6 +13,7 @@
 							<option value='quantite'>quantite</option>							
 							<option value='type'>type</option>																
 						</select>
+						<span id='recherchePlusSpecifique'></span>
 					</div>
 					<label class="mdl-button mdl-js-button mdl-button--icon" id="iconRecherche" for="btnRecherche">
 						<i class="material-icons">search</i>
