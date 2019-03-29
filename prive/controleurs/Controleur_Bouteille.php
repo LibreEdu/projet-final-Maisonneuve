@@ -116,16 +116,16 @@
 	public function boire_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_bouteille->modifierQuantite($body->id,-1);
-		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);	
+		$this->modele_bouteille->modifier_quantite($body->id,-1);
+		$resultat = $this->modele_bouteille->recuperer_quantite($body->id);	
 		echo json_encode($resultat);
 	}
 
 	public function ajouter_js()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_bouteille->modifierQuantite($body->id, 1);
-		$resultat = $this->modele_bouteille->recupererQuantiteBouteilleCellier($body->id);
+		$this->modele_bouteille->modifier_quantite($body->id, 1);
+		$resultat = $this->modele_bouteille->recuperer_quantite($body->id);
 		echo json_encode($resultat);
 	}
 
