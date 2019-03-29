@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ajax : voitures</title>
+	<script language="JavaScript">
+        function soumettre() { 
+            req = new XMLHttpRequest();
+
+            req.onreadystatechange = function()
+            { 
+                if(req.readyState == 4)
+                {
+                    document.getElementById("marque").innerHTML=req.responseText;
+                } 
+            }; 
+            req.open("GET", "3-marque.php", true); 
+            req.send(null); 
+        }
+
+        function marque() {
+            var marque = document.getElementById("marque2").value;
+            req = new XMLHttpRequest();
+
+            req.onreadystatechange = function()
+            { 
+                if(req.readyState == 4)
+                {
+                    document.getElementById("modele").innerHTML=req.responseText;
+                } 
+            }; 
+
+            req.open("POST", "3-modele.php", true); 
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.send("marque=" + marque);
+        }
+        soumettre();
+        </script>
+</head>
+<body>
+    <!-- <form name="ajax" method="POST" action="">
+        <input type="button" value="Récupérer les données"  onclick="soumettre()">
+    </form> -->
+    <div id="marque"></div>
+    <div id="modele"></div>
+</body>
+</html>
