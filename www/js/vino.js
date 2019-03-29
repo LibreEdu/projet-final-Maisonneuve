@@ -29,8 +29,8 @@ window.addEventListener('load', function() {
 	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
-			let id = evt.target.parentElement.dataset.id;
-			let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id": ' + id+ '}'});
+			let id_cellier = evt.target.parentElement.dataset.id_cellier;
+			let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id": ' + id_cellier + '}'});
 			fetch(requete)
 			.then(response => {
 				if (response.status === 200) {
