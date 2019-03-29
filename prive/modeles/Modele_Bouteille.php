@@ -73,22 +73,17 @@ class Modele_Bouteille extends Modele
 	 * Change la quantité de bouteilles.
 	 * 
 	 * @param int $id_bouteille Identifiant de la bouteille.
-	 * @param int $quantite Nombre de bouteille à ajouter ou à retirer
+	 * @param int $delta Nombre de bouteille à ajouter ou à retirer
 	 * 
-	 * @return Boolean Succès ou échec de l’ajout.
+	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
-	public function modifierQuantite($id_bouteille, $quantite)
+	public function modifier_quantite($id_bouteille, $delta)
 	{
-		//TODO : Valider les données.
-			
-			
-		$requete = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + '. $quantite. ', 0) WHERE id_bouteille = '. $id_bouteille;
-		//echo $requete;
-		$res = $this->requete($requete);
-		// var_dump($res);
-		// die();
+		$sql = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + ?, 0) WHERE id_bouteille = ?' ;
+		$donnees = array($delta, $id_bouteille);
+		$resultat = $this->requete($sql, $donnees);
 		
-		return $res;
+		return $resultat;
 	}
 
 	/**
