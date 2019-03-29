@@ -3,8 +3,8 @@
  * Permet de gérer les bouteilles des usagers.
  *
  * @package  Vino 
+ * @author   Fatemeh Homatash
  * @author   José Ignacio Delgado
- *.@author...Fatemeh Homatash
  * @author   Alexandre Pachot
  * @version  1.0
  */
@@ -21,15 +21,15 @@ class Modele_Bouteille extends Modele
 	}
 
 	/**
-	 * Fonction qui retourne la bouteille par son id
-	 * @param $id
-	 * @return $maBouteille
+	 * Retourne les données d’une bouteille.
+	 * @param integer $id Identifiants de la bouteille
+	 * @return array Les données d’une bouteille.
 	 */
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_bouteille');
-		$maBouteille = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-		return $maBouteille;
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		return $resultat->fetch();
 	}
 
 	/**
