@@ -1,23 +1,21 @@
 <?php
 /**
- * Permet de gérer les bouteilles de la SAQ.
- * 
- * @package  Vino 
+ * Permet de gérer les listes d'achat'.
+ *
+ * @package  Vino
  * @author   José Ignacio Delgado
- *.@author...Fatemeh Homatash
- * @author   Alexandre Pachot
  * @version  1.0
  */
-class Modele_Bouteille_SAQ extends Modele
+class Modele_Liste extends Modele
 {
 	public function getTableName()
 	{
-		return 'vino_bouteille_saq';
+		return 'vino_liste_achat';
 	}
 
 	public function getClePrimaire()
 	{
-		return 'id_bouteille_saq';
+		return 'id_liste_achat';
 	}
 
 	/**
@@ -75,6 +73,13 @@ class Modele_Bouteille_SAQ extends Modele
 		}
 	}
 
+	/**
+	 * Retourne le résultat de la recherche pour la fonction d’autocomplete
+	 * 
+	 * @param integer $id_usager L'i de l'usager connecté.
+	 * 
+	 * @return array tous les données de la bouteille dans la table bouteille SAQ
+	 */
 	public function obtenir_liste($id_usager)
 	{
 		$sql = 'SELECT b.code_saq,
@@ -83,6 +88,7 @@ class Modele_Bouteille_SAQ extends Modele
 				b.pays,
 				b.format,
 				b.nom,
+				a.id_liste_achat,
 				t.type
 				FROM vino_bouteille_saq b
 				INNER JOIN vino_type t
@@ -94,17 +100,20 @@ class Modele_Bouteille_SAQ extends Modele
 					AND l.id_liste_achat = a.id_liste_achat
 				ORDER BY l.nom';
 		$resultat = $this->requete($sql);
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_bouteille_SAQ');
 
 		return $listes;
 	}
 
-	public function obtenir_noms()
+	/**
+	 * Retourne tous les listes d'achat'
+	 * 
+	 * @return array Les données de la table des listes d'achat.
+	 */
+	public function obtenir_tous()
 	{
-		$sql = 'SELECT * FROM vino_liste_achat';
-		$resultat = $this->requete($sql);
-		$noms = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-
-		return $noms;
+		$resultat = $this->lireTous();
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Liste');
+		return $listes;
 	}
 }

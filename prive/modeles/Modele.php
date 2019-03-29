@@ -12,7 +12,7 @@ abstract class Modele
 	/**
 	 * @var object $object Connexion à la base de données
 	 */
-	private $bd;
+	protected $bd;
 
 
 	/**

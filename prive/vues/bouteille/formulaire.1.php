@@ -4,7 +4,7 @@
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">		
 		<div class="mdl-card__title">	
-			<h2 class="mdl-card__title-text">Mes listes d'achat</h2>		
+			<h2 class="mdl-card__title-text">Créer une liste d'achat</h2>		
 		</div>
 		<div class="mdl-card__supporting-text">
 			<div class="mdl-textfield mdl-js-textfield">
@@ -15,7 +15,7 @@
 			</div>
 			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
-					Nom de liste d'achats : 
+					Nom de la liste d'achat : 
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" required="required">
 				</div>
 				<div id="mes_achats">
