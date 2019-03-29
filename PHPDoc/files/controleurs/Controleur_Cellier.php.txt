@@ -88,7 +88,7 @@ class Controleur_Cellier extends Controleur
 		}
 
 		$resultat = $this->modele_cellier->obtenir_par_id($_GET['id_cellier']);
-		$donnees['bouteilles'] = $this->modele_bouteille->obtenir_par_id_t($_GET['id_cellier']);
+		$donnees['bouteilles'] = $this->modele_bouteille->bouteilles_cellier($_GET['id_cellier']);
 		$monCellier = $resultat[0];
 		$donnees['cellier'] = $monCellier->nom;
 

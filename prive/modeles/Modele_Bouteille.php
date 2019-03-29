@@ -30,6 +30,7 @@ class Modele_Bouteille extends Modele
 	{
 		$resultat = $this->lire($id_bouteille, 'id_bouteille');
 		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+
 		return $resultat->fetch();
 	}
 
@@ -37,7 +38,7 @@ class Modele_Bouteille extends Modele
 	/**
 	 * Récupère les données des bouteilles d’un cellier.
 	 * 
-	 * @param int $id_cellier Identifiant du cellier.
+	 * @param integer $id_cellier Identifiant du cellier.
 	 * 
 	 * @return array Les données des bouteilles d’un cellier.
 	 */
@@ -64,7 +65,8 @@ class Modele_Bouteille extends Modele
 			ORDER BY id_bouteille';
 		$donnees = array($id_cellier);
 		$resultat = $this->requete($sql, $donnees);
-		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');	
+		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+
 		return $bouteilles;
 	}
 
@@ -72,8 +74,8 @@ class Modele_Bouteille extends Modele
 	/**
 	 * Change la quantité de bouteilles.
 	 * 
-	 * @param int $id_bouteille Identifiant de la bouteille.
-	 * @param int $delta Nombre de bouteille à ajouter ou à retirer
+	 * @param integer $id_bouteille Identifiant de la bouteille.
+	 * @param integer $delta Nombre de bouteille à ajouter ou à retirer
 	 * 
 	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
@@ -86,24 +88,26 @@ class Modele_Bouteille extends Modele
 		return $resultat;
 	}
 
-	/**
-	 * Cette méthode récupére la quantité d’une bouteille en particulier dans le cellier
-	 * 
-	 * @param int $id id  cellier_bouteille 
-	 * 
-	 * @return $laBouteille la ligne de la quantité de la bouteille en question.
-	 */
-	public function recupererQuantiteBouteilleCellier($id)
-	{
-		
-		//Requete qui récupére la quantité d’une bouteille en particulier
-		$requete = 'SELECT quantite FROM vino_bouteille WHERE id_bouteille = '. $id;
-		$resultat = $this->requete($requete);
 
+	/**
+	 * Récupère la quantité de bouteilles.
+	 * 
+	 * @param integer $id_bouteille Identifiant de la bouteille.
+	 * 
+	 * @return object Les données d’une bouteille.
+	 */
+	public function recuperer_quantite($id_bouteille)
+	{
+		//Requete qui récupére la quantité d’une bouteille en particulier
+		$sql = 'SELECT quantite FROM vino_bouteille WHERE id_bouteille = ? ';
+		$donnees = array($id_bouteille);
+		$resultat = $this->requete($sql, $donnees);
 		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-		$laBouteille = $resultat->fetchALL();
-		return $laBouteille;    
+
+		return $resultat->fetch();
 	}
+
+
 
 	/**
 	 * Fonction qui modifie la bouteille
