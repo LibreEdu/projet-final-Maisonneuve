@@ -59,7 +59,7 @@ class Modele_Cellier extends Modele
 	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
-	public function supprimer($id_cellier)
+	public function supprimer_par_id($id_cellier)
 	{
 		$resultat = $this->supprimer($id_cellier);
 		return $resultat;
@@ -91,5 +91,5 @@ class Modele_Cellier extends Modele
 		// Récupère le résultat sous forme d’un objet
 		$result = $resultat->fetch(PDO::FETCH_OBJ);
 		return $result;
-	}	
+	}
 }
