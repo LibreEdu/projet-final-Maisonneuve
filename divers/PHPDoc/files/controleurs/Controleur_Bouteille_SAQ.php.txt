@@ -39,7 +39,9 @@ class Controleur_Bouteille_SAQ extends Controleur
 			case 'ajouter_liste':
 				$this->ajouter_liste();
 				break;
-
+			case 'recherche':
+				$this->recherche();
+				break;
 			default :
 				trigger_error('Action invalide.');
 		}
@@ -49,6 +51,13 @@ class Controleur_Bouteille_SAQ extends Controleur
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$listeBouteilles = $this->modele_bouteille_saq->autocomplete($body->nom);
+		echo json_encode($listeBouteilles);
+	}
+
+	public function recherche()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur);
 		echo json_encode($listeBouteilles);
 	}
 
