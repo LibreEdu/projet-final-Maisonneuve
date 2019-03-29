@@ -22,6 +22,7 @@ class Controleur_Login extends Controleur
 	public function __construct()
 	{
 		$this->modele_usager = $this->modele('modele_usager');
+		$this->modele_cellier = $this->modele('modele_cellier');
 	}
 
 	public function traite(array $params)
@@ -129,20 +130,27 @@ class Controleur_Login extends Controleur
 	{
 		//$donnees['usager'] = $this->modele_usager->obtenir_tous();
 		$idUsager= $_SESSION['id_usager'];
+		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
 
-		if ($idUsager == null) {
+		if ($idUsager != $_GET['id']) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		
-		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
-		$donnees['titre'] = 'Modifier Votre compte';
-		$donnees['actionBouton'] = 'modifier';
-		$donnees['titreBouton'] = 'Modifier l’usager';
-		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
+		//$id_usager2 = $this->modele_usager->appartient($_GET['id'],$_SESSION['id_usager']);
+		// if ( isset($_SESSION['id_usager']) )
+		// {
+		 // $donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
+		// $donnees['titre'] = 'Modifier Votre compte';
+		// $donnees['actionBouton'] = 'modifier';
+		// $donnees['titreBouton'] = 'Modifier l’usager';
+		// $donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('login/formulaire-modification', $donnees);
 		$this->afficheVue('modeles/bas-de-page');
+		// }
+		// else{
+		// 	header('Location: ' . site_url('login&action=logout') );
+		// }
 	}
 
 	/**
@@ -156,59 +164,74 @@ class Controleur_Login extends Controleur
 		if ($idUsager == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
-		$donnees['titre'] = 'Modifier Votre compte';
-		$donnees['actionBouton'] = 'modifier';
-		$donnees['titreBouton'] = 'Modifier l’usager';
-		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
-
-		$messageErreur='';
-		if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']))
+		if ( isset($_SESSION['id_usager']) )
 		{
-			 // var_dump($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']));die;
-			$messageErreur = $this->valideFormModification($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
-			//Si l'usger est le même et le mot de passe corespond à celui dana la base de données
-			if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
-			{
 
-				if($messageErreur == '')
+			$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
+		
+			$messageErreur='';
+			if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']))
+			{
+				  
+				$messageErreur = $this->valideFormModification($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
+				//Si l'usger est le même et le mot de passe corespond à celui dana la base de données
+				if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
 				{
-					// Procéder à la modification dans la table vino_usager
-					$this->modele_usager->modifier();
-					//echo '<script>alert("Les informations ont été modifier.")</script>';
-					
-					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('modeles/menu-usager');
-					$this->afficheVue('login/formulaire-modification', $donnees);
-					$this->afficheVue('modeles/bas-de-page');
+
+					if($messageErreur == '')
+					{
+						// Procéder à la modification dans la table vino_usager
+						$this->modele_usager->modifier();
+						//$donnees['usager'][0]
+						$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
+						//var_dump($donnees);
+						 //$user = $this->modele_usager->obtenirUsager($_REQUEST['courriel']);
+				// Mets le'id de l’usager dans la variable session idUsager,
+						$_SESSION['courriel'] = $donnees['usager'][0]->courriel;
+						$_SESSION['nom'] = $donnees['usager'][0]->nom;
+						$_SESSION['prenom'] = $donnees['usager'][0]->prenom;
+						
+						//echo '<script>alert("Les informations ont été modifier.")</script>';
+						// echo '<script>document.location.reload(true)</script>';
+						
+						$this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/menu-usager');
+						$this->afficheVue('login/formulaire-modification', $donnees);
+						//echo '<script>document.location.reload()</script>';
+						
+						// header('Location: ' . site_url( 'cellier' ));
+						//$this->afficheVue('cellier/liste', $donnees);
+						$this->afficheVue('modeles/bas-de-page');
+					}
+					else
+					{//Affichage de la page form-modification avec l'erreurr
+						$this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/menu-usager');
+						$this->afficheFormModification($messageErreur,$donnees);
+						$this->afficheVue('modeles/bas-de-page');
+					}
 				}
 				else
-				{//Affichage de la page form-modification avec l'erreurr
+				{
+					$messageErreur = "Le mot de passe n'est pas valide";
+					// On affiche la page form-modification avec l'erreur
+					$donnees['erreurs'] = $messageErreur;
 					$this->afficheVue('modeles/en-tete');
 					$this->afficheVue('modeles/menu-usager');
 					$this->afficheFormModification($messageErreur,$donnees);
 					$this->afficheVue('modeles/bas-de-page');
-				}
+
+				} 
 			}
 			else
 			{
-				$messageErreur = 'Le mot de passe doit être identique au votre';
-				// On affiche la page form-modification avec l'erreur
-				$donnees['erreurs'] = $messageErreur;
-				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-usager');
-				$this->afficheFormModification($messageErreur,$donnees);
-				$this->afficheVue('modeles/bas-de-page');
-
-			} 
+				$messageErreur = 'Paramètres invalides.';
+			}
 		}
-		else
-		{
-			$messageErreur = 'Paramètres invalides.';
+		else{
+			header('Location: ' . site_url('login&action=logout') );
 		}
 	}
-
-
 
 	/**
 	 * Foncton inscrire qui gére l'inscription d'un nouvel usager
@@ -295,15 +318,6 @@ class Controleur_Login extends Controleur
 		// Récupére la liste des usagers
 		$donnees['usager'] = $this->modele_usager->obtenir_tous();
 		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
-		 //var_dump($donnees['usager']);die;
-		// $donnees['types'] = $this->modele_type->obtenir_tous();
-		// $donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
-		$donnees['titre'] = 'Modifier Votre compte';
-		$donnees['actionBouton'] = 'modifier';
-		$donnees['titreBouton'] = 'Modifier l’usager';
-		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
-
-		// Remplir le tableau erreurs
 		$donnees['erreurs'] = $erreurs;
 		// Afficher le formulaire du login
 		$this->afficheVue('login/formulaire-modification', $donnees);
@@ -314,7 +328,7 @@ class Controleur_Login extends Controleur
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2)
+	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2,$mdp3='')
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';

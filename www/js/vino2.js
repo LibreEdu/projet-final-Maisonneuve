@@ -13,9 +13,9 @@ var vino = (function(){
 	 *     vino.ajouterCellier();
 	 * }, false);
 	 */
-	obj.ajouterCellier = function() {
-		window.location = 'index.php?cellier&action=ajouter-form';
-	}
+	// obj.ajouterCellier = function() {
+	// 	window.location = 'index.php?cellier&action=ajouter-form';
+	// }
 
 	return obj;
 

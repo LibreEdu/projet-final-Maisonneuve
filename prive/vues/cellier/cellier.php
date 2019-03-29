@@ -4,23 +4,22 @@
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 					<div class="mdl-textfield mdl-js-textfield">
 						Recherche par  
-						<select name="recherchePar">
-							<option value='nom'>nom</option>
-							<option value='code_SAQ'>code SAQ</option>
-							<option value='prix'>prix</option>
+						<select id="recherchePar">
+							<option value='' disabled selected style='display:none;'>-- selectionner --</option>
 							<option value='millesime'>millesime</option>
-							<option value='type'>type</option>
+							<option value='nom'>nom</option>
 							<option value='pays'>pays</option>
-							<option value='format'>format</option>	
+							<option value='prix'>prix</option>	
+							<option value='quantite'>quantite</option>							
+							<option value='type'>type</option>																
 						</select>
-					</div>
-					<label class="mdl-button mdl-js-button mdl-button--icon" id="iconRecherche" for="btnRecherche">
-						<i class="material-icons">search</i>
-					</label>
-					<div class="mdl-textfield__expandable-holder">						
-						<input class="mdl-textfield__input" type="search" id="btnRecherche" name="nom_bouteille"/>
-						<label class="mdl-textfield__label" for="btnRecherche">Recherche</label>
-					</div>
+						<select id="rechercheSpecifique" style='visibility: hidden;'>
+							<option value='' disabled selected style='display:none;'>-- selectionner --</option>							
+							<option value=">=">plus grand ou égale</option>
+							<option value="<=">plus petit ou égale</option>
+						</select>
+					</div>										
+					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="nom_bouteille" style="visibility: hidden;"/>					
 					<ul class="rechercheParr"></ul>
 					<ul class="autoComplete"></ul>
 				</div>

@@ -118,6 +118,19 @@ class Modele_Usager extends Modele
 	 */
 	public function modifier()
 	{
+		if (trim($_POST['mdp2']) == "") {
+			$sql = 'UPDATE vino_usager 
+			SET courriel=?,
+				nom=?,
+				prenom=?
+			WHERE id_usager=?';
+			
+		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'],$_POST['id_usager']);
+
+		$resultat = $this->requete($sql, $donnees);
+		}
+		else
+		{
 		$sql = 'UPDATE vino_usager 
 			SET courriel=?,
 				nom=?,
@@ -128,5 +141,6 @@ class Modele_Usager extends Modele
 		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'], password_hash($_POST['mdp2'], PASSWORD_DEFAULT),$_POST['id_usager']);
 
 		$resultat = $this->requete($sql, $donnees);
+		}
 	}
 }
