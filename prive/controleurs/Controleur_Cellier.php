@@ -131,7 +131,7 @@ class Controleur_Cellier extends Controleur
 	public function supprimer()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_cellier->supprimer($body->id);
+		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
 	}	
 }
