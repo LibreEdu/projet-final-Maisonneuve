@@ -57,7 +57,7 @@ class Controleur_Bouteille_SAQ extends Controleur
 	public function recherche()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur);
+		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
 		echo json_encode($listeBouteilles);
 	}
 

@@ -55,21 +55,19 @@ class Modele_Bouteille_SAQ extends Modele
 		return $listeBouteilles;
 	}
 
-	public function recherche($id_cellier, $recherchePar, $valeur, $nb_resultat=10)
+	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
 	{		
 		$listeBouteilles = Array();
-		$recherchePar = preg_replace('/\*/','%' , $recherchePar);
 		$valeur = preg_replace('/\*/','%' , $valeur);
-		if ($recherchePar=='nom' || $recherchePar=='pays') {
+		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
 			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
 		}
-		elseif ($recherchePar=='quantite' || $recherchePar=='prix' || $recherchePar=='format' || $recherchePar=='code_saq' || $recherchePar=='millesime') {
-			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND LOWER('.$recherchePar.') like '.$valeur;
+		elseif ($recherchePar=='millesime' || $recherchePar=='prix' || $recherchePar=='quantite') {
+			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND '.$recherchePar.$operation.$valeur;
 		}
 		$donnees=array($id_cellier);
 		$requete = $this->requete($sql, $donnees);
 		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-
 		foreach($bouteilles as $bouteille) {
 			$uneBouteille = array();
 			$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
