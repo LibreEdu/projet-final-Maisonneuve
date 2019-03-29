@@ -5,13 +5,16 @@
 					<div class="mdl-textfield mdl-js-textfield">
 						Recherche par  
 						<select name="recherchePar">
-							<option value='nom'>nom</option>
+							<option value='boire_avant'>boire avant</option>							
 							<option value='code_SAQ'>code SAQ</option>
-							<option value='prix'>prix</option>
-							<option value='millesime'>millesime</option>
-							<option value='type'>type</option>
-							<option value='pays'>pays</option>
+							<option value='date_achat'>date d'achat</option>							
 							<option value='format'>format</option>	
+							<option value='millesime'>millesime</option>
+							<option value='nom'>nom</option>
+							<option value='pays'>pays</option>
+							<option value='prix'>prix</option>	
+							<option value='quantite'>quantite</option>							
+							<option value='type'>type</option>																
 						</select>
 					</div>
 					<label class="mdl-button mdl-js-button mdl-button--icon" id="iconRecherche" for="btnRecherche">
