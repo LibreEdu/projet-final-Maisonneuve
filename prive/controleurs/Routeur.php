@@ -46,14 +46,14 @@ class Routeur
 		// Si le contrôleur existe
 		if(class_exists($controleur))
 		{
+			require_once('Fonctions.php');
+
 			// Crée une nouvelle instance de la classe
 			$objetControleur = new $controleur;
 
 			// Si l’objet est instancié d’une classe qui hérite de BaseControleur
 			if($objetControleur instanceof Controleur)
 			{
-				require_once('Fonctions.php');
-
 				// Traite la requête
 				$objetControleur->traite($_REQUEST);
 			}
