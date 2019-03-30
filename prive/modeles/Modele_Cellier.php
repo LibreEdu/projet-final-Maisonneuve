@@ -4,7 +4,6 @@
  *
  * @package  Vino 
  *.@author   Fatemeh Homatash
- * @author   Alexandre Pachot
  *.@author   Charef Eddine Yagoubi
  * @version  1.0
  */

@@ -5,7 +5,6 @@
  * 
  * @package  Vino
  * @author   Charef Eddine Yagoubi
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Controleur_Login extends Controleur

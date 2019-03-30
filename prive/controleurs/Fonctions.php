@@ -1,6 +1,7 @@
 <?php
 /**
  * @package  Vino
+ * @author   Alexandre Pachot
  * @version  1.0
  */
 
