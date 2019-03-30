@@ -5,7 +5,6 @@
  *
  * @package  Vino
  * @author   Fatemeh Homatash
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Controleur_Cellier extends Controleur
