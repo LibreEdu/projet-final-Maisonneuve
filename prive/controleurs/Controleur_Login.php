@@ -97,7 +97,7 @@ class Controleur_Login extends Controleur
 		// Si je suis connecté en tant qu'administrateur
 		if ( isset($_SESSION['admin']) && $_SESSION['admin'] == true )
 		{
-			header('Location: ' . site_url('admin') );
+			header('Location: ' . site_url('importation') );
 		// Si je suis connecté en tant qu'usager
 		} elseif ( isset($_SESSION['id_usager']) && $_SESSION['id_usager'] == true )
 		{
