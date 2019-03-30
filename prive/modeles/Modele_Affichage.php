@@ -42,5 +42,5 @@ class Modele_Affichage extends Modele
 		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Affichage');
 
 		return $listes;
-	}	
+	}
 }

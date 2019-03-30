@@ -12,9 +12,6 @@
 					<div class="mdl-card__actions">
 						<p>
 						<form method="POST" action='index.php?admin&action=importer'>
-							<div class="mdl-textfield mdl-js-textfield">
-								Nombre de bouteilles à importer : <input class="mdl-textfield__input" type="number" min="1" name="nbBouteilles" required="required">
-							</div>
 							<div>
 								<input type="submit" value="Importer" class="mdl-button mdl-js-button mdl-button--raised">
 							</div>

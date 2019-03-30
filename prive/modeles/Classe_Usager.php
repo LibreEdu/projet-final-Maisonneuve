@@ -9,7 +9,7 @@ class Classe_Usager
 {
 	public $id_usager;
 	public $admin;
-	public $courriel;		
+	public $courriel;
 	public $nom;
 	public $prenom;
 	public $mot_de_passe;
@@ -21,6 +21,6 @@ class Classe_Usager
 		$this->courriel = $courriel;
 		$this->nom = $nom;
 		$this->prenom = $prenom;
-		$this->mot_de_passe = $mot_de_passe;			
+		$this->mot_de_passe = $mot_de_passe;
 	}
 }
