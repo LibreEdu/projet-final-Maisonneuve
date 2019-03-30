@@ -262,7 +262,7 @@ class Controleur_Login extends Controleur
 			} else
 			{//Affichage de la page login avec l'erreur
 				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-admin');
+				$this->afficheVue('modeles/menu-login');
 				$this->afficheFormInscription($messageErreur);
 				$this->afficheVue('modeles/bas-de-page');
 			} 
