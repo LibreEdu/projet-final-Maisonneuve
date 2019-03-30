@@ -4,8 +4,6 @@
  *
  * @package  Vino
  * @author   Alexandre Pachot
- * @author   Charef Eddine Yagoubi 
- * @author   José Ignacio Delgado
  * @version  1.0
  */
 class Modele_Type extends Modele
