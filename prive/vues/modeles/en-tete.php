@@ -29,13 +29,3 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,500i,700" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<script>
-			// Gestionnaire d’évènements
-			/*window.addEventListener("load", () =>
-			{
-				// document.getElementById("btnAjouterCellier").addEventListener("click", ()=>
-				// {
-				// 	vino.ajouterCellier();
-				// }, false);
-			}, false)*/
-		</script>
