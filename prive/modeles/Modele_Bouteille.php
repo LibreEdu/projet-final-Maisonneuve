@@ -5,7 +5,6 @@
  * @package  Vino 
  * @author   Fatemeh Homatash
  * @author   José Ignacio Delgado
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Modele_Bouteille extends Modele
