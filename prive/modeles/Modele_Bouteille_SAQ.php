@@ -134,4 +134,18 @@ class Modele_Bouteille_SAQ extends Modele
 
 		return $noms;
 	}
+
+
+	/**
+	 * Retourne le nombre d’enregistrements de la table.
+	 * 
+	 * @return string Le nombre d’enregistrements de la table.
+	 */
+	public function obtenir_total()
+	{
+		$resultat = $this->total();
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Total');
+		$nbBouteilles = $resultat->fetch();
+		return $nbBouteilles->total;
+	}
 }
