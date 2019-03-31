@@ -10,9 +10,9 @@
 final class Controleur_Importation extends Controleur
 {
 	/**
-	 * @var object $_log Fichier de log.
+	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
 	 */
-	private $_log;
+	private $modele_bouteille_saq;
 
 
 	/**
@@ -26,12 +26,10 @@ final class Controleur_Importation extends Controleur
 	 */
 	private $_page_web;
 
-
 	/**
-	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
+	 * @var string $_nb_bouteilles_SAQ Nombre de bouteilles SAQ à importer.
 	 */
-	private $modele_bouteille_saq;
-
+	private $_nb_bouteilles_SAQ;
 
 	/**
 	 * Vérification des droits d’administration et initialisation de l’attribut.
@@ -42,9 +40,6 @@ final class Controleur_Importation extends Controleur
 	{
 		// Initialisation du modèle Bouteille SAQ.
 		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
-
-		// Déclaration du fichier de log.
-		$this->_log = new Log('admin');
 
 		// Vérification que la personne a bien les droits d’administration.
 		$this->est_admin();
@@ -62,7 +57,7 @@ final class Controleur_Importation extends Controleur
 	 * @return void
 	 */
 	private function est_admin() {
-		// Pour que la personne soit admin,
+		// Pour se connecter en tant qu’admin,
 		// il faut d’une part qu’il existe une variable de session qui s’appelle admin
 		// et d’autre part que cette variable soit à Vrai.
 		if ( ! ( isset($_SESSION['admin']) && $_SESSION['admin'] == true) )
@@ -71,8 +66,9 @@ final class Controleur_Importation extends Controleur
 			$id_usager = (isset($_SESSION['id_usager'])) ? $_SESSION['id_usager'] : 'personne non connectée';
 
 			// On garde une trace de la tentative d’effraction.
-			$message_erreur = "Tentative de connexion. Id_usager = $id_usager\n";
-			$this->_log->ecriture($message_erreur);
+			$log = new Log('admin');
+			$message_log = "Tentative de connexion. Id_usager = $id_usager";
+			$log->ecrire($message_log);
 
 			// Redirection vers la page de déconnexion
 			header('Location: ' . site_url('login&action=logout') );
@@ -104,16 +100,16 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
-	 * Affichage de la page par défaut.
+	 * Affiche la page d’administration.
 	 * 
 	 * @return void
 	 */
-	public function index()
+	private function index()
 	{
 		$donnees['prenom'] = $_SESSION['prenom'];
-
+		$donnees['nbBouteillesBD'] = $this->modele_bouteille_saq->obtenir_total();
+		$donnees['nbBouteillesWeb'] =  $this->nbBouteillesWeb();
 		$this->afficheVue('admin/une-page', $donnees);
-
 	}
 
 
@@ -121,14 +117,12 @@ final class Controleur_Importation extends Controleur
 	{
 		// echo 'coucou';
 
-		$nbBouteilles = $this->modele_bouteille_saq->obtenir_total();
-		var_dump($nbBouteilles);
-		die;
-		$this->curl();
-		var_dump($this->_page_web);
+		
+		// var_dump($this->_page_web);
+		// $aa = $this->nbBouteillesWeb();
 		// var_dump($_POST);
 		// $import = $this->getProduits(0, 10);
-		// var_dump($import);
+		// var_dump($aa);
 	}
 
 
@@ -160,37 +154,64 @@ final class Controleur_Importation extends Controleur
 		curl_close($gc);
 	}
 
+	private function nbBouteillesWeb() {
+		$this->curl();
 
-	// public function getProduits($debut = 0, $nombre = 100) {
-	// 	$doc = new DOMDocument();
+		$xml = new DOMDocument();
 
-	// 	// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
-	// 	$doc->recover = true;
+		// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
+		$xml->recover = true;
 
-	// 	// Ne lance pas une DOMException en cas d’erreur.
-	// 	$doc->strictErrorChecking = false;
+		// Ne lance pas une DOMException en cas d’erreur.
+		$xml->strictErrorChecking = false;
 
-	// 	// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
-	// 	// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
-	// 	@$doc->loadHTML(self::$_pageweb);
+		// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
+		// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
+		@$xml->loadHTML($this->_page_web);
 
-	// 	// Recherche tous les éléments qui ont une balise <div>
-	// 	$elements = $doc->getElementsByTagName('div');
+		// Recherche tous les éléments qui ont une balise <div>
+		$titre = $xml->getElementsByTagName('h1');
 
-	// 	$nombreDeProduits = 0;
+		// Il y a un seul 'h1', on récupère ses 'span'
+		$elementLigne = $titre[0]->getElementsByTagName('span');
 
-	// 	foreach ($elements as $noeud) {
-	// 		if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
-	// 			$info = self::recupereInfo($noeud);
-	// 			//var_dump($info);
-	// 			$retour = $this->ajoutProduit($info);
-	// 			if ($retour->succes == false) {
-	// 				$retour->raison;
-	// 			} else {
-	// 				$nombreDeProduits++;
-	// 			}
-	// 		}
-	// 	}
-	// 	return $nombreDeProduits;
-	// }
+		// On récupère le troisième span et on recherche les chiffres
+		preg_match("/\D*(\d*)\D*/", $elementLigne[2]->textContent, $nbBouteilles);
+
+		// Le première élément est la chaine initial, le deuxième est la correspondance
+		return $nbBouteilles[1];
+	}
+
+	public function getProduits($debut = 0, $nombre = 100) {
+		$doc = new DOMDocument();
+
+		// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
+		$doc->recover = true;
+
+		// Ne lance pas une DOMException en cas d’erreur.
+		$doc->strictErrorChecking = false;
+
+		// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
+		// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
+		@$doc->loadHTML(self::$_pageweb);
+
+		// Recherche tous les éléments qui ont une balise <div>
+		$elements = $doc->getElementsByTagName('div');
+
+		$nombreDeProduits = 0;
+
+		foreach ($elements as $noeud) {
+			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
+				$info = self::recupereInfo($noeud);
+				//var_dump($info);
+				$retour = $this->ajoutProduit($info);
+				if ($retour->succes == false) {
+					$retour->raison;
+				} else {
+					$nombreDeProduits++;
+				}
+			}
+		}
+		return $nombreDeProduits;
+	}
 }
