@@ -6,6 +6,7 @@
 		<meta name="description" content="Page d’administration de Vino">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<title>Vino admin</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/material.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/vino-admin.css">
@@ -40,9 +41,9 @@
 		</div>
 		<div class="vino-content mdl-layout__content">
 		<a name="haut_de_page"></a>
-		<div class="vino-be-together-section mdl-typography--text-center">
-			<div class="logo-font vino-slogan">Bonjour <?php echo $donnees['prenom'] ?></div>
-			<div class="logo-font vino-sub-slogan">Bienvenue à Vino administration</div>
+		<div class="vino-section-bienvenue mdl-typography--text-center">
+			<div class="bienvenue-police vino-slogan">Bonjour <?php echo $donnees['prenom'] ?></div>
+			<div class="bienvenue-police vino-sub-slogan">Bienvenue à Vino administration</div>
 			<a href="#importation">
 				<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 					<i class="material-icons">expand_more</i>

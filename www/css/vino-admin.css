@@ -144,20 +144,26 @@ a img{
 	bottom: 16px;
 }
 
-.vino-be-together-section {
-  position: relative;
-  height: 800px;
-  width: auto;
-  background-color: #f3f3f3;
-  background: url('images/slide01.jpg') center 30% no-repeat;
-  background-size: cover;
+
+/* Section Bienvenue */
+.vino-section-bienvenue {
+	position: relative;
+	height: 800px;
+	width: auto;
+	background-color: #ffffff;
+	background: linear-gradient(
+		rgba(255, 255, 255, 1), 
+		rgba(218, 179, 255, 0.9),
+		rgba(255, 255, 255, 1)
+		), url('../images/diapo.jpg') center 30% no-repeat;
+	background-size: cover;
 }
 
-.logo-font {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  line-height: 1;
-  color: #767777;
-  font-weight: 500;
+.bienvenue-police {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	line-height: 1;
+	color: #4d004d;
+	font-weight: 500;
 }
 
 .vino-slogan {
@@ -440,9 +446,9 @@ a img{
 
 /**** Mobile layout ****/
 @media (max-width: 900px) {
-  .vino-navigation-conteneur {
-    display: none;
-  }
+	.vino-navigation-conteneur {
+		display: none;
+	}
 
   .vino-title {
     display: none !important;
@@ -454,14 +460,6 @@ a img{
     left: calc(50% - 70px);
     top: 12px;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
-     consecutive "+" operators in some cases. Therefore, we need to use both
-     here to cover all the bases. */
-  .vino.vino-search-box.is-focused ~ .vino-logo-cell,
-  .vino-search-box.is-focused + .vino-navigation-conteneur + .vino-logo-cell {
-    opacity: 0;
   }
 
   .vino-more-button {
@@ -476,9 +474,9 @@ a img{
     width: 100%;
   }
 
-  .vino-be-together-section {
-    height: 350px;
-  }
+	.vino-section-bienvenue {
+		height: 350px;
+	}
 
   .vino-slogan {
     font-size: 26px;
