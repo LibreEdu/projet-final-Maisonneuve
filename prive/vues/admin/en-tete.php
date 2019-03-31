@@ -18,11 +18,11 @@
 						<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 					</span>
 					<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->
-					<div class="android-header-spacer mdl-layout-spacer"></div>
+					<div class="mdl-layout-spacer"></div>
 					<!-- Barre de navigation -->
 					<div class="vino-navigation-conteneur">
 						<nav class="vino-navigation mdl-navigation">
-							<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Déconnexion</a>
+							<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 						</nav>
 					</div>
 					<span class="vino-logo-cell mdl-layout-title">
@@ -35,13 +35,13 @@
 					<img class="vino-logo-image" src="images/vino-logo-blanc.png">
 				</span>
 				<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="">Déconnexion</a>
+					<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 				</nav>
 			</div>
 			<div class="android-content mdl-layout__content">
 				<a name="haut_de_page"></a>
 				<div class="android-be-together-section mdl-typography--text-center">
-					<div class="logo-font android-slogan">Bonjour Alexandre</div>
+					<div class="logo-font android-slogan">Bonjour <?php echo $donnees['prenom'] ?></div>
 					<div class="logo-font android-sub-slogan">Bienvenue à Vino administration</div>
 					<a href="#importation">
 						<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">

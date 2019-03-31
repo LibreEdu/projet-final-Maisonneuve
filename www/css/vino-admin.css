@@ -122,14 +122,14 @@ a img{
 }
 
 
-/* Liens du menu latétal */
+/* Liens du menu latéral */
 .vino-lateral .mdl-navigation__link.mdl-navigation__link {
 	font-size: 14px;
 	color: #7b1fa2;
 }
 
 
-/* Titre du menu latétal */
+/* Titre du menu latéral */
 .vino-lateral .mdl-layout-title {
 	position: relative;
 	background: #7b1fa2;
