@@ -5,7 +5,6 @@
  * 
  * @package  Vino
  * @author   Charef Eddine Yagoubi
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Controleur_Login extends Controleur
@@ -98,7 +97,7 @@ class Controleur_Login extends Controleur
 		// Si je suis connecté en tant qu'administrateur
 		if ( isset($_SESSION['admin']) && $_SESSION['admin'] == true )
 		{
-			header('Location: ' . site_url('admin') );
+			header('Location: ' . site_url('importation') );
 		// Si je suis connecté en tant qu'usager
 		} elseif ( isset($_SESSION['id_usager']) && $_SESSION['id_usager'] == true )
 		{
@@ -274,7 +273,7 @@ class Controleur_Login extends Controleur
 			} else
 			{//Affichage de la page login avec l'erreur
 				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-admin');
+				$this->afficheVue('modeles/menu-login');
 				$this->afficheFormInscription($messageErreur);
 				$this->afficheVue('modeles/bas-de-page');
 			} 

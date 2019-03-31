@@ -7,8 +7,38 @@
  * @author   Alexandre Pachot
  * @version  1.0
  */
-class Controleur_Admin extends Controleur
+final class Controleur_Admin extends Controleur
 {
+	/**
+	 * @var string $url_SAQ URL de la SAQ qui sert à l’importation des bouteilles.
+	 */
+	private $_url_SAQ;
+
+
+	/**
+	 * @var string $_page_web Page web récupérée par le client URL curl.
+	 */
+	private $_page_web;
+
+
+	/**
+	 * Initialisation de l’attribut
+	 * 
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->url_SAQ = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin';
+	}
+
+
+	/**
+	 * Récupère la requête de l’utilisateur afin de la traiter.
+	 * 
+	 * @param array $params Requête de l'utilisateur ($_REQUEST).
+	 * 
+	 * @return void
+	 */
 	public function traite(array $params)
 	{
 		if ( ! ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true) )
@@ -28,6 +58,12 @@ class Controleur_Admin extends Controleur
 		}
 	}
 
+
+	/**
+	 * Affichage de la page par défaut.
+	 * 
+	 * @return void
+	 */
 	public function index()
 	{
 		$donnees['prenom'] = $_SESSION["prenom"];
@@ -39,17 +75,29 @@ class Controleur_Admin extends Controleur
 
 	public function importer()
 	{
+		echo 'coucou';
+
+		$this->curl();
+		var_dump($this->_page_web);
 		// var_dump($_POST);
-		$import = $this->getProduits(0, 10);
-		var_dump($import);
+		// $import = $this->getProduits(0, 10);
+		// var_dump($import);
 	}
 
-	public function getProduits($debut = 0, $nombre = 100) {
+	/**
+	 * Récupère les données HTML de la page Résultat de recherche de la SAQ.
+	 * 
+	 * @param integer $debut Index de la première bouteille récupérée.
+	 * @param integer $quantite Quantité de bouteilles de vin à récupérer.
+	 * 
+	 * @return void
+	 */
+	private function curl($debut = 0, $quantite = 1) {
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
 
 		// URL à récupérer.
-		curl_setopt($gc, CURLOPT_URL, 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin&beginIndex=' . $debut . '&pageSize=' . $nombre);
+		curl_setopt($gc, CURLOPT_URL, $this->url_SAQ . '&beginIndex=' . $debut . '&pageSize=' . $quantite);
 
 		// Retourne directement le transfert sous forme de chaine au lieu de l’afficher directement.
 		curl_setopt($gc, CURLOPT_RETURNTRANSFER, true);
@@ -58,13 +106,15 @@ class Controleur_Admin extends Controleur
 		curl_setopt($gc, CURLOPT_SSL_VERIFYPEER, false);
 
 		// Exécution de la session cURL.
-		self::$_pageweb = curl_exec($gc);
-
-		// Lecture du dernier code de réponse.
-		self::$_status = curl_getinfo($gc, CURLINFO_HTTP_CODE);
+		$this->_page_web = curl_exec($gc);
 
 		// Fermeture de la session.
 		curl_close($gc);
+	}
+
+
+	public function getProduits($debut = 0, $nombre = 100) {
+
 
 		$doc = new DOMDocument();
 

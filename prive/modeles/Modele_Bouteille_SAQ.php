@@ -5,7 +5,6 @@
  * @package  Vino 
  * @author   José Ignacio Delgado
  *.@author...Fatemeh Homatash
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Modele_Bouteille_SAQ extends Modele
@@ -56,7 +55,7 @@ class Modele_Bouteille_SAQ extends Modele
 	}
 
 	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
-	{		
+	{
 		$listeBouteilles = Array();
 		$valeur = preg_replace('/\*/','%' , $valeur);
 		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
