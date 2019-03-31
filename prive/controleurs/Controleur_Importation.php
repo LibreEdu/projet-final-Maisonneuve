@@ -16,22 +16,6 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
-	 * @var string $url_SAQ URL de la SAQ qui sert à l’importation des bouteilles.
-	 */
-	private $_url_SAQ;
-
-
-	/**
-	 * @var string $_page_web Page web récupérée par le client URL curl.
-	 */
-	private $_page_web;
-
-	/**
-	 * @var string $_nb_bouteilles_SAQ Nombre de bouteilles SAQ à importer.
-	 */
-	private $_nb_bouteilles_SAQ;
-
-	/**
 	 * Vérification des droits d’administration et initialisation de l’attribut.
 	 * 
 	 * @return void
@@ -42,37 +26,7 @@ final class Controleur_Importation extends Controleur
 		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
 
 		// Vérification que la personne a bien les droits d’administration.
-		$this->est_admin();
-
-		// URL qui va servir à l’importation des bouteilles de vin de la SAQ.
-		$this->url_SAQ = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin';
-	}
-
-
-	/**
-	 * Vérification que la personne qui accède à cette classe a les droits d’administrateur.
-	 * 
-	 * Si la personne n’est pas admin, alors elle sera redirigée vers la page de déconnexion
-	 * 
-	 * @return void
-	 */
-	private function est_admin() {
-		// Pour se connecter en tant qu’admin,
-		// il faut d’une part qu’il existe une variable de session qui s’appelle admin
-		// et d’autre part que cette variable soit à Vrai.
-		if ( ! ( isset($_SESSION['admin']) && $_SESSION['admin'] == true) )
-		{
-			// Récupération de l’identifiant de l’usager qui veut jouer au malin !
-			$id_usager = (isset($_SESSION['id_usager'])) ? $_SESSION['id_usager'] : 'personne non connectée';
-
-			// On garde une trace de la tentative d’effraction.
-			$log = new Log('admin');
-			$message_log = "Tentative de connexion. Id_usager = $id_usager";
-			$log->ecrire($message_log);
-
-			// Redirection vers la page de déconnexion
-			header('Location: ' . site_url('login&action=logout') );
-		}
+		est_admin();
 	}
 
 
@@ -106,10 +60,25 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function index()
 	{
+		// $oSAQ = new SAQ();
+		// $nbBouteilles = $oSAQ->nbBouteillesWeb();
+		// var_dump($nbBouteilles);die;
 		$donnees['prenom'] = $_SESSION['prenom'];
-		$donnees['nbBouteillesBD'] = $this->modele_bouteille_saq->obtenir_total();
-		$donnees['nbBouteillesWeb'] =  $this->nbBouteillesWeb();
+		$donnees['nbBouteillesBD'] = $this->nbBouteillesBD();
+		// $donnees['nbBouteillesWeb'] =  $this->nbBouteillesWeb();
+		$donnees['nbBouteillesWeb'] =  10416;
 		$this->afficheVue('admin/une-page', $donnees);
+	}
+
+
+	/**
+	 * Renvoie le nombre de bouteilles qu’il y a dans la table bouteille_SAQ.
+	 * 
+	 * @return string Le nombre de bouteilles qu’il y a dans la table bouteille_SAQ.
+	 */
+	private function nbBouteillesBD()
+	{
+		return $this->modele_bouteille_saq->obtenir_total();
 	}
 
 
@@ -123,95 +92,5 @@ final class Controleur_Importation extends Controleur
 		// var_dump($_POST);
 		// $import = $this->getProduits(0, 10);
 		// var_dump($aa);
-	}
-
-
-	/**
-	 * Récupère les données HTML de la page Résultat de recherche de la SAQ.
-	 * 
-	 * @param integer $index Index de la première bouteille récupérée.
-	 * @param integer $nombre_bouteilles Nombre de bouteilles de vin à récupérer.
-	 * 
-	 * @return void
-	 */
-	private function curl($index = 0, $nombre_bouteilles = 1) {
-		// Initialisation du gestionnaire du client URL.
-		$gc = curl_init();
-
-		// URL à récupérer.
-		curl_setopt($gc, CURLOPT_URL, $this->url_SAQ . '&beginIndex=' . $index . '&pageSize=' . $nombre_bouteilles);
-
-		// Retourne directement le transfert sous forme de chaine au lieu de l’afficher directement.
-		curl_setopt($gc, CURLOPT_RETURNTRANSFER, true);
-
-		// Pour que le php laisse accesse a https
-		curl_setopt($gc, CURLOPT_SSL_VERIFYPEER, false);
-
-		// Exécution de la session cURL.
-		$this->_page_web = curl_exec($gc);
-
-		// Fermeture de la session.
-		curl_close($gc);
-	}
-
-	private function nbBouteillesWeb() {
-		$this->curl();
-
-		$xml = new DOMDocument();
-
-		// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
-		$xml->recover = true;
-
-		// Ne lance pas une DOMException en cas d’erreur.
-		$xml->strictErrorChecking = false;
-
-		// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
-		// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
-		@$xml->loadHTML($this->_page_web);
-
-		// Recherche tous les éléments qui ont une balise <div>
-		$titre = $xml->getElementsByTagName('h1');
-
-		// Il y a un seul 'h1', on récupère ses 'span'
-		$elementLigne = $titre[0]->getElementsByTagName('span');
-
-		// On récupère le troisième span et on recherche les chiffres
-		preg_match("/\D*(\d*)\D*/", $elementLigne[2]->textContent, $nbBouteilles);
-
-		// Le première élément est la chaine initial, le deuxième est la correspondance
-		return $nbBouteilles[1];
-	}
-
-	public function getProduits($debut = 0, $nombre = 100) {
-		$doc = new DOMDocument();
-
-		// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
-		$doc->recover = true;
-
-		// Ne lance pas une DOMException en cas d’erreur.
-		$doc->strictErrorChecking = false;
-
-		// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
-		// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
-		@$doc->loadHTML(self::$_pageweb);
-
-		// Recherche tous les éléments qui ont une balise <div>
-		$elements = $doc->getElementsByTagName('div');
-
-		$nombreDeProduits = 0;
-
-		foreach ($elements as $noeud) {
-			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
-				$info = self::recupereInfo($noeud);
-				//var_dump($info);
-				$retour = $this->ajoutProduit($info);
-				if ($retour->succes == false) {
-					$retour->raison;
-				} else {
-					$nombreDeProduits++;
-				}
-			}
-		}
-		return $nombreDeProduits;
 	}
 }
