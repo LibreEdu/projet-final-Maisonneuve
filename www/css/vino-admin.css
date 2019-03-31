@@ -92,7 +92,6 @@ a img{
 	width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
 .vino-navigation {
 	/* ... and now make sure the content is actually LTR */
 	direction: ltr;
@@ -185,25 +184,25 @@ a img{
 }
 
 
-.vino-footer {
+.vino-piedpage {
   background-color: #fafafa;
   position: relative;
 }
 
-  .vino-footer a:hover {
+  .vino-piedpage a:hover {
     color: #8bc34a;
   }
 
-  .vino-footer .mdl-mega-footer--top-section::after {
+  .vino-piedpage .mdl-mega-footer--top-section::after {
     border-bottom: none;
   }
 
-  .vino-footer .mdl-mega-footer--middle-section::after {
+  .vino-piedpage .mdl-mega-footer--middle-section::after {
     border-bottom: none;
   }
 
 
-  .vino-footer .mdl-mega-footer--right-section a .material-icons {
+  .vino-piedpage .mdl-mega-footer--right-section a .material-icons {
     position: relative;
     top: 6px;
   }
@@ -251,7 +250,7 @@ a img{
 	}
 
 
-  .vino-footer .mdl-mega-footer--bottom-section {
-    display: none;
-  }
+	.vino-piedpage .mdl-mega-footer--bottom-section {
+		display: none;
+	}
 }

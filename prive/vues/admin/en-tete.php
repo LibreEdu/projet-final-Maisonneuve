@@ -12,65 +12,66 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/vino-admin.css">
 	</head>
 	<body>
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-		<div class="vino-entete mdl-layout__header mdl-layout__header--waterfall">
-			<div class="mdl-layout__header-row">
-				<span class="vino-titre mdl-layout-title">
-					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
-				</span>
-				<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->
-				<div class="mdl-layout-spacer"></div>
-				<!-- Barre de navigation -->
-				<div class="vino-navigation-container">
-					<nav class="vino-navigation mdl-navigation">
-						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
-					</nav>
-				</div>
-				<span class="vino-logo-cell mdl-layout-title">
-					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
-				</span>
-			</div>
-		</div>
-		<div class="vino-lateral mdl-layout__drawer">
-			<span class="mdl-layout-title">
-				<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo-blanc.png">
-			</span>
-			<nav class="mdl-navigation">
-				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
-			</nav>
-		</div>
-		<div class="vino-content mdl-layout__content">
-		<a name="haut_de_page"></a>
-		<div class="vino-section-bienvenue mdl-typography--text-center">
-			<div class="vino-bienvenue-police vino-bonjour">Bonjour <?php echo $donnees['prenom'] ?></div>
-			<div class="vino-bienvenue-police vino-bienvenue">Bienvenue à Vino administration</div>
-			<a href="#importation">
-				<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-					<i class="material-icons">expand_more</i>
-				</button>
-			</a>
-		</div>
-		<div class="vino-importation mdl-typography--text-center">
-			<a name="importation"></a>
-			<div class="mdl-typography--display-1-color-contrast">Importation SAQ</div>
-		</div>
-		<footer class="vino-footer mdl-mega-footer">
-				<div class="mdl-mega-footer--top-section">
-					<div class="mdl-mega-footer--right-section">
-						<a class="mdl-typography--font-light" href="#haut_de_page">
-							Retourner en haut de la page
-							<i class="material-icons">expand_less</i>
-						</a>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<div class="vino-entete mdl-layout__header mdl-layout__header--waterfall">
+				<div class="mdl-layout__header-row">
+					<span class="vino-titre mdl-layout-title">
+						<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
+					</span>
+					<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->
+					<div class="mdl-layout-spacer"></div>
+					<!-- Barre de navigation -->
+					<div class="vino-navigation-container">
+						<nav class="vino-navigation mdl-navigation">
+							<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
+						</nav>
 					</div>
+					<span class="vino-logo-cell mdl-layout-title">
+						<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
+					</span>
 				</div>
-				<div class="mdl-mega-footer--middle-section">
-					<p class="mdl-typography--font-light">
-						Contactez-nous pour sur 
-						<a class="mdl-navigation__link" href="https://github.com/projet-web-Maisonneuve/vino" target="_blank">GitHub</a> 
-						pour plus de fonctionnalités.
-					</p>
+			</div>
+			<div class="vino-lateral mdl-layout__drawer">
+				<span class="mdl-layout-title">
+					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo-blanc.png">
+				</span>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
+				</nav>
+			</div>
+			<div class="vino-content mdl-layout__content">
+				<a name="haut_de_page"></a>
+				<div class="vino-section-bienvenue mdl-typography--text-center">
+					<div class="vino-bienvenue-police vino-bonjour">Bonjour <?php echo $donnees['prenom'] ?></div>
+					<div class="vino-bienvenue-police vino-bienvenue">Bienvenue à Vino administration</div>
+					<a href="#importation">
+						<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+							<i class="material-icons">expand_more</i>
+						</button>
+					</a>
 				</div>
-			</footer>
+				<div class="vino-importation mdl-typography--text-center">
+					<a name="importation"></a>
+					<div class="mdl-typography--display-1-color-contrast">Importation SAQ</div>
+				</div>
+				<footer class="vino-piedpage mdl-mega-footer">
+					<div class="mdl-mega-footer--top-section">
+						<div class="mdl-mega-footer--right-section">
+							<a class="mdl-typography--font-light" href="#haut_de_page">
+								Retourner en haut de la page
+								<i class="material-icons">expand_less</i>
+							</a>
+						</div>
+					</div>
+					<div class="mdl-mega-footer--middle-section">
+						<p class="mdl-typography--font-light">
+							Contactez-nous pour sur 
+							<a class="mdl-navigation__link" href="https://github.com/projet-web-Maisonneuve/vino" target="_blank">GitHub</a> 
+							pour plus de fonctionnalités.
+						</p>
+					</div>
+				</footer>
+			</div>
 		</div>
 		<script src="<?php echo base_url(); ?>js/material.js"></script>
 	</body>
