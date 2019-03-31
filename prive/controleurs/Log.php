@@ -35,7 +35,7 @@ class Log
 	 * 
 	 * @return void
 	 */
-	public function ecriture($message)
+	public function ecrire($message)
 	{
 		$date = new DateTime();
 		$date = $date->format('r');
