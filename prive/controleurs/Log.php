@@ -38,7 +38,7 @@ class Log
 	public function ecriture($message)
 	{
 		$date = new DateTime();
-		$date = $date->format('y:m:d h:i:s');
-		error_log($date . '  ' . $message, 3, $this->_nom_fichier);
+		$date = $date->format('r');
+		error_log($date . '  ' . $message . "\n", 3, $this->_nom_fichier);
 	}
 }
