@@ -58,11 +58,11 @@
 					<div class="vino-carte-importation mdl-card mdl-shadow--2dp">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__supporting-text">
-							Êtes-vous sûr de vouloir supprimer les 10 bouteilles SAQ de la base de données et en importer 10 000 nouvelles ?
+						Êtes-vous sûr de vouloir mettre à jour les x bouteilles SAQ de la base de données au regard des y bouteilles du site de la SAQ ?
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
 							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-								Importer 10 000 bouteilles
+							Importer les données du site de la SAQ
 							</a>
 						</div>
 					</div>
