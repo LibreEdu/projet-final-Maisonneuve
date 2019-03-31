@@ -104,8 +104,7 @@ final class Controleur_Importation extends Controleur
 		$donnees['prenom'] = $_SESSION['prenom'];
 
 		$this->afficheVue('admin/une-page', $donnees);
-		// $this->afficheVue('admin/principal', $donnees);
-		// $this->afficheVue('modeles/bas-de-page');
+
 	}
 
 

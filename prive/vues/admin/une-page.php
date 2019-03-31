@@ -50,9 +50,22 @@
 						</button>
 					</a>
 				</div>
-				<div class="vino-importation mdl-typography--text-center">
-					<a name="importation"></a>
-					<div class="mdl-typography--display-1-color-contrast">Importation SAQ</div>
+				<div class="vino-importation-section">
+					<div class="vino-importation-titre mdl-typography--text-center">
+						<a name="importation"></a>
+						<div class="mdl-typography--display-1-color-contrast">Importation SAQ</div>
+					</div>
+					<div class="vino-carte-importation mdl-card mdl-shadow--2dp">
+						<div class="mdl-card__title mdl-card--expand"></div>
+						<div class="mdl-card__supporting-text">
+							Voulez-vous importer 2 bouteilles de la SAQ ?
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+								Importer 2 bouteilles
+							</a>
+						</div>
+					</div>
 				</div>
 				<footer class="vino-piedpage mdl-mega-footer">
 					<div class="mdl-mega-footer--top-section">
