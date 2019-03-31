@@ -184,33 +184,41 @@ a img{
 }
 
 
+/* Pied de page */
 .vino-piedpage {
-  background-color: #fafafa;
-  position: relative;
+	background-color: #ffe6ff;
+	position: relative;
+	color: #4d004d;
 }
 
-  .vino-piedpage a:hover {
-    color: #8bc34a;
-  }
+.vino-piedpage .mdl-navigation__link {
+	color: #ff00ff;
+}
 
-  .vino-piedpage .mdl-mega-footer--top-section::after {
-    border-bottom: none;
-  }
+.vino-piedpage .mdl-navigation__link:hover{
+	color: #4d004d;
+}
 
-  .vino-piedpage .mdl-mega-footer--middle-section::after {
-    border-bottom: none;
-  }
+.vino-piedpage a:hover {
+	color: #ff00ff;
+}
+
+.vino-piedpage .mdl-mega-footer--top-section::after {
+	border-bottom: none;
+}
+
+.vino-piedpage .mdl-mega-footer--middle-section::after {
+	border-bottom: none;
+}
+
+.vino-piedpage .mdl-mega-footer--right-section a .material-icons {
+	position: relative;
+	top: 6px;
+}
 
 
-  .vino-piedpage .mdl-mega-footer--right-section a .material-icons {
-    position: relative;
-    top: 6px;
-  }
 
-
-
-
-/**** Mobile layout ****/
+/**** Mise en page pour les cellulaires ****/
 @media (max-width: 900px) {
 	.vino-navigation-conteneur {
 		display: none;
@@ -248,7 +256,6 @@ a img{
 	.vino-fab {
 		display: none;
 	}
-
 
 	.vino-piedpage .mdl-mega-footer--bottom-section {
 		display: none;
