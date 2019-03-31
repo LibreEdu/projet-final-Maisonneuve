@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-			<div class="vino-barre-navigation mdl-layout__header mdl-layout__header--waterfall">
+			<div class="vino-en-tete mdl-layout__header mdl-layout__header--waterfall">
 				<div class="mdl-layout__header-row">
 					<span class="android-title mdl-layout-title">
 						<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
@@ -20,8 +20,8 @@
 					<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->
 					<div class="android-header-spacer mdl-layout-spacer"></div>
 					<!-- Barre de navigation -->
-					<div class="android-navigation-container">
-						<nav class="android-navigation mdl-navigation">
+					<div class="vino-navigation-conteneur">
+						<nav class="vino-navigation mdl-navigation">
 							<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Déconnexion</a>
 						</nav>
 					</div>
@@ -30,7 +30,7 @@
 					</span>
 				</div>
 			</div>
-			<div class="android-drawer mdl-layout__drawer">
+			<div class="vino-lateral mdl-layout__drawer">
 				<span class="mdl-layout-title">
 					<img class="vino-logo-image" src="images/vino-logo-blanc.png">
 				</span>

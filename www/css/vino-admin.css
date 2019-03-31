@@ -21,8 +21,8 @@ a img{
 }
 
 
-/* Barre de navigation, tout en haut */
-.vino-barre-navigation {
+/* Ligne du haut */
+.vino-en-tete {
 	z-index: 50;
 	margin: 0 !important;
 }
@@ -52,110 +52,96 @@ a img{
 }
 
 
-/* Barre de navigation, tout en haut */
-.vino-barre-navigation {
+/* Ligne du haut */
+.vino-en-tete {
 	overflow: visible;
 	background-color: white;
 }
 
 
-	.vino-barre-navigation .material-icons {
-	  color: #767777 !important;
-	}
-  
-	.vino-barre-navigation .mdl-layout__drawer-button {
-	  background: transparent;
-	  color: #767777;
-	}
-  
-	.vino-barre-navigation .mdl-navigation__link {
-	  color: #757575;
-	  font-weight: 700;
-	  font-size: 14px;
-	}
-  
-	.android-navigation-container {
-	  /* Simple hack to make the overflow happen to the left instead... */
-	  direction: rtl;
-	  -webkit-order: 1;
-		  -ms-flex-order: 1;
-			  order: 1;
-	  width: 500px;
-	  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-		  width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-  
-	.android-navigation {
-	  /* ... and now make sure the content is actually LTR */
-	  direction: ltr;
-	  -webkit-justify-content: flex-end;
-		  -ms-flex-pack: end;
-			  justify-content: flex-end;
-	  width: 800px;
-	}
-  
-	.android-search-box.is-focused + .android-navigation-container {
-	  opacity: 0;
-	  width: 100px;
-	}
-  
-  
-	.android-navigation .mdl-navigation__link {
-	  display: inline-block;
-	  height: 60px;
-	  line-height: 68px;
-	  background-color: transparent !important;
-	  border-bottom: 4px solid transparent;
-	}
-  
-	  .android-navigation .mdl-navigation__link:hover {
-		border-bottom: 4px solid #ae53df;
-	  }
-  
-	.android-search-box {
-	  -webkit-order: 2;
-		  -ms-flex-order: 2;
-			  order: 2;
-	  margin-left: 16px;
-	  margin-right: 16px;
-	}
-  
-	.android-more-button {
-	  -webkit-order: 3;
-		  -ms-flex-order: 3;
-			  order: 3;
-	}
-  
-  
-  .android-drawer {
+/* Menu burger dessiné par le JS */
+.vino-en-tete .material-icons {
+	color: #7b1fa2 !important;
+}
+
+
+/* Encadré du burger lors de sa sélection */
+.vino-en-tete .mdl-layout__drawer-button {
+	background: transparent;
+	color: #7b1fa2;
+}
+
+
+/* Liens de l’en-tête */
+.vino-en-tete .mdl-navigation__link {
+	color: #7b1fa2;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+
+/* Conteneur de la barre de navigation */
+.vino-navigation-conteneur {
+	/* Simple hack to make the overflow happen to the left instead... */
+	direction: rtl;
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+	width: 500px;
+	transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+	width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vino-navigation {
+	/* ... and now make sure the content is actually LTR */
+	direction: ltr;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	width: 800px;
+}
+
+
+/* Liens de la barre de navigation */
+.vino-navigation .mdl-navigation__link {
+	display: inline-block;
+	height: 60px;
+	line-height: 68px;
+	background-color: transparent !important;
+	border-bottom: 4px solid transparent;
+}
+
+.vino-navigation .mdl-navigation__link:hover {
+	border-bottom: 4px solid #7b1fa2;
+}
+
+
+/* Menu latéral */
+.vino-lateral {
 	border-right: none;
-  }
-  
-	.android-drawer-separator {
-	  height: 1px;
-	  background-color: #dcdcdc;
-	  margin: 8px 0;
-	}
-  
-	.android-drawer .mdl-navigation__link.mdl-navigation__link {
-	  font-size: 14px;
-	  color: #757575;
-	}
-  
-	.android-drawer span.mdl-navigation__link.mdl-navigation__link {
-	  color: #8bc34a;
-	}
-  
-	.android-drawer .mdl-layout-title {
-	  position: relative;
-	  background: #c27ee7;
-	  height: 160px;
-	}
-  
-	  .android-drawer .vino-logo-image {
-		position: absolute;
-		bottom: 16px;
-	  }
+}
+
+
+/* Liens du menu latétal */
+.vino-lateral .mdl-navigation__link.mdl-navigation__link {
+	font-size: 14px;
+	color: #7b1fa2;
+}
+
+
+/* Titre du menu latétal */
+.vino-lateral .mdl-layout-title {
+	position: relative;
+	background: #7b1fa2;
+	height: 160px;
+}
+
+
+/* Logo du menu latéral */
+.vino-lateral .vino-logo-image {
+	position: absolute;
+	bottom: 16px;
+}
   
   .android-be-together-section {
 	position: relative;
@@ -457,7 +443,7 @@ a img{
   
 /**** Mobile layout ****/
 @media (max-width: 900px) {
-	.android-navigation-container {
+	.vino-navigation-conteneur {
 	  display: none;
 	}
   
@@ -477,7 +463,7 @@ a img{
 	   consecutive "+" operators in some cases. Therefore, we need to use both
 	   here to cover all the bases. */
 	.android.android-search-box.is-focused ~ .vino-logo-cell,
-	.android-search-box.is-focused + .android-navigation-container + .vino-logo-cell {
+	.android-search-box.is-focused + .vino-navigation-conteneur + .vino-logo-cell {
 	  opacity: 0;
 	}
   
