@@ -12,13 +12,13 @@
 	</head>
 	<body>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-		<div class="vino-header mdl-layout__header mdl-layout__header--waterfall">
+		<div class="vino-entete mdl-layout__header mdl-layout__header--waterfall">
 			<div class="mdl-layout__header-row">
 				<span class="vino-title mdl-layout-title">
 					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 				</span>
 				<!-- Add spacer, to align navigation to the right in desktop -->
-				<div class="vino-header-spacer mdl-layout-spacer"></div>
+				<div class="mdl-layout-spacer"></div>
 				<!-- Navigation -->
 				<div class="vino-navigation-container">
 					<nav class="vino-navigation mdl-navigation">

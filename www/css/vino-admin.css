@@ -1,43 +1,27 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 body {
-  margin: 0;
+	margin: 0;
 }
 
-/* Disable ugly boxes around images in IE10 */
+
+/* Désactive les boîtes laides autour des images dans IE10 */
 a img{
-  border: 0px;
+	border: 0px;
 }
 
+
+/* Portion du document sélectionné par l’utilisateur (avec la souris…) */
 ::-moz-selection {
-  background-color: #6ab344;
-  color: #fff;
+	background-color: #cc33ff;
+	color: #fff;
 }
 
 ::selection {
-  background-color: #6ab344;
-  color: #fff;
+	background-color: #cc33ff;
+	color: #fff;
 }
 
-.vino-search-box .mdl-textfield__input {
-  color: rgba(0, 0, 0, 0.87);
-}
 
-.vino-header .mdl-menu__container {
+.vino-entete .mdl-menu__container {
   z-index: 50;
   margin: 0 !important;
 }
@@ -67,21 +51,21 @@ a img{
 }
 
 
-.vino-header {
+.vino-entete {
   overflow: visible;
   background-color: white;
 }
 
-  .vino-header .material-icons {
+  .vino-entete .material-icons {
     color: #767777 !important;
   }
 
-  .vino-header .mdl-layout__drawer-button {
+  .vino-entete .mdl-layout__drawer-button {
     background: transparent;
     color: #767777;
   }
 
-  .vino-header .mdl-navigation__link {
+  .vino-entete .mdl-navigation__link {
     color: #757575;
     font-weight: 700;
     font-size: 14px;
