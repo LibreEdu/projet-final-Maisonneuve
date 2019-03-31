@@ -80,7 +80,7 @@ class Modele_Liste extends Modele
 	 * 
 	 * @return array tous les données de la bouteille dans la table bouteille SAQ
 	 */
-	public function obtenir_liste($id_usager)
+	public function obtenir_liste($id_usager, $nom_liste_achat)
 	{
 		$sql = 'SELECT b.code_saq,
 				b.prix,
@@ -89,7 +89,8 @@ class Modele_Liste extends Modele
 				b.format,
 				b.nom,
 				a.id_liste_achat,
-				t.type
+				t.type,
+				l.nom as nom_liste
 				FROM vino_bouteille_saq b
 				INNER JOIN vino_type t
 					ON b.id_type = t.id_type				
@@ -97,6 +98,7 @@ class Modele_Liste extends Modele
 					ON b.id_bouteille_saq = a.id_bouteille_saq
 				INNER JOIN vino_liste_achat l
 					ON id_usager =' . $id_usager . '
+					AND l.nom ="' . $nom_liste_achat . '"
 					AND l.id_liste_achat = a.id_liste_achat
 				ORDER BY l.nom';
 		$resultat = $this->requete($sql);
