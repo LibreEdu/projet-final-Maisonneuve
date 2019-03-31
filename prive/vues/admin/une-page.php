@@ -6,8 +6,7 @@
 		<meta name="description" content="Page d’administration de Vino">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<title>Vino admin</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>fonts/iconfont/material-icons.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/material.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/vino-admin.css">
 	</head>
