@@ -2,7 +2,7 @@
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 		<?php 
 			if(isset($donnees['usager'])){
-				$usager = $donnees['usager'][0];
+				$usager = $donnees['usager'];
 			}
 			$courriel     = isset($usager->courriel) ? $usager->courriel : '';
 			$nom          = isset($usager->nom) ? $usager->nom : '';

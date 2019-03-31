@@ -127,29 +127,16 @@ class Controleur_Login extends Controleur
 	 */
 	public function formulaireModification()
 	{
-		//$donnees['usager'] = $this->modele_usager->obtenir_tous();
 		$idUsager= $_SESSION['id_usager'];
 		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
-
+		// si $idUsager est différent de l'id récuperer on sortpour réstrindre l'accées par url 
 		if ($idUsager != $_GET['id']) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		//$id_usager2 = $this->modele_usager->appartient($_GET['id'],$_SESSION['id_usager']);
-		// if ( isset($_SESSION['id_usager']) )
-		// {
-		 // $donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
-		// $donnees['titre'] = 'Modifier Votre compte';
-		// $donnees['actionBouton'] = 'modifier';
-		// $donnees['titreBouton'] = 'Modifier l’usager';
-		// $donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('login/formulaire-modification', $donnees);
 		$this->afficheVue('modeles/bas-de-page');
-		// }
-		// else{
-		// 	header('Location: ' . site_url('login&action=logout') );
-		// }
 	}
 
 	/**
@@ -163,77 +150,101 @@ class Controleur_Login extends Controleur
 		if ($idUsager == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		if ( isset($_SESSION['id_usager']) )
-		{
+		// if ( isset($_SESSION['id_usager']) )
+		// {
 
 			$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
-		
+			//initialiser le message d'Erreur
 			$messageErreur='';
+			//Si on récupére tous les paramétres
 			if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']))
 			{
-				  
-				$messageErreur = $this->valideFormModification($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
-				//Si l'usger est le même et le mot de passe corespond à celui dana la base de données
-				if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
+				//si on ne veut pas changer le mot de passe mais les autres informations
+				if ($_REQUEST['mot_de_passe']=='')
 				{
-
+					$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+					//Si pas de message d'erreur
 					if($messageErreur == '')
 					{
-						// Procéder à la modification dans la table vino_usager
-						$this->modele_usager->modifier();
-						//$donnees['usager'][0]
-						$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']); 
-						//var_dump($donnees);
-						 //$user = $this->modele_usager->obtenirUsager($_REQUEST['courriel']);
-				// Mets le'id de l’usager dans la variable session idUsager,
-						$_SESSION['courriel'] = $donnees['usager'][0]->courriel;
-						$_SESSION['nom'] = $donnees['usager'][0]->nom;
-						$_SESSION['prenom'] = $donnees['usager'][0]->prenom;
-						
-						//echo '<script>alert("Les informations ont été modifier.")</script>';
-						// echo '<script>document.location.reload(true)</script>';
-						
+						//modifier les informations de l'usager sans son mot de passe
+						$this->modele_usager->modifierSansMotDePasse();
+						//récupérer les données de l'usager
+						$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);		
+						// Mets le'id de l’usager dans la variable session idUsager,
+						$_SESSION['courriel'] = $donnees['usager']->courriel;
+						$_SESSION['nom'] = $donnees['usager']->nom;
+						$_SESSION['prenom'] = $donnees['usager']->prenom;
 						$this->afficheVue('modeles/en-tete');
 						$this->afficheVue('modeles/menu-usager');
 						$this->afficheVue('login/formulaire-modification', $donnees);
-						//echo '<script>document.location.reload()</script>';
-						
-						// header('Location: ' . site_url( 'cellier' ));
-						//$this->afficheVue('cellier/liste', $donnees);
 						$this->afficheVue('modeles/bas-de-page');
 					}
 					else
-					{//Affichage de la page form-modification avec l'erreurr
+					{
+						//Affichage de la page form-modification avec l'erreurr
 						$this->afficheVue('modeles/en-tete');
 						$this->afficheVue('modeles/menu-usager');
 						$this->afficheFormModification($messageErreur,$donnees);
 						$this->afficheVue('modeles/bas-de-page');
 					}
 				}
+				//Si on veut changer le mot de passe
 				else
 				{
-					$messageErreur = "Le mot de passe n'est pas valide";
-					// On affiche la page form-modification avec l'erreur
-					$donnees['erreurs'] = $messageErreur;
-					$this->afficheVue('modeles/en-tete');
-					$this->afficheVue('modeles/menu-usager');
-					$this->afficheFormModification($messageErreur,$donnees);
-					$this->afficheVue('modeles/bas-de-page');
-
-				} 
+					$messageErreur = $this->valideFormModification($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
+				//Si l'usger est le même et le mot de passe corespond à celui dana la base de données
+					if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
+					{
+						//Si pas de message d'erreur
+						if($messageErreur == '')
+						{
+							// Procéder à la modification dans la table vino_usager
+							$this->modele_usager->modifier();
+							//Obtenir l'usager modifier
+							$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);		
+							// Mets le'id de l’usager dans la variable session idUsager,
+							$_SESSION['courriel'] = $donnees['usager']->courriel;
+							$_SESSION['nom'] = $donnees['usager']->nom;
+							$_SESSION['prenom'] = $donnees['usager']->prenom;
+							
+							//Afficher les vues
+							$this->afficheVue('modeles/en-tete');
+							$this->afficheVue('modeles/menu-usager');
+							$this->afficheVue('login/formulaire-modification', $donnees);
+							$this->afficheVue('modeles/bas-de-page');
+						}
+						else
+						{//Affichage de la page form-modification avec l'erreurr
+							$this->afficheVue('modeles/en-tete');
+							$this->afficheVue('modeles/menu-usager');
+							$this->afficheFormModification($messageErreur,$donnees);
+							$this->afficheVue('modeles/bas-de-page');
+						}
+					}
+					else
+					{
+						$messageErreur = "Le mot de passe ne correspond pas à votre ancien mot de passe";
+						// On affiche la page form-modification avec l'erreur
+						$donnees['erreurs'] = $messageErreur;
+						$this->afficheVue('modeles/en-tete');
+						$this->afficheVue('modeles/menu-usager');
+						$this->afficheFormModification($messageErreur,$donnees);
+						$this->afficheVue('modeles/bas-de-page');
+					}
+				}
 			}
 			else
 			{
 				$messageErreur = 'Paramètres invalides.';
 			}
 		}
-		else{
-			header('Location: ' . site_url('login&action=logout') );
-		}
-	}
+		// else{
+		// 	header('Location: ' . site_url('login&action=logout') );
+		// }
+	
 
 	/**
-	 * Foncton inscrire qui gére l'inscription d'un nouvel usager
+	 * Fonction inscrire qui gére l'inscription d'un nouvel usager
 	 */
 	public function inscrire($params)
 	{
@@ -274,7 +285,7 @@ class Controleur_Login extends Controleur
 	}
 
 	/**
-	 * Foncton logout qui gére la déconnexion
+	 * Fonction logout qui gére la déconnexion
 	 */
 	public function logout()
 	{
@@ -308,7 +319,7 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('login/formulaire', $donnees);
 	}
 
-		/**
+	/**
 	 * Fonction d'affichage du formulaire de modification
 	 * @param $erreurs le message d'ereur
 	 */
@@ -327,7 +338,7 @@ class Controleur_Login extends Controleur
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2,$mdp3='')
+	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
@@ -353,13 +364,13 @@ class Controleur_Login extends Controleur
 			$msgErreur .= 'Le nom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
-			$msgErreur .= 'Entrez au moins deux caractères.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères dans le nom et pas de chiffres.<br>';
 
 		if($prenom == '')
 			$msgErreur .= 'Le prénom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
-			$msgErreur .= 'Entrez au moins deux caractères.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères ans le prénom et pas de chiffres.<br>';
 
 		if($mdp == '')
 			$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
@@ -374,12 +385,12 @@ class Controleur_Login extends Controleur
 		return $msgErreur;
 	}
 
-		/**
+	/**
 	 * Fonction de validation du formulaire d'inscription
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormModification($courriel, $nom, $prenom, $mot_de_passe ,$mdp1,$mdp2)
+	public function valideFormModification($courriel, $nom, $prenom, $mot_de_passe='', $mdp1='', $mdp2='')
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
@@ -407,13 +418,13 @@ class Controleur_Login extends Controleur
 			$msgErreur .= 'Le nom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
-			$msgErreur .= 'Entrez au moins deux caractères.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères dans le nom et pas de chiffres.<br>';
 
 		if($prenom == '')
 			$msgErreur .= 'Le prénom ne peut être vide.<br>';
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
-			$msgErreur .= 'Entrez au moins deux caractères.<br>';
+			$msgErreur .= 'Entrez au moins deux caractères dans le prénom et pas de chiffres.<br>';
 
 		if($mdp1 == '' || $mdp2 == '')
 			$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
@@ -427,6 +438,44 @@ class Controleur_Login extends Controleur
 		if($mdp1 != $mdp2)
 			$msgErreur .= 'Les deux mots de passe doivent ètre identiques.<br>';
 
+		// Retourner un message d'erreur
+		return $msgErreur;
+	}
+
+		/**
+	 * Fonction de validation du formulaire d'inscription sans mot de passe
+	 * @param $courriel, $nom, $prenom
+	 * @return retourne le message d'erreur
+	 */
+	public function valideFormModificationSansMdp($courriel, $nom, $prenom)
+	{
+		// Initialiser le message d'erreur
+		$msgErreur = '';
+
+		// Récupérer le courriel
+		$courriel = trim($courriel);
+		// et le nom
+		$nom = trim($nom);
+		// et le prenom
+		$prenom = trim($prenom);
+		
+		if($courriel == '')
+			$msgErreur .= 'Le champ Courriel est vide.<br>';
+		
+		if(!preg_match("/^[A-Z0-9.]+@(([A-Z]+\\.)+[A-Z]{2,6})$/i",$courriel))
+			$msgErreur .= 'Le format courriel doit être réspecter.<br>';
+		
+		if($nom == '')
+			$msgErreur .= 'Le nom ne peut être vide.<br>';
+
+		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
+			$msgErreur .= 'Entrez au moins deux caractères dans le nom et pas de chiffres.<br>';
+
+		if($prenom == '')
+			$msgErreur .= 'Le prénom ne peut être vide.<br>';
+
+		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
+			$msgErreur .= 'Entrez au moins deux caractères dans le prénom et pas de chiffres.<br>';
 		// Retourner un message d'erreur
 		return $msgErreur;
 	}
