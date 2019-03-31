@@ -39,13 +39,10 @@
 			</nav>
 		</div>
 		<div class="android-content mdl-layout__content">
-		<a name="top"></a>
+		<a name="haut_de_page"></a>
 		<div class="android-be-together-section mdl-typography--text-center">
-			<div class="logo-font android-slogan">be together. not the same.</div>
-			<div class="logo-font android-sub-slogan">welcome to android... be yourself. do your thing. see what's going on.</div>
-			<div class="logo-font android-create-character">
-				<a href=""><img src="images/andy.png"> create your android character</a>
-			</div>
+			<div class="logo-font android-slogan">Bonjour <?php echo $donnees['prenom'] ?></div>
+			<div class="logo-font android-sub-slogan">Bienvenue à Vino administration</div>
 			<a href="#screens">
 				<button class="android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 					<i class="material-icons">expand_more</i>
