@@ -271,32 +271,9 @@ a img{
   }
 
 
-.vino-wear-section {
-  position: relative;
-  background: url('images/wear.png') center top no-repeat;
-  background-size: cover;
-  height: 800px;
-}
 
-.vino-wear-band {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: #37474f;
-}
 
-.vino-wear-band-text {
-  max-width: 800px;
-  margin-left: 25%;
-  padding: 24px;
-  text-align: left;
-  color: white;
-}
 
-  .vino-wear-band-text p {
-    padding-top: 8px;
-  }
 
 .vino-link {
   text-decoration: none;
@@ -441,17 +418,17 @@ a img{
 		display: none;
 	}
 
-  .vino-title {
-    display: none !important;
-  }
+	.vino-titre {
+		display: none !important;
+	}
 
-  .vino-logo-cell {
-    display: block !important;
-    position: absolute;
-    left: calc(50% - 70px);
-    top: 12px;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+	.vino-logo-cell {
+		display: block !important;
+		position: absolute;
+		left: calc(50% - 70px);
+		top: 12px;
+		transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
 
 	.vino-section-bienvenue {
 		height: 350px;
@@ -469,23 +446,11 @@ a img{
 		padding-top: 8px;
 	}
 
-  .vino-create-character {
-    padding-top: 200px;
-    font-size: 16px;
-  }
+	/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
+	.vino-fab {
+		display: none;
+	}
 
-  .vino-create-character img {
-    height: 12px;
-  }
-
-  .vino-fab {
-    display: none;
-  }
-
-  .vino-wear-band-text {
-    margin-left: 0;
-    padding: 16px;
-  }
 
   .vino-footer .mdl-mega-footer--bottom-section {
     display: none;
