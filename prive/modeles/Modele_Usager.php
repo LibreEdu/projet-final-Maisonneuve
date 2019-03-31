@@ -103,11 +103,18 @@ class Modele_Usager extends Modele
 	 * 
 	 * @return array Les données de l’usager.
 	 */
+	// public function obtenir_par_id($id)
+	// {
+	// 	$resultat = $this->lire($id, 'id_usager');
+	// 	$usager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+	// 	return $usager;
+	// }
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_usager');
-		$usager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
-		return $usager;
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+
+		return $resultat->fetch();
 	}
 
 
@@ -118,19 +125,19 @@ class Modele_Usager extends Modele
 	 */
 	public function modifier()
 	{
-		if (trim($_POST['mdp2']) == "") {
-			$sql = 'UPDATE vino_usager 
-			SET courriel=?,
-				nom=?,
-				prenom=?
-			WHERE id_usager=?';
+		// if (trim($_POST['mdp2']) == "") {
+		// 	$sql = 'UPDATE vino_usager 
+		// 	SET courriel=?,
+		// 		nom=?,
+		// 		prenom=?
+		// 	WHERE id_usager=?';
 			
-		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'],$_POST['id_usager']);
+		// $donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'],$_POST['id_usager']);
 
-		$resultat = $this->requete($sql, $donnees);
-		}
-		else
-		{
+		// $resultat = $this->requete($sql, $donnees);
+		// }
+		// else
+		// {
 		$sql = 'UPDATE vino_usager 
 			SET courriel=?,
 				nom=?,
@@ -141,6 +148,24 @@ class Modele_Usager extends Modele
 		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'], password_hash($_POST['mdp2'], PASSWORD_DEFAULT),$_POST['id_usager']);
 
 		$resultat = $this->requete($sql, $donnees);
-		}
+		// }
+	// }
+}
+	/**
+	 * Modifie les données de l’usager.
+	 * 
+	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
+	 */
+	public function modifierSansMotDePasse()
+	{
+		$sql = 'UPDATE vino_usager 
+			SET courriel=?,
+				nom=?,
+				prenom=?
+			WHERE id_usager=?';
+			
+		$donnees = array($_POST['courriel'], $_POST['nom'], $_POST['prenom'],$_POST['id_usager']);
+
+		$resultat = $this->requete($sql, $donnees);
 	}
 }
