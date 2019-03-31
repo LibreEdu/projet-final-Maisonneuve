@@ -15,36 +15,27 @@
 		<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
 			<div class="mdl-layout__header-row">
 				<span class="android-title mdl-layout-title">
-					<img class="android-logo-image" src="images/android-logo.png">
+					<img class="android-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 				</span>
 				<!-- Add spacer, to align navigation to the right in desktop -->
 				<div class="android-header-spacer mdl-layout-spacer"></div>
 				<!-- Navigation -->
 				<div class="android-navigation-container">
 					<nav class="android-navigation mdl-navigation">
-						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Phones</a>
+						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 					</nav>
 				</div>
 				<span class="android-mobile-title mdl-layout-title">
-					<img class="android-logo-image" src="images/android-logo.png">
+					<img class="android-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 				</span>
-				<button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-					<i class="material-icons">more_vert</i>
-				</button>
-				<ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-					<li class="mdl-menu__item">5.0 Lollipop</li>
-					<li class="mdl-menu__item">4.4 KitKat</li>
-					<li disabled class="mdl-menu__item">4.3 Jelly Bean</li>
-					<li class="mdl-menu__item">Android History</li>
-				</ul>
 			</div>
 		</div>
 		<div class="android-drawer mdl-layout__drawer">
 			<span class="mdl-layout-title">
-				<img class="android-logo-image" src="images/android-logo-white.png">
+				<img class="android-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 			</span>
 			<nav class="mdl-navigation">
-				<a class="mdl-navigation__link" href="">Phones</a>
+				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 			</nav>
 		</div>
 		<div class="android-content mdl-layout__content">
