@@ -6,8 +6,7 @@
 		<meta name="description" content="Page d’administration de Vino">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 		<title>Vino admin</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>fonts/iconfont/material-icons.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/material.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/vino-admin.css">
 	</head>
@@ -58,7 +57,8 @@
 					<div class="vino-carte-importation mdl-card mdl-shadow--2dp">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__supporting-text">
-						Êtes-vous sûr de vouloir mettre à jour les x bouteilles SAQ de la base de données au regard des y bouteilles du site de la SAQ ?
+							Êtes-vous sûr de vouloir importer <?php echo $donnees['nbBouteillesWeb'] ?> bouteilles du site de la SAQ ?<br>
+							Cela mettra à jour les <?php echo $donnees['nbBouteillesBD'] ?> bouteilles de la base de données.
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
 							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -78,7 +78,7 @@
 					</div>
 					<div class="mdl-mega-footer--middle-section">
 						<p class="mdl-typography--font-light">
-							Contactez-nous pour sur 
+							Contactez-nous sur 
 							<a class="mdl-navigation__link" href="https://github.com/projet-web-Maisonneuve/vino" target="_blank">GitHub</a> 
 							pour plus de fonctionnalités.
 						</p>
