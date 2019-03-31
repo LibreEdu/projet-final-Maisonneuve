@@ -159,38 +159,29 @@ a img{
 	background-size: cover;
 }
 
-.bienvenue-police {
+.vino-bienvenue-police {
 	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 	line-height: 1;
 	color: #4d004d;
 	font-weight: 500;
 }
 
-.vino-slogan {
-  font-size: 60px;
-  padding-top: 160px;
+.vino-bonjour {
+	font-size: 60px;
+	padding-top: 160px;
 }
 
-.vino-sub-slogan {
-  font-size: 21px;
-  padding-top: 24px;
+.vino-bienvenue {
+	font-size: 21px;
+	padding-top: 24px;
 }
 
-.vino-create-character {
-  font-size: 21px;
-  padding-top: 400px;
-}
 
-  .vino-create-character a {
-    text-decoration: none;
-    color: #767777;
-    font-weight: 300;
-  }
-
-.vino-screen-section {
-  position: relative;
-  padding-top: 60px;
-  padding-bottom: 80px;
+/* Section Importation */
+.vino-importation {
+	position: relative;
+	padding-top: 60px;
+	padding-bottom: 80px;
 }
 
 .vino-screens {
@@ -462,33 +453,21 @@ a img{
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .vino-more-button {
-    display: none;
-  }
-
-  .vino-search-box.is-focused {
-    width: calc(100% - 48px);
-  }
-
-  .vino-search-box .mdl-textfield__expandable-holder {
-    width: 100%;
-  }
-
 	.vino-section-bienvenue {
 		height: 350px;
 	}
 
-  .vino-slogan {
-    font-size: 26px;
-    margin: 0 16px;
-    padding-top: 24px;
-  }
+	.vino-bonjour {
+		font-size: 26px;
+		margin: 0 16px;
+		padding-top: 24px;
+	}
 
-  .vino-sub-slogan {
-    font-size: 16px;
-    margin: 0 16px;
-    padding-top: 8px;
-  }
+	.vino-bienvenue {
+		font-size: 16px;
+		margin: 0 16px;
+		padding-top: 8px;
+	}
 
   .vino-create-character {
     padding-top: 200px;
