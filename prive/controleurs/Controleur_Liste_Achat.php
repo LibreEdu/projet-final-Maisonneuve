@@ -40,9 +40,6 @@ class Controleur_Liste_Achat extends Controleur
 			case 'ajouter_liste':
 				$this->ajouter_liste();
 				break;
-			case 'recherche':
-				$this->recherche();
-				break;
 			case 'details_liste_achat':
 				$this->details_liste_achat();
 				break;
@@ -58,13 +55,6 @@ class Controleur_Liste_Achat extends Controleur
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$listeBouteilles = $this->modele_liste->autocomplete($body->nom);
-		echo json_encode($listeBouteilles);
-	}
-
-	public function recherche()
-	{
-		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
 		echo json_encode($listeBouteilles);
 	}
 

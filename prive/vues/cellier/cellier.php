@@ -14,7 +14,7 @@
 							<option value='type'>type</option>																
 						</select>
 						<select id="rechercheSpecifique" style='visibility: hidden;'>
-							<option value='' disabled selected style='display:none;'>-- selectionner --</option>							
+							<option value='' disabled selected style='display:none;'>-- selectionner --</option>
 							<option value=">=">plus grand ou égale</option>
 							<option value="<=">plus petit ou égale</option>
 						</select>

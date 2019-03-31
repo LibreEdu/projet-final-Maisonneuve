@@ -65,14 +65,16 @@ window.addEventListener('load', function() {
 		var operation = "=";
 		var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
 		var rechercheSpecifique = document.getElementById('rechercheSpecifique');
+		var btnRecherche = document.getElementById('btnRecherche');
 		
 		if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
-			rechercheSpecifique.style.visibility = 'visible';
+			rechercheSpecifique.style.visibility = 'visible';	
+			btnRecherche.value = "";		
 			//Si la selection est fait on affiche la barre de recherche
 			rechercheSpecifique.addEventListener('change', function(element){
-				//Faire apparaitre la lingne pour ecrire l'element à rechercher
-				btnRecherche = document.getElementById('btnRecherche');
+				//Faire apparaitre la lingne pour ecrire l'element à rechercher				
 				btnRecherche.style.visibility = "visible";
+				btnRecherche.value = "";	
 				//Recupérer la valeur de la selection éffectuer
 				operation = rechercheSpecifique.options[rechercheSpecifique.selectedIndex].value;
 			},false);
@@ -81,8 +83,8 @@ window.addEventListener('load', function() {
 		else if (recherchePar.value === 'nom' || recherchePar.value === 'type' || recherchePar.value === 'pays'){
 			rechercheSpecifique.style.visibility = 'hidden';
 			//Faire apparaitre la lingne pour ecrire l'element à rechercher
-			btnRecherche = document.getElementById('btnRecherche');
 			btnRecherche.style.visibility = "visible";
+			btnRecherche.value = "";
 		}
 
 		btnRecherche.addEventListener('keyup',function(e){
@@ -98,7 +100,7 @@ window.addEventListener('load', function() {
 						'operation': operation										
 					};
 					//console.log(params);
-					let requete = new Request('index.php?bouteille_SAQ&action=recherche', {method: 'POST', body: JSON.stringify(params)});
+					let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
 					fetch(requete)
 					.then(response => {
 						if (response.status === 200) {

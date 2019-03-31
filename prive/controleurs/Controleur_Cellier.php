@@ -23,6 +23,7 @@ class Controleur_Cellier extends Controleur
 	{
 		$this->modele_bouteille = $this->modele('modele_bouteille');
 		$this->modele_cellier = $this->modele('modele_cellier');
+		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
 	}
 
 	public function traite(array $params)
@@ -55,6 +56,11 @@ class Controleur_Cellier extends Controleur
 			// Suppression de cellier
 			case 'supprimer':
 				$this->supprimer();
+				break;
+
+			// Recherche sur les bouteils existant dans le cellier
+			case 'recherche':
+				$this->recherche();
 				break;
 
 			default :
@@ -133,4 +139,11 @@ class Controleur_Cellier extends Controleur
 		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
 	}	
+
+	public function recherche()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
+		echo json_encode($listeBouteilles);
+	}
 }

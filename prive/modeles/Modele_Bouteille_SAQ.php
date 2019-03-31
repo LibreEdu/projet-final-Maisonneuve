@@ -56,7 +56,7 @@ class Modele_Bouteille_SAQ extends Modele
 
 	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
 	{
-		$listeBouteilles = Array();
+		$listeBouteilles = Array();	
 		$valeur = preg_replace('/\*/','%' , $valeur);
 		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
 			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
