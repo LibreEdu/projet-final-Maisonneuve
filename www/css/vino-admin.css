@@ -142,36 +142,41 @@ a img{
 	position: absolute;
 	bottom: 16px;
 }
-  
-  .android-be-together-section {
+
+
+/* Section Bienvenue */
+.vino-section-bienvenue {
 	position: relative;
 	height: 800px;
 	width: auto;
-	background-color: #f3f3f3;
+	background-color: #ffffff;
 	background: linear-gradient(
-	  rgba(255, 255, 255, 1), 
-	  rgba(218, 179, 255, 0.9),
-	  rgba(255, 255, 255, 1)
-	  ), url('../images/diapo.jpg') center 30% no-repeat;
+		rgba(255, 255, 255, 1), 
+		rgba(218, 179, 255, 0.9),
+		rgba(255, 255, 255, 1)
+		), url('../images/diapo.jpg') center 30% no-repeat;
 	background-size: cover;
-  }
-  
-  .logo-font {
-	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+
+.bienvenue-police {
+	font-family: 'Helvetica', 'Arial', sans-serif;
 	line-height: 1;
-	color: #767777;
+	color: #4d004d;
 	font-weight: 500;
-  }
-  
-  .android-slogan {
+}
+
+
+.vino-bonjour {
 	font-size: 60px;
 	padding-top: 160px;
-  }
-  
-  .android-sub-slogan {
+}
+
+
+.vino-bienvenue {
 	font-size: 21px;
 	padding-top: 24px;
-  }
+}
   
   .android-create-character {
 	font-size: 21px;
@@ -479,17 +484,17 @@ a img{
 	  width: 100%;
 	}
   
-	.android-be-together-section {
+	.vino-section-bienvenue {
 	  height: 350px;
 	}
   
-	.android-slogan {
+	.vino-bonjour {
 	  font-size: 26px;
 	  margin: 0 16px;
 	  padding-top: 24px;
 	}
   
-	.android-sub-slogan {
+	.vino-bienvenue {
 	  font-size: 16px;
 	  margin: 0 16px;
 	  padding-top: 8px;

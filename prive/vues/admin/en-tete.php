@@ -40,9 +40,9 @@
 			</div>
 			<div class="android-content mdl-layout__content">
 				<a name="haut_de_page"></a>
-				<div class="android-be-together-section mdl-typography--text-center">
-					<div class="logo-font android-slogan">Bonjour <?php echo $donnees['prenom'] ?></div>
-					<div class="logo-font android-sub-slogan">Bienvenue à Vino administration</div>
+				<div class="vino-section-bienvenue mdl-typography--text-center">
+					<div class="bienvenue-police vino-bonjour">Bonjour <?php echo $donnees['prenom'] ?></div>
+					<div class="bienvenue-police vino-bienvenue">Bienvenue à Vino administration</div>
 					<a href="#importation">
 						<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 							<i class="material-icons">expand_more</i>
