@@ -117,35 +117,32 @@ a img{
 }
 
 
-.vino-drawer {
-  border-right: none;
+/* Menu latéral */
+.vino-lateral {
+	border-right: none;
 }
 
-  .vino-drawer-separator {
-    height: 1px;
-    background-color: #dcdcdc;
-    margin: 8px 0;
-  }
 
-  .vino-drawer .mdl-navigation__link.mdl-navigation__link {
-    font-size: 14px;
-    color: #757575;
-  }
+/* Liens du menu latéral */
+.vino-lateral .mdl-navigation__link.mdl-navigation__link {
+	font-size: 14px;
+	color: #7b1fa2;
+}
 
-  .vino-drawer span.mdl-navigation__link.mdl-navigation__link {
-    color: #8bc34a;
-  }
 
-  .vino-drawer .mdl-layout-title {
-    position: relative;
-    background: #6ab344;
-    height: 160px;
-  }
+/* Titre du menu latéral */
+.vino-lateral .mdl-layout-title {
+	position: relative;
+	background: #7b1fa2;
+	height: 160px;
+}
 
-    .vino-drawer .vino-logo-image {
-      position: absolute;
-      bottom: 16px;
-    }
+
+/* Logo du menu latéral */
+.vino-lateral .vino-logo-image {
+	position: absolute;
+	bottom: 16px;
+}
 
 .vino-be-together-section {
   position: relative;

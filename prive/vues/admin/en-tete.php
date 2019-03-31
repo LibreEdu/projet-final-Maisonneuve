@@ -30,9 +30,9 @@
 				</span>
 			</div>
 		</div>
-		<div class="vino-drawer mdl-layout__drawer">
+		<div class="vino-lateral mdl-layout__drawer">
 			<span class="mdl-layout-title">
-				<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
+				<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo-blanc.png">
 			</span>
 			<nav class="mdl-navigation">
 				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
