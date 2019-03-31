@@ -43,7 +43,7 @@
 				<a name="haut_de_page"></a>
 				<div class="vino-section-bienvenue mdl-typography--text-center">
 					<div class="vino-bienvenue-police vino-bonjour">Bonjour <?php echo $donnees['prenom'] ?></div>
-					<div class="vino-bienvenue-police vino-bienvenue">Bienvenue à Vino administration</div>
+					<div class="vino-bienvenue-police vino-bienvenue">Bienvenue sur Vino administration</div>
 					<a href="#importation">
 						<button class="vino-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 							<i class="material-icons">expand_more</i>
