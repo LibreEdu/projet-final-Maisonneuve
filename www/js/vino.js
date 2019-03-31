@@ -56,6 +56,7 @@ window.addEventListener('load', function() {
 	};
 
 	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
+	if(document.getElementById('recherchePar')) {
 	let recherchePar = document.getElementById('recherchePar'); 
 	recherchePar.addEventListener('change', function(element){
 		//ajouter un champ de recherche suplemetaire pour les recherche en numerique
@@ -125,6 +126,7 @@ window.addEventListener('load', function() {
 			}	
 		},false);
 	},false);
+	}
 	
 	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
 	/*let btnRechercheBouteille = document.getElementById('btnRecherche');
@@ -394,19 +396,24 @@ window.addEventListener('load', function() {
 			}			
 		});	
 		
-		if(document.querySelectorAll('.details')){
+		/*if(document.querySelectorAll('.details')){
 			document.querySelectorAll('.details').style.display = "none";
-			console.log(document.querySelectorAll('.details')[0]);
+			console.log(document.querySelectorAll('.details')[0]);		
 		};
-	
-		document.querySelectorAll('.afficher_details').forEach(function(element){
-			element.addEventListener('click', function(evt){
-				if(document.querySelectorAll('details') == "none"){
-					evt.target.parentElement.style.display = "initial";
+		let liste_achats = document.getElementsByName('achats');
+
+		liste_achats.addEventListener('click', function(evt){
+			if(evt.target.tagName == 'BUTTON'){
+				if(evt.target.nextSibling.style.display == "none"){
+					evt.target.nextSibling.style.display = "initial";
 				}
 				else {
-					evt.target.style.display = "none";
-				}
+					evt.target.nextSibling.style.display = "none";
+				}*/
+		document.querySelectorAll('.afficher_details').forEach(function(element){
+			element.addEventListener('click', function(evt){
+				console.log(document.querySelectorAll('.afficher_details').value);
+				window.location = 'index.php?listee&action=ajouter_list';
 			});
 		});
 	}	
