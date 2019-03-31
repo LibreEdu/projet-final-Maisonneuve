@@ -14,7 +14,7 @@
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 			<div class="vino-en-tete mdl-layout__header mdl-layout__header--waterfall">
 				<div class="mdl-layout__header-row">
-					<span class="android-title mdl-layout-title">
+					<span class="vino-titre mdl-layout-title">
 						<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 					</span>
 					<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->

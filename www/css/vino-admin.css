@@ -444,11 +444,11 @@ a img{
 /**** Mobile layout ****/
 @media (max-width: 900px) {
 	.vino-navigation-conteneur {
-	  display: none;
+		display: none;
 	}
-  
-	.android-title {
-	  display: none !important;
+
+	.vino-titre {
+		display: none !important;
 	}
   
 	.vino-logo-cell {
