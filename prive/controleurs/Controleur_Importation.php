@@ -28,12 +28,21 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
+	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
+	 */
+	private $modele_bouteille_saq;
+
+
+	/**
 	 * Vérification des droits d’administration et initialisation de l’attribut.
 	 * 
 	 * @return void
 	 */
 	public function __construct()
 	{
+		// Initialisation du modèle Bouteille SAQ.
+		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
+
 		// Déclaration du fichier de log.
 		$this->_log = new Log('admin');
 
@@ -110,8 +119,11 @@ final class Controleur_Importation extends Controleur
 
 	public function importer()
 	{
-		echo 'coucou';
+		// echo 'coucou';
 
+		$nbBouteilles = $this->modele_bouteille_saq->obtenir_total();
+		var_dump($nbBouteilles);
+		die;
 		$this->curl();
 		var_dump($this->_page_web);
 		// var_dump($_POST);
@@ -149,38 +161,36 @@ final class Controleur_Importation extends Controleur
 	}
 
 
-	public function getProduits($debut = 0, $nombre = 100) {
+	// public function getProduits($debut = 0, $nombre = 100) {
+	// 	$doc = new DOMDocument();
 
+	// 	// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
+	// 	$doc->recover = true;
 
-		$doc = new DOMDocument();
+	// 	// Ne lance pas une DOMException en cas d’erreur.
+	// 	$doc->strictErrorChecking = false;
 
-		// Activation du mode « recovery », c.-à-d. tentative d’analyser un document mal formé.
-		$doc->recover = true;
+	// 	// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
+	// 	// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
+	// 	@$doc->loadHTML(self::$_pageweb);
 
-		// Ne lance pas une DOMException en cas d’erreur.
-		$doc->strictErrorChecking = false;
+	// 	// Recherche tous les éléments qui ont une balise <div>
+	// 	$elements = $doc->getElementsByTagName('div');
 
-		// Chargement du code HTML à partir d’une chaîne de caractères (self::$_pageweb)
-		// @ : permet de ne pas afficher l’éventuel message d’erreur que pourrait retourner la fonction
-		@$doc->loadHTML(self::$_pageweb);
+	// 	$nombreDeProduits = 0;
 
-		// Recherche tous les éléments qui ont une balise <div>
-		$elements = $doc->getElementsByTagName('div');
-
-		$nombreDeProduits = 0;
-
-		foreach ($elements as $noeud) {
-			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
-				$info = self::recupereInfo($noeud);
-				//var_dump($info);
-				$retour = $this->ajoutProduit($info);
-				if ($retour->succes == false) {
-					$retour->raison;
-				} else {
-					$nombreDeProduits++;
-				}
-			}
-		}
-		return $nombreDeProduits;
-	}
+	// 	foreach ($elements as $noeud) {
+	// 		if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
+	// 			$info = self::recupereInfo($noeud);
+	// 			//var_dump($info);
+	// 			$retour = $this->ajoutProduit($info);
+	// 			if ($retour->succes == false) {
+	// 				$retour->raison;
+	// 			} else {
+	// 				$nombreDeProduits++;
+	// 			}
+	// 		}
+	// 	}
+	// 	return $nombreDeProduits;
+	// }
 }
