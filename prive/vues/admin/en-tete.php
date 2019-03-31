@@ -49,7 +49,7 @@
 						</button>
 					</a>
 				</div>
-				<div class="android-screen-section mdl-typography--text-center">
+				<div class="vino-importation mdl-typography--text-center">
 					<a name="importation"></a>
 					<div class="mdl-typography--display-1-color-contrast">Importation SAQ</div>
 				</div>

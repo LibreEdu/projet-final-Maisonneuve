@@ -158,7 +158,6 @@ a img{
 	background-size: cover;
 }
 
-
 .bienvenue-police {
 	font-family: 'Helvetica', 'Arial', sans-serif;
 	line-height: 1;
@@ -166,34 +165,23 @@ a img{
 	font-weight: 500;
 }
 
-
 .vino-bonjour {
 	font-size: 60px;
 	padding-top: 160px;
 }
 
-
 .vino-bienvenue {
 	font-size: 21px;
 	padding-top: 24px;
 }
-  
-  .android-create-character {
-	font-size: 21px;
-	padding-top: 400px;
-  }
-  
-	.android-create-character a {
-	  text-decoration: none;
-	  color: #767777;
-	  font-weight: 300;
-	}
-  
-  .android-screen-section {
+
+
+/* Section Importation */
+.vino-importation {
 	position: relative;
 	padding-top: 60px;
 	padding-bottom: 80px;
-  }
+}
   
   .android-screens {
 	text-align: right;
@@ -500,14 +488,7 @@ a img{
 	  padding-top: 8px;
 	}
   
-	.android-create-character {
-	  padding-top: 200px;
-	  font-size: 16px;
-	}
-  
-	.android-create-character img {
-	  height: 12px;
-	}
+
 
 	/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
 	.vino-fab {
