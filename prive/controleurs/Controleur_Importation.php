@@ -7,8 +7,14 @@
  * @author   Alexandre Pachot
  * @version  1.0
  */
-final class Controleur_Admin extends Controleur
+final class Controleur_Importation extends Controleur
 {
+	/**
+	 * @var object $_log Fichier de log.
+	 */
+	private $_log;
+
+
 	/**
 	 * @var string $url_SAQ URL de la SAQ qui sert à l’importation des bouteilles.
 	 */
@@ -22,13 +28,46 @@ final class Controleur_Admin extends Controleur
 
 
 	/**
-	 * Initialisation de l’attribut
+	 * Vérification des droits d’administration et initialisation de l’attribut.
 	 * 
 	 * @return void
 	 */
 	public function __construct()
 	{
+		// Déclaration du fichier de log.
+		$this->_log = new Log('admin');
+
+		// Vérification que la personne a bien les droits d’administration.
+		$this->est_admin();
+
+		// URL qui va servir à l’importation des bouteilles de vin de la SAQ.
 		$this->url_SAQ = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin';
+	}
+
+
+	/**
+	 * Vérification que la personne qui accède à cette classe a les droits d’administrateur.
+	 * 
+	 * Si la personne n’est pas admin, alors elle sera redirigée vers la page de déconnexion
+	 * 
+	 * @return void
+	 */
+	private function est_admin() {
+		// Pour que la personne soit admin,
+		// il faut d’une part qu’il existe une variable de session qui s’appelle admin
+		// et d’autre part que cette variable soit à Vrai.
+		if ( ! ( isset($_SESSION['admin']) && $_SESSION['admin'] == true) )
+		{
+			// Récupération de l’identifiant de l’usager qui veut jouer au malin !
+			$id_usager = (isset($_SESSION['id_usager'])) ? $_SESSION['id_usager'] : 'personne non connectée';
+
+			// On garde une trace de la tentative d’effraction.
+			$message_erreur = "Tentative de connexion. Id_usager = $id_usager\n";
+			$this->_log->ecriture($message_erreur);
+
+			// Redirection vers la page de déconnexion
+			header('Location: ' . site_url('login&action=logout') );
+		}
 	}
 
 
@@ -41,10 +80,6 @@ final class Controleur_Admin extends Controleur
 	 */
 	public function traite(array $params)
 	{
-		if ( ! ( isset($_SESSION["admin"]) && $_SESSION["admin"] == true) )
-		{
-			header( 'Location: ' . base_url() );
-		}
 		switch($params['action'])
 		{
 			case 'index':
@@ -66,12 +101,13 @@ final class Controleur_Admin extends Controleur
 	 */
 	public function index()
 	{
-		$donnees['prenom'] = $_SESSION["prenom"];
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-admin');
-		$this->afficheVue('admin/principal', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		$donnees['prenom'] = $_SESSION['prenom'];
+
+		$this->afficheVue('admin/en-tete');
+		// $this->afficheVue('admin/principal', $donnees);
+		// $this->afficheVue('modeles/bas-de-page');
 	}
+
 
 	public function importer()
 	{
@@ -84,20 +120,21 @@ final class Controleur_Admin extends Controleur
 		// var_dump($import);
 	}
 
+
 	/**
 	 * Récupère les données HTML de la page Résultat de recherche de la SAQ.
 	 * 
-	 * @param integer $debut Index de la première bouteille récupérée.
-	 * @param integer $quantite Quantité de bouteilles de vin à récupérer.
+	 * @param integer $index Index de la première bouteille récupérée.
+	 * @param integer $nombre_bouteilles Nombre de bouteilles de vin à récupérer.
 	 * 
 	 * @return void
 	 */
-	private function curl($debut = 0, $quantite = 1) {
+	private function curl($index = 0, $nombre_bouteilles = 1) {
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
 
 		// URL à récupérer.
-		curl_setopt($gc, CURLOPT_URL, $this->url_SAQ . '&beginIndex=' . $debut . '&pageSize=' . $quantite);
+		curl_setopt($gc, CURLOPT_URL, $this->url_SAQ . '&beginIndex=' . $index . '&pageSize=' . $nombre_bouteilles);
 
 		// Retourne directement le transfert sous forme de chaine au lieu de l’afficher directement.
 		curl_setopt($gc, CURLOPT_RETURNTRANSFER, true);
