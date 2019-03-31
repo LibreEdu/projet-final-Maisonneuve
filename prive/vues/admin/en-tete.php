@@ -17,15 +17,15 @@
 				<span class="vino-title mdl-layout-title">
 					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 				</span>
-				<!-- Add spacer, to align navigation to the right in desktop -->
+				<!-- Ajoute un espace afin d’aligner la barre de navigation à droite, version ordinateur -->
 				<div class="mdl-layout-spacer"></div>
-				<!-- Navigation -->
+				<!-- Barre de navigation -->
 				<div class="vino-navigation-container">
 					<nav class="vino-navigation mdl-navigation">
 						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 					</nav>
 				</div>
-				<span class="vino-mobile-title mdl-layout-title">
+				<span class="vino-logo-cell mdl-layout-title">
 					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo.png">
 				</span>
 			</div>

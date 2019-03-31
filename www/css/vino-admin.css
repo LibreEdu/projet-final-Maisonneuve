@@ -21,107 +21,100 @@ a img{
 }
 
 
+/* Ligne du haut */
 .vino-entete .mdl-menu__container {
-  z-index: 50;
-  margin: 0 !important;
+	z-index: 50;
+	margin: 0 !important;
 }
 
 
-.mdl-textfield--expandable {
-  width: auto;
-}
-
+/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
 .vino-fab {
-  position: absolute;
-  right: 20%;
-  bottom: -26px;
-  z-index: 3;
-  background: #64ffda !important;
-  color: black !important;
-}
-
-.vino-mobile-title {
-  display: none !important;
+	position: absolute;
+	right: 20%;
+	bottom: -26px;
+	z-index: 3;
+	background: #d7a9ef !important;
+	color: black !important;
 }
 
 
+/* Affichage du logo pour les cellulaires */
+.vino-logo-cell {
+	display: none !important;
+}
+
+
+/* Logo */
 .vino-logo-image {
-  height: 28px;
-  width: 140px;
+	height: 24px;
+	width: 140px;
 }
 
 
+/* Ligne du haut */
 .vino-entete {
-  overflow: visible;
-  background-color: white;
+	overflow: visible;
+	background-color: white;
 }
 
-  .vino-entete .material-icons {
-    color: #767777 !important;
-  }
 
-  .vino-entete .mdl-layout__drawer-button {
-    background: transparent;
-    color: #767777;
-  }
-
-  .vino-entete .mdl-navigation__link {
-    color: #757575;
-    font-weight: 700;
-    font-size: 14px;
-  }
-
-  .vino-navigation-container {
-    /* Simple hack to make the overflow happen to the left instead... */
-    direction: rtl;
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    width: 500px;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .vino-navigation {
-    /* ... and now make sure the content is actually LTR */
-    direction: ltr;
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    width: 800px;
-  }
-
-  .vino-search-box.is-focused + .vino-navigation-container {
-    opacity: 0;
-    width: 100px;
-  }
+/* Menu burger dessiné par le JS */
+.vino-entete .material-icons {
+	color: #7b1fa2 !important;
+}
 
 
-  .vino-navigation .mdl-navigation__link {
-    display: inline-block;
-    height: 60px;
-    line-height: 68px;
-    background-color: transparent !important;
-    border-bottom: 4px solid transparent;
-  }
+/* Encadré du burger lors de sa sélection */
+.vino-entete .mdl-layout__drawer-button {
+	background: transparent;
+	color: #7b1fa2;
+}
 
-    .vino-navigation .mdl-navigation__link:hover {
-      border-bottom: 4px solid #8bc34a;
-    }
 
-  .vino-search-box {
-    -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
+/* Liens de l’en-tête */
+.vino-entete .mdl-navigation__link {
+	color: #7b1fa2;
+	font-weight: 700;
+	font-size: 14px;
+}
 
-  .vino-more-button {
-    -webkit-order: 3;
-        -ms-flex-order: 3;
-            order: 3;
-  }
+
+/* Conteneur de la barre de navigation */
+.vino-navigation-conteneur {
+	/* Simple hack to make the overflow happen to the left instead... */
+	direction: rtl;
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+	width: 500px;
+	transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+	width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.vino-navigation {
+	/* ... and now make sure the content is actually LTR */
+	direction: ltr;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	width: 800px;
+}
+
+
+/* Liens de la barre de navigation */
+.vino-navigation .mdl-navigation__link {
+	display: inline-block;
+	height: 60px;
+	line-height: 68px;
+	background-color: transparent !important;
+	border-bottom: 4px solid transparent;
+}
+
+.vino-navigation .mdl-navigation__link:hover {
+	border-bottom: 4px solid #7b1fa2;
+}
 
 
 .vino-drawer {
@@ -450,7 +443,7 @@ a img{
 
 /**** Mobile layout ****/
 @media (max-width: 900px) {
-  .vino-navigation-container {
+  .vino-navigation-conteneur {
     display: none;
   }
 
@@ -458,7 +451,7 @@ a img{
     display: none !important;
   }
 
-  .vino-mobile-title {
+  .vino-logo-cell {
     display: block !important;
     position: absolute;
     left: calc(50% - 70px);
@@ -469,8 +462,8 @@ a img{
   /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
      consecutive "+" operators in some cases. Therefore, we need to use both
      here to cover all the bases. */
-  .vino.vino-search-box.is-focused ~ .vino-mobile-title,
-  .vino-search-box.is-focused + .vino-navigation-container + .vino-mobile-title {
+  .vino.vino-search-box.is-focused ~ .vino-logo-cell,
+  .vino-search-box.is-focused + .vino-navigation-conteneur + .vino-logo-cell {
     opacity: 0;
   }
 
