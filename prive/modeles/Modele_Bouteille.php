@@ -174,10 +174,12 @@ class Modele_Bouteille extends Modele
 		$listeBouteilles = Array();	
 		$valeur = preg_replace('/\*/','%' , $valeur);
 		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
-			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
+			$sql ='SELECT * FROM vino_bouteille INNER JOIN vino_type t ON vino_bouteille.id_type = t.id_type 
+			where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
 		}
 		elseif ($recherchePar=='millesime' || $recherchePar=='prix' || $recherchePar=='quantite') {
-			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND '.$recherchePar.$operation.$valeur;
+			$sql ='SELECT * FROM vino_bouteille INNER JOIN vino_type t ON vino_bouteille.id_type = t.id_type 
+			where id_cellier=? AND '.$recherchePar.$operation.$valeur;
 		}
 		$donnees=array($id_cellier);
 		$requete = $this->requete($sql, $donnees);
@@ -194,7 +196,7 @@ class Modele_Bouteille extends Modele
 				$uneBouteille["code_saq"] = $bouteille->code_saq;
 				$uneBouteille["prix"] = $bouteille->prix;
 				$uneBouteille["millesime"] = $bouteille->millesime;
-				$uneBouteille["id_type"] = $bouteille->id_type;
+				$uneBouteille["type"] = $bouteille->type;
 				$uneBouteille["pays"] = $bouteille->pays;
 				$uneBouteille["format"] = $bouteille->format;
 				$uneBouteille["quantite"] = $bouteille->quantite;

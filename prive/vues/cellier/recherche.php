@@ -26,21 +26,10 @@
 					<ul class="affichageResultat"></ul>
 				</div>
 			</section>	
-			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"  id="affichageDetails" style='display: none;'>
+			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="affichageDetails" style='display: none;'>
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
 					<div class='img'>
-						<?php
-							if(isset($bouteille->code_saq)) {
-						?>
-							<img src='https://s7d9.scene7.com/is/image/SAQ/<?php echo $bouteille->code_saq; ?>_is?$saq-rech-prod-gril$'>
-						<?php
-							}
-							else {
-						?>
-							<img src='../divers/images/bouteille.jpg'>
-						<?php
-							}
-						?>
+						<p id="code_saq"></p>
 					</div>
 				</header>
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
