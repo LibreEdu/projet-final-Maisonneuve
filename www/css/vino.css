@@ -80,6 +80,7 @@ th, td {
 }
 .liste_achat, .total {
 	width: 100% !important;
+	color: #661c86;
 }
 	
 /*******Styles pour le menu *******/

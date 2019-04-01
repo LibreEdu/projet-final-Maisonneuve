@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Gestion des bouteilles de la SAQ.
+ * Gestion des liste d'achat.
  *
  * @package  Vino
  * @author   José Ignacio Delgado
@@ -14,6 +14,7 @@ class Controleur_Liste_Achat extends Controleur
 	 * @var object $modele_affichage Le modèle Modele_Affichage.
 	 */
 	private $modele_liste;
+	private $modele_affichage;
 	
 	public function __construct()
 	{
@@ -69,7 +70,6 @@ class Controleur_Liste_Achat extends Controleur
 	public function ajouter_liste()
 	{
 		$this->modele_liste->ajouter_liste();
-		echo '<script>alert("La liste a été créée.")</script>';
 		$donnees['noms'] = $this->modele_liste->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -79,7 +79,6 @@ class Controleur_Liste_Achat extends Controleur
 
 	public function details_liste_achat()
 	{
-		//var_dump($_GET['nom']);die;
 		$donnees['listes'] = $this->modele_liste->obtenir_liste($_SESSION['id_usager'], $_GET['nom']);
 		$donnees['noms'] = $this->modele_liste->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');

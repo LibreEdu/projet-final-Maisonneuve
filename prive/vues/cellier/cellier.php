@@ -81,9 +81,6 @@
 				</ul>
 			</section>
 			<?php endforeach; ?>
-
-
-
 		</div>
 	</main>
 
