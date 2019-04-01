@@ -22,8 +22,13 @@
 							array_push($prix, $un_prix->prix);
 						endforeach;
 							$total = array_sum($prix);
-							echo number_format($total, 2, ',', ' '); 
-					?>&nbsp;$
+							if($total) {
+								echo number_format($total, 2, ',', ' ');
+							}
+							else {
+								echo "0";
+							}
+					?>&nbsp;$					
 					</td>
 				</tr>						
 			</table>
