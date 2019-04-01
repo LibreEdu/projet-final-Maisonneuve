@@ -67,19 +67,25 @@ class Modele_Bouteille_SAQ extends Modele
 		$donnees=array($id_cellier);
 		$requete = $this->requete($sql, $donnees);
 		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-		foreach($bouteilles as $bouteille) {
-			$uneBouteille = array();
-			$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
-			$uneBouteille["code_saq"] = $bouteille->code_saq;
-			$uneBouteille["prix"] = $bouteille->prix;
-			$uneBouteille["millesime"] = $bouteille->millesime;
-			$uneBouteille["id_type"] = $bouteille->id_type;
-			$uneBouteille["pays"] = $bouteille->pays;
-			$uneBouteille["format"] = $bouteille->format;
-			$uneBouteille["nom"] = $bouteille->nom;
-			array_push($listeBouteilles, $uneBouteille);
+		
+		if ($bouteilles == NULL) {
+			return 0;
 		}
-		return $listeBouteilles;
+		else{
+			foreach($bouteilles as $bouteille) {
+				$uneBouteille = array();
+				$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
+				$uneBouteille["code_saq"] = $bouteille->code_saq;
+				$uneBouteille["prix"] = $bouteille->prix;
+				$uneBouteille["millesime"] = $bouteille->millesime;
+				$uneBouteille["id_type"] = $bouteille->id_type;
+				$uneBouteille["pays"] = $bouteille->pays;
+				$uneBouteille["format"] = $bouteille->format;
+				$uneBouteille["nom"] = $bouteille->nom;
+				array_push($listeBouteilles, $uneBouteille);
+			}
+			return $listeBouteilles;
+		}
 	}
 
 	/**
@@ -122,7 +128,6 @@ class Modele_Bouteille_SAQ extends Modele
 				ORDER BY l.nom';
 		$resultat = $this->requete($sql);
 		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-
 		return $listes;
 	}
 

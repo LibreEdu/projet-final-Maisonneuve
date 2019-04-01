@@ -11,7 +11,7 @@
 							<option value='pays'>pays</option>
 							<option value='prix'>prix</option>	
 							<option value='quantite'>quantite</option>							
-							<option value='type'>type</option>																
+							<option value='type'>type</option>
 						</select>
 						<select id="rechercheSpecifique" style='visibility: hidden;'>
 							<option value='' disabled selected style='display:none;'>-- selectionner --</option>
@@ -19,7 +19,7 @@
 							<option value="<=">plus petit ou égale</option>
 						</select>
 					</div>										
-					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="nom_bouteille" style="visibility: hidden;"/>					
+					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>					
 					<ul class="rechercheParr"></ul>
 					<ul class="autoComplete"></ul>
 				</div>
