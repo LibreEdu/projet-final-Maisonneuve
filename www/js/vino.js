@@ -406,6 +406,8 @@ window.addEventListener('load', function() {
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
 				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
+				la_liste.innerHTML = '';
+				NomBouteille.value = '';
 			}
 		});
 
@@ -420,27 +422,6 @@ window.addEventListener('load', function() {
 				}
 			}			
 		});	
-		
-		/*if(document.querySelectorAll('.details')){
-			document.querySelectorAll('.details').style.display = "none";
-			console.log(document.querySelectorAll('.details')[0]);		
-		};
-		let liste_achats = document.getElementsByName('achats');
-
-		liste_achats.addEventListener('click', function(evt){
-			if(evt.target.tagName == 'BUTTON'){
-				if(evt.target.nextSibling.style.display == "none"){
-					evt.target.nextSibling.style.display = "initial";
-				}
-				else {
-					evt.target.nextSibling.style.display = "none";
-				}*/
-		document.querySelectorAll('.afficher_details').forEach(function(element){
-			element.addEventListener('click', function(evt){
-				console.log(document.querySelectorAll('.afficher_details').value);
-				window.location = 'index.php?listee&action=ajouter_list';
-			});
-		});
 	}	
 });
 

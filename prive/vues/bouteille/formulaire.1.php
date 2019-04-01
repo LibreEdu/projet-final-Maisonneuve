@@ -7,12 +7,6 @@
 			<h2 class="mdl-card__title-text">Créer une liste d'achat</h2>		
 		</div>
 		<div class="mdl-card__supporting-text">
-			<div class="mdl-textfield mdl-js-textfield">
-				Faire une recherche dans les bouteilles de la SAQ : <input class="mdl-textfield__input" type="text" name="une_bouteille">
-				<ul class="listeBouteilles">
-
-				</ul>
-			</div>
 			<form method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom de la liste d'achat : 
@@ -20,12 +14,18 @@
 				</div>
 				<div id="mes_achats">
 				
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					Faire une recherche dans les bouteilles de la SAQ : <input class="mdl-textfield__input" type="text" name="une_bouteille">
+					<ul class="listeBouteilles">
+
+					</ul>
 				</div>				
 				<div>
 					<input type="hidden" name="action" value="ajouter_liste">
 					<input type="hidden" name="id_usager" value="<?php echo $usager ?>">
 					<input type="submit" value="Ajouter liste" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</div>
-			</form>
+			</form>						
 	</div>
 </main>
