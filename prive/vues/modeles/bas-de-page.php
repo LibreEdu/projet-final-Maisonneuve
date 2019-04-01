@@ -1,7 +1,6 @@
 			<footer class="mdl-mega-footer"></footer>
 		</div>
-		<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<script src="<?php echo base_url(); ?>js/material.js"></script>
 		<script src="<?php echo base_url(); ?>js/vino.js"></script>
-		<script src="<?php echo base_url(); ?>js/vino2.js"></script>
 	</body>
 </html>
