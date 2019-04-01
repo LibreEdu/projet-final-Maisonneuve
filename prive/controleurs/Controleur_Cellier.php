@@ -59,6 +59,11 @@ class Controleur_Cellier extends Controleur
 				break;
 
 			// Recherche sur les bouteils existant dans le cellier
+			case 'pageRecherche':
+				$this->pageRecherche();
+				break;
+
+			// Recherche sur les bouteils existant dans le cellier
 			case 'recherche':
 				$this->recherche();
 				break;
@@ -139,6 +144,15 @@ class Controleur_Cellier extends Controleur
 		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
 	}	
+
+	public function pageRecherche()
+	{
+		$donnees['id-cellier'] = $_GET['id_cellier'];
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('cellier/recherche', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
 
 	public function recherche()
 	{
