@@ -430,7 +430,7 @@ window.addEventListener('load', function() {
 					}
 				}
 			}			
-		});	
+		});
 	}	
 });
 
