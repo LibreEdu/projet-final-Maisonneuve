@@ -55,6 +55,16 @@ window.addEventListener('load', function() {
 		});
 	};
 
+	//Recuperer le bouton recherche et diriger ver le conroleur cellier
+	var pageRecherche = document.getElementById('pageRecherche');
+	if(pageRecherche){
+		pageRecherche.addEventListener('click', function(){
+			var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+			var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+			window.location = 'index.php?cellier&action=pageRecherche&id_cellier='+id_cellier;
+		});
+	};
+
 	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
 	if(document.getElementById('recherchePar')) {
 	let recherchePar = document.getElementById('recherchePar'); 
@@ -62,15 +72,16 @@ window.addEventListener('load', function() {
 		//ajouter un champ de recherche suplemetaire pour les recherche en numerique
 		console.log(recherchePar.value);
 		var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
-		var operation = "=";
 		var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+		var operation = "=";
 		var rechercheSpecifique = document.getElementById('rechercheSpecifique');
 		var btnRecherche = document.getElementById('btnRecherche');
-		let liste = document.querySelector('.autoComplete');
+		let affichageResultat = document.querySelector('.affichageResultat');
 		let valeurRechercher = document.querySelector('[name="valeurRechercher"]');
 		
 		if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
 			rechercheSpecifique.style.visibility = 'visible';	
+			btnRecherche.style.visibility = "hidden";
 			btnRecherche.value = "";		
 			//Si la selection est fait on affiche la barre de recherche
 			rechercheSpecifique.addEventListener('change', function(element){
@@ -98,8 +109,8 @@ window.addEventListener('load', function() {
 						btnRecherche.value = "";
 					}
 				}				
-				if(liste){
-					liste.innerHTML = '';	
+				if(affichageResultat){
+					affichageResultat.innerHTML = '';	
 					//Cree un tableau de paramétre pour pour les envoyés au controleur SAQ 
 					var params = {
 						'id_cellier':id_cellier,
@@ -107,7 +118,6 @@ window.addEventListener('load', function() {
 						'valeur':valeurRechercher.value,
 						'operation': operation										
 					};
-					//console.log(params);
 					let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
 					fetch(requete)
 					.then(response => {
@@ -118,13 +128,13 @@ window.addEventListener('load', function() {
 						}
 					})
 					.then(response => {
-						if (response==0) {
+						if (response===0) {
 							alert("Aucune reponse pour cette recheche. Veuiller reessayer!");
 							btnRecherche.value = "";
 						}
 						else {
 							response.forEach(function(element){
-								liste.innerHTML += '<li '
+								affichageResultat.innerHTML += '<li '
 								+ 'data-id="' + element.id_bouteille_saq + '" '
 								+ 'data-prix="' + element.prix + '"'
 								+ 'data-millesime="' + element.millesime + '"'
