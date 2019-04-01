@@ -477,7 +477,7 @@ window.addEventListener('load', function() {
 					}
 				}
 			}			
-		});	
+		});
 	}	
 });
 
