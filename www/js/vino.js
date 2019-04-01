@@ -445,7 +445,7 @@ window.addEventListener('load', function() {
 					}
 				}
 			}			
-		});	
+		});
 	}	
 });
 

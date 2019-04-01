@@ -2,19 +2,27 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/vino.css">
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
-		</div>
-		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
-		<h3>Vino &amp; plaisir</h3>
-		</div>
-		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
-		</div>
-		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-			<a href="index.php?Cellier" class="mdl-layout__tab is-active">Mes celliers</a>
-			<a href="index.php?liste_achat&action=liste_form" class="mdl-layout__tab is-active">Liste d'achats</a>
-			<a href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>" class="mdl-layout__tab " id="moncompte">Mon Compte</a>
-			<a href="index.php?login&action=logout" class="mdl-layout__tab " id="deconnexion">Déconnexion</a>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+	<header  class="mdl-layout__header mdl-layout__header--transparent">
+		
+		<div class="mdl-layout__header-row">
+		<span class="mdl-layout-title">Vino &amp; plaisir</span>
+		<div class="mdl-layout-spacer"></div>
+		<div class="mdl-layout-spacer"></div>
+		<nav class="mdl-navigation">
+			<a class="mdl-navigation__link" href="index.php?Cellier">Mes celliers</a>
+			<a class="mdl-navigation__link" href="index.php?liste_achat&action=listes_achat">Listes d'achat</a>
+			<a id="moncompte" class="mdl-navigation__link" href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>">Mon Compte</a>
+			<a id="deconnexion" class="mdl-navigation__link" href="index.php?login&action=logout">Déconnexion</a>
+		</nav>
 		</div>
 	</header>
+	<div class="mdl-layout__drawer">
+		<span class="mdl-layout-title">Vino &amp; plaisir</span>
+		<nav class="mdl-navigation">
+			<a class="mdl-navigation__link" href="index.php?Cellier">Mes celliers</a>
+			<a class="mdl-navigation__link" href="index.php?liste_achat&action=listes_achat">Listes d'achat</a>
+			<a id="moncompte" class="mdl-navigation__link" href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>">Mon Compte</a>
+			<a id="deconnexion" class="mdl-navigation__link" href="index.php?login&action=logout">Déconnexion</a>
+		</nav>
+	</div>
