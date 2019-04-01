@@ -23,7 +23,6 @@ class Controleur_Cellier extends Controleur
 	{
 		$this->modele_bouteille = $this->modele('modele_bouteille');
 		$this->modele_cellier = $this->modele('modele_cellier');
-		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
 	}
 
 	public function traite(array $params)
@@ -161,7 +160,7 @@ class Controleur_Cellier extends Controleur
 	public function recherche()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
+		$listeBouteilles = $this->modele_bouteille->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
 		echo json_encode($listeBouteilles);
 	}
 }

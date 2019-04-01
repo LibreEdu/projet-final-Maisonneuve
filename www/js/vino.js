@@ -135,13 +135,16 @@ window.addEventListener('load', function() {
 							else {
 								response.forEach(function(element){
 									affichageResultat.innerHTML += '<li '
-									+ 'data-id="' + element.id_bouteille_saq + '" '
-									+ 'data-prix="' + element.prix + '"'
+									+ 'data-id_bouteille="' + element.id_bouteille + '" '
 									+ 'data-millesime="' + element.millesime + '"'
 									+ 'data-pays="' + element.pays + '"'
 									+ 'data-format="' + element.format + '"'
+									+ 'data-quantite="' + element.quantite + '"'
+									+ 'data-date_achat="' + element.date_achat + '"'
+									+ 'data-boire_avant="' + element.boire_avant + '"'
+									+ 'data-prix="' + element.prix + '"'
 									+ '>'
-									+ element.nom +' - '+element.prix+'$</li>';
+									+ element.nom +'</li>';
 								});
 							}
 						}).catch(error => {
@@ -150,24 +153,53 @@ window.addEventListener('load', function() {
 					}
 				}	
 			},false);
+			
 			//En cliquant sur le résultat obtenu de la recherche, des details du bouteilles recherceher, s'affiche
 			let bouteille = {
 				nom : document.getElementById('nom_bouteille'),
-				//millesime : document.getElementById('millesime'),
-				//prix : document.getElementById('prix'),
-				//pays : document.getElementById('pays'),
-				//format : document.getElementById('format'),
-				//id_type : document.querySelector('[name="type"]'),
-				//code_saq : document.querySelector('[name="code_saq"]')
+				millesime : document.getElementById('millesime'),
+				type : document.getElementById('type'),
+				format : document.getElementById('format'),
+				pays : document.getElementById('pays'),
+				quantite : document.getElementById('quantite'),
+				date_achat : document.getElementById('date_achat'),
+				boire_avant : document.getElementById('boire_avant'),
+				prix : document.getElementById('prix')
 			};
+
 			if(affichageResultat){
 				affichageResultat.addEventListener('click', function(evt){
+					affichageDetails.style='display';
 					if(evt.target.tagName == 'LI'){			
 						bouteille.nom.innerHTML = evt.target.innerHTML;
-						//bouteille.prix.value = evt.target.dataset.prix;
-						//bouteille.millesime.value = evt.target.dataset.millesime;
-						//bouteille.pays.value = evt.target.dataset.pays;
-						//bouteille.format.value = evt.target.dataset.format;
+						console.log(evt.target.dataset.millesime);
+						if (evt.target.dataset.millesime!="null") {
+							bouteille.millesime.innerHTML = evt.target.dataset.millesime;
+						}	
+						else {
+							bouteille.millesime.innerHTML = " ";
+						}					
+						bouteille.pays.innerHTML = evt.target.dataset.pays;
+						bouteille.format.innerHTML = evt.target.dataset.format;
+						bouteille.quantite.innerHTML = "Quantité : ";
+						bouteille.quantite.innerHTML += evt.target.dataset.quantite;
+						if (evt.target.dataset.date_achat!="null") {
+							bouteille.date_achat.innerHTML = "Date d'achat : ";
+							bouteille.date_achat.innerHTML += evt.target.dataset.date_achat;
+						}	
+						else {
+							bouteille.date_achat.innerHTML = " ";
+						}	
+						if (evt.target.dataset.boire_avant!="null") {
+							bouteille.boire_avant.innerHTML = "Boire avant : ";
+							bouteille.boire_avant.innerHTML += evt.target.dataset.boire_avant;
+						}	
+						else {
+							bouteille.boire_avant.innerHTML = " ";
+						}
+						bouteille.prix.innerHTML = evt.target.dataset.prix;
+						bouteille.prix.innerHTML += '$';
+						
 						//bouteille.code_saq.value = evt.target.dataset.code_saq;
 						//affichageResultat.innerHTML = '';
 						//inputNomBouteille.value = '';

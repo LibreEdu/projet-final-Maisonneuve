@@ -54,52 +54,6 @@ class Modele_Bouteille_SAQ extends Modele
 	}
 
 	/**
-	 * Retourne la liste de bouteilles qui ont été trouvé
-	 * 
-	 * @param integer $id_cellier identifiant du cellier.
-	 * @param string $rechercherPar Levariable a rechercher.
-	 * @param mixed $valeur Le valeur à rechercher.
-	 * @param string $operation Le type d'operation qui est choisit.
-	 * 
-	 * @throws Exception Erreur de requête sur la base de données. 
-	 * 
-	 * @return Array tous les données de la bouteille trouvée. 
-	 */
-	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
-	{
-		$listeBouteilles = Array();	
-		$valeur = preg_replace('/\*/','%' , $valeur);
-		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
-			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
-		}
-		elseif ($recherchePar=='millesime' || $recherchePar=='prix' || $recherchePar=='quantite') {
-			$sql ='SELECT * FROM vino_bouteille where id_cellier=? AND '.$recherchePar.$operation.$valeur;
-		}
-		$donnees=array($id_cellier);
-		$requete = $this->requete($sql, $donnees);
-		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-		
-		if ($bouteilles == NULL) {
-			return 0;
-		}
-		else{
-			foreach($bouteilles as $bouteille) {
-				$uneBouteille = array();
-				$uneBouteille["id_bouteille"] = $bouteille->id_bouteille;
-				$uneBouteille["code_saq"] = $bouteille->code_saq;
-				$uneBouteille["prix"] = $bouteille->prix;
-				$uneBouteille["millesime"] = $bouteille->millesime;
-				$uneBouteille["id_type"] = $bouteille->id_type;
-				$uneBouteille["pays"] = $bouteille->pays;
-				$uneBouteille["format"] = $bouteille->format;
-				$uneBouteille["nom"] = $bouteille->nom;
-				array_push($listeBouteilles, $uneBouteille);
-			}
-			return $listeBouteilles;
-		}
-	}
-
-	/**
 	 * Fonction qui ajoute une liste d'achats
 	 * @param 
 	 * @return 
