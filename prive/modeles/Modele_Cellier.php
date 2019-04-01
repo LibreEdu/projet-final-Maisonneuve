@@ -19,7 +19,6 @@ class Modele_Cellier extends Modele
 		return 'id_cellier';
 	}
 
-
 	/**
 	 * Récupère les donnes d’un cellier.
 	 * 
@@ -34,7 +33,6 @@ class Modele_Cellier extends Modele
 		return $cellier;
 	}
 
-
 	/**
 	 * Récupère les donnes des celliers d’un usager.
 	 * 
@@ -48,7 +46,6 @@ class Modele_Cellier extends Modele
 		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
 		return $cellier;
 	}
-
 
 	/**
 	 * Supprime un cellier
