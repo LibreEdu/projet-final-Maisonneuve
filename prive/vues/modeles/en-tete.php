@@ -28,4 +28,4 @@
 		-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,500i,700" rel="stylesheet">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>fonts/iconfont/material-icons.css">
