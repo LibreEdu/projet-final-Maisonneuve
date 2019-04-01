@@ -25,7 +25,12 @@
 					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>	
 					<ul class="affichageResultat"></ul>
 				</div>
-			</section>		  	
+			</section>	
+			<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone" style='visibility: hidden;'>
+				<div class="mdl-card__supporting-text">
+					<h4 id="nom_bouteille" class='nom'></h4>
+				</div>
+			</div>		
 		</div>
 	</main>
 

@@ -28,8 +28,7 @@ class Modele_Bouteille_SAQ extends Modele
 	 * @throws Exception Erreur de requête sur la base de données 
 	 * 
 	 * @return array tous les données de la bouteille trouvée dans le catalogue
-	 */
-	
+	 */	
 	public function autocomplete($nom, $nb_resultat=10)
 	{
 		
@@ -54,6 +53,18 @@ class Modele_Bouteille_SAQ extends Modele
 		return $listeBouteilles;
 	}
 
+	/**
+	 * Retourne la liste de bouteilles qui ont été trouvé
+	 * 
+	 * @param integer $id_cellier identifiant du cellier.
+	 * @param string $rechercherPar Levariable a rechercher.
+	 * @param mixed $valeur Le valeur à rechercher.
+	 * @param string $operation Le type d'operation qui est choisit.
+	 * 
+	 * @throws Exception Erreur de requête sur la base de données. 
+	 * 
+	 * @return Array tous les données de la bouteille trouvée. 
+	 */
 	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
 	{
 		$listeBouteilles = Array();	
@@ -74,7 +85,7 @@ class Modele_Bouteille_SAQ extends Modele
 		else{
 			foreach($bouteilles as $bouteille) {
 				$uneBouteille = array();
-				$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
+				$uneBouteille["id_bouteille"] = $bouteille->id_bouteille;
 				$uneBouteille["code_saq"] = $bouteille->code_saq;
 				$uneBouteille["prix"] = $bouteille->prix;
 				$uneBouteille["millesime"] = $bouteille->millesime;

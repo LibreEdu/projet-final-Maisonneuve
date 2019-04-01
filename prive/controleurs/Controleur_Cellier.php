@@ -145,6 +145,10 @@ class Controleur_Cellier extends Controleur
 		echo json_encode(true);
 	}	
 
+	/**
+	 * Fonction qui prent le id du cellier et affiche les vues relies
+	 * 
+	 */
 	public function pageRecherche()
 	{
 		$donnees['id-cellier'] = $_GET['id_cellier'];

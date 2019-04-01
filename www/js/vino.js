@@ -67,90 +67,114 @@ window.addEventListener('load', function() {
 
 	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
 	if(document.getElementById('recherchePar')) {
-	let recherchePar = document.getElementById('recherchePar'); 
-	recherchePar.addEventListener('change', function(element){
-		//ajouter un champ de recherche suplemetaire pour les recherche en numerique
-		console.log(recherchePar.value);
-		var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
-		var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
-		var operation = "=";
-		var rechercheSpecifique = document.getElementById('rechercheSpecifique');
-		var btnRecherche = document.getElementById('btnRecherche');
-		let affichageResultat = document.querySelector('.affichageResultat');
-		let valeurRechercher = document.querySelector('[name="valeurRechercher"]');
-		
-		if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
-			rechercheSpecifique.style.visibility = 'visible';	
-			btnRecherche.style.visibility = "hidden";
-			btnRecherche.value = "";		
-			//Si la selection est fait on affiche la barre de recherche
-			rechercheSpecifique.addEventListener('change', function(element){
-				//Faire apparaitre la lingne pour ecrire l'element à rechercher				
+		let recherchePar = document.getElementById('recherchePar'); 
+		recherchePar.addEventListener('change', function(element){
+			//ajouter un champ de recherche suplemetaire pour les recherche en numerique
+			console.log(recherchePar.value);
+			var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+			var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+			var operation = "=";
+			var rechercheSpecifique = document.getElementById('rechercheSpecifique');
+			var btnRecherche = document.getElementById('btnRecherche');
+			let affichageResultat = document.querySelector('.affichageResultat');
+			let valeurRechercher = document.querySelector('[name="valeurRechercher"]');
+			
+			if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
+				rechercheSpecifique.style.visibility = 'visible';	
+				btnRecherche.style.visibility = "hidden";
+				btnRecherche.value = "";		
+				//Si la selection est fait on affiche la barre de recherche
+				rechercheSpecifique.addEventListener('change', function(element){
+					//Faire apparaitre la lingne pour ecrire l'element à rechercher				
+					btnRecherche.style.visibility = "visible";
+					btnRecherche.value = "";	
+					//Recupérer la valeur de la selection éffectuer
+					operation = rechercheSpecifique.options[rechercheSpecifique.selectedIndex].value;
+				},false);
+			}
+
+			else if (recherchePar.value === 'nom' || recherchePar.value === 'type' || recherchePar.value === 'pays'){
+				rechercheSpecifique.style.visibility = 'hidden';
+				//Faire apparaitre la lingne pour ecrire l'element à rechercher
 				btnRecherche.style.visibility = "visible";
-				btnRecherche.value = "";	
-				//Recupérer la valeur de la selection éffectuer
-				operation = rechercheSpecifique.options[rechercheSpecifique.selectedIndex].value;
-			},false);
-		}
+				btnRecherche.value = "";
+			}
 
-		else if (recherchePar.value === 'nom' || recherchePar.value === 'type' || recherchePar.value === 'pays'){
-			rechercheSpecifique.style.visibility = 'hidden';
-			//Faire apparaitre la lingne pour ecrire l'element à rechercher
-			btnRecherche.style.visibility = "visible";
-			btnRecherche.value = "";
-		}
-
-		btnRecherche.addEventListener('keyup',function(e){
-			if (e.keyCode === 13) {	
-				if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
-					console.log(isNaN(btnRecherche.value));
-					if (isNaN(btnRecherche.value)) {
-						alert("Veuiller entrer un chiffre!");
-						btnRecherche.value = "";
-					}
-				}				
-				if(affichageResultat){
-					affichageResultat.innerHTML = '';	
-					//Cree un tableau de paramétre pour pour les envoyés au controleur SAQ 
-					var params = {
-						'id_cellier':id_cellier,
-						'recherchePar':recherchePar.value,
-						'valeur':valeurRechercher.value,
-						'operation': operation										
-					};
-					let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
-					fetch(requete)
-					.then(response => {
-						if (response.status === 200) {
-							return response.json();
-						} else {
-						throw new Error('Erreur');
-						}
-					})
-					.then(response => {
-						if (response===0) {
-							alert("Aucune reponse pour cette recheche. Veuiller reessayer!");
+			btnRecherche.addEventListener('keyup',function(e){
+				if (e.keyCode === 13) {	
+					if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
+						console.log(isNaN(btnRecherche.value));
+						if (isNaN(btnRecherche.value)) {
+							alert("Veuiller entrer un chiffre!");
 							btnRecherche.value = "";
 						}
-						else {
-							response.forEach(function(element){
-								affichageResultat.innerHTML += '<li '
-								+ 'data-id="' + element.id_bouteille_saq + '" '
-								+ 'data-prix="' + element.prix + '"'
-								+ 'data-millesime="' + element.millesime + '"'
-								+ 'data-pays="' + element.pays + '"'
-								+ 'data-format="' + element.format + '"'
-								+ '>'
-								+ element.nom +' - '+element.prix+'$</li>';
-							});
-						}
-					}).catch(error => {
-						console.error(error);
-					});				
-				}
-			}	
+					}				
+					if(affichageResultat){
+						affichageResultat.innerHTML = '';	
+						//Cree un tableau de paramétre pour pour les envoyés au controleur SAQ 
+						var params = {
+							'id_cellier':id_cellier,
+							'recherchePar':recherchePar.value,
+							'valeur':valeurRechercher.value,
+							'operation': operation										
+						};
+						let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
+						fetch(requete)
+						.then(response => {
+							if (response.status === 200) {
+								return response.json();
+							} else {
+							throw new Error('Erreur');
+							}
+						})
+						.then(response => {
+							if (response===0) {
+								alert("Aucune reponse pour cette recheche. Veuiller reessayer!");
+								btnRecherche.value = "";
+							}
+							else {
+								response.forEach(function(element){
+									affichageResultat.innerHTML += '<li '
+									+ 'data-id="' + element.id_bouteille_saq + '" '
+									+ 'data-prix="' + element.prix + '"'
+									+ 'data-millesime="' + element.millesime + '"'
+									+ 'data-pays="' + element.pays + '"'
+									+ 'data-format="' + element.format + '"'
+									+ '>'
+									+ element.nom +' - '+element.prix+'$</li>';
+								});
+							}
+						}).catch(error => {
+							console.error(error);
+						});				
+					}
+				}	
+			},false);
+			//En cliquant sur le résultat obtenu de la recherche, des details du bouteilles recherceher, s'affiche
+			let bouteille = {
+				nom : document.getElementById('nom_bouteille'),
+				//millesime : document.getElementById('millesime'),
+				//prix : document.getElementById('prix'),
+				//pays : document.getElementById('pays'),
+				//format : document.getElementById('format'),
+				//id_type : document.querySelector('[name="type"]'),
+				//code_saq : document.querySelector('[name="code_saq"]')
+			};
+			if(affichageResultat){
+				affichageResultat.addEventListener('click', function(evt){
+					if(evt.target.tagName == 'LI'){			
+						bouteille.nom.innerHTML = evt.target.innerHTML;
+						//bouteille.prix.value = evt.target.dataset.prix;
+						//bouteille.millesime.value = evt.target.dataset.millesime;
+						//bouteille.pays.value = evt.target.dataset.pays;
+						//bouteille.format.value = evt.target.dataset.format;
+						//bouteille.code_saq.value = evt.target.dataset.code_saq;
+						//affichageResultat.innerHTML = '';
+						//inputNomBouteille.value = '';
+					}
+				});
+			};
 		},false);
-	},false);
 	}
 	
 	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
@@ -313,7 +337,7 @@ window.addEventListener('load', function() {
 							+ 'data-code_saq="' + element.code_saq + '"'
 							+ '>'
 							+ element.nom + '</li>';
-						} )
+						})
 					}).catch(error => {
 						console.error(error);
 					});
@@ -322,14 +346,14 @@ window.addEventListener('load', function() {
 		});
 
 		let bouteille = {
-				nom : document.getElementById('nom_bouteille'),
-				millesime : document.getElementById('millesime'),
-				prix : document.getElementById('prix'),
-				pays : document.getElementById('pays'),
-				format : document.getElementById('format'),
-				id_type : document.querySelector('[name="type"]'),
-				code_saq : document.querySelector('[name="code_saq"]')
-			};
+			nom : document.getElementById('nom_bouteille'),
+			millesime : document.getElementById('millesime'),
+			prix : document.getElementById('prix'),
+			pays : document.getElementById('pays'),
+			format : document.getElementById('format'),
+			id_type : document.querySelector('[name="type"]'),
+			code_saq : document.querySelector('[name="code_saq"]')
+		};
 		if(liste){
 			liste.addEventListener('click', function(evt){
 				if(evt.target.tagName == 'LI'){			
