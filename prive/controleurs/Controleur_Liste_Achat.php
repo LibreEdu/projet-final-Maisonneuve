@@ -40,8 +40,11 @@ class Controleur_Liste_Achat extends Controleur
 			case 'ajouter_liste':
 				$this->ajouter_liste();
 				break;
-			case 'recherche':
-				$this->recherche();
+			case 'details_liste_achat':
+				$this->details_liste_achat();
+				break;
+			case 'listes_achat':
+				$this->listes_achat();
 				break;
 			default :
 				trigger_error('Action invalide.');
@@ -52,13 +55,6 @@ class Controleur_Liste_Achat extends Controleur
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$listeBouteilles = $this->modele_liste->autocomplete($body->nom);
-		echo json_encode($listeBouteilles);
-	}
-
-	public function recherche()
-	{
-		$body = json_decode(file_get_contents('php://input'));
-		$listeBouteilles = $this->modele_bouteille_saq->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
 		echo json_encode($listeBouteilles);
 	}
 
@@ -74,7 +70,26 @@ class Controleur_Liste_Achat extends Controleur
 	{
 		$this->modele_liste->ajouter_liste();
 		echo '<script>alert("La liste a été créée.")</script>';
-		$donnees['listes'] = $this->modele_liste->obtenir_liste($_SESSION['id_usager']);
+		$donnees['noms'] = $this->modele_liste->obtenir_tous();
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/achat', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function details_liste_achat()
+	{
+		//var_dump($_GET['nom']);die;
+		$donnees['listes'] = $this->modele_liste->obtenir_liste($_SESSION['id_usager'], $_GET['nom']);
+		$donnees['noms'] = $this->modele_liste->obtenir_tous();
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/details_liste_achat', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function listes_achat()
+	{
 		$donnees['noms'] = $this->modele_liste->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');

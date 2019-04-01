@@ -67,6 +67,7 @@ function chargement_automatique_de_la_classe($classe)
 {
 	$repertoires = array(
 		RACINE . 'controleurs/',
+		RACINE . 'controleurs/lib/',
 		RACINE . 'modeles/',
 		RACINE . 'vues/'
 	);

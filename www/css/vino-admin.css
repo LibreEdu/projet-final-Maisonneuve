@@ -1,0 +1,353 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Italic.ttf');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Thin.ttf');
+	font-weight: thin;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Light.ttf');
+	font-weight: light;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-BoldItalic.ttf');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Black.ttf');
+	font-weight: black;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Medium.ttf');
+	font-weight: medium;
+	font-style: normal;
+}
+
+body {
+	margin: 0;
+}
+
+/* Désactive les boîtes laides autour des images dans IE10 */
+a img{
+	border: 0px;
+}
+
+
+/* Portion du document sélectionné par l’utilisateur (avec la souris…) */
+::-moz-selection {
+	background-color: #cc33ff;
+	color: #fff;
+}
+
+::selection {
+	background-color: #cc33ff;
+	color: #fff;
+}
+
+
+/* Ligne du haut */
+.vino-entete .mdl-menu__container {
+	z-index: 50;
+	margin: 0 !important;
+}
+
+
+/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
+.vino-fab {
+	position: absolute;
+	right: 20%;
+	bottom: -26px;
+	z-index: 3;
+	background: #d7a9ef !important;
+	color: black !important;
+}
+
+
+/* Affichage du logo pour les cellulaires */
+.vino-logo-cell {
+	display: none !important;
+}
+
+
+/* Logo */
+.vino-logo-image {
+	height: 24px;
+	width: 140px;
+}
+
+
+/* Ligne du haut */
+.vino-entete {
+	overflow: visible;
+	background-color: white;
+}
+
+
+/* Menu burger dessiné par le JS */
+.vino-entete .material-icons {
+	color: #7b1fa2 !important;
+}
+
+
+/* Encadré du burger lors de sa sélection */
+.vino-entete .mdl-layout__drawer-button {
+	background: transparent;
+	color: #7b1fa2;
+}
+
+
+/* Liens de l’en-tête */
+.vino-entete .mdl-navigation__link {
+	color: #7b1fa2;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+
+/* Conteneur de la barre de navigation */
+.vino-navigation-conteneur {
+	/* Simple hack to make the overflow happen to the left instead... */
+	direction: rtl;
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+	width: 500px;
+	transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+	width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vino-navigation {
+	/* ... and now make sure the content is actually LTR */
+	direction: ltr;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	width: 800px;
+}
+
+
+/* Liens de la barre de navigation */
+.vino-navigation .mdl-navigation__link {
+	display: inline-block;
+	height: 60px;
+	line-height: 68px;
+	background-color: transparent !important;
+	border-bottom: 4px solid transparent;
+}
+
+.vino-navigation .mdl-navigation__link:hover {
+	border-bottom: 4px solid #7b1fa2;
+}
+
+
+/* Menu latéral */
+.vino-lateral {
+	border-right: none;
+}
+
+
+/* Liens du menu latéral */
+.vino-lateral .mdl-navigation__link.mdl-navigation__link {
+	font-size: 14px;
+	color: #7b1fa2;
+}
+
+
+/* Titre du menu latéral */
+.vino-lateral .mdl-layout-title {
+	position: relative;
+	background: #7b1fa2;
+	height: 160px;
+}
+
+
+/* Logo du menu latéral */
+.vino-lateral .vino-logo-image {
+	position: absolute;
+	bottom: 16px;
+}
+
+
+/* Section Bienvenue */
+.vino-section-bienvenue {
+	position: relative;
+	height: 800px;
+	width: auto;
+	background-color: #ffffff;
+	background: linear-gradient(
+		rgba(255, 255, 255, 1), 
+		rgba(218, 179, 255, 0.9),
+		rgba(255, 255, 255, 1)
+		), url('../images/diapo.jpg') center 30% no-repeat;
+	background-size: cover;
+}
+
+.vino-bienvenue-police {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	line-height: 1;
+	color: #4d004d;
+	font-weight: 500;
+}
+
+.vino-bonjour {
+	font-size: 60px;
+	padding-top: 160px;
+}
+
+.vino-bienvenue {
+	font-size: 21px;
+	padding-top: 24px;
+}
+
+
+/* Section Importation */
+.vino-importation-section {
+	position: relative;
+	padding-bottom: 350px;
+}
+
+.vino-importation-titre {
+	position: relative;
+	padding-top: 60px;
+	padding-bottom: 80px;
+}
+
+/* Carte d’importation des vins */
+.vino-carte-importation.mdl-card {
+	width: 512px;
+	height: 320px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.vino-carte-importation > .mdl-card__title {
+	color: #fff;
+	background:
+	url('../images/importer.jpg') center / cover;
+}
+
+
+/* Pied de page */
+.vino-piedpage {
+	background-color: #ffe6ff;
+	position: relative;
+	color: #4d004d;
+}
+
+.vino-piedpage .mdl-navigation__link {
+	color: #ff00ff;
+}
+
+.vino-piedpage .mdl-navigation__link:hover{
+	color: #4d004d;
+}
+
+.vino-piedpage a:hover {
+	color: #ff00ff;
+}
+
+.vino-piedpage .mdl-mega-footer--top-section::after {
+	border-bottom: none;
+}
+
+.vino-piedpage .mdl-mega-footer--middle-section::after {
+	border-bottom: none;
+}
+
+.vino-piedpage .mdl-mega-footer--right-section a .material-icons {
+	position: relative;
+	top: 6px;
+}
+
+
+
+/**** Mise en page pour les cellulaires ****/
+@media (max-width: 900px) {
+	.vino-navigation-conteneur {
+		display: none;
+	}
+
+	.vino-titre {
+		display: none !important;
+	}
+
+	.vino-logo-cell {
+		display: block !important;
+		position: absolute;
+		left: calc(50% - 70px);
+		top: 12px;
+		transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.vino-section-bienvenue {
+		height: 350px;
+	}
+
+	.vino-bonjour {
+		font-size: 26px;
+		margin: 0 16px;
+		padding-top: 24px;
+	}
+
+	.vino-bienvenue {
+		font-size: 16px;
+		margin: 0 16px;
+		padding-top: 8px;
+	}
+
+	/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
+	.vino-fab {
+		display: none;
+	}
+
+	.vino-importation-section {
+		padding-bottom: 40px;
+	}
+	
+	.vino-carte-importation.mdl-card {
+		width: 90%;
+	}
+	
+	.vino-carte-importation > .mdl-card__title {
+		color: #fff;
+		background:
+		url('../images/importer.jpg') center / cover;
+	}
+
+
+	.vino-piedpage .mdl-mega-footer--bottom-section {
+		display: none;
+	}
+}
