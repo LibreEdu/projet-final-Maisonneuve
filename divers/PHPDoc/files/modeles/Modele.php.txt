@@ -12,7 +12,7 @@ abstract class Modele
 	/**
 	 * @var object $object Connexion à la base de données
 	 */
-	private $bd;
+	protected $bd;
 
 
 	/**
@@ -29,7 +29,7 @@ abstract class Modele
 
 
 	/**
-	 * Suppression d’un ou plusieurs tuples d’une table de la base de données.
+	 * Suppression d’un ou plusieurs enregistrements d’une table de la base de données.
 	 * 
 	 * @param string $clePrimaire Clé primaire servant à filtrer les données qu’on veur supprimer.
 	 * 
@@ -44,7 +44,7 @@ abstract class Modele
 
 
 	/**
-	 * Récupère les tuples d’une table selon un critère précis.
+	 * Récupère les enregistrements d’une table selon un critère précis.
 	 * 
 	 * @param string $valeurCherchee Condition de la clause WHERE
 	 * @param string $colonne Colonne sur laquelle on fait la recherche. Par défaut la recherche s’effectue sur la clé primaire.
@@ -65,7 +65,7 @@ abstract class Modele
 
 
 	/**
-	 * Récupère tous les tuples d’une table.
+	 * Récupère tous les enregistrements d’une table.
 	 * 
 	 * @return mixed Jeu de résultats si la requête a été correctement exécutée, false sinon.
 	 */
@@ -99,6 +99,18 @@ abstract class Modele
 			return false;
 		}
 		return $stmt;
+	}
+
+
+	/**
+	 * Retourne le nombre d’enregistrements de la table.
+	 * 
+	 * @return integer Nombre d’enregistrements de la table.
+	 */
+	protected function total()
+	{
+		$sql = 'SELECT COUNT(*) as total from ' . $this->getTableName();
+		return $this->requete($sql);
 	}
 
 
