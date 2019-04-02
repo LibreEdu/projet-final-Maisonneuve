@@ -48,21 +48,16 @@ class Modele_Cellier extends Modele
 	}
 
 	/**
-	 * Supprime un cellier
+	 * Supprime cellier par id cellier dans la table vino_cellier
 	 * 
 	 * @param integer $id_cellier
 	 * 
 	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
-	public function supprimer_par_id($id_cellier)
+	public function supprimerCellier($id_cellier)
 	{
 		$resultat = $this->supprimer($id_cellier);
-		return $resultat;
-		//$sql = 'DELETE FROM vino_bouteille WHERE (id_cellier) VALUES (?)';
-		//$sql += 'DELETE FROM vino_cellier WHERE (id_cellier) VALUES (?)';
-		//$donnees = array($_POST['id_cellier']);
-		//$resultat = $this->requete($sql, $donnees);
 	}
 
 	/**
