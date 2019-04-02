@@ -307,7 +307,7 @@ window.addEventListener('load', function() {
 			if (liste) {
 				liste.innerHTML = '';
 				if(nom){
-					let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+					let requete = new Request('index.php?liste_achat&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
 					fetch(requete)
 					.then(response => {
 						if (response.status === 200) {
