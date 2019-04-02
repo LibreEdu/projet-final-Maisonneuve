@@ -1,6 +1,6 @@
 <?php
 /**
- * Permet de gérer l'affichage des listes d'achat'.
+ * Permet de gérer l'affichage des listes d'achat.
  *
  * @package  Vino
  * @author   José Ignacio Delgado
@@ -20,8 +20,7 @@ class Modele_Affichage extends Modele
 
 	
 	/**
-	 * Retourne tous les id des listes d'achat et des bouteilles de la SAQ'
-	 * 
+	 * Retourne tous les id des listes d'achat et des bouteilles de la SAQ
 	 * @return array Les données de la table affichage des listes d'achat.
 	 */
 	public function obtenir_tous()
@@ -46,7 +45,6 @@ class Modele_Affichage extends Modele
 
 	/**
 	 * Supprime relation bouteille SAQ par id liste achat dans la table vino_liste_affichage
-	 * 
 	 * @param integer $id_liste_achat
 	 * 
 	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE

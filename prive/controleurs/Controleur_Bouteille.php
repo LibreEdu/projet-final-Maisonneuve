@@ -11,19 +11,14 @@
 {
 	/**
 	 * @var object $modele_bouteille Le modèle Modele_Bouteille.
-	 */
-	private $modele_bouteille;
-
-	/**
 	 * @var object $modele_cellier Le modèle Modele_Cellier.
-	 */
-	private $modele_cellier;
-
-	/**
 	 * @var object $modele_type Le modèle Modele_Type.
 	 */
+	private $modele_bouteille;
+	private $modele_cellier;
 	private $modele_type;
 	
+	// Constructeur des modèles
 	public function __construct()
 	{
 		$this->modele_bouteille = $this->modele('modele_bouteille');
@@ -82,6 +77,15 @@
 		}
 	}
 
+	/**
+	 * Modifier une bouteille dans la table vino_bouteille 
+	 * Renvoyer au formulaire de modification
+	 * @param integer $_SESSION['id_usager'] L'id de l'usager connecté
+	 * @param integer $idBouteille L'id de la bouteille
+	 * @return array tous les données de la bouteille trouvée dans le catalogue
+	 * @return array tous les données des celliers trouvés dans le catalogue
+	 * @return array tous les données des types de vin trouvés dans le catalogue
+	 */
 	public function modifier_form()
 	{
 		$idBouteille = $this->modele_bouteille->appartient($_GET['id'],$_SESSION['id_usager']);
@@ -93,9 +97,13 @@
 		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
 		$donnees['types'] = $this->modele_type->obtenir_tous();
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		// Titre à afficher dans le formulaire
 		$donnees['titre'] = 'Modifier bouteille';
+		// Action du bouton input du formulaire
 		$donnees['actionBouton'] = 'modifier';
+		// Value du bouton input du formulaire
 		$donnees['titreBouton'] = 'Modifier la bouteille';
+		// Classe du bouton input du formulaire
 		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -103,6 +111,10 @@
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+	/**
+	 * Modifier une bouteille dans la table vino_bouteille 
+	 * @param integer $_POST['id_cellier'] L'id cu cellier
+	 */
 	public function modifier()
 	{
 		$this->modele_bouteille->modifier();
@@ -110,6 +122,11 @@
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
+	/**
+	 * Ajouter une bouteille dans la table vino_bouteille 
+	 * Renvoyer à la page d'affichage des celliers
+	 * @param integer $_POST['id_cellier'] L'id du cellier
+	 */
 	public function ajouter()
 	{
 		$this->modele_bouteille->ajouter();
@@ -133,13 +150,24 @@
 		echo json_encode($resultat);
 	}
 
+	/**
+	 * Ajouter une bouteille dans la table vino_bouteille 
+	 * Renvoyer au formulaire d'ajout
+	 * @param integer $_SESSION['id_usager'] L'id de l'usager connecté
+	 * @return array tous les données des celliers trouvés dans le catalogue
+	 * @return array tous les données des types de vin trouvés dans le catalogue
+	 */
 	public function ajouter_form()
 	{
 		$donnees['types'] = $this->modele_type->obtenir_tous();
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+		// Titre à afficher dans le formulaire
 		$donnees['titre'] = 'Ajouter Bouteille';
+		// Action du bouton input du formulaire
 		$donnees['actionBouton'] = 'ajouter';
+		// Value du bouton input du formulaire
 		$donnees['titreBouton'] = 'Ajouter la bouteille';
+		// Classe du bouton input du formulaire
 		$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored';
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -147,6 +175,11 @@
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+	/**
+	 * Rechercher une bouteille dans la table vino_bouteille_saq par nom saisi dans le formulaire d'ajout
+	 * @param $body->nom Le nom à rechercher
+	 * @return array tous les données de la bouteille trouvée dans le catalogue
+	 */
 	public function saisie_semi_automatique()
 	{
 		$body = json_decode(file_get_contents('php://input'));
@@ -154,14 +187,13 @@
 		echo json_encode($listeBouteilles);
 	}
 
-	public function liste_form()
-	{
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('bouteille/formulaire.1');
-		$this->afficheVue('modeles/bas-de-page');
-	}
-
+	/**
+	 * Supprime une bouteille par id bouteille dans la table vino_bouteille
+	 * @param integer $body->id_bouteille_supprimer L'id de la bouteille à supprimer
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
+	 */
 	public function supprimer_bouteille()
 	{
 		$body = json_decode(file_get_contents('php://input'));
