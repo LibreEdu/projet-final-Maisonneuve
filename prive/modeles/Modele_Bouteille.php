@@ -31,7 +31,6 @@ class Modele_Bouteille extends Modele
 		return $resultat->fetch();
 	}
 
-
 	/**
 	 * Récupère les données des bouteilles d’un cellier.
 	 * 
@@ -97,6 +96,19 @@ class Modele_Bouteille extends Modele
 		$resultat = $this->requete($sql, $donnees);
 		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
 		return $resultat->fetch();
+	}
+
+	/**
+	 * Supprime bouteille par id cellier dans la table vino_bouteille
+	 * 
+	 * @param integer $id_cellier
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
+	 */
+	public function supprimerBouteille($id_cellier)
+	{
+		$resultat = $this->supprimer($id_cellier, 'id_cellier');
 	}
 
 	/**

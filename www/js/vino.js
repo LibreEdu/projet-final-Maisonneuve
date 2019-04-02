@@ -9,7 +9,7 @@
  */
 
 window.addEventListener('load', function() {
-	//En cliquant sur le bouton ajouter cellier il le redirige vers le controleur cellier
+	// En cliquant sur le bouton ajouter cellier il le redirige vers le controleur cellier
 	let btnAjouterCellier = document.getElementById('btnAjouterCellier');
 	if(btnAjouterCellier){
 		btnAjouterCellier.addEventListener('click', function(){
@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 		});
 	};
 
-	//En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
+	// En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
 	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
@@ -26,29 +26,34 @@ window.addEventListener('load', function() {
 		});
 	});
 
-	//En cliquant sur le boutton supprimer cellier il le supprime et redirige vers le controleur cellier
+	// En cliquant sur le boutton supprimer cellier il le supprime le cellier au complet et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
-			console.log($id_cellier);	
-			let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id": ' + id_cellier + '}'});
-			fetch(requete)
-			.then(response => {
-				if (response.status === 200) {
-					return response.json();
-				} else {
-					throw new Error('Erreur');
-				}
-			})
-			.then(response => {
-				window.location = 'index.php?cellier';
-			}).catch(error => {
-				console.error(error);
-			});
+			// Affichage de message de confirmation de suppression
+			var confirmSuppression = confirm("Êtes-vous sûr de vouloir supprimer votre cellier avec tous les boutteilles?");
+			console.log(confirmSuppression);
+			// Si la suppression à été confirmer, il fait appelle au controleur cellier pour après, faire appelle à l'action de suppression
+			if (confirmSuppression) {
+				let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id_cellier": ' + id_cellier + '}'});
+				fetch(requete)
+				.then(response => {
+					if (response.status === 200) {
+						return response.json();
+					} else {
+						throw new Error('Erreur');
+					}
+				})
+				.then(response => {
+					window.location = 'index.php?cellier';
+				}).catch(error => {
+					console.error(error);
+				});
+			}
 		});
 	});
 
-	//Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
+	// Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
 	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
 	if(btnAjouterBouteille){
 		btnAjouterBouteille.addEventListener('click', function(){
@@ -56,7 +61,7 @@ window.addEventListener('load', function() {
 		});
 	};
 
-	//Recuperer le bouton recherche et diriger ver le conroleur cellier
+	// Recuperer le bouton recherche et diriger ver le conroleur cellier
 	var pageRecherche = document.getElementById('pageRecherche');
 	if(pageRecherche){
 		pageRecherche.addEventListener('click', function(){
@@ -66,7 +71,7 @@ window.addEventListener('load', function() {
 		});
 	};
 
-	//Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
+	// Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
 	var recherchePar = document.getElementById('recherchePar'); 
 	var affichageResultat = document.querySelector('.affichageResultat');
 	var affichageDetails = document.getElementById('affichageDetails');
@@ -75,13 +80,13 @@ window.addEventListener('load', function() {
 	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
 	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
 	var operation = "=";
-
+	// Si le bouton recherche est cliqué
 	if(recherchePar) {	
 		recherchePar.addEventListener('change', function(element){
 			affichageResultat.innerHTML = '';
 			affichageDetails.style.visibility = 'hidden';
 			btnRecherche.value = "";					
-			
+			// Faire une division dans les champs choisit, et selon les champs choisit il affiche les champs appropriee
 			if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
 				rechercheSpecifique.style.visibility = 'visible';	
 				btnRecherche.style.visibility = "hidden";
@@ -307,7 +312,7 @@ window.addEventListener('load', function() {
 			if (liste) {
 				liste.innerHTML = '';
 				if(nom){
-					let requete = new Request('index.php?bouteille_SAQ&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
+					let requete = new Request('index.php?liste_achat&action=saisie-semi-automatique', {method: 'POST', body: '{"nom": "' + nom + '"}'});
 					fetch(requete)
 					.then(response => {
 						if (response.status === 200) {
