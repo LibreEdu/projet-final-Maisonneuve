@@ -43,4 +43,25 @@ class Modele_Affichage extends Modele
 
 		return $listes;
 	}
+
+	/**
+	 * Supprime relation bouteille SAQ par id liste achat dans la table vino_liste_affichage
+	 * 
+	 * @param integer $id_liste_achat
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
+	 */
+	public function supprimerBouteille($id_liste_achat)
+	{
+		try
+		{
+			$resultat = $this->supprimer($id_liste_achat, 'id_liste_achat');
+		}
+		catch(PDOException $e)
+		{
+			trigger_error("<p>La requête suivante a donné une erreur : $sql</p><p>Exception : " . $e->getMessage() . '</p>');
+			return false;
+		}
+	}
 }
