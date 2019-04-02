@@ -127,4 +127,26 @@ class Modele_Liste extends Modele
 		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Liste');
 		return $listes;
 	}
+
+	/**
+	 * Supprime liste d'achat par id liste achat dans la table vino_liste_achat
+	 * 
+	 * @param integer $id_liste_achat
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
+	 */
+	public function supprimerListe($id_liste_achat)
+	{
+		try
+		{
+			$resultat = $this->supprimer($id_liste_achat, 'id_liste_achat');
+			echo '<script>alert("La liste a été supprimée.")</script>';
+		}
+		catch(PDOException $e)
+		{
+			trigger_error("<p>La requête suivante a donné une erreur : $sql</p><p>Exception : " . $e->getMessage() . '</p>');
+			return false;
+		}
+	}
 }
