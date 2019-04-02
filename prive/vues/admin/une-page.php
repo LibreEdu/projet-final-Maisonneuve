@@ -61,8 +61,8 @@
 							Cela mettra à jour les <?php echo $donnees['nbBouteillesBD'] ?> bouteilles de la base de données.
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-							Importer les données du site de la SAQ
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btnImporter">
+								Importer les données du site de la SAQ
 							</a>
 						</div>
 					</div>
@@ -87,5 +87,7 @@
 			</div>
 		</div>
 		<script src="<?php echo base_url(); ?>js/material.js"></script>
+		<script src="<?php echo base_url(); ?>js/vino-admin.js"></script>
+		<script src="<?php echo base_url(); ?>js/vino-admin-module.js"></script>
 	</body>
 </html>
