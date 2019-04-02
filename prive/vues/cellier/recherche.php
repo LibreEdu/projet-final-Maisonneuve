@@ -27,7 +27,7 @@
 							<option value="<=">plus petit ou égale</option>
 						</select>
 					</div>									
-					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>	
+					<input class="mdl-textfield__input" type="search" id="variableRechercher" name="valeurRechercher" style="visibility: hidden;"/>	
 					<ul class="affichageResultat"></ul>
 				</div>
 			</section>	
