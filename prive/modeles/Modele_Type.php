@@ -18,7 +18,7 @@ class Modele_Type extends Modele
 		return 'id_type';
 	}
 
-	
+
 	/**
 	 * Retourne tous les types de bouteilles
 	 * 
@@ -30,4 +30,18 @@ class Modele_Type extends Modele
 		$types = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
 		return $types;
 	}
+
+
+	/**
+	 * Vérifie l’existence du type
+	 * 
+	 * @return array Les données de la table des types de bouteilles.
+	 */
+	public function obtenir_type($type)
+	{
+		$resultat = $this->lire($type, 'type');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
+		return $listes;
+	}
+
 }
