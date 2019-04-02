@@ -21,7 +21,6 @@ class Controleur_Login extends Controleur
 	public function __construct()
 	{
 		$this->modele_usager = $this->modele('modele_usager');
-		$this->modele_cellier = $this->modele('modele_cellier');
 	}
 
 	public function traite(array $params)
@@ -140,7 +139,7 @@ class Controleur_Login extends Controleur
 	}
 
 	/**
-	 * Foncton modifier qui gére la modification des informations 
+	 * Fonction modifier qui gére la modification des informations 
 	 * d'un usager connecté
 	 */
 	public function modifier()
@@ -181,18 +180,16 @@ class Controleur_Login extends Controleur
 					}
 					else
 					{
-						//Affichage de la page form-modification avec l'erreurr
-						$this->afficheVue('modeles/en-tete');
-						$this->afficheVue('modeles/menu-usager');
+						//Affichage de la page form-modification avec l'erreur
 						$this->afficheFormModification($messageErreur,$donnees);
-						$this->afficheVue('modeles/bas-de-page');
 					}
 				}
 				//Si on veut changer le mot de passe
 				else
 				{
-					$messageErreur = $this->valideFormModification($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
-				//Si l'usger est le même et le mot de passe corespond à celui dana la base de données
+					$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+					$messageErreur .= $this->valideFormModification($_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
+				//Si l'usger est le même et le mot de passe corespond à celui dans la base de données
 					if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
 					{
 						//Si pas de message d'erreur
@@ -201,7 +198,7 @@ class Controleur_Login extends Controleur
 							// Procéder à la modification dans la table vino_usager
 							$this->modele_usager->modifier();
 							//Obtenir l'usager modifier
-							$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);		
+							$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
 							// Mets le'id de l’usager dans la variable session idUsager,
 							$_SESSION['courriel'] = $donnees['usager']->courriel;
 							$_SESSION['nom'] = $donnees['usager']->nom;
@@ -215,10 +212,7 @@ class Controleur_Login extends Controleur
 						}
 						else
 						{//Affichage de la page form-modification avec l'erreurr
-							$this->afficheVue('modeles/en-tete');
-							$this->afficheVue('modeles/menu-usager');
 							$this->afficheFormModification($messageErreur,$donnees);
-							$this->afficheVue('modeles/bas-de-page');
 						}
 					}
 					else
@@ -226,10 +220,7 @@ class Controleur_Login extends Controleur
 						$messageErreur = "Le mot de passe ne correspond pas à votre ancien mot de passe";
 						// On affiche la page form-modification avec l'erreur
 						$donnees['erreurs'] = $messageErreur;
-						$this->afficheVue('modeles/en-tete');
-						$this->afficheVue('modeles/menu-usager');
 						$this->afficheFormModification($messageErreur,$donnees);
-						$this->afficheVue('modeles/bas-de-page');
 					}
 				}
 			}
@@ -241,7 +232,6 @@ class Controleur_Login extends Controleur
 		// else{
 		// 	header('Location: ' . site_url('login&action=logout') );
 		// }
-	
 
 	/**
 	 * Fonction inscrire qui gére l'inscription d'un nouvel usager
@@ -253,8 +243,10 @@ class Controleur_Login extends Controleur
 		$messageErreur='';
 		if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
 		{
+			// Appel de la fonction valideFormModificationSansMdp et verifier ce qu’elle retourne 
+			$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
 			// Appel de la fonction valideFormInscription et verifier ce qu’elle retourne 
-			$messageErreur = $this->valideFormInscription($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2']);  
+			$messageErreur .= $this->valideFormInscription($_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
 			if(($this->modele_usager->obtenirUsager($_REQUEST['courriel'])))
 			{// vérifie que ce courriel n’est pas déjà utilisé par un autre membre
@@ -272,10 +264,7 @@ class Controleur_Login extends Controleur
 				header( 'Location: ' . base_url() );
 			} else
 			{//Affichage de la page login avec l'erreur
-				$this->afficheVue('modeles/en-tete');
-				$this->afficheVue('modeles/menu-login');
 				$this->afficheFormInscription($messageErreur);
-				$this->afficheVue('modeles/bas-de-page');
 			} 
 		}
 		else
@@ -316,7 +305,10 @@ class Controleur_Login extends Controleur
 		// Remplir le tableau erreurs
 		$donnees['erreurs'] = $erreurs;
 		// Afficher le formulaire du login
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-login');
 		$this->afficheVue('login/formulaire', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
 	}
 
 	/**
@@ -330,7 +322,10 @@ class Controleur_Login extends Controleur
 		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
 		$donnees['erreurs'] = $erreurs;
 		// Afficher le formulaire du login
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
 		$this->afficheVue('login/formulaire-modification', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
 	}
 
 	/**
@@ -338,47 +333,22 @@ class Controleur_Login extends Controleur
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormInscription($courriel, $nom, $prenom, $mdp ,$mdp2)
+	public function valideFormInscription($mdp1 ,$mdp2)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
-
-		// Récupérer le courriel
-		$courriel = trim($courriel);
-		// et le nom
-		$nom = trim($nom);
-		// et le prenom
-		$prenom = trim($prenom);
-		// et le premier mot de passe
-		$mdp = trim($mdp);
+		
+		$mdp1 = trim($mdp1);
 		// et le deuxiéme mot de passe
 		$mdp2 = trim($mdp2);
 		
-		if($courriel == '')
-			$msgErreur .= 'Le champ Courriel est vide.<br>';
-		
-		if(!preg_match("/^[A-Z0-9.]+@(([A-Z]+\\.)+[A-Z]{2,6})$/i",$courriel))
-			$msgErreur .= 'Le format courriel doit être réspecter.<br>';
-		
-		if($nom == '')
-			$msgErreur .= 'Le nom ne peut être vide.<br>';
-
-		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
-			$msgErreur .= 'Entrez au moins deux caractères dans le nom et pas de chiffres.<br>';
-
-		if($prenom == '')
-			$msgErreur .= 'Le prénom ne peut être vide.<br>';
-
-		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
-			$msgErreur .= 'Entrez au moins deux caractères ans le prénom et pas de chiffres.<br>';
-
-		if($mdp == '')
+		if($mdp1 == '')
 			$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
 
-		if(strlen($mdp)>12|| strlen($mdp)<5)
+		if(strlen($mdp1)>12|| strlen($mdp1)<5)
 			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractères.<br>';
 
-		if($mdp != $mdp2)
+		if($mdp1 != $mdp2)
 			$msgErreur .= 'Les mots de passe doivent ètre identiques.<br>';
 
 		// Retourner un message d'erreur
@@ -390,52 +360,27 @@ class Controleur_Login extends Controleur
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormModification($courriel, $nom, $prenom, $mot_de_passe='', $mdp1='', $mdp2='')
+	public function valideFormModification($mdp1, $mdp2, $mdp3)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
 
-		// Récupérer le courriel
-		$courriel = trim($courriel);
-		// et le nom
-		$nom = trim($nom);
-		// et le prenom
-		$prenom = trim($prenom);
-		// et le premier mot de passe
-		$mot_de_passe = trim($mot_de_passe);
-		// et le deuxiéme mot de passe
 		$mdp1 = trim($mdp1);
-		// et le troisiemme mot de passe
+		// et le deuxiéme mot de passe
 		$mdp2 = trim($mdp2);
+		// et le troisiemme mot de passe
+		$mdp3 = trim($mdp3);
 		
-		if($courriel == '')
-			$msgErreur .= 'Le champ Courriel est vide.<br>';
-		
-		if(!preg_match("/^[A-Z0-9.]+@(([A-Z]+\\.)+[A-Z]{2,6})$/i",$courriel))
-			$msgErreur .= 'Le format courriel doit être réspecter.<br>';
-		
-		if($nom == '')
-			$msgErreur .= 'Le nom ne peut être vide.<br>';
-
-		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$nom))
-			$msgErreur .= 'Entrez au moins deux caractères dans le nom et pas de chiffres.<br>';
-
-		if($prenom == '')
-			$msgErreur .= 'Le prénom ne peut être vide.<br>';
-
-		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
-			$msgErreur .= 'Entrez au moins deux caractères dans le prénom et pas de chiffres.<br>';
-
-		if($mdp1 == '' || $mdp2 == '')
+		if($mdp2 == '' || $mdp3 == '')
 			$msgErreur .= 'Le mot de passe ne doit pas être vide.<br>';
-
-		if(strlen($mdp1)>12|| strlen($mdp1)<5)
-			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractères.<br>';
 
 		if(strlen($mdp2)>12|| strlen($mdp2)<5)
 			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractères.<br>';
 
-		if($mdp1 != $mdp2)
+		if(strlen($mdp3)>12|| strlen($mdp3)<5)
+			$msgErreur .= 'Le mot de passe doit être entre 6 et 12 caractères.<br>';
+
+		if($mdp2 != $mdp3)
 			$msgErreur .= 'Les deux mots de passe doivent ètre identiques.<br>';
 
 		// Retourner un message d'erreur
