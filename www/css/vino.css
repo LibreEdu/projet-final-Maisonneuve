@@ -15,6 +15,61 @@
  */
 
 /* ---- Styles de base ---- */
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Italic.ttf');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Thin.ttf');
+	font-weight: thin;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Light.ttf');
+	font-weight: light;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-BoldItalic.ttf');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Black.ttf');
+	font-weight: black;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Medium.ttf');
+	font-weight: medium;
+	font-style: normal;
+}
 html, body {
 	font-family: 'Roboto', 'Helvetica', sans-serif;
 	margin: 0;
@@ -80,6 +135,7 @@ th, td {
 }
 .liste_achat, .total {
 	width: 100% !important;
+	color: #661c86;
 }
 	
 /*******Styles pour le menu *******/
@@ -129,6 +185,28 @@ th, td {
 	position: fixed;
 	z-index: 999;
 	width: 200px;
+}
+
+/********Styles du bouton créer liste d'achats *********/
+.bouton {
+	background-color: #5F04B4;
+	padding: 10px;
+	width: 30%;
+	vertical-align: middle;
+	border-radius: 4px;
+	max-height: 20px;
+	text-align: center;
+	box-shadow: 2px 2px 8px 2px #7c4dff;
+	margin-bottom: 10px;
+	margin-top:  15px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+.bouton a {
+	color: rgb(255,255,255, 0.75);
+}
+.bouton a:hover {
+	color: rgb(255,255,255);
 }
 
 /********Styles des boutons supprimer de la liste d'achats *********/
@@ -338,7 +416,18 @@ th, td {
 }
 .mdl-demo .mdl-menu__container {
 	z-index: 99;
-}	
+}
+.nom_liste h3, h5 {
+	font-weight: bold;
+	text-transform:  uppercase;
+}
+.nom_liste {
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
 	
 /********Styles pour le pied de page ********/
 .mdl-demo section.section--footer .section__circle--big {
@@ -385,6 +474,21 @@ th, td {
 }
 
 /********Styles pour l'entête *********/
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+	color: #fff;
+	padding-top: 60px;
+}
+.demo-layout-transparent .mdl-layout__header span {
+	color: #fff;
+	margin-left: 60px;
+	font-family: 'IBM Plex Serif', serif;
+	text-shadow: 2px 2px 3px #7c4dff;
+	font-size: 36px;
+}
+.mdl-layout__header-row {
+	height: 150px;
+}
 #view-source {
 	position: fixed;
 	display: block;
@@ -479,6 +583,14 @@ th, td {
 		width: 35% !important;
 		text-align: right;
 	}
+	.bouton {
+		width: 60%;
+	}
+	.demo-layout-transparent .mdl-layout__header,
+	.demo-layout-transparent .mdl-layout__drawer-button {
+		color: rgb(77, 5, 59);
+		padding-top: 0;
+	}
 }
 
 @media screen and (max-width: 320px) {
@@ -536,5 +648,13 @@ th, td {
 	.prix {
 		width: 35% !important;
 		text-align: right;
+	}
+	.bouton {
+		width: 70%;
+	}
+	.demo-layout-transparent .mdl-layout__header,
+	.demo-layout-transparent .mdl-layout__drawer-button {
+		color: rgb(77, 5, 59);
+		padding-top: 0;
 	}
 }

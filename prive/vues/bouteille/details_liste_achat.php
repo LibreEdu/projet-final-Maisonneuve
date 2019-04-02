@@ -1,6 +1,6 @@
 <main class="mdl-layout__content">
 	<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-		<div class="mdl-card__title">
+		<div class="nom_liste mdl-card__title">
 			<h3 class="mdl-card__title-text"><?php echo $_GET['nom']; ?></h3>	
 		</div>
 		<div class="mdl-card__supporting-text">
@@ -22,8 +22,13 @@
 							array_push($prix, $un_prix->prix);
 						endforeach;
 							$total = array_sum($prix);
-							echo number_format($total, 2, ',', ' '); 
-					?>&nbsp;$
+							if($total) {
+								echo number_format($total, 2, ',', ' ');
+							}
+							else {
+								echo "0";
+							}
+					?>&nbsp;$					
 					</td>
 				</tr>						
 			</table>

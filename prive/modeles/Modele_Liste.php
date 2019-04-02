@@ -60,16 +60,25 @@ class Modele_Liste extends Modele
 	 */
 	public function ajouter_liste()
 	{
-		$sql = 'INSERT INTO vino_liste_achat (id_usager, nom) VALUES (?,?)';
-		$donnees = array($_POST['id_usager'], $_POST['nom']);
-		$resultat = $this->requete($sql, $donnees);
-		$id= $this->bd->lastInsertId();
-		//var_dump($id);die;
-		$id_bouteille_saq = $_POST['id_bouteille_saq'];
-		for($i=0; $i<count($id_bouteille_saq); $i++) {
-			$sql2 = 'INSERT INTO vino_liste_affichage (id_liste_achat, id_bouteille_saq) VALUES (?,?)';
-			$donnees2 = array($id, $id_bouteille_saq[$i]);
-			$resultat2 = $this->requete($sql2, $donnees2);
+		try
+		{
+			$sql = 'INSERT INTO vino_liste_achat (id_usager, nom) VALUES (?,?)';
+			$donnees = array($_POST['id_usager'], $_POST['nom']);
+			$resultat = $this->requete($sql, $donnees);
+			$id= $this->bd->lastInsertId();
+			
+			$id_bouteille_saq = $_POST['id_bouteille_saq'];
+			for($i=0; $i<count($id_bouteille_saq); $i++) {
+				$sql2 = 'INSERT INTO vino_liste_affichage (id_liste_achat, id_bouteille_saq) VALUES (?,?)';
+				$donnees2 = array($id, $id_bouteille_saq[$i]);
+				$resultat2 = $this->requete($sql2, $donnees2);
+			}
+			echo '<script>alert("La liste a été créée.")</script>';
+		}
+		catch(PDOException $e)
+		{
+			trigger_error("<p>La requête suivante a donné une erreur : $sql</p><p>Exception : " . $e->getMessage() . '</p>');
+			return false;
 		}
 	}
 

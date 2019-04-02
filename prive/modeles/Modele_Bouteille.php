@@ -19,7 +19,6 @@ class Modele_Bouteille extends Modele
 		return 'id_bouteille';
 	}
 
-
 	/**
 	 * Retourne les données d’une bouteille.
 	 * @param integer $id_bouteille Identifiants de la bouteille
@@ -29,7 +28,6 @@ class Modele_Bouteille extends Modele
 	{
 		$resultat = $this->lire($id_bouteille, 'id_bouteille');
 		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-
 		return $resultat->fetch();
 	}
 
@@ -65,10 +63,8 @@ class Modele_Bouteille extends Modele
 		$donnees = array($id_cellier);
 		$resultat = $this->requete($sql, $donnees);
 		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-
 		return $bouteilles;
 	}
-
 
 	/**
 	 * Change la quantité de bouteilles.
@@ -82,11 +78,9 @@ class Modele_Bouteille extends Modele
 	{
 		$sql = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + ?, 0) WHERE id_bouteille = ?' ;
 		$donnees = array($delta, $id_bouteille);
-		$resultat = $this->requete($sql, $donnees);
-		
+		$resultat = $this->requete($sql, $donnees);		
 		return $resultat;
 	}
-
 
 	/**
 	 * Récupère la quantité de bouteilles.
@@ -102,11 +96,8 @@ class Modele_Bouteille extends Modele
 		$donnees = array($id_bouteille);
 		$resultat = $this->requete($sql, $donnees);
 		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
-
 		return $resultat->fetch();
 	}
-
-
 
 	/**
 	 * Fonction qui modifie la bouteille
@@ -130,7 +121,6 @@ class Modele_Bouteille extends Modele
 			WHERE id_bouteille=?';
 
 		$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['id_bouteille']);
-
 		$resultat = $this->requete($sql, $donnees);
 	}
 
@@ -160,11 +150,61 @@ class Modele_Bouteille extends Modele
 		WHERE id_bouteille = ? 
 		AND id_usager = ?';
 
-		$donnees = array($idBouteille,$idUsager);
-		
+		$donnees = array($idBouteille,$idUsager);		
 		$resultat = $this->requete($sql,$donnees);
 		// Récupère le résultat sous forme d’un objet
 		$result = $resultat->fetch(PDO::FETCH_OBJ);
 		return $result;
+	}
+
+	/**
+	 * Retourne la liste de bouteilles qui ont été trouvé
+	 * 
+	 * @param integer $id_cellier identifiant du cellier.
+	 * @param string $rechercherPar Levariable a rechercher.
+	 * @param mixed $valeur Le valeur à rechercher.
+	 * @param string $operation Le type d'operation qui est choisit.
+	 * 
+	 * @throws Exception Erreur de requête sur la base de données. 
+	 * 
+	 * @return Array tous les données de la bouteille trouvée. 
+	 */
+	public function recherche($id_cellier, $recherchePar, $valeur, $operation)
+	{
+		$listeBouteilles = Array();	
+		$valeur = preg_replace('/\*/','%' , $valeur);
+		if ($recherchePar=='nom' ||  $recherchePar=='type' || $recherchePar=='pays') {
+			$sql ='SELECT * FROM vino_bouteille INNER JOIN vino_type t ON vino_bouteille.id_type = t.id_type 
+			where id_cellier=? AND LOWER('.$recherchePar.') like LOWER("%' .$valeur. '%")';
+		}
+		elseif ($recherchePar=='millesime' || $recherchePar=='prix' || $recherchePar=='quantite') {
+			$sql ='SELECT * FROM vino_bouteille INNER JOIN vino_type t ON vino_bouteille.id_type = t.id_type 
+			where id_cellier=? AND '.$recherchePar.$operation.$valeur;
+		}
+		$donnees=array($id_cellier);
+		$requete = $this->requete($sql, $donnees);
+		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		
+		if ($bouteilles == NULL) {
+			return 0;
+		}
+		else{
+			foreach($bouteilles as $bouteille) {
+				$uneBouteille = array();
+				$uneBouteille["id_bouteille"] = $bouteille->id_bouteille;
+				$uneBouteille["nom"] = $bouteille->nom;
+				$uneBouteille["code_saq"] = $bouteille->code_saq;
+				$uneBouteille["prix"] = $bouteille->prix;
+				$uneBouteille["millesime"] = $bouteille->millesime;
+				$uneBouteille["type"] = $bouteille->type;
+				$uneBouteille["pays"] = $bouteille->pays;
+				$uneBouteille["format"] = $bouteille->format;
+				$uneBouteille["quantite"] = $bouteille->quantite;
+				$uneBouteille["date_achat"] = $bouteille->date_achat;
+				$uneBouteille["boire_avant"] = $bouteille->boire_avant;
+				array_push($listeBouteilles, $uneBouteille);
+			}
+			return $listeBouteilles;
+		}
 	}
 }
