@@ -60,10 +60,10 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function index()
 	{
-		$oSAQ = new SAQ();
+		$SAQ = new SAQ();
 		$donnees['prenom'] = $_SESSION['prenom'];
 		$donnees['nbBouteillesBD'] = $this->nbBouteillesBD();
-		$donnees['nbBouteillesWeb'] = $oSAQ->obtenirNbBouteiles();
+		$donnees['nbBouteillesWeb'] = $SAQ->nbBouteiles();
 		$this->afficheVue('admin/une-page', $donnees);
 	}
 
@@ -77,6 +77,9 @@ final class Controleur_Importation extends Controleur
 	{
 		return $this->modele_bouteille_saq->obtenir_total();
 	}
+
+
+
 
 
 	public function importer()
