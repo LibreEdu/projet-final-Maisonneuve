@@ -549,22 +549,16 @@ th, td {
 }
 /****les icones de partages****/
 .partage {
-	display: none;
+	visibility:hidden;
+	opacity: 0;
 }
-.mdl-card__menu:hover .partage{
-	display: block;
-	-moz-display: block;
-	-webkit-display:block;
-	-ms-display:block;
-	/*opacity: 0.8;*/
-	/*filter: alpha(opacity=60);*/
-	/*background-color: gray;*/
-	/*transition: 2s;*/
+.mdl-card__menu:hover >.partage{
+	visibility:visible;
+	opacity: 1;
 }
-/*#boutonPartage:hover+ .partage{
-	display: inline-block !important;
-	background-color: blue;
-}*/
+.partage div{
+	padding-bottom: 10%;
+}
 
 
 /********PETITS ÉCRANS ********/

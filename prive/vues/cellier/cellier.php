@@ -61,12 +61,12 @@
 									<!-- Facebook -->
 								<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
 									<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="fb-xfbml-parse-ignore">Partager</a>
-								</div><br><br>
+								</div><br>
 
 								<!-- Twitter -->
 								<div>
 									<a href="https://twitter.com/share?url=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
-									<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+									<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 								</div>
 
 								<!-- LinkedIn -->
