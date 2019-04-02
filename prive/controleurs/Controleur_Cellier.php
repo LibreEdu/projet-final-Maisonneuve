@@ -54,7 +54,7 @@ class Controleur_Cellier extends Controleur
 
 			// Suppression de cellier
 			case 'supprimer':
-				$this->supprimer();
+				$this->supprimerCellier();
 				break;
 
 			// Recherche sur les bouteils existant dans le cellier
@@ -137,10 +137,11 @@ class Controleur_Cellier extends Controleur
 	 * Fonction qui supprime un cellier de l'usager
 	 * 
 	 */	
-	public function supprimer()
+	public function supprimerCellier()
 	{
 		$body = json_decode(file_get_contents('php://input'));
-		$this->modele_cellier->supprimer_par_id($body->id);
+		$this->modele_bouteille->supprimerBouteille($body->id_cellier);
+		$this->modele_cellier->supprimerCellier($body->id_cellier);
 		echo json_encode(true);
 	}	
 
