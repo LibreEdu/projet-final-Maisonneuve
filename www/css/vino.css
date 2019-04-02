@@ -547,6 +547,24 @@ th, td {
 	cursor: pointer;
 	color: #848282;
 }
+/****les icones de partages****/
+.partage {
+	display: none;
+}
+.mdl-card__menu:hover .partage{
+	display: block;
+	-moz-display: block;
+	-webkit-display:block;
+	-ms-display:block;
+	/*opacity: 0.8;*/
+	/*filter: alpha(opacity=60);*/
+	/*background-color: gray;*/
+	/*transition: 2s;*/
+}
+/*#boutonPartage:hover+ .partage{
+	display: inline-block !important;
+	background-color: blue;
+}*/
 
 
 /********PETITS ÉCRANS ********/
