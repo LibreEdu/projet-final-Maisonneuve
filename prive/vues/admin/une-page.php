@@ -87,7 +87,7 @@
 			</div>
 		</div>
 		<script src="<?php echo base_url(); ?>js/material.js"></script>
-		<script src="<?php echo base_url(); ?>js/vino-admin.js"></script>
+		<script src="<?php echo base_url(); ?>js/vino-admin-evenement.js"></script>
 		<script src="<?php echo base_url(); ?>js/vino-admin-module.js"></script>
 	</body>
 </html>
