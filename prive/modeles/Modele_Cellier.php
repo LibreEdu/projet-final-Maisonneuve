@@ -59,6 +59,10 @@ class Modele_Cellier extends Modele
 	{
 		$resultat = $this->supprimer($id_cellier);
 		return $resultat;
+		//$sql = 'DELETE FROM vino_bouteille WHERE (id_cellier) VALUES (?)';
+		//$sql += 'DELETE FROM vino_cellier WHERE (id_cellier) VALUES (?)';
+		//$donnees = array($_POST['id_cellier']);
+		//$resultat = $this->requete($sql, $donnees);
 	}
 
 	/**
