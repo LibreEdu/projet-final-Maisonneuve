@@ -27,7 +27,7 @@
 							<option value="<=">plus petit ou égale</option>
 						</select>
 					</div>									
-					<input class="mdl-textfield__input" type="search" id="variableRechercher" name="valeurRechercher" style="visibility: hidden;"/>	
+					<input class="mdl-textfield__input" type="search" id="valeurRechercher" name="valeurRechercher" style="visibility: hidden;"/>	
 					<ul class="affichageResultat"></ul>
 				</div>
 			</section>	
@@ -43,7 +43,6 @@
 						<p id='millesime'></p>
 						<p id='type'></p>
 						<p id='pays'></p>
-						<p id='format'></p>
 						<p id='quantite'></p>
 						<p id='date_achat'></p>
 						<p id='boire_avant'></p>
