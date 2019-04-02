@@ -23,6 +23,7 @@
 	{
 		$repertoires = array(
 			RACINE . 'controleurs/',
+			RACINE . 'controleurs/lib/',
 			RACINE . 'modeles/',
 			RACINE . 'vues/'
 		);

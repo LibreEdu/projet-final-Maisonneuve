@@ -5,7 +5,6 @@
  *
  * @package  Vino
  * @author   Fatemeh Homatash
- * @author   Alexandre Pachot
  * @version  1.0
  */
 class Controleur_Cellier extends Controleur
@@ -56,6 +55,16 @@ class Controleur_Cellier extends Controleur
 			// Suppression de cellier
 			case 'supprimer':
 				$this->supprimer();
+				break;
+
+			// Recherche sur les bouteils existant dans le cellier
+			case 'pageRecherche':
+				$this->pageRecherche();
+				break;
+
+			// Recherche sur les bouteils existant dans le cellier
+			case 'recherche':
+				$this->recherche();
 				break;
 
 			default :
@@ -134,5 +143,25 @@ class Controleur_Cellier extends Controleur
 		$this->modele_cellier->supprimer_par_id($body->id);
 		echo json_encode(true);
 	}	
+
+	/**
+	 * Fonction qui prent le id du cellier et affiche les vues relies
+	 * 
+	 */
+	public function pageRecherche()
+	{
+		$donnees['id-cellier'] = $_GET['id_cellier'];
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('cellier/recherche', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+
+	public function recherche()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$listeBouteilles = $this->modele_bouteille->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
+		echo json_encode($listeBouteilles);
+	}
 }
 

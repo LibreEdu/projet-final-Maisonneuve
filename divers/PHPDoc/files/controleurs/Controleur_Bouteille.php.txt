@@ -5,7 +5,6 @@
  *
  * @package  Vino
  * @author   José Ignacio Delgado
- * @author   Alexandre Pachot
  * @version  1.0
  */
  class Controleur_Bouteille extends Controleur
