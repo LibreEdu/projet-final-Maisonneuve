@@ -27,21 +27,26 @@ abstract class Modele
 		$this->bd = $bd_PDO;
 	}
 
-
 	/**
 	 * Suppression d’un ou plusieurs enregistrements d’une table de la base de données.
 	 * 
-	 * @param string $clePrimaire Clé primaire servant à filtrer les données qu’on veur supprimer.
-	 * 
+	 * @param string $valeurCherchee Clé primaire servant à filtrer les données qu’on veut supprimer.
+	 *
+	 * @param string $colonne Colonne sur laquelle on fait la recherche. Par défaut la recherche s’effectue sur la clé primaire.
+	 *
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
-	protected function supprimer($clePrimaire)
+	protected function supprimer($valeurCherchee,  $colonne = NULL)
 	{
-		$sql = 'DELETE FROM ' . $this->getTableName() . ' WHERE ' . $this->getClePrimaire() .'=?';
-		$donnees = array($clePrimaire);
+		if(!isset($colonne)){
+			$sql = 'DELETE FROM ' . $this->getTableName() . ' WHERE ' . $this->getClePrimaire() .'=?';
+		}
+		else{
+			$sql = 'DELETE FROM ' . $this->getTableName() . ' WHERE ' . $colonne .'=?';
+		}
+		$donnees = array($valeurCherchee);
 		return $this->requete($sql, $donnees);
 	}
-
 
 	/**
 	 * Récupère les enregistrements d’une table selon un critère précis.
