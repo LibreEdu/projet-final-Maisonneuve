@@ -1,3 +1,6 @@
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2"></script>
+
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
 			<section class="section--center mdl-grid mdl-grid--no-spacing">				
@@ -47,6 +50,28 @@
 							{
 						?>
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
+
+						<div class="mdl-card__menu">
+							<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+							<i class="material-icons">share</i>
+							</button>
+							<div class="partage">
+									<!-- Facebook -->
+								<span class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
+									<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="fb-xfbml-parse-ignore">Partager</a>
+								</span><br><br>
+
+								<!-- Twitter -->
+								<a href="https://twitter.com/share?url=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
+								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+
+								<!-- LinkedIn -->
+								<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: fr_FR</script>
+								<script type="IN/Share" data-url="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>"></script>
+							</div>
+						</div>
+						
+						
 						<?php
 							}
 						?>

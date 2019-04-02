@@ -7,7 +7,7 @@
  * @author   Alexandre Pachot
  * @version  1.0
  */
-class SAQ extends NbBouteilles
+class SAQ
 {
 	/**
 	 * @var string $nbBouteilles Le nombre de bouteilles de vin du site de la SAQ.
@@ -27,37 +27,27 @@ class SAQ extends NbBouteilles
 	{
 		// Vérification que la personne a bien les droits d’administration.
 		est_admin();
+
+		// Récupère le nombre de bouteilles de vin du site de la SAQ.
+		$this->_nbBouteilles = $this->recupererNbBouteille();
 	}
 
 
 	/**
 	 * Récupère sur le site de la SAQ le nombre de bouteilles de vin.
 	 * 
-	 * @return void
-	 */
-	public function recupererNbBouteille()
-	{
-		$this->_nbBouteilles = 
-	}
-
-
-	/**
-	 * Récupère sur le site de la SAQ le nombre de bouteilles de vin.
-	 * 
-	 * @param integer $interval
+	 * @param integer $interval Nombre de jours au bout duquel, on considère que la donnée stockée localement n’est plus valable.
 	 * 
 	 * @return string Le nombre de bouteilles de vin qu’il y a sur le site de la SAQ.
 	 */
-	private function nbBouteillesWeb($interval = 60)
+	private function recupererNbBouteille($interval = 1)
 	{
 		$fichierJSON = new JSON('SAQ');
 		$oNbBouteille = $fichierJSON->lire();
-		if ($nbBouteille) {
+		if ($oNbBouteille) {
 			$maintenant = new DateTime();
-			$date = new DateTime($oNbBouteille->dateSAQ->date);
+			$date = new DateTime($oNbBouteille->dateRecup->date);
 			$delta = $date->diff($maintenant)->format('%a');
-			// $intervalSAQ = $dateSAQ->diff($maintenant);
-			// var_dump($intervalSAQ);die;
 			if ( $delta < $interval) {
 				return $oNbBouteille->nbBouteille;
 			}
@@ -65,10 +55,10 @@ class SAQ extends NbBouteilles
 
 		$oNbBouteille = new stdClass();
 		$oNbBouteille->nbBouteille = $this->nbBouteilles();
-		$oNbBouteille->dateSAQ = new DateTime();
+		$oNbBouteille->dateRecup = new DateTime();
 		$oJSON = new JSON('SAQ');
 		$oJSON->ecrire($oNbBouteille);
-		return $nbBouteilleSAQ->nbBouteille;
+		return $oNbBouteille->nbBouteille;
 	}
 
 	/**
@@ -76,9 +66,9 @@ class SAQ extends NbBouteilles
 	 * 
 	 * @return string Le nombre de bouteilles de vin du site de la SAQ.
 	 */
-	public function obtenirNbBouteiles()
+	public function nbBouteiles()
 	{
-		return $this->_nbBouteillesSAQ;
+		return $this->_nbBouteilles;
 	}
 
 
