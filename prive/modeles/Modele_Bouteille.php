@@ -112,6 +112,19 @@ class Modele_Bouteille extends Modele
 	}
 
 	/**
+	 * Supprime bouteille par id bouteille dans la table vino_bouteille
+	 * 
+	 * @param integer $id_bouteille
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
+	 */
+	public function supprimerBouteilleParIdBouteille($id_bouteille)
+	{
+		$resultat = $this->supprimer($id_bouteille);
+	}
+
+	/**
 	 * Fonction qui modifie la bouteille
 	 * @param 
 	 * @return 

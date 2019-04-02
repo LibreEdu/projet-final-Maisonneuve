@@ -61,6 +61,35 @@ window.addEventListener('load', function() {
 		});
 	};
 
+	// Récuperer la class de bouton supprimer pour supprimer une bouteiile spécifique
+	document.querySelectorAll('.supprimerBouteille').forEach(function(element){
+		element.addEventListener('click', function(evt){
+			let id_bouteille_supprimer = evt.target.dataset.id_bouteiile_supprimer;
+			// Affichage de message de confirmation de suppression
+			var confirmSuppression = confirm("Êtes-vous sûr de vouloir supprimer ce boutteille?");
+			console.log(confirmSuppression);
+			if (confirmSuppression) {
+				let requete = new Request("index.php?bouteille&action=supprimer_bouteille", {method: 'POST', body: '{"id_bouteille_supprimer": ' + id_bouteille_supprimer + '}'});
+				fetch(requete)
+				.then(response => {
+					if (response.status === 200) {
+						return response.text();
+					} else {
+						throw new Error('Erreur');
+					}
+				})
+				.then(response => {
+					var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+					var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+					window.location = 'index.php?cellier&action=voir&id_cellier='+id_cellier;;
+				}).catch(error => {
+					console.error(error);
+				});
+			};
+ 		})
+	});
+
+
 	// Recuperer le bouton recherche et diriger ver le conroleur cellier
 	var pageRecherche = document.getElementById('pageRecherche');
 	if(pageRecherche){
@@ -76,7 +105,7 @@ window.addEventListener('load', function() {
 	var affichageResultat = document.querySelector('.affichageResultat');
 	var affichageDetails = document.getElementById('affichageDetails');
 	var rechercheSpecifique = document.getElementById('rechercheSpecifique');
-	var btnRecherche = document.getElementById('btnRecherche');
+	var valeurRechercher = document.getElementById('valeurRechercher');
 	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
 	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
 	var operation = "=";
@@ -85,53 +114,54 @@ window.addEventListener('load', function() {
 		recherchePar.addEventListener('change', function(element){
 			affichageResultat.innerHTML = '';
 			affichageDetails.style.visibility = 'hidden';
-			btnRecherche.value = "";					
+			valeurRechercher.value = "";					
 			// Faire une division dans les champs choisit, et selon les champs choisit il affiche les champs appropriee
 			if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
 				rechercheSpecifique.style.visibility = 'visible';	
-				btnRecherche.style.visibility = "hidden";
-				btnRecherche.value = "";		
-				//Si la selection est fait on affiche la barre de recherche
+				valeurRechercher.style.visibility = "hidden";
+				valeurRechercher.value = "";		
+				// Si la selection est fait on affiche la barre de recherche pour entrer l'element à rechercher
 				rechercheSpecifique.addEventListener('change', function(element){
-					affichageResultat.innerHTML = '';
-					//Faire apparaitre la lingne pour ecrire l'element à rechercher	
+					affichageResultat.innerHTML = '';	
 					affichageDetails.style.visibility = 'hidden';			
-					btnRecherche.style.visibility = "visible";
-					btnRecherche.value = "";	
-					//Recupérer la valeur de la selection éffectuer
+					valeurRechercher.style.visibility = "visible";
+					valeurRechercher.value = "";	
+					// Recupérer la valeur de la selection éffectuer
 					operation = rechercheSpecifique.options[rechercheSpecifique.selectedIndex].value;
 				});
 			}
 
+			// Si nom, type ou pays sont choisit (qui sont pas des integer), on affiche la barre de recherche
 			else if (recherchePar.value === 'nom' || recherchePar.value === 'type' || recherchePar.value === 'pays'){
 				affichageDetails.style.visibility = 'hidden';
 				rechercheSpecifique.style.visibility = 'hidden';
 				//Faire apparaitre la lingne pour ecrire l'element à rechercher
-				btnRecherche.style.visibility = "visible";
-				btnRecherche.value = "";
+				valeurRechercher.style.visibility = "visible";
+				valeurRechercher.value = "";
 			}
 		},false);
 	}
 
-	if (btnRecherche) {
-		btnRecherche.addEventListener('keyup',function(e){
+	// Si la valeur à rechercher existe
+	if (valeurRechercher) {
+		valeurRechercher.addEventListener('keyup',function(e){
 			if (e.keyCode === 13) {	
 				affichageDetails.style.visibility = 'hidden';
 				affichageResultat.innerHTML = '';
 				if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
-					//Si la recherche n'a pas eu de reslutat
-					if (isNaN(btnRecherche.value)) {
+					// Si la recherche n'a pas eu de réslutat
+					if (isNaN(valeurRechercher.value)) {
 						alert("Veuiller entrer un chiffre!");
-						btnRecherche.value = "";
+						valeurRechercher.value = "";
 					}
 				}				
 				if(affichageResultat){
 					affichageResultat.innerHTML = '';	
-					//Cree un tableau de paramétre pour pour les envoyés au controleur SAQ 
+					// Crer un tableau de paramétre pour pour les envoyés au controleur SAQ 
 					var params = {
 						'id_cellier':id_cellier,
 						'recherchePar':recherchePar.value,
-						'valeur':btnRecherche.value,
+						'valeur':valeurRechercher.value,
 						'operation': operation										
 					};
 					let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
@@ -146,9 +176,10 @@ window.addEventListener('load', function() {
 					.then(response => {
 						if (response==false) {
 							alert("Aucune reponse pour cette recheche. Veuiller reessayer!");
-							btnRecherche.value = "";
+							valeurRechercher.value = "";
 						}
 						else {
+							// Création de Li pour afficher le ou les résultat obtenu par la recherche
 							response.forEach(function(element){
 								affichageResultat.innerHTML += '<li '
 								+ 'data-nom="' + element.nom + '" '
@@ -174,7 +205,7 @@ window.addEventListener('load', function() {
 		},false);
 	}	
 
-	//Recuperation des champs invisibles dans vues/cellier/recherche.php 
+	// Récuperation des champs invisibles dans vues/cellier/recherche.php 
 	let bouteille = {
 		nom : document.getElementById('nom_bouteille'),
 		millesime : document.getElementById('millesime'),
@@ -188,12 +219,13 @@ window.addEventListener('load', function() {
 		code_saq : document.getElementById('code_saq')
 	};
 
-	//Si il ya eu des resultats, il insert les donnees obtenue a l'interieur des champs qui sont recuperer au par boire_avant
+	// Si il ya eu des résultats de recherche effectuer précédemment, il insert les données obtenue à l'interieur des champs qui sont récuperer au paravant
 	if(affichageResultat){
 		affichageResultat.addEventListener('click', function(evt){
 			affichageDetails.style='display';
 			if(evt.target.tagName == 'LI'){			
 				bouteille.nom.innerHTML = evt.target.dataset.nom;
+				// Si il exisite des détails qui sont vides, il les supprime dans l'affichage des résultats
 				if (evt.target.dataset.millesime!="null") {
 					bouteille.millesime.innerHTML = evt.target.dataset.millesime;
 				}	
