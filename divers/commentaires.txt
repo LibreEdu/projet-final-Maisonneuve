@@ -1,0 +1,43 @@
+├── config.renommer.php                 => OK
+├── controleurs
+│   ├── Controleur.php                  => OK
+│   ├── Controleur_Admin.php            => non fait
+│   ├── Controleur_Bouteille.php        => non fait
+│   ├── Controleur_Bouteille_SAQ.php    => non fait
+│   ├── Controleur_Cellier.php          => À compléter
+│   ├── Controleur_Login.php            => À revoir
+│   ├── Fonctions.php                   => OK
+│   └── Routeur.php                     => OK
+├── modeles
+│   ├── BaseDeDonnees.php               => À revoir
+│   ├── Classe_Bouteille.php            => non fait
+│   ├── Classe_Bouteille_SAQ.php        => non fait
+│   ├── Classe_Cellier.php              => non fait
+│   ├── Classe_Type.php                 => non fait
+│   ├── Classe_Usager.php               => non fait
+│   ├── Modele.php                      => OK
+│   ├── Modele_Bouteille.php            => À finir
+│   ├── Modele_Bouteille_SAQ.php        => À compléter
+│   ├── Modele_Cellier.php              => À finir
+│   ├── Modele_Type.php                 => OK
+│   └── Modele_Usager.php               => OK
+└── vues
+    ├── admin
+    │   └── principal.php
+    ├── bouteille
+    │   ├── formulaire.1.php
+    │   └── formulaire.php
+    ├── cellier
+    │   ├── ajouter.php
+    │   ├── cellier.php
+    │   └── liste.php
+    ├── login
+    │   ├── formulaire-modification.php
+    │   ├── formulaire.php
+    │   └── login.php
+    └── modeles
+        ├── bas-de-page.php
+        ├── en-tete.php
+        ├── menu-admin.php
+        ├── menu-login.php
+        └── menu-usager.php
