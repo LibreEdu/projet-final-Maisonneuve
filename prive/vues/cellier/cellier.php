@@ -9,8 +9,8 @@
 						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="pageRecherche">
 						  Recherche
 						</button>
-					</div>										
-					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>	
+					</div>
+					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>
 				</div>
 			</section>
 		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
@@ -36,7 +36,7 @@
 				</header>
 				<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 					<div class="mdl-card__supporting-text">
-						<h4 class='nom'><?php echo $bouteille->nom; ?> <?php echo $bouteille->millesime; ?></h4>
+						<h5 class='nom'><?php echo $bouteille->nom; ?> <?php echo $bouteille->millesime; ?></h5>
 						<p class='type'><?php echo $bouteille->type; ?></p>
 						<p class='pays'><?php echo $bouteille->pays; ?>, <?php echo $bouteille->format; ?></p>
 						<p class='boireAvant'>Boire avant : <?php echo $bouteille->boire_avant ?></p>
@@ -50,24 +50,30 @@
 							{
 						?>
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
-
+						<!-- Division pour les liens de partage -->
 						<div class="mdl-card__menu">
-							<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-							<i class="material-icons">share</i>
-							</button>
+							<div id="boutonPartage">
+								<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+								<i class="material-icons">share</i>
+								</button>
+							</div>
 							<div class="partage">
 									<!-- Facebook -->
-								<span class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
+								<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
 									<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="fb-xfbml-parse-ignore">Partager</a>
-								</span><br><br>
+								</div><br><br>
 
 								<!-- Twitter -->
-								<a href="https://twitter.com/share?url=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
-								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+								<div>
+									<a href="https://twitter.com/share?url=https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
+									<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+								</div>
 
 								<!-- LinkedIn -->
-								<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: fr_FR</script>
-								<script type="IN/Share" data-url="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>"></script>
+								<div>
+									<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: fr_FR</script>
+									<script type="IN/Share" data-url="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>"></script>
+								</div>
 							</div>
 						</div>
 						
