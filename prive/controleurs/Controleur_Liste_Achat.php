@@ -100,7 +100,8 @@ class Controleur_Liste_Achat extends Controleur
 	}
 	public function supprimer_liste_achat()
 	{
-		$this->modele_liste->supprimer_liste($_GET['id_liste_achat']);
+		$this->modele_liste->supprimerListe($_GET['id_liste_achat']);
+		$this->modele_affichage->supprimerBouteille($_GET['id_liste_achat']);
 		$donnees['noms'] = $this->modele_liste->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');

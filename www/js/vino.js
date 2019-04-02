@@ -279,6 +279,7 @@ window.addEventListener('load', function() {
 
 	});
 	
+	// Recuperer les boutons modifier bouteille et l'id' puis diriger vers le controleur bouteille
 	document.querySelectorAll('.btnModifier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
@@ -286,13 +287,16 @@ window.addEventListener('load', function() {
 		});
 	});
 
+	// Recuperer les éléments inputNomBouteille et liste du document
 	let inputNomBouteille = document.querySelector('[name="nom_bouteille"]');
 	let liste = document.querySelector('.listeAutoComplete');
 
+	// Si il y a une element avec l'id recherche, il le cache
 	if(document.getElementById('recherche')){
 		document.getElementById('recherche').style.display = "none";
 	};
 
+	// Si il y a une element avec l'id afficher, il va ajouter la fonction onclick pour cacher/afficher l'élément avec l'id recherche
 	var element = document.getElementById('afficher');
 	if(element){
 		element.onclick = function() {
@@ -305,7 +309,7 @@ window.addEventListener('load', function() {
 		};
 	};
 
-	
+	//Si il y'a une valeur dans le champ inputNomBouteille, il fait une requête de concordance dans la table vino_bouteilles_saq
 	if(inputNomBouteille){
 		inputNomBouteille.addEventListener('keyup', function(evt){
 			let nom = inputNomBouteille.value;
@@ -322,6 +326,7 @@ window.addEventListener('load', function() {
 						}
 					})
 					.then(response => {
+						// Pour chaque concordance on affiche les valeurs
 						response.forEach(function(element){
 							liste.innerHTML += '<li '
 							+ 'data-id="' + element.id_bouteille_saq + '" '
@@ -340,6 +345,7 @@ window.addEventListener('load', function() {
 			};
 		});
 
+		//Recuperation des champs pour les assigner un objet bouteille
 		let bouteille = {
 			nom : document.getElementById('nom_bouteille'),
 			millesime : document.getElementById('millesime'),
@@ -349,8 +355,11 @@ window.addEventListener('load', function() {
 			id_type : document.querySelector('[name="type"]'),
 			code_saq : document.querySelector('[name="code_saq"]')
 		};
+
+		// Si la liste existe
 		if(liste){
 			liste.addEventListener('click', function(evt){
+				// On assigne les valeurs à l'objet bouteille
 				if(evt.target.tagName == 'LI'){			
 					bouteille.nom.value = evt.target.innerHTML;
 					bouteille.prix.value = evt.target.dataset.prix;
@@ -393,9 +402,11 @@ window.addEventListener('load', function() {
 		});
 	}
 
+	// Recuperer les éléments NomBouteille et la_liste du document
 	let NomBouteille = document.querySelector('[name="une_bouteille"]');
 	let la_liste = document.querySelector('.listeBouteilles');
 	
+	//Si il y'a une valeur dans le champ NomBouteille, il fait une requête de concordance dans la table vino_bouteilles_saq
 	if(NomBouteille){
 		NomBouteille.addEventListener('keyup', function(evt){
 			let un_nom = NomBouteille.value;
@@ -411,9 +422,9 @@ window.addEventListener('load', function() {
 					}
 				})
 				.then(response => {
+					// Pour chaque concordance on affiche les valeurs
 					response.forEach(function(element){
 						la_liste.innerHTML += '<li data-id_bouteille_saq="' + element.id_bouteille_saq + '">' + element.nom + '</li>';
-						//console.log(response);
 					} )
 				}).catch(error => {
 					console.error(error);
@@ -421,7 +432,10 @@ window.addEventListener('load', function() {
 			}
 		} );
 
+		// Récupérer l'élément mes_achats
 		let mes_achats = document.getElementById('mes_achats');
+
+		// Assigner l'événement click à chaque li et afficher le résultat
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
 				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
@@ -430,7 +444,10 @@ window.addEventListener('load', function() {
 			}
 		});
 
+		// Récupérer les div avec le nom laDiv
 		let les_bouteilles = document.getElementsByName('laDiv');
+
+		// Assigner l'événement click l'élément mes_achats, le vider et supprimer l'enfant vide
 		mes_achats.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'BUTTON'){
 				evt.target.parentElement.innerHTML = "";
@@ -443,14 +460,14 @@ window.addEventListener('load', function() {
 		});
 	}	
 
-	let noms = document.getElementsByName('le_nom');
+	// Récupérer les éléments id_nom et les boutons supprimer pour chacun
+	let id_nom = document.getElementsByName('le_nom');
 	let bouton = document.querySelectorAll('.btnSupprimerListe');
-	for(var i=0; i<noms.length; i++){
-		//console.log(tousLesNoms[i]);
-		let nomsListe = noms[i].value;
-		console.log(nomsListe);
+
+	// Pour chaque bouton, assigner l'événement click et le diriger vers le contrôleur Liste_Achat pour supprimer la liste dont l'id est envoyé
+	for(var i=0; i<id_nom.length; i++){
+		let nomsListe = id_nom[i].value;
 		bouton[i].addEventListener('click', function(evt){
-			console.log(nomsListe);			
 			window.location = 'index.php?liste_achat&action=supprimer_liste_achat&id_liste_achat='+nomsListe;
 		});
 	}
