@@ -21,7 +21,10 @@
 							<option value=">=">plus grand ou égale</option>
 							<option value="<=">plus petit ou égale</option>
 						</select>
-					</div>										
+					</div>	
+					<div class="retournerPagePrecedent mdl-textfield mdl-js-textfield">
+						<a class="lien" href="index.php?cellier&action=voir&id_cellier=<?php echo $_GET['id_cellier']?> ">Retourner à cellier</a>	
+					</div>									
 					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>	
 					<ul class="affichageResultat"></ul>
 				</div>
