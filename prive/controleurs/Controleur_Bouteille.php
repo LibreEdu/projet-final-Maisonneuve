@@ -68,8 +68,13 @@
 			case 'saisie-semi-automatique':
 				$this->saisie_semi_automatique();
 				break;
+
 			case 'liste_form':
 				$this->liste_form();
+				break;
+
+			case 'supprimer_bouteille':
+				$this->supprimer_bouteille();
 				break;
 
 			default :
@@ -157,4 +162,10 @@
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+	public function supprimer_bouteille()
+	{
+		$body = json_decode(file_get_contents('php://input'));
+		$resultat = $this->modele_bouteille->supprimerBouteilleParIdBouteille($body->id_bouteille_supprimer);
+		echo json_encode(true);
+	}
 }
