@@ -127,4 +127,11 @@ class Modele_Liste extends Modele
 		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Liste');
 		return $listes;
 	}
+
+	public function supprimer_bouteille($id_liste_achat)
+	{
+		$resultat = $this->supprimer($id_liste_achat, 'id_liste_achat');
+		$resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Liste');
+		return $resultat->fetch();
+	}
 }

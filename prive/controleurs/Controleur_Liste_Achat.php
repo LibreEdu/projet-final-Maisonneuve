@@ -47,6 +47,9 @@ class Controleur_Liste_Achat extends Controleur
 			case 'listes_achat':
 				$this->listes_achat();
 				break;
+			case 'supprimer_liste_achat':
+				$this->supprimer_liste_achat();
+				break;
 			default :
 				trigger_error('Action invalide.');
 		}
@@ -89,6 +92,15 @@ class Controleur_Liste_Achat extends Controleur
 
 	public function listes_achat()
 	{
+		$donnees['noms'] = $this->modele_liste->obtenir_tous();
+		$this->afficheVue('modeles/en-tete');
+		$this->afficheVue('modeles/menu-usager');
+		$this->afficheVue('bouteille/achat', $donnees);
+		$this->afficheVue('modeles/bas-de-page');
+	}
+	public function supprimer_liste_achat()
+	{
+		$this->modele_liste->supprimer_liste($_GET['id_liste_achat']);
 		$donnees['noms'] = $this->modele_liste->obtenir_tous();
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');

@@ -429,7 +429,7 @@ window.addEventListener('load', function() {
 		mes_achats.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'BUTTON'){
 				evt.target.parentElement.innerHTML = "";
-				for(var i=0; i<les_bouteilles.length; i++){
+				for(var i=0; i<les_bouteilles.length; i++) {
 					if(les_bouteilles[i].innerHTML == '') {
 						mes_achats.removeChild(les_bouteilles[i]);
 					}
@@ -437,5 +437,17 @@ window.addEventListener('load', function() {
 			}			
 		});
 	}	
+
+	let noms = document.getElementsByName('le_nom');
+	let bouton = document.querySelectorAll('.btnSupprimerListe');
+	for(var i=0; i<noms.length; i++){
+		//console.log(tousLesNoms[i]);
+		let nomsListe = noms[i].value;
+		console.log(nomsListe);
+		bouton[i].addEventListener('click', function(evt){
+			console.log(nomsListe);			
+			window.location = 'index.php?liste_achat&action=supprimer_liste_achat&id_liste_achat='+nomsListe;
+		});
+	}
 });
 
