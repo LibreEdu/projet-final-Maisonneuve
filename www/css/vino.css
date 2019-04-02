@@ -526,6 +526,29 @@ th, td {
 	font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+/********CSS page recherche ***********/
+#overview{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.mdl-grid--no-spacing .mdl-textfield--expandable div{
+	margin-top: 0;
+	padding-top: 0;
+	margin-bottom: 0px;
+	padding-bottom: 5px;
+}
+.mdl-js-textfield #recherchePar, #rechercheSpecifique{
+	width: 180px;
+}
+.mdl-js-textfield #btnRecherche{
+	width: 180px;
+}
+.mdl-js-textfield .affichageResultat li:hover{
+	cursor: pointer;
+	color: #848282;
+}
+
+
 /********PETITS ÉCRANS ********/
 @media screen and (max-width: 480px) {
 	input, textarea, select {
