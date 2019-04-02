@@ -1,5 +1,3 @@
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2"></script>
 
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">
@@ -52,11 +50,11 @@
 						<p><a href='https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>'target="_blank">Lien SAQ</a></p>
 						<!-- Division pour les liens de partage -->
 						<div class="mdl-card__menu">
-							<div id="boutonPartage">
-								<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-								<i class="material-icons">share</i>
-								</button>
-							</div>
+							
+							<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+							<i class="material-icons">share</i>
+							</button>
+							
 							<div class="partage">
 									<!-- Facebook -->
 								<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
@@ -84,7 +82,7 @@
 								<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
 								<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>+ 1</button>
 								<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>- 1</button>
-								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" data-id_bouteiile_supprimer="<?php echo $bouteille->id_bouteille?>">Supprimer</button>
+								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" data-id_bouteiile_supprimer="<?php echo $bouteille->id_bouteille?>"><i class="fas fa-trash-alt"></i></i></button>
 							</div>
 						</p>
 					</div>
