@@ -227,14 +227,13 @@ window.addEventListener('load', function() {
 				bouteille.nom.innerHTML = evt.target.dataset.nom;
 				// Si il exisite des détails qui sont vides, il les supprime dans l'affichage des résultats
 				if (evt.target.dataset.millesime!="null") {
-					bouteille.millesime.innerHTML = evt.target.dataset.millesime;
+					bouteille.millesime.innerHTML = evt.target.dataset.millesime+ ', ' +evt.target.dataset.type;
 				}	
 				else {
 					bouteille.millesime.innerHTML = " ";
-				}	
-				bouteille.type.innerHTML = evt.target.dataset.type;				
-				bouteille.pays.innerHTML = evt.target.dataset.pays;
-				bouteille.format.innerHTML = evt.target.dataset.format;
+					bouteille.type.innerHTML = evt.target.dataset.type;	
+				}				
+				bouteille.pays.innerHTML = evt.target.dataset.pays+', '+evt.target.dataset.format;
 				bouteille.quantite.innerHTML = "Quantité : ";
 				bouteille.quantite.innerHTML += evt.target.dataset.quantite;
 				if (evt.target.dataset.date_achat!="null") {
