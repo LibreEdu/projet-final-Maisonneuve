@@ -25,9 +25,6 @@ class SAQ
 	 */
 	public function __construct()
 	{
-		// Vérification que la personne a bien les droits d’administration.
-		est_admin();
-
 		// Récupère le nombre de bouteilles de vin du site de la SAQ.
 		$this->_nbBouteilles = $this->recupererNbBouteille();
 	}
