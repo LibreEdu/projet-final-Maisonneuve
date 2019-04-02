@@ -30,6 +30,7 @@ window.addEventListener('load', function() {
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
+			console.log($id_cellier);	
 			let requete = new Request('index.php?cellier&action=supprimer', {method: 'POST', body: '{"id": ' + id_cellier + '}'});
 			fetch(requete)
 			.then(response => {
@@ -110,8 +111,10 @@ window.addEventListener('load', function() {
 	if (btnRecherche) {
 		btnRecherche.addEventListener('keyup',function(e){
 			if (e.keyCode === 13) {	
+				affichageDetails.style.visibility = 'hidden';
+				affichageResultat.innerHTML = '';
 				if (recherchePar.value === 'millesime' || recherchePar.value === 'prix' || recherchePar.value === 'quantite') {
-					console.log(isNaN(btnRecherche.value));
+					//Si la recherche n'a pas eu de reslutat
 					if (isNaN(btnRecherche.value)) {
 						alert("Veuiller entrer un chiffre!");
 						btnRecherche.value = "";
@@ -143,6 +146,7 @@ window.addEventListener('load', function() {
 						else {
 							response.forEach(function(element){
 								affichageResultat.innerHTML += '<li '
+								+ 'data-nom="' + element.nom + '" '
 								+ 'data-id_bouteille="' + element.id_bouteille + '" '
 								+ 'data-millesime="' + element.millesime + '"'
 								+ 'data-type="' + element.type + '"'
@@ -164,7 +168,8 @@ window.addEventListener('load', function() {
 			}	
 		},false);
 	}	
-	//En cliquant sur le résultat obtenu de la recherche, des details du bouteilles recherceher, s'affiche
+
+	//Recuperation des champs invisibles dans vues/cellier/recherche.php 
 	let bouteille = {
 		nom : document.getElementById('nom_bouteille'),
 		millesime : document.getElementById('millesime'),
@@ -178,12 +183,12 @@ window.addEventListener('load', function() {
 		code_saq : document.getElementById('code_saq')
 	};
 
+	//Si il ya eu des resultats, il insert les donnees obtenue a l'interieur des champs qui sont recuperer au par boire_avant
 	if(affichageResultat){
 		affichageResultat.addEventListener('click', function(evt){
 			affichageDetails.style='display';
 			if(evt.target.tagName == 'LI'){			
-				bouteille.nom.innerHTML = evt.target.innerHTML;
-				console.log(evt.target.dataset.millesime);
+				bouteille.nom.innerHTML = evt.target.dataset.nom;
 				if (evt.target.dataset.millesime!="null") {
 					bouteille.millesime.innerHTML = evt.target.dataset.millesime;
 				}	
