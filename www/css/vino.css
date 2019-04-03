@@ -469,6 +469,10 @@ th, td {
 	margin-left: auto;
 	margin-right: auto;
 }
+.bouteille_liste {
+	text-align: center;
+	width: 60%;
+}
 	
 /********Styles pour le pied de page ********/
 .mdl-demo section.section--footer .section__circle--big {
@@ -722,6 +726,9 @@ button i{
 		color: rgb(77, 5, 59);
 		padding-top: 0;
 	}
+	.bouteille_liste {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 320px) {
@@ -790,5 +797,8 @@ button i{
 	.demo-layout-transparent .mdl-layout__drawer-button {
 		color: rgb(77, 5, 59);
 		padding-top: 0;
+	}
+	.bouteille_liste {
+		width: 100%;
 	}
 }
