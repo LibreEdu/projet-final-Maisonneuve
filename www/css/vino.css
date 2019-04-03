@@ -570,19 +570,17 @@ th, td {
 }
 
 /********CSS page recherche ***********/
-#overviewRecherche{
-	height: 650px;
-}
 section .mdl-textfield--expandable{
-	margin-top: 15px;
+	margin-top: 35px;
 	height: 1px;
 }
-#sectionSelect{
+
+#overview{
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 }
 .mdl-grid--no-spacing .mdl-textfield--expandable div{
-	margin-top: -30px;
+	margin-top: 0;
 	padding-top: 0;
 	margin-bottom: 0px;
 	padding-bottom: 5px;
@@ -597,31 +595,6 @@ section .mdl-textfield--expandable{
 	cursor: pointer;
 	color: #848282;
 }
-#affichageDetails{
-	margin-top: 180px;
-}
-#recherchePar{
-	margin-top: 0;
-	padding-top: 0;
-}
-#rechercheSpecifique {
-	background-color: red;
-	margin-left: 20px;
-}
-.affichageDetailsBouteille .resultatDetailsBouteille p{
-	margin-bottom: 0;
-}
-.affichageDetailsBouteille .resultatDetailsBouteille #nom_bouteille{
-	font-weight: bold;
-}
-
-.imageBouteille .img #code_saq img{
-	box-shadow: none;
-	width: 165px;
-	height: 165px;
-}
-
-
 /****les icones de partages****/
 .partage {
 	visibility:hidden;
@@ -645,6 +618,12 @@ button i{
 
 /* menu usager hover */
 .mdl-layout__header-row .mdl-navigation a:hover {
+  /*color: #FF00FF;*/
+  color: #d49eed;
+}
+
+/* menu usager actif */
+.mdl-layout__header-row .mdl-navigation .active {
   color: #FF00FF;
 }
 
