@@ -103,4 +103,11 @@
 			<?php endforeach; ?>
 		</div>
 	</main>
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+			document.getElementById("cellier").classList.add("active");
+			document.getElementById("listes_achat").classList.remove("active");
+			document.getElementById("moncompte").classList.remove("active");
+	},  false)
+	</script>
 
