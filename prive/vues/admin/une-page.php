@@ -57,12 +57,21 @@
 					<div class="vino-carte-importation mdl-card mdl-shadow--2dp">
 						<div class="mdl-card__title mdl-card--expand"></div>
 						<div class="mdl-card__supporting-text">
-							Êtes-vous sûr de vouloir importer <?php echo $donnees['nbBouteillesWeb'] ?> bouteilles du site de la SAQ ?<br>
-							Cela mettra à jour les <?php echo $donnees['nbBouteillesBD'] ?> bouteilles de la base de données.
+							<p>
+								Vous êtes sur le point d’importer <?php echo $donnees['nbBouteillesWeb'] ?> bouteilles du site de la SAQ .
+							</p>
+							<p>
+								Voulez-vous mettre à jour les <?php echo $donnees['nbBouteillesBD'] ?> bouteilles de la base de données ?
+								<br>
+								<input type = "radio" id = "mettreAJour" name = "mise-a-jour" class = "mdl-radio__button">
+								<span class = "mdl-radio__label">Oui</span>
+								<input type = "radio" name = "mise-a-jour" class = "mdl-radio__button" checked>
+								<span class = "mdl-radio__label">Non</span>
+							</p>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
 							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btnImporter">
-								Importer les données du site de la SAQ
+								Importer les données
 							</a>
 						</div>
 					</div>
