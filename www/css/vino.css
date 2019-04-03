@@ -126,7 +126,7 @@ th, td {
 /********Styles pour les tableaux ********/
 .prix {
 	width: 25% !important;
-	text-align: right;
+	/*text-align: right;*/
 }
 .total td {
 	border: none !important;
@@ -337,6 +337,7 @@ th, td {
 	margin-top: 48px;
 	margin-bottom: 48px;
 }
+/*La largeur maximale de la section qui contient la bouteille et ces informaions*/
 .mdl-demo section.section--center {
 	max-width: 860px;
 }
@@ -529,7 +530,7 @@ th, td {
 	font-size: 36px;
 }
 .mdl-layout__header-row {
-	height: 150px;
+	/*height: 150px;*/
 }
 #view-source {
 	position: fixed;
@@ -632,6 +633,19 @@ section .mdl-textfield--expandable{
 }
 .partage div{
 	padding-bottom: 10%;
+}
+/*taille font suppression*/
+button i{
+	font-size: 18px;
+}
+/*Éliminer l'Espace entre les paragraphes*/
+.mdl-demo .mdl-card .mdl-card__supporting-text p {
+	margin-bottom: 0px ;
+}
+
+/* menu usager hover */
+.mdl-layout__header-row .mdl-navigation a:hover {
+  color: #FF00FF;
 }
 
 /********PETITS ÉCRANS ********/

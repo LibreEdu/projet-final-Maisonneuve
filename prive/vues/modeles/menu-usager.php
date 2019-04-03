@@ -6,7 +6,9 @@
 	<header  class="mdl-layout__header mdl-layout__header--transparent">
 		
 		<div class="mdl-layout__header-row">
-		<span class="mdl-layout-title">Vino &amp; plaisir</span>
+			<a class="mdl-navigation__link" href="index.php?Cellier"><span class="mdl-layout-title">Vino &amp; plaisir</span></a>
+		<!-- <span class="mdl-layout-title">Vino &amp; plaisir</span> -->
+
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-layout-spacer"></div>
 		<nav class="mdl-navigation">

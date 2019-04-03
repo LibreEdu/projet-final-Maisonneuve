@@ -92,9 +92,9 @@
 						<p>
 							<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
 								<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
-								<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>+ 1</button>
-								<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>- 1</button>
-								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" data-id_bouteiile_supprimer="<?php echo $bouteille->id_bouteille?>"><i class="fas fa-trash-alt"></i></i></button>
+								<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored' title="Ajouter">+ 1</button>
+								<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent' title="Boire">- 1</button>
+								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" title="Supprimer" data-id_bouteiile_supprimer="<?php echo $bouteille->id_bouteille?>"><i class="far fa-trash-alt"></i></button>
 							</div>
 						</p>
 					</div>
