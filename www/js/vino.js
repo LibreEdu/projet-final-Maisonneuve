@@ -95,8 +95,7 @@ window.addEventListener('load', function() {
 	if(pageRecherche){
 		pageRecherche.addEventListener('click', function(){
 			var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
-			var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
-			window.location = 'index.php?cellier&action=pageRecherche&id_cellier='+id_cellier;
+			var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier window.location = 'index.php?cellier&action=pageRecherche&id_cellier='+id_cellier;
 		});
 	};
 
