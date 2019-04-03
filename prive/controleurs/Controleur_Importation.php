@@ -28,6 +28,12 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
+	 * @var object $modele_type Le modèle Modele_Type.
+	 */
+	private $_mettreAJour;
+
+
+	/**
 	 * Vérification des droits d’administration et initialisation de l’attribut.
 	 * 
 	 * @return void
@@ -62,7 +68,10 @@ final class Controleur_Importation extends Controleur
 				$this->index();
 				break;
 			case 'importer':
+				$body = json_decode(file_get_contents('php://input'));
+				$this->_mettreAJour = $body->mettreAJour;
 				$this->importer();
+				// echo json_encode($resultat);
 				break;
 			default :
 				trigger_error('Action invalide.');
@@ -89,9 +98,9 @@ final class Controleur_Importation extends Controleur
 	 * 
 	 * @return void
 	 */
-	private function importer() {
-		// $this->importerLot(0, 1);
-		$this->ajouterDonnees();
+	private function importer()
+	{
+		$this->importerLot(0, 4);
 	}
 
 
@@ -233,31 +242,30 @@ final class Controleur_Importation extends Controleur
 	private function importerLot($index = 0, $nombre_bouteilles = 100) {
 
 		// On récupère les données de la page Web du site de la SAQ
-		$page_web = $this->curl($index, $nombre_bouteilles);
+		// $page_web = $this->curl($index, $nombre_bouteilles);
 
-		// Transforme la page web en un élément DOM
-		$dom = $this->html2dom($page_web);
+		// // Transforme la page web en un élément DOM
+		// $dom = $this->html2dom($page_web);
 
-		// Recherche tous les éléments qui ont une balise <div>
-		$noeuds = $dom->getElementsByTagName('div');
+		// // Recherche tous les éléments qui ont une balise <div>
+		// $noeuds = $dom->getElementsByTagName('div');
 
-		foreach ($noeuds as $noeud) {
-			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
-				$donnees = $this->recupererDonnees($noeud);
-				// var_dump($donnees);die;
-				$retour = $this->ajouterDonnees($donnees);
-				//var_dump($retour);die;
-				if ($retour->succes == false) {
-					echo "erreur : " . $retour->raison . "<br>";
-					echo "<pre>";
-					//var_dump($info);
-					echo "</pre>";
-					echo "<br>";
-				} else {
-					// $nombreDeProduits++;
-				}
-			}
-		}
+		// foreach ($noeuds as $noeud) {
+		// 	if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
+		// 		$bouteille = $this->recupererDonnees($noeud);
+				$bouteille = new Classe_Bouteille_SAQ();
+				$bouteille->id_bouteille_saq = '';
+				$bouteille->code_saq = "13575807";
+				$bouteille->prix = "15.20";
+				$bouteille->millesime = NULL;
+				$bouteille->pays = 'Italie';
+				$bouteille->format = '750 ml';
+				$bouteille->nom = 'Farnese Vini Vigneti del Salento Vani...';
+				$bouteille->type = 'Vin rouge';
+				// var_dump($bouteille);die;
+				$retour = $this->ajouterDonnees($bouteille);
+		// 	}
+		// }
 	}
 
 
@@ -266,11 +274,11 @@ final class Controleur_Importation extends Controleur
 	 * 
 	 * @param object $noeud Nœud DOM
 	 * 
-	 * @return object Les données de la bouteille
+	 * @return object $bouteille Un object de la classe Classe_Bouteille_SAQ.
 	 */
 	private function recupererDonnees($noeud) {
 		// Objet qui va contenir mes informations de la bouteille
-		$info = new stdClass();
+		$bouteille = new Classe_Bouteille_SAQ();
 
 		// Recherche tous les éléments qui ont une balise <p>
 		$paragraphes = $noeud->getElementsByTagName('p');
@@ -281,11 +289,11 @@ final class Controleur_Importation extends Controleur
 				case 'nom':
 					preg_match("/\r\n\s*(.*)(.{4})\r\n/", $paragraphe->textContent, $correspondances);
 					if (intval($correspondances[2])) {
-						$info->nom = trim($correspondances[1]);
-						$info->millesime = intval($correspondances[2]);
+						$bouteille->nom = trim($correspondances[1]);
+						$bouteille->millesime = intval($correspondances[2]);
 					} else {
-						$info->nom = $correspondances[1] . $correspondances[2];
-						$info->millesime = NULL;
+						$bouteille->nom = $correspondances[1] . $correspondances[2];
+						$bouteille->millesime = NULL;
 					}
 					break;
 
@@ -296,7 +304,7 @@ final class Controleur_Importation extends Controleur
 
 					// Récupération de l’information de la première ligne
 					if (isset($correspondances[1][0])) {
-						$info->type = trim($correspondances[1][0]);
+						$bouteille->type = trim($correspondances[1][0]);
 					}
 
 					// Récupération de l’information de la deuxième ligne
@@ -305,16 +313,16 @@ final class Controleur_Importation extends Controleur
 						preg_match("/(.*),(.*)/", $correspondances[1][1], $corres);
 
 						// Remplacement de l’apostrophe droite (') par l’apostrophe typographique (’)
-						$info->pays = str_replace("'", '’', $corres[1]);
+						$bouteille->pays = str_replace("'", '’', $corres[1]);
 
 						// Remplacement du séparateur décimal, format base de données
-						$info->format = $corres[2];
+						$bouteille->format = trim($corres[2]);
 					}
 
 					// Récupération de l’information de la troisième ligne
 					if (isset($correspondances[1][2])) {
 						preg_match("/\d{8}/", $correspondances[1][2], $corres);
-						$info->code_SAQ =  $corres[0];
+						$bouteille->code_saq =  $corres[0];
 					}
 					break;
 			}
@@ -325,67 +333,44 @@ final class Controleur_Importation extends Controleur
 		foreach ($cellules as $cellule) {
 			if ($cellule->getAttribute('class') == 'price') {
 				preg_match("/(\d*),(\d*).*$/", trim($cellule->textContent), $correspondances);
-				$info->prix = $correspondances[1] . "." . $correspondances[2];
+				$bouteille->prix = $correspondances[1] . "." . $correspondances[2];
 			}
 		}
-		return $info;
+		return $bouteille;
 	}
 
-	// private function ajouterDonnees($bouteille) {
-	private function ajouterDonnees() {
-		// Vérifie si le type de vin existe déjà dans la table Type
-		// $type = $this->modele_type->obtenir_type($bouteille->type);
 
-		$type = $this->modele_type->obtenir_type('Vin Rouge');
-		
+
+	/**
+	 * Ajoute les données dans la base
+	 * 
+	 * @param object $bouteille Un object de la classe Classe_Bouteille_SAQ.
+	 * 
+	 * @return // À VÉRIFIER
+	 */
+
+	private function ajouterDonnees($bouteille) {
+		// On veut vérifier si le type de vin (ex. : Vin rouge) est déjà dans la table des types
+
+		// On récupère les types de vin qui correspond au type de la bouteille
+		$type = $this->modele_type->obtenir_type($bouteille->type);
+
+		// S’il y a un enregistrement, on récupère son id
+		// Sinon, on l’insère et on récupère son id
 		if ($type) {
-			$id_type = $type[0]->id_type;
+			$bouteille->id_type = (int)$type[0]->id_type;
 		} else {
-			echo "KO";
+			$bouteille->id_type = (int)$this->modele_type->ajouter_type($bouteille->type);
 		}
-		var_dump($id_type);
-		die;
 
-
-
-		$retour = new stdClass();
-		$retour -> succes = false;
-		$retour -> raison = '';
-		$dernierId = "";
-
-		// Récupère le type reçu en paramètre 
-		$rangeeType = $this->_bd->query("SELECT id FROM vino_type WHERE libelle = '" . $bte->type . "'");
-		
-		// Vérifier si les rangées ne sont pas vides		
-		if ($rangeeType->num_rows == 1 ) {	
-			// Récupère le id de type de vin
-			$id_type = $rangeeType->fetch_assoc();
-			$id_type = $id_type['id'];
-
+		// Si la bouteille est présente, on la met éventuellement à jour sinon on l’insère.
+		if ($this->modele_bouteille_saq->estPresent($bouteille->code_saq)) {
+			if ($this->_mettreAJour)
+			{
+				return $this->modele_bouteille_saq->mettreAJour($bouteille);
+			}
 		} else {
-			// Ajouter le type dans la table de type
-			$this->_stmt_type->bind_param("s", $bte->type);		
-			$this->_stmt_type->execute();			
-			$id_type = $this->_stmt_type->insert_id;
+			return $this->modele_bouteille_saq->inserer($bouteille);
 		}
-		
-		// Récupère le code_saq pour vérifier après si il existe dans la table ou non
-		 $rangeeCodeSaq = $this->_bd->query("SELECT id FROM vino_bouteille_saq WHERE code_saq = '" . $bte->code_SAQ . "'");
-
-		//Si le code_saq n'existe pas dans le tableau
-		if ($rangeeCodeSaq->num_rows < 1) {
-			
-			$this->_stmt_bouteille_saq->bind_param("siissii", $bte->nom, $bte->millesime, $id_type, $bte->pays, $bte->format, $bte->code_SAQ, $bte->prix);
-			echo "<br>dernier id insere apres cherche codeSAQ ".$id_type;
-
-			$retour->succes = $this->_stmt_bouteille_saq->execute();
-			echo "<br>dernier id insere apres execute ".$id_type; 
-
-		} else {
-			$retour->succes = false;
-			$retour->raison = self::DUPLICATION;
-		}
-	return $retour;
 	}
-
 }

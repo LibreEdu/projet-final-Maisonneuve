@@ -9,7 +9,16 @@
 					foreach ($donnees['noms'] as $nom_liste): 
 						echo "<div class='nom_liste'>
 								<input type='hidden' name='le_nom' value='".$nom_liste->id_liste_achat."'>
-								<h5><a name='nom_liste' class='lien' href='index.php?liste_achat&action=details_liste_achat&nom=".$nom_liste->nom."'>".$nom_liste->nom."</a> <button class='btnSupprimerListe'>Supprimer</button></h5>
+								<table style='width:100%;'>
+									<tr>
+										<td style='width:90%;'>
+											<h5><a name='nom_liste' class='lien' href='index.php?liste_achat&action=details_liste_achat&nom=".$nom_liste->nom."'>".$nom_liste->nom."</a></h5>
+										</td>
+										<td style='width:10%;'>
+										<button name='btnSupprimerListe' class='far fa-trash-alt'></button>
+										</td>
+									<tr>
+								</table>
 							</div>";
 					endforeach; 
 				}
