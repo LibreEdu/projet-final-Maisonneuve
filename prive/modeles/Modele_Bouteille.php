@@ -115,9 +115,6 @@ class Modele_Bouteille extends Modele
 	 * Supprime bouteille par id bouteille dans la table vino_bouteille
 	 * 
 	 * @param integer $id_bouteille
-	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
-	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerBouteilleParIdBouteille($id_bouteille)
 	{
@@ -126,39 +123,61 @@ class Modele_Bouteille extends Modele
 
 	/**
 	 * Fonction qui modifie la bouteille
-	 * @param 
-	 * @return 
+	 * @param $donnees Tous les données de la bouteille à modifier
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function modifier()
 	{
-		$sql = 'UPDATE vino_bouteille 
-			SET date_achat=?,
-				quantite=?,
-				prix=?,
-				millesime=?,
-				boire_avant=?,
-				nom=?,
-				pays=?,
-				format=?,
-				note=?,
-				id_type=?,
-				id_cellier=?
-			WHERE id_bouteille=?';
+		try
+		{
+			$sql = 'UPDATE vino_bouteille 
+				SET date_achat=?,
+					quantite=?,
+					prix=?,
+					millesime=?,
+					boire_avant=?,
+					nom=?,
+					pays=?,
+					format=?,
+					note=?,
+					id_type=?,
+					id_cellier=?
+				WHERE id_bouteille=?';
 
-		$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['id_bouteille']);
-		$resultat = $this->requete($sql, $donnees);
+			$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['id_bouteille']);
+			$resultat = $this->requete($sql, $donnees);	
+			echo '<script>alert("La bouteille a été modifiée.")</script>';
+		}
+		catch(PDOException $e)
+		{
+			trigger_error("<p>La requête suivante a donné une erreur : $sql</p><p>Exception : " . $e->getMessage() . '</p>');
+			return false;
+		}
 	}
 
 	/**
 	 * Fonction qui ajoute une bouteille
-	 * @param 
-	 * @return 
+	 * @param $donnees Tous les données de la bouteille à ajouter
+	 * 
+	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 * @return boolean Indique si la requête a correctement fonctionné. 
 	 */
 	public function ajouter()
 	{
-		$sql = 'INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier, code_saq) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
-		$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['code_saq']);
-		$resultat = $this->requete($sql, $donnees);
+		try
+		{
+			$sql = 'INSERT INTO vino_bouteille (date_achat, quantite, prix, millesime, boire_avant, nom, pays, format, note, id_type, id_cellier, code_saq) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+			$donnees = array($_POST['date_achat'], $_POST['quantite'], $_POST['prix'], $_POST['millesime'], $_POST['boire_avant'], $_POST['nom'], $_POST['pays'], $_POST['format'], $_POST['note'], $_POST['type'], $_POST['id_cellier'], $_POST['code_saq']);
+			$resultat = $this->requete($sql, $donnees);
+			echo '<script>alert("La bouteille a été ajoutée.")</script>';
+		}
+		catch(PDOException $e)
+		{
+			trigger_error("<p>La requête suivante a donné une erreur : $sql</p><p>Exception : " . $e->getMessage() . '</p>');
+			return false;
+		}
 	}
 
 	/**
@@ -183,7 +202,7 @@ class Modele_Bouteille extends Modele
 	}
 
 	/**
-	 * Retourne la liste de bouteilles qui ont été trouvé
+	 * Retourne la liste de bouteilles qui ont été trouvées
 	 * 
 	 * @param integer $id_cellier identifiant du cellier.
 	 * @param string $rechercherPar Levariable a rechercher.
