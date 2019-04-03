@@ -474,7 +474,7 @@ window.addEventListener('load', function() {
 		// Assigner l'événement click à chaque li et afficher le résultat
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span><button class="far fa-trash-alt" style="margin-right: 15px;"></button>' + evt.target.innerHTML + '</span></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><table style="width:100%;"><tr><td style="width:90%;">' + evt.target.innerHTML + '</td><td style="width:10%; text-align:right;"><button class="far fa-trash-alt"></button></td><tr></table></div>';				
 				la_liste.innerHTML = '';
 				NomBouteille.value = '';
 			}
@@ -486,11 +486,8 @@ window.addEventListener('load', function() {
 		// Assigner l'événement click l'élément mes_achats, le vider et supprimer l'enfant vide
 		mes_achats.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'BUTTON'){
-				evt.target.parentElement.parentElement.innerHTML = "";
 				for(var i=0; i<les_bouteilles.length; i++) {
-					if(les_bouteilles[i].innerHTML == '') {
-						mes_achats.removeChild(les_bouteilles[i]);
-					}
+					mes_achats.removeChild(les_bouteilles[i]);
 				}
 			}			
 		});
@@ -498,7 +495,7 @@ window.addEventListener('load', function() {
 
 	// Récupérer les éléments id_nom et les boutons supprimer pour chacun
 	let id_nom = document.getElementsByName('le_nom');
-	let bouton = document.querySelectorAll('.btnSupprimerListe');
+	let bouton = document.getElementsByName('btnSupprimerListe');
 
 	// Pour chaque bouton, assigner l'événement click et le diriger vers le contrôleur Liste_Achat pour supprimer la liste dont l'id est envoyé
 	for(var i=0; i<id_nom.length; i++){
