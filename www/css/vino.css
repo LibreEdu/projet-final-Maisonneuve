@@ -608,7 +608,7 @@ section .mdl-textfield--expandable{
 	background-color: red;
 	margin-left: 20px;
 }
-.affichageDetailsBouteille .resultatDetailsBouteille p{
+.affichageDetailsBouteille .resultatDetailsBouteille p {
 	margin-bottom: 0;
 }
 .affichageDetailsBouteille .resultatDetailsBouteille #nom_bouteille{
