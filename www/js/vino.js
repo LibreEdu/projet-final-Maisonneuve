@@ -55,9 +55,12 @@ window.addEventListener('load', function() {
 
 	// Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
 	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
+	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+	console.log(id_cellier);
 	if(btnAjouterBouteille){
 		btnAjouterBouteille.addEventListener('click', function(){
-			window.location = 'index.php?bouteille&action=ajouter-form';
+			window.location = 'index.php?bouteille&action=ajouter-form&id_cellier='+id_cellier;
 		});
 	};
 
@@ -404,7 +407,8 @@ window.addEventListener('load', function() {
 		};
 	}
 	
-	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	/*let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	
 	if(btnAjouter){
 		btnAjouter.addEventListener('click', function(evt){
 		var param = {
@@ -415,6 +419,7 @@ window.addEventListener('load', function() {
 			'prix':bouteille.prix.value,
 			'quantite':bouteille.quantite.value,
 			'millesime':bouteille.millesime.value,
+			'id_cellier':id_cellier
 		};
 		let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
@@ -430,7 +435,7 @@ window.addEventListener('load', function() {
 				console.error(error);
 			});		
 		});
-	}
+	}*/
 
 	// Recuperer les éléments NomBouteille et la_liste du document
 	let NomBouteille = document.querySelector('[name="une_bouteille"]');
@@ -468,7 +473,7 @@ window.addEventListener('load', function() {
 		// Assigner l'événement click à chaque li et afficher le résultat
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span>' + evt.target.innerHTML + '</span> <button class="btnSupprimerItem">Supprimer</button></div>';
+				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><span><button class="far fa-trash-alt" style="margin-right: 15px;"></button>' + evt.target.innerHTML + '</span></div>';
 				la_liste.innerHTML = '';
 				NomBouteille.value = '';
 			}
@@ -480,7 +485,7 @@ window.addEventListener('load', function() {
 		// Assigner l'événement click l'élément mes_achats, le vider et supprimer l'enfant vide
 		mes_achats.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'BUTTON'){
-				evt.target.parentElement.innerHTML = "";
+				evt.target.parentElement.parentElement.innerHTML = "";
 				for(var i=0; i<les_bouteilles.length; i++) {
 					if(les_bouteilles[i].innerHTML == '') {
 						mes_achats.removeChild(les_bouteilles[i]);
