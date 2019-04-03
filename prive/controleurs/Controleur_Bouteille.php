@@ -199,6 +199,7 @@
 	 */
 	public function ajouter_form()
 	{
+		$donnees['id_cellier'] = $_GET['id_cellier'];
 		$donnees['types'] = $this->modele_type->obtenir_tous();
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		// Titre à afficher dans le formulaire
