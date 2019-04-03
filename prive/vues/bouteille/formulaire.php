@@ -32,7 +32,7 @@
 					<span class="mdl-checkbox__label">Faire une recherche dans les bouteilles de la SAQ</span>
 				</label>
 			</div>
-			<form method="POST">
+			<form method="POST" action="index.php?bouteille&action=<?php echo $donnees['actionBouton'] ?>">
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom : 
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" value="<?php echo $nom ?>" required="required">
@@ -84,14 +84,7 @@
 					Note : <input class="mdl-textfield__input" type="text" size="3" name="note" value="<?php echo $note ?>">
 				</div>
 				<div class="mdl-textfield mdl-js-textfield" id="cellier">
-					Cellier : <select name="id_cellier">
-					<?php
-						foreach ($donnees['celliers'] as $unCellier)
-						{
-							echo "<option value='" . $unCellier->id_cellier . "'>" . $unCellier->nom . "</option>";
-						}
-					?>
-					</select>
+					<input type="hidden" name="id_cellier" value="<?php echo $donnees['id_cellier'] ?>">
 				</div>
 				<div>	
 					<?php
@@ -112,7 +105,6 @@
 					<?php
 						}
 					?>		
-					<input type="hidden" name="action" value="<?php echo $donnees['actionBouton'] ?>">
 					<input type="submit" value="<?php echo $donnees['titreBouton'] ?>" class="<?php echo $donnees['classeBouton'] ?>">
 				</div>
 			</form>
