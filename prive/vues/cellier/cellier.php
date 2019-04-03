@@ -25,9 +25,21 @@
 					<?php
 						}
 						else {
+							if($bouteille->type == 'Vin blanc') {
 					?>
-						<img src='<?php echo base_url(); ?>images/bouteille.jpg'>
+						<img src='<?php echo base_url(); ?>images/vin_blanc.jpg'>
 					<?php
+							}
+							if($bouteille->type == 'Vin rouge') {
+					?>
+						<img src='<?php echo base_url(); ?>images/vin_rouge.jpg'>
+					<?php
+							}
+							if($bouteille->type == 'Vin rosé') {
+					?>
+						<img src='<?php echo base_url(); ?>images/vin_rose.jpg'>
+					<?php
+							}
 						}
 					?>
 					</div>

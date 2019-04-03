@@ -117,6 +117,27 @@
 	 */
 	public function modifier()
 	{
+		if($_POST['date_achat'] == '')
+		{
+			$_POST['date_achat'] = null;
+		}
+		else {
+			$_POST['date_achat'] = $_POST['date_achat'];
+		}
+		if($_POST['boire_avant'] == '')
+		{
+			$_POST['boire_avant'] = null;
+		}
+		else {
+			$_POST['boire_avant'] = $_POST['boire_avant'];
+		}
+		if($_POST['millesime'] == '')
+		{
+			$_POST['millesime'] = null;
+		}
+		else {
+			$_POST['millesime'] = $_POST['millesime'];
+		}
 		$this->modele_bouteille->modifier();
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
@@ -128,6 +149,27 @@
 	 */
 	public function ajouter()
 	{
+		if($_POST['date_achat'] == '')
+		{
+			$_POST['date_achat'] = null;
+		}
+		else {
+			$_POST['date_achat'] = $_POST['date_achat'];
+		}
+		if($_POST['boire_avant'] == '')
+		{
+			$_POST['boire_avant'] = null;
+		}
+		else {
+			$_POST['boire_avant'] = $_POST['boire_avant'];
+		}
+		if($_POST['millesime'] == '')
+		{
+			$_POST['millesime'] = null;
+		}
+		else {
+			$_POST['millesime'] = $_POST['millesime'];
+		}
 		$this->modele_bouteille->ajouter();
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
