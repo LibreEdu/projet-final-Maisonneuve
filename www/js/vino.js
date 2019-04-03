@@ -99,6 +99,7 @@ window.addEventListener('load', function() {
 		pageRecherche.addEventListener('click', function(){
 			var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
 			var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier window.location = 'index.php?cellier&action=pageRecherche&id_cellier='+id_cellier;
+			window.location = 'index.php?cellier&action=pageRecherche&id_cellier='+id_cellier;
 		});
 	};
 
@@ -258,7 +259,7 @@ window.addEventListener('load', function() {
 					bouteille.code_saq.innerHTML = "<img src='https://s7d9.scene7.com/is/image/SAQ/"+evt.target.dataset.code_saq+"_is?$saq-rech-prod-gril$'>";
 				}
 				else {
-					bouteille.code_saq.innerHTML = "<img src='../divers/images/bouteille.jpg'>";
+					bouteille.code_saq.innerHTML = "<img src='../www/images/vin_rouge.jpg'>";
 				}
 			}
 		});
