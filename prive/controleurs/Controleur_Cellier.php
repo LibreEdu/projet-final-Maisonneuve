@@ -23,6 +23,7 @@ class Controleur_Cellier extends Controleur
 	{
 		$this->modele_bouteille = $this->modele('modele_bouteille');
 		$this->modele_cellier = $this->modele('modele_cellier');
+		$this->modele_type = $this->modele('modele_type');
 	}
 
 	public function traite(array $params)
@@ -95,16 +96,34 @@ class Controleur_Cellier extends Controleur
 		if ($idCellier == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-
 		$resultat = $this->modele_cellier->obtenir_par_id($_GET['id_cellier']);
 		$donnees['bouteilles'] = $this->modele_bouteille->bouteilles_cellier($_GET['id_cellier']);
-		$monCellier = $resultat[0];
-		$donnees['cellier'] = $monCellier->nom;
 
-		$this->afficheVue('modeles/en-tete');
-		$this->afficheVue('modeles/menu-usager');
-		$this->afficheVue('cellier/cellier', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		// Si il n'y a aucune bouteille dans le cellier, il dirige directement vers le formulaire ajout bouteille
+		if ($donnees['bouteilles']==null) {
+			$donnees['id_cellier'] = $_GET['id_cellier'];
+			$donnees['types'] = $this->modele_type->obtenir_tous();
+			$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+			// Titre à afficher dans le formulaire
+			$donnees['titre'] = 'Ajouter Bouteille';
+			// Action du bouton input du formulaire
+			$donnees['actionBouton'] = 'ajouter';
+			// Value du bouton input du formulaire
+			$donnees['titreBouton'] = 'Ajouter la bouteille';
+			// Classe du bouton input du formulaire
+			$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored';
+			$this->afficheVue('modeles/en-tete');
+			$this->afficheVue('modeles/menu-usager');
+			$this->afficheVue('bouteille/formulaire', $donnees);
+			$this->afficheVue('modeles/bas-de-page');
+		}
+		// Si il existe déjà des bouteilles dans le cellier, il affiche la liste de tous les bouteilles existant
+		else{
+			$this->afficheVue('modeles/en-tete');
+			$this->afficheVue('modeles/menu-usager');
+			$this->afficheVue('cellier/cellier', $donnees);
+			$this->afficheVue('modeles/bas-de-page');
+		}
 	}
 	
 	/**
