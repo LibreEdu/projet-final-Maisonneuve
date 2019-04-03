@@ -118,7 +118,6 @@
 	public function modifier()
 	{
 		$this->modele_bouteille->modifier();
-		echo '<script>alert("La bouteille a été modifiée.")</script>';
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
@@ -130,7 +129,6 @@
 	public function ajouter()
 	{
 		$this->modele_bouteille->ajouter();
-		echo '<script>alert("La bouteille a été ajoutée.")</script>';
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
 	}
 
