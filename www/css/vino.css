@@ -569,6 +569,11 @@ th, td {
 }
 
 /********CSS page recherche ***********/
+section .mdl-textfield--expandable{
+	margin-top: 35px;
+	height: 1px;
+}
+
 #overview{
 	margin-bottom: 0px;
 	padding-bottom: 0px;
