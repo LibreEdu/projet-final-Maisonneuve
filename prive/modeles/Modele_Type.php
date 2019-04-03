@@ -44,4 +44,18 @@ class Modele_Type extends Modele
 		return $listes;
 	}
 
+
+	/**
+	 * Ajoute un type de vin dans la table des types
+	 * 
+	 * @return integer L’identifiant du type que l’on vient d’insérer.
+	 */
+	public function ajouter_type($type)
+	{
+		$sql = 'INSERT INTO vino_type (type) VALUES (?)';
+		$donnees = array($type);
+		$this->requete($sql, $donnees);
+		return $this->bd->lastInsertId();
+	}
+
 }
