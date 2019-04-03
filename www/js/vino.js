@@ -55,9 +55,12 @@ window.addEventListener('load', function() {
 
 	// Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
 	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
+	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+	console.log(id_cellier);
 	if(btnAjouterBouteille){
 		btnAjouterBouteille.addEventListener('click', function(){
-			window.location = 'index.php?bouteille&action=ajouter-form';
+			window.location = 'index.php?bouteille&action=ajouter-form&id_cellier='+id_cellier;
 		});
 	};
 
@@ -404,7 +407,8 @@ window.addEventListener('load', function() {
 		};
 	}
 	
-	let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	/*let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
+	
 	if(btnAjouter){
 		btnAjouter.addEventListener('click', function(evt){
 		var param = {
@@ -415,6 +419,7 @@ window.addEventListener('load', function() {
 			'prix':bouteille.prix.value,
 			'quantite':bouteille.quantite.value,
 			'millesime':bouteille.millesime.value,
+			'id_cellier':id_cellier
 		};
 		let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
 			fetch(requete)
@@ -430,7 +435,7 @@ window.addEventListener('load', function() {
 				console.error(error);
 			});		
 		});
-	}
+	}*/
 
 	// Recuperer les éléments NomBouteille et la_liste du document
 	let NomBouteille = document.querySelector('[name="une_bouteille"]');
