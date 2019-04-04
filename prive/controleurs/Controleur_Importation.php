@@ -16,9 +16,9 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
-	 * @var object $modele_bouteille_saq Le modèle Modele_Bouteille_SAQ.
+	 * @var object $modele_bouteille_SAQ Le modèle modele_bouteille_SAQ.
 	 */
-	private $modele_bouteille_saq;
+	private $modele_bouteille_SAQ;
 
 
 	/**
@@ -47,8 +47,8 @@ final class Controleur_Importation extends Controleur
 		$this->_nbBouteillesWeb = $this->recupererNbBouteilles();
 
 		// Initialisation des modèles.
-		$this->modele_bouteille_saq = $this->modele('modele_bouteille_saq');
-		$this->modele_type = $this->modele('modele_type');
+		$this->modele_bouteille_SAQ = $this->modele('Modele_bouteille_SAQ');
+		$this->modele_type = $this->modele('Modele_type');
 
 	}
 
@@ -100,10 +100,10 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function importer()
 	{
-		$this->importerLot();
-		// for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
-		// 	$this->importerLot($i);
-		// }
+		// $this->importerLot();
+		for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
+			$this->importerLot($i);
+		}
 	}
 
 
@@ -114,7 +114,7 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function nbBouteillesBD()
 	{
-		return $this->modele_bouteille_saq->obtenir_total();
+		return $this->modele_bouteille_SAQ->obtenir_total();
 	}
 
 
@@ -360,13 +360,13 @@ final class Controleur_Importation extends Controleur
 		}
 
 		// Si la bouteille est présente, on la met éventuellement à jour sinon on l’insère.
-		if ($this->modele_bouteille_saq->estPresent($bouteille->code_saq)) {
+		if ($this->modele_bouteille_SAQ->estPresent($bouteille->code_saq)) {
 			if ($this->_mettreAJour)
 			{
-				return $this->modele_bouteille_saq->mettreAJour($bouteille);
+				return $this->modele_bouteille_SAQ->mettreAJour($bouteille);
 			}
 		} else {
-			return $this->modele_bouteille_saq->inserer($bouteille);
+			return $this->modele_bouteille_SAQ->inserer($bouteille);
 		}
 	}
 }
