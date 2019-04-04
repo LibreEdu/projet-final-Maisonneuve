@@ -10,4 +10,9 @@ window.addEventListener("load", () =>
 		vinoAdmin.importer();
 	}, false);
 
+	document.getElementById("btnIndice").addEventListener("input", ()=>
+	{
+		vinoAdmin.changerIndice();
+	}, false);
+
 }, false)

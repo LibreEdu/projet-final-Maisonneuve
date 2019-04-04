@@ -278,7 +278,7 @@ a img{
 	margin-right: auto;
 	padding: 10px;
 	background-color: black;
-	color: var(--couleur-lien-bas-page);
+	color: green;
 }
 
 /* Pied de page */
