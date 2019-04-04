@@ -59,7 +59,6 @@ class Modele_Bouteille_SAQ extends Modele
 	 */
 	public function inserer($bouteille)
 	{
-		// var_dump($bouteille);die;
 		$sql = 'INSERT INTO vino_bouteille_saq (code_saq, prix, millesime, id_type, pays, format, nom) VALUES (?,?,?,?,?,?,?)';
 		$donnees = array($bouteille->code_saq, $bouteille->prix, $bouteille->millesime, $bouteille->id_type, $bouteille->pays, $bouteille->format, $bouteille->nom);
 		return $this->requete($sql, $donnees);
