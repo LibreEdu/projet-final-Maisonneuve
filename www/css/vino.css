@@ -473,29 +473,20 @@ th, td {
 	text-align: center;
 	width: 60%;
 }
-	
+
 /********Styles pour le pied de page ********/
-/*.mdl-demo section.section--footer .section__circle--big {
-	width: 100px;
-	height: 100px;
-	border-radius: 50px;
-	margin: 8px 32px;
+
+footer {
+	text-align: center;
+	margin-top: 25px;
+	
+	/*margin-bottom: -50px;*/
 }
-.mdl-demo .is-small-screen section.section--footer .section__circle--big {
-	width: 50px;
-	height: 50px;
-	border-radius: 25px;
-	margin: 8px 16px;
-}*/
-/*.mdl-demo section.section--footer {
-	padding: 64px 0;
-	margin: 0 -8px -8px -8px;
+footer p{
+	/*margin-top: 10px;*/
+	color: white;
 }
-footer{
-	height: 100px;
-	padding-top: 0px;
-}
-*/
+
 /****************Code Bootstap pour les formulaires login et formulaire***********/
 .divider-text {
 	position: relative;
@@ -536,7 +527,7 @@ footer{
 	font-size: 36px;
 }
 .mdl-layout__header-row {
-	/*height: 150px;*/
+	height: 60px;
 }
 #view-source {
 	position: fixed;
