@@ -20,10 +20,8 @@ var vinoAdmin = (function(){
 	 */
 	obj.importer = function() {
 		var mettreAJour = document.getElementById('mettreAJour').checked;
-
-		// window.location = 'index.php?importation&action=importer';
-
 		let requete = new Request('index.php?importation&action=importer', {method: 'POST', body: '{"mettreAJour": ' + mettreAJour + '}'});
+		let log = document.getElementById('log-importation');
 		fetch(requete)
 		.then(response => {
 			if (response.status === 200) {
@@ -33,6 +31,8 @@ var vinoAdmin = (function(){
 			}
 		})
 		.then(response => {
+			log.style.visibility = 'visible';
+			log.innerHTML = response;
 			console.log(response);
 		}).catch(error => {
 			console.error(error);
