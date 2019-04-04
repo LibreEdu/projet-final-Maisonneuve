@@ -100,10 +100,10 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function importer()
 	{
-		// $this->importerLot();
-		for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
-			$this->importerLot($i);
-		}
+		$this->importerLot();
+		// for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
+		// 	$this->importerLot($i);
+		// }
 	}
 
 
