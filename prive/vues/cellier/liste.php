@@ -1,8 +1,12 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-layout__tab-panel is-active" id="overview">			
 			<h3>Bienvenue <?php echo $_SESSION['prenom'] ?></h3>
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
+			<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterCellier">
 			  Ajouter un cellier
+			</button> -->
+			<!-- Bouton ajouter un cellier -->
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="btnAjouterCellier" title="Ajouter un cellier">
+			  <i class="material-icons">add</i>
 			</button>
 			<!-- Récupérer les données -->
 			<?php
@@ -30,5 +34,5 @@
 				}
 			?>
 		</div>
-</main>
+<!-- </main> -->
 

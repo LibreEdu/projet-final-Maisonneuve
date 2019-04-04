@@ -174,17 +174,17 @@ th, td {
 /********Styles des boutons ajouter Cellier et ajouter Bouteille *********/
 #btnAjouterCellier {
 	right: 3%;
-	top: 90%;
+	top: 80%;
 	position: fixed;
 	z-index: 999;
-	width: 200px;
+	/*width: 180px;*/
 }
 #btnAjouterBouteille {
 	right: 3%;
-	top: 90%;
+	top: 80%;
 	position: fixed;
 	z-index: 999;
-	width: 200px;
+	/*width: 180px;*/
 }
 
 /********Styles des boutons de la liste d'achats *********/
@@ -490,6 +490,11 @@ th, td {
 .mdl-demo section.section--footer {
 	padding: 64px 0;
 	margin: 0 -8px -8px -8px;
+}
+footer span{
+	color:white;
+	margin-left: 30%;
+	font-size: 8pt;
 }
 
 /****************Code Bootstap pour les formulaires login et formulaire***********/
