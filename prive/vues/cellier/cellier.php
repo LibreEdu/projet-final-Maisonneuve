@@ -11,8 +11,12 @@
 					<input class="mdl-textfield__input" type="search" id="btnRecherche" name="valeurRechercher" style="visibility: hidden;"/>
 				</div>
 			</section>
-		  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
+		  	<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAjouterBouteille">
 			  Ajouter une bouteille
+			</button> -->
+			<!-- Bouton ajouter une bouteille -->
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="btnAjouterBouteille" title="Ajouter une bouteille">
+			  <i class="material-icons">add</i>
 			</button>
 			<?php foreach ($donnees['bouteilles'] as $bouteille): ?>
 			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
@@ -102,7 +106,7 @@
 			</section>
 			<?php endforeach; ?>
 		</div>
-	</main>
+	<!-- </main> -->
 	<script type="text/javascript">
 		window.addEventListener("load", function(){
 			document.getElementById("cellier").classList.add("active");

@@ -89,7 +89,7 @@ class Controleur_Login extends Controleur
 				$this->afficheVue('modeles/en-tete');
 				$this->afficheVue('modeles/menu-login');
 				$this->afficheVue('login/login', $donnees);
-				$this->afficheVue('modeles/bas-de-page');
+				// $this->afficheVue('modeles/bas-de-page');
 			}
 		}
 
@@ -106,7 +106,7 @@ class Controleur_Login extends Controleur
 			$this->afficheVue('modeles/en-tete');
 			$this->afficheVue('modeles/menu-login');
 			$this->afficheVue('login/login');
-			$this->afficheVue('modeles/bas-de-page');
+			// $this->afficheVue('modeles/bas-de-page');
 		}
 	}
 
@@ -118,7 +118,7 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-login');
 		$this->afficheVue('login/formulaire');
-		$this->afficheVue('modeles/bas-de-page');
+		// $this->afficheVue('modeles/bas-de-page');
 	}
 
 	/**
@@ -308,7 +308,7 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-login');
 		$this->afficheVue('login/formulaire', $donnees);
-		$this->afficheVue('modeles/bas-de-page');
+		// $this->afficheVue('modeles/bas-de-page');
 	}
 
 	/**

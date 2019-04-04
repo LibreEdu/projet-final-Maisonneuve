@@ -7,7 +7,7 @@
 					if(!isset($_SESSION["UserID"]))
 					{
 				?>
-					<h4 class="card-title mt-3 text-center">Connexion</h4>
+					<h4 class="card-title mt-3 text-center">Connectez-vous à votre compte Vino</h4>
 					<form method="POST" action="index.php?login">
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
