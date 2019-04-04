@@ -73,7 +73,8 @@
 					
 				?>
 	</div>
-</main>
+	</div>
+<!-- </main> -->
 
 <script type="text/javascript">
 		window.addEventListener("load", function(){

@@ -35,5 +35,5 @@
 			<p><a class="lien" href="index.php?liste_achat&action=listes_achat">Retourner à la liste d'achats</a>		
 		</div>
 	</div>
-</main>
+<!-- </main> -->
 

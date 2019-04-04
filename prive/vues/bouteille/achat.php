@@ -33,7 +33,7 @@
 			</div>
 		</div>
 	</div>
-</main>
+<!-- </main> -->
 <script type="text/javascript">
 		window.addEventListener("load", function(){
 			document.getElementById("listes_achat").classList.add("active");
