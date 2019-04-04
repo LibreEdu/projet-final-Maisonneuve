@@ -208,7 +208,7 @@ a img{
 /* Section Bienvenue */
 .vino-section-bienvenue {
 	position: relative;
-	height: 800px;
+	height: 250px;
 	width: auto;
 	background-color: white;
 	background: linear-gradient(
@@ -334,7 +334,7 @@ a img{
 	}
 
 	.vino-section-bienvenue {
-		height: 350px;
+		height: 50px;
 	}
 
 	.vino-bonjour {
@@ -352,6 +352,16 @@ a img{
 	/* Bouton d’action flottant (FAB) qui permet d’aller à la première section de la page */
 	.vino-fab {
 		display: none;
+	}
+
+	/* Titre importation */
+	.mdl-typography--display-1-color-contrast {
+		font-size: 20px;
+	}
+
+	.vino-importation-titre {
+		padding-top: 40px;
+		padding-bottom: 20px;
 	}
 
 	.vino-importation-section {
