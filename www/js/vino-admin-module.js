@@ -19,9 +19,11 @@ var vinoAdmin = (function(){
 	 * Démarre l’importation des bouteilles de vin de la SAQ.
 	 */
 	obj.importer = function() {
-		var mettreAJour = document.getElementById('mettreAJour').checked;
-		let requete = new Request('index.php?importation&action=importer', {method: 'POST', body: '{"mettreAJour": ' + mettreAJour + '}'});
-		let log = document.getElementById('log-importation');
+		let parametres = {
+			'mettreAJour':document.getElementById('mettreAJour').checked,
+			'indice':document.getElementById('btnIndice').value
+		};
+		let requete = new Request('index.php?importation&action=importer', {method: 'POST', body: JSON.stringify(parametres)});
 		fetch(requete)
 		.then(response => {
 			if (response.status === 200) {
@@ -31,12 +33,26 @@ var vinoAdmin = (function(){
 			}
 		})
 		.then(response => {
+			// En cas d’erreur, déconnexion
+			if (response == "deconnexion") {
+				window.location = 'index.php?login&action=logout';
+			}
+
+			// Division qui va recevoir les informations de la requête
+			let log = document.getElementById('log-importation');
 			log.style.visibility = 'visible';
 			log.innerHTML = response;
-			console.log(response);
 		}).catch(error => {
 			console.error(error);
 		});
+	}
+
+
+	/**
+	 * Change la valeur de l’indice affichée en fonction de la position du bouton du variateur.
+	 */
+	obj.changerIndice = function() {
+		document.getElementById("valeurIndice").innerHTML = document.getElementById("btnIndice").value;
 	}
 
 	return obj;
