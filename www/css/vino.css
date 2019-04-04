@@ -475,7 +475,7 @@ th, td {
 }
 	
 /********Styles pour le pied de page ********/
-.mdl-demo section.section--footer .section__circle--big {
+/*.mdl-demo section.section--footer .section__circle--big {
 	width: 100px;
 	height: 100px;
 	border-radius: 50px;
@@ -486,17 +486,16 @@ th, td {
 	height: 50px;
 	border-radius: 25px;
 	margin: 8px 16px;
-}
-.mdl-demo section.section--footer {
+}*/
+/*.mdl-demo section.section--footer {
 	padding: 64px 0;
 	margin: 0 -8px -8px -8px;
 }
-footer span{
-	color:white;
-	margin-left: 30%;
-	font-size: 8pt;
+footer{
+	height: 100px;
+	padding-top: 0px;
 }
-
+*/
 /****************Code Bootstap pour les formulaires login et formulaire***********/
 .divider-text {
 	position: relative;
