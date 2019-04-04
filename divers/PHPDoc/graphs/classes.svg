@@ -64,20 +64,26 @@
 <path fill="none" stroke="#000000" d="M185.8817,-646.0563C160.5832,-653.112 131.991,-661.0864 108.1766,-667.7283"/>
 <polygon fill="none" stroke="#000000" points="106.9786,-664.4288 98.2865,-670.4867 108.8592,-671.1714 106.9786,-664.4288"/>
 </g>
-<!-- \\Routeur -->
+<!-- \\Fonctions -->
 <g id="node5" class="node">
+<title>\\Fonctions</title>
+<polygon fill="none" stroke="#000000" points="288.5333,-1132 212.7118,-1132 212.7118,-1096 288.5333,-1096 288.5333,-1132"/>
+<text text-anchor="middle" x="250.6226" y="-1110.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Fonctions</text>
+</g>
+<!-- \\Routeur -->
+<g id="node6" class="node">
 <title>\\Routeur</title>
-<polygon fill="none" stroke="#000000" points="281.8304,-1132 219.4147,-1132 219.4147,-1096 281.8304,-1096 281.8304,-1132"/>
-<text text-anchor="middle" x="250.6226" y="-1110.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Routeur</text>
+<polygon fill="none" stroke="#000000" points="281.8304,-1078 219.4147,-1078 219.4147,-1042 281.8304,-1042 281.8304,-1078"/>
+<text text-anchor="middle" x="250.6226" y="-1056.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Routeur</text>
 </g>
 <!-- \\Classe_Bouteille -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>\\Classe_Bouteille</title>
-<polygon fill="none" stroke="#000000" points="311.2403,-1078 190.0048,-1078 190.0048,-1042 311.2403,-1042 311.2403,-1078"/>
-<text text-anchor="middle" x="250.6226" y="-1056.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Bouteille</text>
+<polygon fill="none" stroke="#000000" points="311.2403,-1024 190.0048,-1024 190.0048,-988 311.2403,-988 311.2403,-1024"/>
+<text text-anchor="middle" x="250.6226" y="-1002.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Bouteille</text>
 </g>
 <!-- \\Controleur_Cellier -->
-<g id="node7" class="node">
+<g id="node8" class="node">
 <title>\\Controleur_Cellier</title>
 <polygon fill="none" stroke="#000000" points="317.942,-484 183.3031,-484 183.3031,-448 317.942,-448 317.942,-484"/>
 <text text-anchor="middle" x="250.6226" y="-462.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Controleur_Cellier</text>
@@ -89,16 +95,10 @@
 <polygon fill="none" stroke="#000000" points="69.7024,-276.4537 62.9962,-268.2514 63.1236,-278.8454 69.7024,-276.4537"/>
 </g>
 <!-- \\Classe_Cellier -->
-<g id="node8" class="node">
-<title>\\Classe_Cellier</title>
-<polygon fill="none" stroke="#000000" points="305.0384,-970 196.2067,-970 196.2067,-934 305.0384,-934 305.0384,-970"/>
-<text text-anchor="middle" x="250.6226" y="-948.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Cellier</text>
-</g>
-<!-- \\SAQ -->
 <g id="node9" class="node">
-<title>\\SAQ</title>
-<polygon fill="none" stroke="#000000" points="277.6226,-916 223.6226,-916 223.6226,-880 277.6226,-880 277.6226,-916"/>
-<text text-anchor="middle" x="250.6226" y="-894.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">SAQ</text>
+<title>\\Classe_Cellier</title>
+<polygon fill="none" stroke="#000000" points="305.0384,-916 196.2067,-916 196.2067,-880 305.0384,-880 305.0384,-916"/>
+<text text-anchor="middle" x="250.6226" y="-894.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Classe_Cellier</text>
 </g>
 <!-- \\Classe_Bouteille_SAQ -->
 <g id="node10" class="node">
@@ -205,14 +205,14 @@
 <!-- \\Modele_Usager -->
 <g id="node23" class="node">
 <title>\\Modele_Usager</title>
-<polygon fill="none" stroke="#000000" points="301.4367,-1024 199.8084,-1024 199.8084,-988 301.4367,-988 301.4367,-1024"/>
-<text text-anchor="middle" x="250.6226" y="-1002.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Usager</text>
+<polygon fill="none" stroke="#000000" points="301.4367,-970 199.8084,-970 199.8084,-934 301.4367,-934 301.4367,-970"/>
+<text text-anchor="middle" x="250.6226" y="-948.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Modele_Usager</text>
 </g>
 <!-- \\Modele_Usager&#45;&gt;\\Modele -->
 <g id="edge10" class="edge">
 <title>\\Modele_Usager&#45;&gt;\\Modele</title>
-<path fill="none" stroke="#000000" d="M199.5244,-996.4048C188.7661,-992.4514 178.2073,-986.8721 170.0107,-979 91.7227,-903.8111 67.0221,-768.7602 59.7822,-710.2777"/>
-<polygon fill="none" stroke="#000000" points="63.2517,-709.8114 58.6246,-700.2804 56.2982,-710.6167 63.2517,-709.8114"/>
+<path fill="none" stroke="#000000" d="M199.5108,-941.8124C188.8766,-937.8912 178.3743,-932.4749 170.0107,-925 103.9419,-865.9512 73.6325,-760.2681 62.4428,-710.0205"/>
+<polygon fill="none" stroke="#000000" points="65.8517,-709.2242 60.3393,-700.1764 59.0063,-710.687 65.8517,-709.2242"/>
 </g>
 <!-- \\Controleur_Bouteille -->
 <g id="node24" class="node">

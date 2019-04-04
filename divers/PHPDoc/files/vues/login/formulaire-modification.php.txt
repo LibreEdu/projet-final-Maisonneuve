@@ -74,3 +74,11 @@
 				?>
 	</div>
 </main>
+
+<script type="text/javascript">
+		window.addEventListener("load", function(){
+			document.getElementById("moncompte").classList.add("active");
+			document.getElementById("listes_achat").classList.remove("active");
+			document.getElementById("cellier").classList.remove("active");
+	},  false)
+</script>

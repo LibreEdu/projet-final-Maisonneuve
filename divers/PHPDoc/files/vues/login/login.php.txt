@@ -13,13 +13,13 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 							</div>
-							<input name="courriel" class="form-control" placeholder="Dupont@mail.com" type="email" required value="bb@bb.bb">
+							<input name="courriel" class="form-control" placeholder="Dupont@mail.com" type="email" required>
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 							</div>
-							<input name="mot_de_passe" class="form-control" placeholder="Mot de passe" type="password" value="123456">
+							<input name="mot_de_passe" class="form-control" placeholder="Mot de passe" type="password">
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Se Connecter </button>
