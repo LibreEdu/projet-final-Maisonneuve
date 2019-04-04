@@ -70,10 +70,8 @@ final class Controleur_Importation extends Controleur
 			case 'importer':
 				$body = json_decode(file_get_contents('php://input'));
 				$this->_mettreAJour = $body->mettreAJour;
-				// $this->_mettreAJour = true;
 				$this->importer();
-				// echo json_encode($resultat);
-				// echo "fini";
+				echo "Importation finie";
 				break;
 			default :
 				trigger_error('Action invalide.');
@@ -102,9 +100,10 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function importer()
 	{
-		for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
-			$this->importerLot($i);
-		}
+		$this->importerLot();
+		// for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
+		// 	$this->importerLot($i);
+		// }
 	}
 
 
@@ -186,9 +185,7 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function curl($index = 0, $nombre_bouteilles = 1)
 	{
-		// $url = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin&categoryIdentifier=06&langId=-2';
-
-		$url = "https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?categoryIdentifier=06&showOnly=product&langId=-2&catalogId=50000&searchTerm=*&categoryId=39919&storeId=20002";
+		$url = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin&categoryIdentifier=06&langId=-2&showOnly=product';
 
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
