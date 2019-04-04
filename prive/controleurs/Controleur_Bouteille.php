@@ -93,7 +93,7 @@
 		if ($idBouteille == null) {
 			header('Location: ' . site_url('login&action=logout') );
 		}
-		
+		$donnees['id_cellier'] = $_GET['id_cellier'];
 		$donnees['bouteille'] = $this->modele_bouteille->obtenir_par_id($_GET['id']);
 		$donnees['types'] = $this->modele_type->obtenir_tous();
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);

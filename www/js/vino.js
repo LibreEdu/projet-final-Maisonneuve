@@ -314,10 +314,12 @@ window.addEventListener('load', function() {
 	});
 	
 	// Recuperer les boutons modifier bouteille et l'id' puis diriger vers le controleur bouteille
+	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
+	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
 	document.querySelectorAll('.btnModifier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id = evt.target.parentElement.dataset.id;
-			window.location = 'index.php?bouteille&action=modifier-form&id='+id;
+			window.location = 'index.php?bouteille&action=modifier-form&id='+id+'&id_cellier='+id_cellier;
 		});
 	});
 

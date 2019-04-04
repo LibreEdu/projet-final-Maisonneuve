@@ -32,7 +32,7 @@
 					<span class="mdl-checkbox__label">Faire une recherche dans les bouteilles de la SAQ</span>
 				</label>
 			</div>
-			<form method="POST" action="index.php?bouteille&action=<?php echo $donnees['actionBouton'] ?>">
+			<form name="form" method="POST" action="index.php?bouteille&action=<?php echo $donnees['actionBouton'] ?>" onsubmit="return ValiderChamps(this)">
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom : 
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" value="<?php echo $nom ?>" required="required">
