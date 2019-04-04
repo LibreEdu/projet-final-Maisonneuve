@@ -75,6 +75,8 @@
 							</a>
 						</div>
 					</div>
+					<div id="log-importation">
+					</div>
 				</div>
 				<footer class="vino-piedpage mdl-mega-footer">
 					<div class="mdl-mega-footer--top-section">
