@@ -28,9 +28,15 @@ final class Controleur_Importation extends Controleur
 
 
 	/**
-	 * @var object $modele_type Le modèle Modele_Type.
+	 * @var boolean $_mettreAJour Lorsque la bouteille existe déjà dans la base, soit on fait une mise à jour (true) ou on ne fait rien (false).
 	 */
 	private $_mettreAJour;
+
+
+	/**
+	 * @var int $_indice Indice du début de la récupération des données.
+	 */
+	private $_indice;
 
 
 	/**
@@ -69,9 +75,27 @@ final class Controleur_Importation extends Controleur
 				break;
 			case 'importer':
 				$body = json_decode(file_get_contents('php://input'));
-				$this->_mettreAJour = $body->mettreAJour;
-				$this->importer();
-				echo "Importation finie";
+
+				// On vérifie que les paramètres soient au format attendu.
+				try {
+					if (gettype($body->mettreAJour) == 'boolean') {
+						$this->_mettreAJour = $body->mettreAJour;
+					} else {
+						throw new Exception('mettreAJour n’est pas un booléen');
+					}
+					if (gettype($body->indice) == 'string') {
+						$this->_indice = (int)$body->indice;
+					} else {
+						throw new Exception('indice n’est pas une chaine de caractères');
+					}
+					if ($this->importer()) {
+						echo "Importation finie";
+					}
+				} catch (Exception $e) {
+					$log = new Log('admin');
+					$log->ecrire("Controleur_importation::traite : " . $e->getMessage());
+					echo "deconnexion";
+				}
 				break;
 			default :
 				trigger_error('Action invalide.');
@@ -89,6 +113,7 @@ final class Controleur_Importation extends Controleur
 		$donnees['prenom'] = $_SESSION['prenom'];
 		$donnees['nbBouteillesBD'] = $this->nbBouteillesBD();
 		$donnees['nbBouteillesWeb'] = $this->_nbBouteillesWeb;
+		$donnees['maxIndice'] = floor($this->_nbBouteillesWeb / 100) * 100;
 		$this->afficheVue('admin/une-page', $donnees);
 	}
 
@@ -96,14 +121,15 @@ final class Controleur_Importation extends Controleur
 	/**
 	 * Récupère toutes les données du site web de la SAQ et les insère dans la base de données.
 	 * 
-	 * @return void
+	 * @return booleen Vrai, s’il n’y a pas d’erreurs lors de l’importation.
 	 */
 	private function importer()
 	{
-		$this->importerLot();
-		// for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
-		// 	$this->importerLot($i);
-		// }
+		for($i = $this->_indice; $i < $this->_nbBouteillesWeb; $i += 100) {
+			$this->importerLot($i);
+		}
+
+		return true;
 	}
 
 

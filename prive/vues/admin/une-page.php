@@ -22,7 +22,8 @@
 					<!-- Barre de navigation -->
 					<div class="vino-navigation-container">
 						<nav class="vino-navigation mdl-navigation">
-							<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
+						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=formulaireModification'); ?>">Mon compte</a>
+						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 						</nav>
 					</div>
 					<span class="vino-logo-cell mdl-layout-title">
@@ -35,7 +36,8 @@
 					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo-blanc.png">
 				</span>
 				<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
+				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=formulaireModification'); ?>">Mon compte</a>
+				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 				</nav>
 			</div>
 			<div class="vino-content mdl-layout__content">
@@ -67,6 +69,11 @@
 								<span class = "mdl-radio__label">Oui</span>
 								<input type = "radio" name = "mise-a-jour" class = "mdl-radio__button" checked>
 								<span class = "mdl-radio__label">Non</span>
+							</p>
+							<p>
+								Indice de la première bouteille importée :
+								<input id="btnIndice" class="mdl-slider mdl-js-slider" type="range" min="0" max="<?php echo $donnees['maxIndice'] ?>" value="0" step="100">
+								<div id="valeurIndice">0</div>
 							</p>
 						</div>
 						<div class="mdl-card__actions mdl-card--border">
