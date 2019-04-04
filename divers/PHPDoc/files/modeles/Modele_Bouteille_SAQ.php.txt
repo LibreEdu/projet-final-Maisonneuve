@@ -14,95 +14,10 @@ class Modele_Bouteille_SAQ extends Modele
 		return 'vino_bouteille_saq';
 	}
 
+
 	public function getClePrimaire()
 	{
 		return 'id_bouteille_saq';
-	}
-
-	/**
-	 * Retourne le résultat de la recherche pour la fonction d’autocomplete
-	 * 
-	 * @param string $nom La chaine de caractère à rechercher
-	 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
-	 * 
-	 * @throws Exception Erreur de requête sur la base de données 
-	 * 
-	 * @return array tous les données de la bouteille trouvée dans le catalogue
-	 */	
-	public function autocomplete($nom, $nb_resultat=10)
-	{
-		
-		$listeBouteilles = Array();
-		$nom = preg_replace('/\*/','%' , $nom);
-		$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%' . $nom . '%") LIMIT 0,'. $nb_resultat;
-		$requete = $this->requete($sql);
-		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-
-		foreach($bouteilles as $bouteille) {
-			$uneBouteille = array();
-			$uneBouteille["id_bouteille_saq"] = $bouteille->id_bouteille_saq;
-			$uneBouteille["code_saq"] = $bouteille->code_saq;
-			$uneBouteille["prix"] = $bouteille->prix;
-			$uneBouteille["millesime"] = $bouteille->millesime;
-			$uneBouteille["id_type"] = $bouteille->id_type;
-			$uneBouteille["pays"] = $bouteille->pays;
-			$uneBouteille["format"] = $bouteille->format;
-			$uneBouteille["nom"] = $bouteille->nom;
-			array_push($listeBouteilles, $uneBouteille);
-		}
-		return $listeBouteilles;
-	}
-
-	/**
-	 * Fonction qui ajoute une liste d'achats
-	 * @param 
-	 * @return 
-	 */
-	public function ajouter_liste()
-	{
-		$sql = 'INSERT INTO vino_liste_achat (id_usager, nom) VALUES (?,?)';
-		$donnees = array($_POST['id_usager'], $_POST['nom']);
-		$resultat = $this->requete($sql, $donnees);
-		$id= $this->bd->lastInsertId();
-		//var_dump($id);die;
-		$id_bouteille_saq = $_POST['id_bouteille_saq'];
-		for($i=0; $i<count($id_bouteille_saq); $i++) {
-			$sql2 = 'INSERT INTO vino_liste_affichage (id_liste_achat, id_bouteille_saq) VALUES (?,?)';
-			$donnees2 = array($id, $id_bouteille_saq[$i]);
-			$resultat2 = $this->requete($sql2, $donnees2);
-		}
-	}
-
-	public function obtenir_liste($id_usager)
-	{
-		$sql = 'SELECT b.code_saq,
-				b.prix,
-				b.millesime,
-				b.pays,
-				b.format,
-				b.nom,
-				t.type
-				FROM vino_bouteille_saq b
-				INNER JOIN vino_type t
-					ON b.id_type = t.id_type				
-				INNER JOIN vino_liste_affichage a
-					ON b.id_bouteille_saq = a.id_bouteille_saq
-				INNER JOIN vino_liste_achat l
-					ON id_usager =' . $id_usager . '
-					AND l.id_liste_achat = a.id_liste_achat
-				ORDER BY l.nom';
-		$resultat = $this->requete($sql);
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-		return $listes;
-	}
-
-	public function obtenir_noms()
-	{
-		$sql = 'SELECT * FROM vino_liste_achat';
-		$resultat = $this->requete($sql);
-		$noms = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
-
-		return $noms;
 	}
 
 
@@ -118,5 +33,47 @@ class Modele_Bouteille_SAQ extends Modele
 		$nbBouteilles = $resultat->fetch();
 		return $nbBouteilles->total;
 	}
-}
 
+
+	/**
+	 * Vérifie si une bouteille est présente.
+	 * 
+	 * @param string $code_SAQ Le code SAQ de la bouteille recherchée.
+	 * 
+	 * @return array Un tableau d’éléments contenant les bouteilles correspondant au code SAQ. Ce tableau est sensé de contenir un seul élément.
+	 */
+	public function estPresent($code_saq)
+	{
+		$resultat = $this->lire($code_saq, 'code_saq');
+		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
+		return $bouteilles;
+	}
+
+
+	/**
+	 * Insère une bouteille dans la table.
+	 * 
+	 * @param object $bouteille Un object de la classe Classe_Bouteille_SAQ.
+	 * 
+	 * @return object PDOStatement
+	 */
+	public function inserer($bouteille)
+	{
+		$sql = 'INSERT INTO vino_bouteille_saq (code_saq, prix, millesime, id_type, pays, format, nom) VALUES (?,?,?,?,?,?,?)';
+		$donnees = array($bouteille->code_saq, $bouteille->prix, $bouteille->millesime, $bouteille->id_type, $bouteille->pays, $bouteille->format, $bouteille->nom);
+		return $this->requete($sql, $donnees);
+	}
+
+
+	/**
+	 * Met à jour une bouteille de la table.
+	 * 
+	 * @return object PDOStatement
+	 */
+	public function mettreAJour($bouteille)
+	{
+		$sql = 'UPDATE vino_bouteille_saq SET prix = ?, millesime = ?, id_type = ?, pays = ?, format = ?, nom = ? WHERE code_saq = ?';
+		$donnees = array($bouteille->prix, $bouteille->millesime, $bouteille->id_type, $bouteille->pays, $bouteille->format, $bouteille->nom, $bouteille->code_saq);
+		return $this->requete($sql, $donnees);
+	}
+}

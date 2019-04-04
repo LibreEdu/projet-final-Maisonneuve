@@ -12,7 +12,7 @@
 					Nom de la liste d'achat : 
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" required="required">
 				</div>
-				<div id="mes_achats">
+				<div id="mes_achats" class="mes_achats">			
 				
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">

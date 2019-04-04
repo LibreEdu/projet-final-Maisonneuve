@@ -161,7 +161,7 @@ class Controleur_Login extends Controleur
 				//si on ne veut pas changer le mot de passe mais les autres informations
 				if ($_REQUEST['mot_de_passe']=='')
 				{
-					$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+					$messageErreur = $this->valideFormSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
 					//Si pas de message d'erreur
 					if($messageErreur == '')
 					{
@@ -187,7 +187,7 @@ class Controleur_Login extends Controleur
 				//Si on veut changer le mot de passe
 				else
 				{
-					$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+					$messageErreur = $this->valideFormSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
 					$messageErreur .= $this->valideFormModification($_REQUEST['mot_de_passe'], $_REQUEST['mdp1'], $_REQUEST['mdp2']);
 				//Si l'usger est le même et le mot de passe corespond à celui dans la base de données
 					if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
@@ -243,8 +243,8 @@ class Controleur_Login extends Controleur
 		$messageErreur='';
 		if(isset($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom'],$_REQUEST['mdp'], $_REQUEST['mdp2'] ))
 		{
-			// Appel de la fonction valideFormModificationSansMdp et verifier ce qu’elle retourne 
-			$messageErreur = $this->valideFormModificationSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+			// Appel de la fonction valideFormSansMdp et verifier ce qu’elle retourne 
+			$messageErreur = $this->valideFormSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
 			// Appel de la fonction valideFormInscription et verifier ce qu’elle retourne 
 			$messageErreur .= $this->valideFormInscription($_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
@@ -263,7 +263,7 @@ class Controleur_Login extends Controleur
 				//Renvoi à la page par défaut pour se logger
 				header( 'Location: ' . base_url() );
 			} else
-			{//Affichage de la page login avec l'erreur
+			{//Affichage de la page d'inscription avec l'erreur
 				$this->afficheFormInscription($messageErreur);
 			} 
 		}
@@ -392,7 +392,7 @@ class Controleur_Login extends Controleur
 	 * @param $courriel, $nom, $prenom
 	 * @return retourne le message d'erreur
 	 */
-	public function valideFormModificationSansMdp($courriel, $nom, $prenom)
+	public function valideFormSansMdp($courriel, $nom, $prenom)
 	{
 		// Initialiser le message d'erreur
 		$msgErreur = '';
