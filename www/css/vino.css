@@ -465,7 +465,7 @@ th, td {
 }
 .nom_liste {
 	text-align: center;
-	width: 50%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -548,9 +548,12 @@ th, td {
 	margin: 0 auto;
 }
 .demo-card-wide > .mdl-card__title {
-	color: #000;
+	color: #fff;
 	height: 100px;
 	border-bottom: 2px solid lightgrey;
+	background-color: #7b1fa2;
+	text-align: center;
+	padding-left: 60px;
 }
 .demo-card-wide > .mdl-card__menu {
 	color: #fff;
