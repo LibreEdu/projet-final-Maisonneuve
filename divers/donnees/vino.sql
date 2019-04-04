@@ -75,6 +75,9 @@ CREATE TABLE vino_liste_affichage (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+INSERT INTO vino_usager VALUES(1, true, 'aa@aa.aa', 'José', 'Delgado', '$2y$10$7h.i1V1Zvr3cpcUNGVpXBO5iZJOc.45ICY2oOUIlWD3MOsElxn2My');
+
+
 INSERT INTO vino_type VALUES(1, 'Vin blanc');
 INSERT INTO vino_type VALUES(2, 'Vin rosé');
 INSERT INTO vino_type VALUES(3, 'Vin rouge');

@@ -70,8 +70,10 @@ final class Controleur_Importation extends Controleur
 			case 'importer':
 				$body = json_decode(file_get_contents('php://input'));
 				$this->_mettreAJour = $body->mettreAJour;
+				// $this->_mettreAJour = true;
 				$this->importer();
 				// echo json_encode($resultat);
+				// echo "fini";
 				break;
 			default :
 				trigger_error('Action invalide.');
@@ -100,7 +102,9 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function importer()
 	{
-		$this->importerLot(0, 4);
+		for($i = 0; $i < $this->_nbBouteillesWeb; $i += 100) {
+			$this->importerLot($i);
+		}
 	}
 
 
@@ -182,7 +186,9 @@ final class Controleur_Importation extends Controleur
 	 */
 	private function curl($index = 0, $nombre_bouteilles = 1)
 	{
-		$url = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin';
+		// $url = 'https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?storeId=20002&searchTerm=vin&categoryIdentifier=06&langId=-2';
+
+		$url = "https://www.saq.com/webapp/wcs/stores/servlet/SearchDisplay?categoryIdentifier=06&showOnly=product&langId=-2&catalogId=50000&searchTerm=*&categoryId=39919&storeId=20002";
 
 		// Initialisation du gestionnaire du client URL.
 		$gc = curl_init();
@@ -242,30 +248,23 @@ final class Controleur_Importation extends Controleur
 	private function importerLot($index = 0, $nombre_bouteilles = 100) {
 
 		// On récupère les données de la page Web du site de la SAQ
-		// $page_web = $this->curl($index, $nombre_bouteilles);
+		$page_web = $this->curl($index, $nombre_bouteilles);
 
-		// // Transforme la page web en un élément DOM
-		// $dom = $this->html2dom($page_web);
+		// Transforme la page web en un élément DOM
+		$dom = $this->html2dom($page_web);
 
-		// // Recherche tous les éléments qui ont une balise <div>
-		// $noeuds = $dom->getElementsByTagName('div');
+		// Recherche tous les éléments qui ont une balise <div>
+		$noeuds = $dom->getElementsByTagName('div');
 
-		// foreach ($noeuds as $noeud) {
-		// 	if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
-		// 		$bouteille = $this->recupererDonnees($noeud);
-				$bouteille = new Classe_Bouteille_SAQ();
-				$bouteille->id_bouteille_saq = '';
-				$bouteille->code_saq = "13575807";
-				$bouteille->prix = "15.20";
-				$bouteille->millesime = NULL;
-				$bouteille->pays = 'Italie';
-				$bouteille->format = '750 ml';
-				$bouteille->nom = 'Farnese Vini Vigneti del Salento Vani...';
-				$bouteille->type = 'Vin rouge';
-				// var_dump($bouteille);die;
+		foreach ($noeuds as $noeud) {
+			if (strpos($noeud->getAttribute('class'), 'resultats_product') !== false) {
+				$bouteille = $this->recupererDonnees($noeud);
 				$retour = $this->ajouterDonnees($bouteille);
-		// 	}
-		// }
+				// echo "coucou";
+				// ob_flush();
+				// flush();
+			}
+		}
 	}
 
 

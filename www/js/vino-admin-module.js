@@ -20,7 +20,9 @@ var vinoAdmin = (function(){
 	 */
 	obj.importer = function() {
 		var mettreAJour = document.getElementById('mettreAJour').checked;
+
 		// window.location = 'index.php?importation&action=importer';
+
 		let requete = new Request('index.php?importation&action=importer', {method: 'POST', body: '{"mettreAJour": ' + mettreAJour + '}'});
 		fetch(requete)
 		.then(response => {
