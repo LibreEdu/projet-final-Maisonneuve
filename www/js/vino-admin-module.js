@@ -19,6 +19,7 @@ var vinoAdmin = (function(){
 	 * Démarre l’importation des bouteilles de vin de la SAQ.
 	 */
 	obj.importer = function() {
+		alert("Lorsque vous allez cliquer sur le bouton « OK » cela va lancer l’importation. C’est une opération qui dure longtemps. Un message vous préviendra de la fin de l’importation.");
 		let parametres = {
 			'mettreAJour':document.getElementById('mettreAJour').checked,
 			'indice':document.getElementById('btnIndice').value
