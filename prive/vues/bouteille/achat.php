@@ -15,7 +15,7 @@
 											<h5><a name='nom_liste' class='lien' href='index.php?liste_achat&action=details_liste_achat&nom=".$nom_liste->nom."'>".$nom_liste->nom."</a></h5>
 										</td>
 										<td style='width:10%;'>
-										<button name='btnSupprimerListe' class='far fa-trash-alt'></button>
+										<button name='btnSupprimerListe' class='mdl-button mdl-js-button mdl-button--raised'><i class='far fa-trash-alt'></i></button>
 										</td>
 									<tr>
 								</table>

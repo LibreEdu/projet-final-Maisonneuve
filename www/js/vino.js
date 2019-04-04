@@ -474,7 +474,7 @@ window.addEventListener('load', function() {
 		// Assigner l'événement click à chaque li et afficher le résultat
 		la_liste.addEventListener('click', function(evt){
 			if(evt.target.tagName == 'LI'){
-				mes_achats.innerHTML += '<div name="laDiv" class="mdl-textfield mdl-js-textfield"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><table style="width:100%;"><tr><td style="width:90%;">' + evt.target.innerHTML + '</td><td style="width:10%; text-align:right;"><button class="far fa-trash-alt"></button></td><tr></table></div>';				
+				mes_achats.innerHTML += '<div name="laDiv" class="bouteille_liste"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><table style="width:100%;"><tr><td style="width:90%;">' + evt.target.innerHTML + '</td><td style="width:10%;"><button class="mdl-button mdl-js-button mdl-button--raised"><i class="far fa-trash-alt"></i></button></td><tr></table></div>';				
 				la_liste.innerHTML = '';
 				NomBouteille.value = '';
 			}
