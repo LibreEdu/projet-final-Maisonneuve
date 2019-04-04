@@ -67,7 +67,7 @@ window.addEventListener('load', function() {
 	// Récuperer la class de bouton supprimer pour supprimer une bouteiile spécifique
 	document.querySelectorAll('.supprimerBouteille').forEach(function(element){
 		element.addEventListener('click', function(evt){
-			let id_bouteille_supprimer = evt.target.dataset.id_bouteiile_supprimer;
+			let id_bouteille_supprimer = evt.target.dataset.id_bouteille_supprimer;
 			// Affichage de message de confirmation de suppression
 			var confirmSuppression = confirm("Êtes-vous sûr de vouloir supprimer ce boutteille?");
 			console.log(confirmSuppression);
