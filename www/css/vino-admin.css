@@ -54,6 +54,12 @@
 	font-style: normal;
 }
 
+:root {
+	--couleur-lien: #7b1fa2;
+	--couleur-police: #4d004d;
+	--couleur-lien-bas-page: #cc33ff;
+}
+
 body {
 	margin: 0;
 }
@@ -66,13 +72,13 @@ a img{
 
 /* Portion du document sélectionné par l’utilisateur (avec la souris…) */
 ::-moz-selection {
-	background-color: #cc33ff;
-	color: #fff;
+	background-color: var(--couleur-lien-bas-page);
+	color: white;
 }
 
 ::selection {
-	background-color: #cc33ff;
-	color: #fff;
+	background-color: var(--couleur-lien-bas-page);
+	color: white;
 }
 
 
@@ -116,20 +122,20 @@ a img{
 
 /* Menu burger dessiné par le JS */
 .vino-entete .material-icons {
-	color: #7b1fa2 !important;
+	color: var(--couleur-lien) !important;
 }
 
 
 /* Encadré du burger lors de sa sélection */
 .vino-entete .mdl-layout__drawer-button {
 	background: transparent;
-	color: #7b1fa2;
+	color: var(--couleur-lien);
 }
 
 
 /* Liens de l’en-tête */
 .vino-entete .mdl-navigation__link {
-	color: #7b1fa2;
+	color: var(--couleur-lien);
 	font-weight: 700;
 	font-size: 14px;
 }
@@ -167,7 +173,7 @@ a img{
 }
 
 .vino-navigation .mdl-navigation__link:hover {
-	border-bottom: 4px solid #7b1fa2;
+	border-bottom: 4px solid var(--couleur-lien);
 }
 
 
@@ -180,14 +186,14 @@ a img{
 /* Liens du menu latéral */
 .vino-lateral .mdl-navigation__link.mdl-navigation__link {
 	font-size: 14px;
-	color: #7b1fa2;
+	color: var(--couleur-lien);
 }
 
 
 /* Titre du menu latéral */
 .vino-lateral .mdl-layout-title {
 	position: relative;
-	background: #7b1fa2;
+	background: var(--couleur-lien);
 	height: 160px;
 }
 
@@ -204,7 +210,7 @@ a img{
 	position: relative;
 	height: 800px;
 	width: auto;
-	background-color: #ffffff;
+	background-color: white;
 	background: linear-gradient(
 		rgba(255, 255, 255, 1), 
 		rgba(218, 179, 255, 0.9),
@@ -216,7 +222,7 @@ a img{
 .vino-bienvenue-police {
 	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 	line-height: 1;
-	color: #4d004d;
+	color: var(--couleur-police);
 	font-weight: 500;
 }
 
@@ -234,7 +240,7 @@ a img{
 /* Section Importation */
 .vino-importation-section {
 	position: relative;
-	padding-bottom: 350px;
+	padding-bottom: 50px;
 }
 
 .vino-importation-titre {
@@ -253,29 +259,45 @@ a img{
 }
 
 .vino-carte-importation > .mdl-card__title {
-	color: #fff;
+	color: white;
 	background:
 	url('../images/importer.jpg') center / cover;
 }
 
+.mdl-button.mdl-button--colored {
+	color: var(--couleur-lien);
+}
+/* Console de log de l’importation des vins */
+#log-importation {
+	visibility: hidden;
+	box-sizing:border-box;
+	width: 512px;
+	height: 170px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	background-color: black;
+	color: var(--couleur-lien-bas-page);
+}
 
 /* Pied de page */
 .vino-piedpage {
 	background-color: #ffe6ff;
 	position: relative;
-	color: #4d004d;
+	color: var(--couleur-police);
 }
 
 .vino-piedpage .mdl-navigation__link {
-	color: #ff00ff;
+	color: var(--couleur-lien-bas-page);
 }
 
 .vino-piedpage .mdl-navigation__link:hover{
-	color: #4d004d;
+	color: var(--couleur-police);
 }
 
 .vino-piedpage a:hover {
-	color: #ff00ff;
+	color: var(--couleur-lien-bas-page);
 }
 
 .vino-piedpage .mdl-mega-footer--top-section::after {
@@ -341,7 +363,7 @@ a img{
 	}
 	
 	.vino-carte-importation > .mdl-card__title {
-		color: #fff;
+		color: white;
 		background:
 		url('../images/importer.jpg') center / cover;
 	}
