@@ -19,8 +19,8 @@ class Controleur_Liste_Achat extends Controleur
 	// Constructeur des modèles
 	public function __construct()
 	{
-		$this->modele_liste = $this->modele('modele_liste');
-		$this->modele_affichage = $this->modele('modele_affichage');
+		$this->modele_liste = $this->modele('Modele_liste');
+		$this->modele_affichage = $this->modele('Modele_affichage');
 	}
 
 	public function traite(array $params)

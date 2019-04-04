@@ -68,12 +68,12 @@ abstract class Controleur
 			}
 			else
 			{
-				trigger_error('Modèle invalide.');
+				trigger_error("Modèle $nomModele invalide.");
 			}
 		}
 		else
 		{
-			trigger_error('Le modèle $nomModele est invalide.');
+			trigger_error("Le modèle $nomModele est invalide.");
 		}
 	}
 }

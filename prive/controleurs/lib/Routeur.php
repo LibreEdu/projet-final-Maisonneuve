@@ -62,7 +62,7 @@ class Routeur
 		}
 		else
 		{
-			trigger_error('Erreur 404! Le controleur $controleur n’existe pas.');
+			trigger_error("Erreur 404! Le controleur $controleur n’existe pas.");
 		}
 	}
 }
