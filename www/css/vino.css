@@ -757,7 +757,7 @@ button i{
 		width: 100%;
 	}
 	.monBoutonRecheche{
-		margin-top: 50px;
+		margin-top: 70px;
 		margin-left: 10px;
 	}
 	#rechercheSpecifique {
@@ -887,7 +887,7 @@ button i{
 		width: 100%;
 	}
 	.monBoutonRecheche{
-		margin-top: 50px;
+		margin-top: 70px;
 		margin-left: 10px;
 	}
 	#rechercheSpecifique {
@@ -996,7 +996,7 @@ button i{
 		width: 100%;
 	}
 	.monBoutonRecheche{
-		margin-top: 50px;
+		margin-top: 70px;
 		margin-left: 10px;
 	}
 
@@ -1025,7 +1025,11 @@ button i{
 		width: 100%;
 	}
 
-	.aaa image {
+	#pageRecherche {
+		margin-top: 60px;
+	}
+
+	/* .aaa image {
 		width:56%;
 	}
 	
@@ -1037,7 +1041,7 @@ button i{
 
 	/*.ccc {
 		height: 20px;
-	}*/
+	} */
 	.cellier_header {
 		display: none !important;
 	}
