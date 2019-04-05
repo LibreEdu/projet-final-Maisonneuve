@@ -70,7 +70,7 @@ class Controleur_Login extends Controleur
 		if ( isset($_REQUEST['courriel']) && isset($_REQUEST['mot_de_passe']) )
 		{
 			//Si l'usager est authentifier
-			if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))				
+			if($this->modele_usager->Authentification($_REQUEST['courriel'], $_REQUEST['mot_de_passe']))
 			{
 				// Mets le nom d’usager dans la variable session UserID,
 				// ce qui authentifie l’usager pour les pages protégées
@@ -83,7 +83,7 @@ class Controleur_Login extends Controleur
 			}
 			else
 			{
-				$messageErreur = 'Mauvaise combinaison username/password';
+				$messageErreur = ' Mauvaise combinaison username/password';
 				// On affiche la page login
 				$donnees['erreurs'] = $messageErreur;
 				$this->afficheVue('modeles/en-tete');
@@ -112,6 +112,7 @@ class Controleur_Login extends Controleur
 
 	/**
 	 * Fonction Affichage du formulaire d'inscription
+	 * @return void
 	 */
 	public function formulaire()
 	{
@@ -123,6 +124,7 @@ class Controleur_Login extends Controleur
 
 	/**
 	 * Fonction Affichage du formulaire de modification
+	 * @return void
 	 */
 	public function formulaireModification()
 	{
@@ -141,6 +143,7 @@ class Controleur_Login extends Controleur
 	/**
 	 * Fonction modifier qui gére la modification des informations 
 	 * d'un usager connecté
+	 * @return void
 	 */
 	public function modifier()
 	{
@@ -217,7 +220,7 @@ class Controleur_Login extends Controleur
 					}
 					else
 					{
-						$messageErreur = "Le mot de passe ne correspond pas à votre ancien mot de passe";
+						$messageErreur = " Le mot de passe ne correspond pas à votre ancien mot de passe";
 						// On affiche la page form-modification avec l'erreur
 						$donnees['erreurs'] = $messageErreur;
 						$this->afficheFormModification($messageErreur,$donnees);
@@ -235,6 +238,8 @@ class Controleur_Login extends Controleur
 
 	/**
 	 * Fonction inscrire qui gére l'inscription d'un nouvel usager
+	 * @param $params
+	 * @return void
 	 */
 	public function inscrire($params)
 	{
@@ -261,7 +266,13 @@ class Controleur_Login extends Controleur
 				$this->modele_usager->inscrire($nouveauUsager);
 
 				//Renvoi à la page par défaut pour se logger
-				header( 'Location: ' . base_url() );
+				//header( 'Location: ' . base_url() );
+				$messageErreur = ' Bravo! votre compte a été créé';
+				// On affiche la page login
+				$donnees['erreurs'] = $messageErreur;
+				$this->afficheVue('modeles/en-tete');
+				$this->afficheVue('modeles/menu-login');
+				$this->afficheVue('login/login', $donnees);
 			} else
 			{//Affichage de la page d'inscription avec l'erreur
 				$this->afficheFormInscription($messageErreur);
