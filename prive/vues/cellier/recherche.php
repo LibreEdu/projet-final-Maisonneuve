@@ -46,6 +46,9 @@
 					<p id='prix'></p>
 				</div>
 			</div>
-		</section>				
-	<!-- </main> -->
+		</section>
+		<section id="vide">
+			
+		</section>
+	</main>
 

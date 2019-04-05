@@ -4,7 +4,7 @@
 				</div>
 
 			</footer>
-		</main>
+		<!-- </main> -->
 	<script src="<?php echo base_url(); ?>js/material.js"></script>
 	<script src="<?php echo base_url(); ?>js/vino.js"></script>
 	</body>

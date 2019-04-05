@@ -154,15 +154,15 @@ window.addEventListener('load', function() {
 						alert("Veuiller entrer un chiffre!");
 						valeurRechercher.value = "";
 					}
-				}				
+				}
 				if(affichageResultat){
-					affichageResultat.innerHTML = '';	
+					affichageResultat.innerHTML = '';
 					// Crer un tableau de paramétre pour pour les envoyés au controleur SAQ 
 					var params = {
 						'id_cellier':id_cellier,
 						'recherchePar':recherchePar.value,
 						'valeur':valeurRechercher.value,
-						'operation': operation										
+						'operation': operation
 					};
 					let requete = new Request('index.php?cellier&action=recherche', {method: 'POST', body: JSON.stringify(params)});
 					fetch(requete)
