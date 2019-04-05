@@ -21,7 +21,7 @@
 	<div class="mdl-layout__drawer">
 		<span class="mdl-layout-title">Vino Veritas</span>
 		<nav class="mdl-navigation">
-			<a class="mdl-navigation__link" href="index.php?Cellier">Mes celliers</a>
+			<a class="mdl-navigation__link" href="index.php?cellier">Mes celliers</a>
 			<a class="mdl-navigation__link" href="index.php?liste_achat&action=listes_achat">Listes d'achat</a>
 			<a id="moncompte" class="mdl-navigation__link" href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>">Mon Compte</a>
 			<a id="deconnexion" class="mdl-navigation__link" href="index.php?login&action=logout">Déconnexion</a>
