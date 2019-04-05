@@ -788,9 +788,15 @@ button i{
 	right: 3%;
 	top: 30%;	
 	}
-#btnAjouterBouteille {
+	#btnAjouterBouteille {
 	right: 3%;
 	top: 30%;
+	}
+	.cellier_header {
+		display: none !important;
+	}
+	footer {
+		display: none !important;
 	}
 }
 
@@ -908,9 +914,11 @@ button i{
 	.resultatDetailsBouteille p, .affichageResultat {
 		font-size: 12px;
 	}
-
-	#pageRecherche {
-		margin-top: 60px;
+	.cellier_header {
+		display: none !important;
+	}
+	footer {
+		display: none !important;
 	}
 }
 
@@ -1031,7 +1039,13 @@ button i{
 		height: 50px;
 	}
 
-	.ccc {
+	/*.ccc {
 		height: 20px;
 	} */
+	.cellier_header {
+		display: none !important;
+	}
+	footer {
+		display: none !important;
+	}
 }
