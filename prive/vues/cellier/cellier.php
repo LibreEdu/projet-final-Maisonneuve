@@ -87,13 +87,13 @@
 									<script type="IN/Share" data-url="https://www.saq.com/page/fr/saqcom///<?php echo $bouteille->code_saq ?>"></script>
 								</div>
 							</div>
-						</div>				
+						</div>
 						<?php
 							}
 						?>
 						<p>
 							<div class='options' data-id='<?php echo $bouteille->id_bouteille ?>'>
-								<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
+								<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" title="Modifier"><i class="fas fa-edit"></i></button>
 								<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored' title="Ajouter">+ 1</button>
 								<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent' title="Boire">- 1</button>
 								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" title="Supprimer" data-id_bouteille_supprimer="<?php echo $bouteille->id_bouteille ?>" ><i class="far fa-trash-alt"></i></button>
