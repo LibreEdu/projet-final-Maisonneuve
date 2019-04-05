@@ -22,6 +22,7 @@ class Modele_Bouteille extends Modele
 	/**
 	 * Retourne les données d’une bouteille.
 	 * @param integer $id_bouteille Identifiants de la bouteille
+	 *
 	 * @return object Les données d’une bouteille.
 	 */
 	public function obtenir_par_id($id_bouteille)
@@ -69,14 +70,15 @@ class Modele_Bouteille extends Modele
 	 * Change la quantité de bouteilles.
 	 * 
 	 * @param integer $id_bouteille Identifiant de la bouteille.
+	 *
 	 * @param integer $delta Nombre de bouteille à ajouter ou à retirer
 	 * 
 	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
 	 */
-	public function modifier_quantite($id_bouteille, $delta)
+	public function modifier_quantite($id_bouteille, $data)
 	{
 		$sql = 'UPDATE vino_bouteille SET quantite = GREATEST(quantite + ?, 0) WHERE id_bouteille = ?' ;
-		$donnees = array($delta, $id_bouteille);
+		$donnees = array($data, $id_bouteille);
 		$resultat = $this->requete($sql, $donnees);		
 		return $resultat;
 	}
@@ -103,7 +105,6 @@ class Modele_Bouteille extends Modele
 	 * 
 	 * @param integer $id_cellier
 	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerBouteille($id_cellier)
@@ -115,6 +116,8 @@ class Modele_Bouteille extends Modele
 	 * Supprime bouteille par id bouteille dans la table vino_bouteille
 	 * 
 	 * @param integer $id_bouteille
+	 *
+	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerBouteilleParIdBouteille($id_bouteille)
 	{
@@ -124,8 +127,7 @@ class Modele_Bouteille extends Modele
 	/**
 	 * Fonction qui modifie la bouteille
 	 * @param $donnees Tous les données de la bouteille à modifier
-	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
+	 *
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function modifier()
@@ -161,7 +163,6 @@ class Modele_Bouteille extends Modele
 	 * Fonction qui ajoute une bouteille
 	 * @param $donnees Tous les données de la bouteille à ajouter
 	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné. 
 	 */
 	public function ajouter()
@@ -182,17 +183,19 @@ class Modele_Bouteille extends Modele
 
 	/**
 	 * Fonction qui retourne la bouteille par rapport à un usager
-	 * @param $idBouteille
-	  * @param $idUsager
-	 * @return $result;
+	 * @param integer $idBouteille
+	 *
+	 * @param integer $idUsager
+	 *
+	 * @return $result Array tous les données de la bouteille trouvée.;
 	 */
 	public function appartient($idBouteille, $idUsager)
 	{
 		$sql = 'SELECT id_bouteille FROM vino_bouteille bouteille
-		INNER JOIN vino_cellier cellier
-			ON bouteille.id_cellier = cellier.id_cellier
-		WHERE id_bouteille = ? 
-		AND id_usager = ?';
+				INNER JOIN vino_cellier cellier
+				ON bouteille.id_cellier = cellier.id_cellier
+				WHERE id_bouteille = ? 
+				AND id_usager = ?';
 
 		$donnees = array($idBouteille,$idUsager);		
 		$resultat = $this->requete($sql,$donnees);
@@ -205,8 +208,11 @@ class Modele_Bouteille extends Modele
 	 * Retourne la liste de bouteilles qui ont été trouvées
 	 * 
 	 * @param integer $id_cellier identifiant du cellier.
+	 *
 	 * @param string $rechercherPar Levariable a rechercher.
+	 *
 	 * @param mixed $valeur Le valeur à rechercher.
+	 *
 	 * @param string $operation Le type d'operation qui est choisit.
 	 * 
 	 * @throws Exception Erreur de requête sur la base de données. 

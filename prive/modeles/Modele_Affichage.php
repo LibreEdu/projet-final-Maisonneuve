@@ -47,7 +47,6 @@ class Modele_Affichage extends Modele
 	 * Supprime relation bouteille SAQ par id liste achat dans la table vino_liste_affichage
 	 * @param integer $id_liste_achat
 	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerBouteille($id_liste_achat)
