@@ -67,8 +67,7 @@ window.addEventListener('load', function() {
 			let id_bouteille_supprimer = evt.target.dataset.id_bouteille_supprimer;
 			// Affichage de message de confirmation de suppression
 			var confirmSuppression = confirm("Êtes-vous sûr de vouloir supprimer ce boutteille?");
-			console.log(confirmSuppression);
-			if (confirmSuppression) {
+			if(confirmSuppression) {
 				let requete = new Request("index.php?bouteille&action=supprimer_bouteille", {method: 'POST', body: '{"id_bouteille_supprimer": ' + id_bouteille_supprimer + '}'});
 				fetch(requete)
 				.then(response => {

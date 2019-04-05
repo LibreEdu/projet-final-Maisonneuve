@@ -122,7 +122,8 @@ select option {
 	color: #000;
 }
 h3 {		
-font-family: 'IBM Plex Serif', serif;
+	font-family: 'IBM Plex Serif', serif;
+	font-size: 26px;
 }
 .lien {
 	text-decoration: none !important;
