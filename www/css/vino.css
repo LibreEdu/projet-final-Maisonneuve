@@ -611,7 +611,6 @@ section .mdl-textfield--expandable{
 	padding-top: 0;
 }
 #rechercheSpecifique {
-	background-color: red;
 	margin-left: 20px;
 }
 .affichageDetailsBouteille .resultatDetailsBouteille p{
@@ -700,6 +699,9 @@ button i{
 		height: 100%;
 		width: 100%;
 	}
+	h3 {
+		font-size: 20px;
+	}
 	h4 {
 		font-size: 16px;
 	}
@@ -729,6 +731,25 @@ button i{
 	}
 	.bouteille_liste {
 		width: 100%;
+	}
+	.monBoutonRecheche{
+		margin-top: 50px;
+		margin-left: 10px;
+	}
+	#rechercheSpecifique {
+		margin-top: 5px;
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+	.mdl-js-textfield #recherchePar, #rechercheSpecifique {
+    	width: 160px;
+	}
+	#affichageDetails{
+		width: 85%;
+		padding-bottom: 0;
+	}
+	.imageBouteille {	
+		height: 30px;
 	}
 }
 
@@ -772,6 +793,9 @@ button i{
 		height: 100%;
 		width: 100%;
 	}
+	h3 {
+		font-size: 20px;
+	}
 	h4 {
 		font-size: 16px;
 	}
@@ -801,5 +825,25 @@ button i{
 	}
 	.bouteille_liste {
 		width: 100%;
+	}
+	.monBoutonRecheche{
+		margin-top: 50px;
+		margin-left: 10px;
+	}
+
+	#rechercheSpecifique {
+		margin-top: 5px;
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+	.mdl-js-textfield #recherchePar, #rechercheSpecifique {
+    	width: 160px;
+	}
+	#affichageDetails{
+		width: 85%;
+		padding-bottom: 0;
+	}
+	.imageBouteille {	
+		height: 30px;
 	}
 }
