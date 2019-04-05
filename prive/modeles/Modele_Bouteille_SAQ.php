@@ -4,7 +4,7 @@
  * 
  * @package  Vino 
  * @author   José Ignacio Delgado
- *.@author...Fatemeh Homatash
+ *.@author   Fatemeh Homatash
  * @version  1.0
  */
 class Modele_Bouteille_SAQ extends Modele
