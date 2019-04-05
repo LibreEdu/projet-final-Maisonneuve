@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
 		});
 	};
 
-	// En cliquant sur le bouton visiter, il recupere le id du cellier et le redirige vers le controlleur bouteille
+	// En cliquant sur le bouton visiter cellier, il récupere le id du cellier et le redirige vers le controlleur bouteille
 	document.querySelectorAll('.btnVisiterCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
@@ -23,7 +23,7 @@ window.addEventListener('load', function() {
 		});
 	});
 
-	// En cliquant sur le boutton supprimer cellier il le supprime le cellier au complet et redirige vers le controleur cellier
+	// En cliquant sur le boutton supprimer cellier il  supprime le cellier au complet et redirige vers le controleur cellier
 	document.querySelectorAll('.btnSupprimerCellier').forEach(function(element){
 		element.addEventListener('click', function(evt){
 			let id_cellier = evt.target.parentElement.dataset.id_cellier;
@@ -50,10 +50,10 @@ window.addEventListener('load', function() {
 		});
 	});
 
-	// Recuperer le bouton ajouter bouteille et diriger vers le controleur bouteille
+	// Récupere le bouton ajouter bouteille et diriger vers le controleur bouteille
 	let btnAjouterBouteille = document.getElementById('btnAjouterBouteille');
-	var url_array = document.URL.split('=') //Divise le url en array avec = commme separateur
-	var id_cellier = url_array[url_array.length-1];//Obtien le dernier parametre de array qui est le id du cellier
+	var url_array = document.URL.split('=') // Divise le url en array avec = commme separateur
+	var id_cellier = url_array[url_array.length-1];// Obtien le dernier parametre de array qui est le id du cellier
 	console.log(id_cellier);
 	if(btnAjouterBouteille){
 		btnAjouterBouteille.addEventListener('click', function(){
@@ -89,7 +89,7 @@ window.addEventListener('load', function() {
 	});
 
 
-	// Recuperer le bouton recherche et diriger ver le conroleur cellier
+	// Récupere le bouton recherche et diriger ver le conroleur cellier
 	var pageRecherche = document.getElementById('pageRecherche');
 	if(pageRecherche){
 		pageRecherche.addEventListener('click', function(){
@@ -99,7 +99,7 @@ window.addEventListener('load', function() {
 		});
 	};
 
-	// Recuperer le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
+	// Récupere le bouton recherche bouteille et le type choisit puis diriger vers le controleur bouteille SAQ
 	var recherchePar = document.getElementById('recherchePar'); 
 	var affichageResultat = document.querySelector('.affichageResultat');
 	var affichageDetails = document.getElementById('affichageDetails');
@@ -144,6 +144,7 @@ window.addEventListener('load', function() {
 	// Si la valeur à rechercher existe
 	if (valeurRechercher) {
 		valeurRechercher.addEventListener('keyup',function(e){
+			// Si le bouton enter est appuyé
 			if (e.keyCode === 13) {	
 				affichageDetails.style.visibility = 'hidden';
 				affichageResultat.innerHTML = '';
@@ -156,7 +157,7 @@ window.addEventListener('load', function() {
 				}
 				if(affichageResultat){
 					affichageResultat.innerHTML = '';
-					// Crer un tableau de paramétre pour pour les envoyés au controleur SAQ 
+					// Créer un tableau de paramétre pour pour les envoyés au controleur SAQ 
 					var params = {
 						'id_cellier':id_cellier,
 						'recherchePar':recherchePar.value,
@@ -405,36 +406,6 @@ window.addEventListener('load', function() {
 			});
 		};
 	}
-	
-	/*let btnAjouter = document.querySelector('[name="ajouterBouteilleCellier"]');
-	
-	if(btnAjouter){
-		btnAjouter.addEventListener('click', function(evt){
-		var param = {
-			'id_bouteille':bouteille.nom.dataset.id,
-			'date_achat':bouteille.date_achat.value,
-			'garde_jusqua':bouteille.garde_jusqua.value,
-			'note':bouteille.note.value,
-			'prix':bouteille.prix.value,
-			'quantite':bouteille.quantite.value,
-			'millesime':bouteille.millesime.value,
-			'id_cellier':id_cellier
-		};
-		let requete = new Request('index.php?requete=ajouter-form', {method: 'POST', body: JSON.stringify(param)});
-			fetch(requete)
-			.then(response => {
-				if (response.status === 200) {
-					return response.json();
-				} else {
-					throw new Error('Erreur');
-				}
-			})
-			.then(response => {
-			}).catch(error => {
-				console.error(error);
-			});		
-		});
-	}*/
 
 	// Recuperer les éléments NomBouteille et la_liste du document
 	let NomBouteille = document.querySelector('[name="une_bouteille"]');

@@ -85,7 +85,6 @@ abstract class Modele
 	 * Exécute une requête sur la base de données.
 	 * 
 	 * @param string $sql Requête SQL
-	 * @return array $donnees Données pour la requête qui a été préparée.
 	 * 
 	 * @return mixed Jeu de résultats si la requête a été correctement exécutée, false sinon.
 	 * 
