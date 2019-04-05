@@ -22,7 +22,7 @@
 					<!-- Barre de navigation -->
 					<div class="vino-navigation-container">
 						<nav class="vino-navigation mdl-navigation">
-						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=formulaireModification'); ?>">Mon compte</a>
+						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=formulaireModification&id=' . $donnees['id_usager']); ?>">Mon compte</a>
 						<a class="mdl-navigation__link mdl-typography--text-uppercase" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 						</nav>
 					</div>
@@ -36,7 +36,7 @@
 					<img class="vino-logo-image" src="<?php echo base_url(); ?>images/vino-logo-blanc.png">
 				</span>
 				<nav class="mdl-navigation">
-				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=formulaireModification'); ?>">Mon compte</a>
+				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=formulaireModification&id=' . $donnees['id_usager']); ?>">Mon compte</a>
 				<a class="mdl-navigation__link" href="<?php echo site_url('login&action=logout'); ?>">Déconnexion</a>
 				</nav>
 			</div>
