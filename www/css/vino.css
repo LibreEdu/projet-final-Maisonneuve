@@ -205,7 +205,7 @@ th, td {
 }
 #btnAjouterBouteille {
 	right: 3%;
-	top: 80%;
+	top: 65%;
 	position: fixed;
 	z-index: 999;
 	/*width: 180px;*/
@@ -683,6 +683,109 @@ button i{
 }
 
 /********PETITS ÉCRANS ********/
+@media screen and (max-width: 768px) {
+	input, textarea, select {
+		width : 280px;
+		margin: 0;
+		font-size: 14px;		
+		-webkit-box-sizing: border-box; /* Pour les anciens navigateurs WebKit */
+		-moz-box-sizing: border-box; /* Pour les anciens navigateurs (Firefox <29) basés sur Gecko */
+		-ms-box-sizing: border-box; /* Pour les navigateurs Internet Explorer */
+		box-sizing: border-box;
+	}
+	.mdl-textfield {
+		position: relative;
+		font-size: 14px;
+		display: block;
+		box-sizing: border-box;
+		width: 280px !important;
+		margin: 0;
+		padding: 20px 0;
+	}
+	.demo-card-wide.mdl-card {
+		width: 350px;
+		padding-bottom: 5px;
+	}
+	.mdl-textfield__input {
+		font-size: 14px;
+	}
+	.mdl-checkbox__label {
+		font-size: 14px;
+		line-height: 18px;
+	}
+	select {
+		font-size: 14px !important;
+	}
+	.mdl-demo .mdl-layout__tab-bar {
+		padding: 0;
+		padding-left: 16px;
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+	}
+	h3 {
+		font-size: 22px;
+	}
+	h4 {
+		font-size: 18px;
+	}
+	.mdl-demo .mdl-card .mdl-card__supporting-text {
+		margin: 5px !important;
+		margin-left: 40px !important;
+	}
+	.btnSupprimerItem {		
+		left: 85px !important;		
+		position: relative;
+		top: 10px;		
+	}
+	.btnSupprimerListe {	
+		margin: 10px 0 0 0;
+	}
+	.prix {
+		width: 35% !important;
+		text-align: right;
+	}
+	.bouton {
+		width: 60%;
+	}
+	.demo-layout-transparent .mdl-layout__header,
+	.demo-layout-transparent .mdl-layout__drawer-button {
+		color: rgb(77, 5, 59);
+		padding-top: 0;
+	}
+	.bouteille_liste {
+		width: 100%;
+	}
+	.monBoutonRecheche{
+		margin-top: 50px;
+		margin-left: 10px;
+	}
+	#rechercheSpecifique {
+		margin-top: 5px;
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+	.mdl-js-textfield #recherchePar, #rechercheSpecifique {
+    	width: 160px;
+	}
+	#affichageDetails{
+		width: 85%;
+		padding-bottom: 0;
+	}
+	.imageBouteille {	
+		height: 30px;
+	}
+	.maPageRecherche{
+		padding-left: 20px;
+	}
+	.affichageResultat {
+		width: 100%;
+	}
+	.resultatDetailsBouteille p, .affichageResultat {
+		font-size: 14px;
+	}
+}
+
 @media screen and (max-width: 480px) {
 	input, textarea, select {
 		width : 280px;
@@ -774,6 +877,15 @@ button i{
 	}
 	.imageBouteille {	
 		height: 30px;
+	}
+	.maPageRecherche{
+		padding-left: 10px;
+	}
+	.affichageResultat {
+		width: 100%;
+	}
+	.resultatDetailsBouteille p, .affichageResultat {
+		font-size: 12px;
 	}
 }
 
@@ -868,6 +980,15 @@ button i{
 		padding-bottom: 0;
 	}
 	.imageBouteille {	
-		height: 30px;
+		height: 10px;
+	}
+	.maPageRecherche{
+		padding-left: 10px;
+	}
+	.resultatDetailsBouteille p, .affichageResultat {
+		font-size: 12px;
+	}
+	.affichageResultat {
+		width: 100%;
 	}
 }
