@@ -22,7 +22,7 @@
 							<input name="mot_de_passe" class="form-control" placeholder="Mot de passe" type="password">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block"> Se Connecter </button>
+							<button type="submit" class="btn btn-primary btn-block"> Se connecter </button>
 						</div>
 						<p class="text-center">Vous n'avez pas de compte ? <a href="index.php?login&action=formulaire">Créer un Compte</a> </p> 
 					</form>
