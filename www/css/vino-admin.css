@@ -249,6 +249,15 @@ a img{
 	padding-bottom: 80px;
 }
 
+.gras {
+	font-weight: bold;
+}
+
+#barre-progression {
+	display: none;
+	margin-top: 10px;
+}
+
 /* Carte d’importation des vins */
 .vino-carte-importation.mdl-card {
 	width: 512px;

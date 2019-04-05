@@ -19,7 +19,22 @@ var vinoAdmin = (function(){
 	 * Démarre l’importation des bouteilles de vin de la SAQ.
 	 */
 	obj.importer = function() {
-		alert("Lorsque vous allez cliquer sur le bouton « OK » cela va lancer l’importation. C’est une opération qui dure longtemps. Un message vous préviendra de la fin de l’importation.");
+		// alert('Lorsque vous allez cliquer sur le bouton « OK » cela va lancer l’importation. C’est une opération qui dure longtemps. Un message vous préviendra de la fin de l’importation.');
+
+		// Bouton Importer
+		let btnImporter = document.getElementById('btnImporter');
+		btnImporter.innerHTML = 'Importation en cours';
+		btnImporter.className = '';
+
+		// Barre de progression
+		let barreProgression = document.getElementById('barre-progression');
+		barreProgression.style.display = 'block';
+
+		// Console de log (non fonctionnel)
+		// let log = document.getElementById('log-importation');
+		// log.style.visibility = 'visible';
+
+		// Requête pour le serveur
 		let parametres = {
 			'mettreAJour':document.getElementById('mettreAJour').checked,
 			'indice':document.getElementById('btnIndice').value
@@ -35,14 +50,15 @@ var vinoAdmin = (function(){
 		})
 		.then(response => {
 			// En cas d’erreur, déconnexion
-			if (response == "deconnexion") {
+			if (response == 'deconnexion') {
 				window.location = 'index.php?login&action=logout';
 			}
 
-			// Division qui va recevoir les informations de la requête
-			let log = document.getElementById('log-importation');
-			log.style.visibility = 'visible';
-			log.innerHTML = response;
+			btnImporter.innerHTML = 'Importation finie';
+			barreProgression.style.display = 'none';
+
+			// Console de log
+			// log.innerHTML = response;
 		}).catch(error => {
 			console.error(error);
 		});
@@ -53,7 +69,7 @@ var vinoAdmin = (function(){
 	 * Change la valeur de l’indice affichée en fonction de la position du bouton du variateur.
 	 */
 	obj.changerIndice = function() {
-		document.getElementById("valeurIndice").innerHTML = document.getElementById("btnIndice").value;
+		document.getElementById('valeurIndice').innerHTML = document.getElementById('btnIndice').value;
 	}
 
 	return obj;

@@ -71,7 +71,7 @@
 								<span class = "mdl-radio__label">Non</span>
 							</p>
 							<p>
-								Indice de la première bouteille importée :
+								Indice de la <span class="gras">première</span> bouteille importée :
 								<input id="btnIndice" class="mdl-slider mdl-js-slider" type="range" min="0" max="<?php echo $donnees['maxIndice'] ?>" value="0" step="100">
 								<div id="valeurIndice">0</div>
 							</p>
@@ -80,10 +80,10 @@
 							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btnImporter">
 								Importer les données
 							</a>
+							<div id="barre-progression" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 						</div>
 					</div>
-					<div id="log-importation">
-					</div>
+					<!-- <div id="log-importation"></div> -->
 				</div>
 				<footer class="vino-piedpage mdl-mega-footer">
 					<div class="mdl-mega-footer--top-section">
