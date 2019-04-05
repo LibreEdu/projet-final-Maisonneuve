@@ -16,7 +16,7 @@
 			  <i class="material-icons">add</i>
 			</button>
 			<?php foreach ($donnees['bouteilles'] as $bouteille): ?>
-			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+			<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp listeCellier">
 				<header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
 					<div class='img'>
 					<?php
@@ -54,6 +54,7 @@
 						<p class='quantite' id='<?php echo $bouteille->id_bouteille; ?>'>Quantité : <?php echo $bouteille->quantite ?></p>
 						<p class='dateAchat'>Date d’achat : <?php echo $bouteille->date_achat ?></p>
 						<p class='prix'><?php echo number_format($bouteille->prix, 2, ',', ' ') ?> $</p>
+						<input type="hidden" name="bouteille_a_supprimer" value="<?php echo $bouteille->id_bouteille ?>" />
 					</div>
 					<div class="mdl-card__actions">
 						<?php
@@ -95,7 +96,7 @@
 								<button class="mdl-button mdl-js-button mdl-button--raised btnModifier" >Modifier</button>
 								<button class='btnAjouter mdl-button mdl-js-button mdl-button--raised mdl-button--colored' title="Ajouter">+ 1</button>
 								<button class='btnBoire mdl-button mdl-js-button mdl-button--raised mdl-button--accent' title="Boire">- 1</button>
-								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" title="Supprimer" data-id_bouteille_supprimer="<?php echo $bouteille->id_bouteille?>"><i class="far fa-trash-alt"></i></button>
+								<button class="mdl-button mdl-js-button mdl-button--raised supprimerBouteille" title="Supprimer" data-id_bouteille_supprimer="<?php echo $bouteille->id_bouteille ?>" ><i class="far fa-trash-alt"></i></button>
 							</div>
 						</p>
 					</div>
