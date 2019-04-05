@@ -473,6 +473,9 @@ th, td {
 	text-align: center;
 	width: 60%;
 }
+.general{
+	min-height: 75%;
+}
 
 /********Styles pour le pied de page ********/
 
