@@ -1,4 +1,4 @@
-	<main class="mdl-layout__content">		
+	<main class="mdl-layout__content maPageRecherche">		
 		<section class="section--center mdl-grid mdl-grid--no-spacing retournerPrecedent">	
 			<div class="retournerPagePrecedent" id="retourAuCellier">
 				<a class="lien" href="index.php?cellier&action=voir&id_cellier=<?php echo $_GET['id_cellier']?> ">Retour au cellier</a>	
