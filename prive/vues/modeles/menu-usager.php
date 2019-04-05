@@ -7,7 +7,7 @@
 	<header  class="mdl-layout__header mdl-layout__header--transparent">
 		
 		<div class="mdl-layout__header-row">
-			<a class="mdl-navigation__link" href="index.php?Cellier"><span class="mdl-layout-title">Vino Veritas</span></a>
+			<a class="mdl-navigation__link" href="index.php?cellier"><span class="mdl-layout-title">Vino Veritas</span></a>
 			<div class="mdl-layout-spacer"></div>
 			<div class="mdl-layout-spacer"></div>
 			<nav class="mdl-navigation">
