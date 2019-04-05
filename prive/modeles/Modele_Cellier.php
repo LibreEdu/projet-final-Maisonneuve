@@ -23,7 +23,6 @@ class Modele_Cellier extends Modele
 	 * Récupère les donnes d’un cellier.
 	 * 
 	 * @param integer $id_cellier Identifiant du cellier.
-	 * 
 	 * @return array Les données du cellier.
 	 */
 	public function obtenir_par_id($id_cellier)
@@ -37,7 +36,6 @@ class Modele_Cellier extends Modele
 	 * Récupère les donnes des celliers d’un usager.
 	 * 
 	 * @param integer $id_usager Identifiant de l’usager.
-	 * 
 	 * @return array Les données des celliers de l’usager.
 	 */
 	public function obtenir_par_usager($id_usager)
@@ -51,8 +49,6 @@ class Modele_Cellier extends Modele
 	 * Supprime cellier par id cellier dans la table vino_cellier
 	 * 
 	 * @param integer $id_cellier
-	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerCellier($id_cellier)
@@ -62,7 +58,9 @@ class Modele_Cellier extends Modele
 
 	/**
 	 * Fonction qui ajoute un cellier pour un usager
-	 * @param $idUsager	
+	 *
+	 * @param integer $idUsager	
+	 * @return rien, Il ajoute dans la table vino cellier, un nouveau cellier 
 	 */
 	public function ajouter($idUsager)
 	{
@@ -73,9 +71,10 @@ class Modele_Cellier extends Modele
 
 	/**
 	 * Fonction qui verifie si bien le cellier appartient à un usager 
-	 * @param $idCellier
-	 * @param $idUsager
-	 * @return $resultat
+	 *
+	 * @param intereg $idCellier
+	 * @param interger $idUsager
+	 * @return $resultat Le cellier trouvée dans la table vino cellier
 	 */
 	public function verif_usager($idCellier, $idUsager)
 	{
