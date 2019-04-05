@@ -784,6 +784,14 @@ button i{
 	.resultatDetailsBouteille p, .affichageResultat {
 		font-size: 14px;
 	}
+	#btnAjouterCellier {
+	right: 3%;
+	top: 30%;	
+	}
+#btnAjouterBouteille {
+	right: 3%;
+	top: 30%;
+	}
 }
 
 @media screen and (max-width: 480px) {
