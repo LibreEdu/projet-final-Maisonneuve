@@ -1012,4 +1012,18 @@ button i{
 	.affichageResultat {
 		width: 100%;
 	}
+
+	.aaa image {
+		width:56%;
+	}
+	
+	.aaa div .bbb {
+		padding-bottom: 0;
+		margin-bottom: 0;
+		height: 50px;
+	}
+
+	.ccc {
+		height: 20px;
+	}
 }

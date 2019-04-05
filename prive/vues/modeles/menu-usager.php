@@ -11,7 +11,7 @@
 			<div class="mdl-layout-spacer"></div>
 			<div class="mdl-layout-spacer"></div>
 			<nav class="mdl-navigation">
-				<a class="mdl-navigation__link active" id="cellier"href="index.php?Cellier">Mes celliers</a>
+				<a class="mdl-navigation__link active" id="cellier"href="index.php?cellier">Mes celliers</a>
 				<a class="mdl-navigation__link" id="listes_achat" href="index.php?liste_achat&action=listes_achat">Listes d'achat</a>
 				<a id="moncompte" class="mdl-navigation__link" href="index.php?login&action=formulaireModification&id=<?php echo $_SESSION['id_usager'] ?>">Mon Compte</a>
 				<a id="deconnexion" class="mdl-navigation__link" href="index.php?login&action=logout">Déconnexion</a>
