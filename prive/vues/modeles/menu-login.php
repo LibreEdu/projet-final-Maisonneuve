@@ -6,7 +6,9 @@
 			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
-					<h3>Vino Veritas</h3>
+					<!-- <h3>Vino Veritas</h3> -->
+					<a class="mdl-navigation__link" href="index.php"><span class="mdl-layout-title">Vino Veritas</span></a>
 				</div>
+
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
 			</header>
