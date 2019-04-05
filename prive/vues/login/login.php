@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-block"> Se connecter </button>
 						</div>
-						<p class="text-center">Vous n'avez pas de compte ? <a href="index.php?login&action=formulaire">Créer un compte</a> </p> 
+						<p class="text-center"><a href="index.php?login&action=formulaire">Créer un compte</a> </p> 
 					</form>
 				<?php
 					}

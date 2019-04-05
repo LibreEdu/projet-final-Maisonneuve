@@ -34,7 +34,7 @@
 		 </div>
 		<input name="prenom" class="form-control" placeholder="Prénom" type="text"  pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ\s-]+" required>
 	</div>
-	<span>le mot de passe doit être entre 6 et 12 caractères</span>
+	<span>Le mot de passe doit avoir entre 6 et 12 caractères</span>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 			<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
