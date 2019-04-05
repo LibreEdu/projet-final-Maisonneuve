@@ -111,6 +111,7 @@ final class Controleur_Importation extends Controleur
 	private function index()
 	{
 		$donnees['prenom'] = $_SESSION['prenom'];
+		$donnees['id_usager'] = $_SESSION['id_usager'];
 		$donnees['nbBouteillesBD'] = $this->nbBouteillesBD();
 		$donnees['nbBouteillesWeb'] = $this->_nbBouteillesWeb;
 		$donnees['maxIndice'] = floor($this->_nbBouteillesWeb / 100) * 100;
