@@ -14,6 +14,7 @@ class Controleur_Cellier extends Controleur
 	 */
 	private $modele_bouteille;
 
+
 	/**
 	 * @var object $modele_cellier Le modèle Modele_Cellier.
 	 */
@@ -21,7 +22,7 @@ class Controleur_Cellier extends Controleur
 
 
 	/**
-	 * Initialisation des modèles.
+	 * Initialise les modèles.
 	 * 
 	 * @return void
 	 */
@@ -57,27 +58,22 @@ class Controleur_Cellier extends Controleur
 				$this->voir();
 				break;
 
-			// Affichage du formulaire
 			case 'ajouter-form':
 				$this->ajouter_form();
 				break;
 
-			// Ajout d’un cellier
 			case 'ajouter':
 				$this->ajouter();
 				break;
 
-			// Suppression de cellier
 			case 'supprimer':
 				$this->supprimerCellier();
 				break;
 
-			// Recherche sur les bouteils existant dans le cellier
 			case 'pageRecherche':
 				$this->pageRecherche();
 				break;
 
-			// Recherche sur les bouteils existant dans le cellier
 			case 'recherche':
 				$this->recherche();
 				break;
@@ -93,7 +89,7 @@ class Controleur_Cellier extends Controleur
 	 * 
 	 * @return void
 	 */
-	public function index()
+	private function index()
 	{
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
 		$this->afficheVue('modeles/en-tete');
@@ -104,7 +100,7 @@ class Controleur_Cellier extends Controleur
 
 
 	/**
-	 * Récupère toutes les bouteilles qui appartiennent à un cellier
+	 * Récupère toutes les bouteilles qui appartiennent à un cellier.
 	 * 
 	 * @return void
 	 */
@@ -117,25 +113,30 @@ class Controleur_Cellier extends Controleur
 		$resultat = $this->modele_cellier->obtenir_par_id($_GET['id_cellier']);
 		$donnees['bouteilles'] = $this->modele_bouteille->bouteilles_cellier($_GET['id_cellier']);
 
-		// Si il n'y a aucune bouteille dans le cellier, il dirige directement vers le formulaire ajout bouteille
+		// S’il n’y a aucune bouteille dans le cellier, il dirige directement vers le formulaire ajout bouteille
 		if ($donnees['bouteilles']==null) {
 			$donnees['id_cellier'] = $_GET['id_cellier'];
 			$donnees['types'] = $this->modele_type->obtenir_tous();
 			$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
+
 			// Titre à afficher dans le formulaire
 			$donnees['titre'] = 'Ajouter Bouteille';
+
 			// Action du bouton input du formulaire
 			$donnees['actionBouton'] = 'ajouter';
+
 			// Value du bouton input du formulaire
 			$donnees['titreBouton'] = 'Ajouter la bouteille';
+
 			// Classe du bouton input du formulaire
 			$donnees['classeBouton'] = 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored';
+
 			$this->afficheVue('modeles/en-tete');
 			$this->afficheVue('modeles/menu-usager');
 			$this->afficheVue('bouteille/formulaire', $donnees);
 			$this->afficheVue('modeles/bas-de-page');
 		}
-		// Si il existe déjà des bouteilles dans le cellier, il affiche la liste de tous les bouteilles existant
+		// S’il existe déjà des bouteilles dans le cellier, affiche la liste de tous les bouteilles existant
 		else{
 			$this->afficheVue('modeles/en-tete');
 			$this->afficheVue('modeles/menu-usager');
@@ -143,9 +144,10 @@ class Controleur_Cellier extends Controleur
 			$this->afficheVue('modeles/bas-de-page');
 		}
 	}
-	
+
+
 	/**
-	 * Fonction qui affiche le formulaire d'ajout de cellier
+	 * Affiche le formulaire d’ajout de cellier.
 	 * 
 	 * @return void
 	 */
@@ -157,8 +159,9 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction qui ajout un cellier pour l'usager
+	 * Ajoute un cellier.
 	 * 
 	 * @return void
 	 */
@@ -172,8 +175,9 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction qui supprime un cellier de l'usager
+	 * Supprime un cellier.
 	 * 
 	 * @return void
 	 */
@@ -185,8 +189,9 @@ class Controleur_Cellier extends Controleur
 		echo json_encode(true);
 	}	
 
+
 	/**
-	 * Fonction qui prent le id du cellier et affiche les vues relies
+	 * Affiche le résultat de la page de recherche
 	 * 
 	 * @return void
 	 */
@@ -199,6 +204,11 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+	/**
+	 * Effectue une recherche dans le cellier
+	 * 
+	 * @return void
+	 */
 	private function recherche()
 	{
 		$body = json_decode(file_get_contents('php://input'));
