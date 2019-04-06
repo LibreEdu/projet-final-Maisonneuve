@@ -726,8 +726,14 @@ button i{
 	h3 {
 		font-size: 22px;
 	}
+	#overview h3 {
+		margin-left: 20px;
+	}
 	h4 {
 		font-size: 18px;
+	}
+	.mdl-card__supporting-text h5{
+		font-size: 17px;
 	}
 	.mdl-demo .mdl-card .mdl-card__supporting-text {
 		margin: 5px !important;
@@ -785,18 +791,51 @@ button i{
 		font-size: 14px;
 	}
 	#btnAjouterCellier {
-	right: 3%;
-	top: 30%;	
+		right: 3%;
+		top: 30%;	
 	}
 	#btnAjouterBouteille {
-	right: 3%;
-	top: 30%;
+		right: 3%;
+		top: 30%;
 	}
 	.cellier_header {
 		display: none !important;
 	}
 	footer {
 		display: none !important;
+	}
+	.listeCellier{
+		width: 88%;
+	}
+	.mdl-demo .mdl-layout__content section:not(:last-of-type) {
+    	position: relative;
+   		margin-bottom: 22px;
+	}
+	.nomCellier {
+		min-height: 0;
+	}
+	.mdl-grid--no-spacing > .mdl-cell--6-col, .mdl-grid--no-spacing > .mdl-cell--6-col-tablet.mdl-cell--6-col-tablet {
+	    width: 100%;
+	}
+	.mdl-grid--no-spacing > .mdl-cell--2-col, .mdl-grid--no-spacing > .mdl-cell--2-col-tablet.mdl-cell--2-col-tablet {
+    	width: 100%;
+	}
+	#btnAjouterCellier{
+		border-radius: 50%;
+		font-size: 20px;
+		height: 46px;
+		min-width: 46px;
+		width: 46px;
+	}
+	.btnSupprimerCellier, .btnVisiterCellier {
+		height: 35px;
+		margin-right: 10px;
+		min-width: 90px;
+		padding: 5px 12px;
+		font-size: 14px;
+		font-weight: 100;
+		text-transform: uppercase;
+		line-height: 20px;
 	}
 }
 
@@ -843,8 +882,18 @@ button i{
 	h3 {
 		font-size: 20px;
 	}
+	#overview h3 {
+		margin-left: 20px;	 
+	}
 	h4 {
 		font-size: 16px;
+	}
+	.mdl-card__supporting-text h4 {
+		margin-bottom: 0;
+		padding: 0;
+	}
+	.mdl-card__supporting-text h5{
+		font-size: 15px;
 	}
 	.mdl-demo .mdl-card .mdl-card__supporting-text {
 		margin: 5px !important;
@@ -861,20 +910,9 @@ button i{
 	.mdl-card__supporting-text h5{
 		font-size: 10pt;
 	}
-
-	/*.mdl-card__supporting-text p{
-		font-size: 1pt;
-	}*/
 	.prix {
 		width: 35% !important;
-		/*text-align: right;*/
 	}
-/*	.options{
-		width: 100% !important;
-	}*/
-	/*.mdl-card__menu{
-		margin-left: -10px;
-	}*/
 	.bouton {
 		width: 60%;
 	}
@@ -914,11 +952,52 @@ button i{
 	.resultatDetailsBouteille p, .affichageResultat {
 		font-size: 12px;
 	}
+	.listeDetaillsBouteilles p {
+		font-size: 12px;
+	}
 	.cellier_header {
 		display: none !important;
 	}
 	footer {
 		display: none !important;
+	}
+	.listeCellier{
+		width: 88%;
+	}
+	.mdl-demo .mdl-layout__content section:not(:last-of-type) {
+    	position: relative;
+   		margin-bottom: 18px;
+	}
+	.nomCellier {
+		min-height: 0;
+	}
+	#btnAjouterCellier, #btnAjouterBouteille{
+		border-radius: 50%;
+		font-size: 18px;
+		height: 38px;
+		min-width: 38px;
+		width: 38px;
+	}
+	.btnSupprimerCellier, .btnVisiterCellier {
+		height: 25px;
+		margin: 0;
+		min-width: 60px;
+		padding: 5px;
+		font-size: 12px;
+		font-weight: 100;
+		text-transform: uppercase;
+		line-height: 10px;
+	}
+	.imageBouteille .img #code_saq img {
+	    width: 135px;
+	    height: 135px;
+	}
+	.imageBouteille .img p {
+		padding: 0;
+		margin: 0;
+	}  
+	.mdl-demo section > .section__play-btn {
+	    min-height: 170px;
 	}
 }
 
@@ -962,15 +1041,18 @@ button i{
 		height: 100%;
 		width: 100%;
 	}
+	#overview h3{
+		margin-left: 15px;
+	}
 	h3 {
-		font-size: 20px;
+		font-size: 18px;
 	}
 	h4 {
-		font-size: 16px;
+		font-size: 14px;
 	}
 	.mdl-demo .mdl-card .mdl-card__supporting-text {
-		margin: 5px !important;
-		margin-left: 20px !important;
+		margin: 4px 0 0 0 !important;
+		margin-left: 40px !important;
 	}
 	.btnSupprimerItem {		
 		left: 55px !important;		
@@ -982,7 +1064,6 @@ button i{
 	}
 	.prix {
 		width: 35% !important;
-		/*text-align: right;*/
 	}
 	.bouton {
 		width: 70%;
@@ -999,7 +1080,6 @@ button i{
 		margin-top: 70px;
 		margin-left: 10px;
 	}
-
 	#rechercheSpecifique {
 		margin-top: 5px;
 		margin-left: 0px;
@@ -1008,44 +1088,7 @@ button i{
 	.mdl-js-textfield #recherchePar, #rechercheSpecifique {
     	width: 160px;
 	}
-	#affichageDetails{
-		width: 85%;
-		padding-bottom: 0;
-	}
-	.imageBouteille {	
-		height: 10px;
-	}
-	.maPageRecherche{
-		padding-left: 10px;
-	}
-	.resultatDetailsBouteille p, .affichageResultat {
-		font-size: 12px;
-	}
-	.affichageResultat {
-		width: 100%;
-	}
-
 	#pageRecherche {
 		margin-top: 60px;
-	}
-
-	/* .aaa image {
-		width:56%;
-	}
-	
-	.aaa div .bbb {
-		padding-bottom: 0;
-		margin-bottom: 0;
-		height: 50px;
-	}
-
-	/*.ccc {
-		height: 20px;
-	} */
-	.cellier_header {
-		display: none !important;
-	}
-	footer {
-		display: none !important;
 	}
 }
