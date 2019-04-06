@@ -103,12 +103,6 @@ class Modele_Usager extends Modele
 	 * 
 	 * @return array Les données de l’usager.
 	 */
-	// public function obtenir_par_id($id)
-	// {
-	// 	$resultat = $this->lire($id, 'id_usager');
-	// 	$usager = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
-	// 	return $usager;
-	// }
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_usager');
