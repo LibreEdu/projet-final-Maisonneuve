@@ -18,7 +18,13 @@ class Controleur_Cellier extends Controleur
 	 * @var object $modele_cellier Le modèle Modele_Cellier.
 	 */
 	private $modele_cellier;
-	
+
+
+	/**
+	 * Initialisation des modèles.
+	 * 
+	 * @return void
+	 */
 	public function __construct()
 	{
 		$this->modele_bouteille = $this->modele('Modele_bouteille');
@@ -26,6 +32,14 @@ class Controleur_Cellier extends Controleur
 		$this->modele_type = $this->modele('Modele_type');
 	}
 
+
+	/**
+	 * Récupère la requête de l’utilisateur afin de la traiter.
+	 * 
+	 * @param array $params Requête de l'utilisateur ($_REQUEST).
+	 * 
+	 * @return void
+	 */
 	public function traite(array $params)
 	{
 		// On vérifie que l’usagé est bien connecté
@@ -73,9 +87,11 @@ class Controleur_Cellier extends Controleur
 		}
 	}
 
+
 	/**
-	 * Fonction qui affiche la liste des celliers d'usager
+	 * Affiche la liste des celliers
 	 * 
+	 * @return void
 	 */
 	public function index()
 	{
@@ -86,11 +102,13 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction qui vérifie si l'usager est conécté et puis il récupére tous les bouteilles qui appartient a un cellier
+	 * Récupère toutes les bouteilles qui appartiennent à un cellier
 	 * 
+	 * @return void
 	 */
-	public function voir()
+	private function voir()
 	{
 		$idCellier = $this->modele_cellier->verif_usager($_GET['id_cellier'],$_SESSION['id_usager']);
 		if ($idCellier == null) {
@@ -129,8 +147,9 @@ class Controleur_Cellier extends Controleur
 	/**
 	 * Fonction qui affiche le formulaire d'ajout de cellier
 	 * 
+	 * @return void
 	 */
-	public function ajouter_form()
+	private function ajouter_form()
 	{
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -141,8 +160,9 @@ class Controleur_Cellier extends Controleur
 	/**
 	 * Fonction qui ajout un cellier pour l'usager
 	 * 
-	 */	
-	public function ajouter()
+	 * @return void
+	 */
+	private function ajouter()
 	{
 		$this->modele_cellier->ajouter($_SESSION['id_usager']);
 		$donnees['celliers'] = $this->modele_cellier->obtenir_par_usager($_SESSION['id_usager']);
@@ -155,8 +175,9 @@ class Controleur_Cellier extends Controleur
 	/**
 	 * Fonction qui supprime un cellier de l'usager
 	 * 
-	 */	
-	public function supprimerCellier()
+	 * @return void
+	 */
+	private function supprimerCellier()
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$this->modele_bouteille->supprimerBouteille($body->id_cellier);
@@ -167,8 +188,9 @@ class Controleur_Cellier extends Controleur
 	/**
 	 * Fonction qui prent le id du cellier et affiche les vues relies
 	 * 
+	 * @return void
 	 */
-	public function pageRecherche()
+	private function pageRecherche()
 	{
 		$donnees['id-cellier'] = $_GET['id_cellier'];
 		$this->afficheVue('modeles/en-tete');
@@ -177,7 +199,7 @@ class Controleur_Cellier extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
-	public function recherche()
+	private function recherche()
 	{
 		$body = json_decode(file_get_contents('php://input'));
 		$listeBouteilles = $this->modele_bouteille->recherche($body->id_cellier, $body->recherchePar, $body->valeur, $body->operation);
