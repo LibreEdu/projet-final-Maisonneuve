@@ -37,7 +37,7 @@ final class Controleur_Cellier extends Controleur
 	/**
 	 * Récupère la requête de l’utilisateur afin de la traiter.
 	 * 
-	 * @param array $params Requête de l'utilisateur ($_REQUEST).
+	 * @param array $params Requête de l’utilisateur ($_REQUEST).
 	 * 
 	 * @return void
 	 */
