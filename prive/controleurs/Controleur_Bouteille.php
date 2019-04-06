@@ -28,7 +28,7 @@ final class Controleur_Bouteille extends Controleur
 
 
 	/**
-	 * Initialisation des modèles.
+	 * Initialise les modèles.
 	 * 
 	 * @return void
 	 */
