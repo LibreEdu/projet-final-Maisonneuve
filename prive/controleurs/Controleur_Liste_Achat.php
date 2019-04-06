@@ -32,6 +32,7 @@ final class Controleur_Liste_Achat extends Controleur
 		$this->modele_affichage = $this->modele('Modele_affichage');
 	}
 
+
 	/**
 	 * Récupère la requête de l’utilisateur afin de la traiter.
 	 * 
