@@ -21,6 +21,7 @@ class Modele_Affichage extends Modele
 	
 	/**
 	 * Retourne tous les id des listes d'achat et des bouteilles de la SAQ
+	 * 
 	 * @return array Les données de la table affichage des listes d'achat.
 	 */
 	public function obtenir_tous()
@@ -32,8 +33,10 @@ class Modele_Affichage extends Modele
 
 	/**
 	 * Retourne les données d’une liste d'acchat.
+	 * 
 	 * @param integer $id_liste_achat Identifiants de la liste d'achat
-	 * @return object Les données d’une liste d'achat.
+	 * 
+	 * @return array Les données d’une liste d'achat.
 	 */
 	public function obtenir_par_id($id_liste_achat)
 	{
@@ -45,6 +48,7 @@ class Modele_Affichage extends Modele
 
 	/**
 	 * Supprime relation bouteille SAQ par id liste achat dans la table vino_liste_affichage
+	 * 
 	 * @param integer $id_liste_achat
 	 * 
 	 * @return boolean Indique si la requête a correctement fonctionné.
