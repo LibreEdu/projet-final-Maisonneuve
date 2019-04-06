@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fonctionnalités de l’administrateur.
+ * Importation des données de la SAQ.
  *
  * @package  Vino
  * @author   Alexandre Pachot
