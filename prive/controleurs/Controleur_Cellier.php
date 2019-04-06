@@ -7,7 +7,7 @@
  * @author   Fatemeh Homatash
  * @version  1.0
  */
-class Controleur_Cellier extends Controleur
+final class Controleur_Cellier extends Controleur
 {
 	/**
 	 * @var object $modele_bouteille Le modèle Modele_Bouteille.
