@@ -20,9 +20,10 @@ class Modele_Liste extends Modele
 
 	/**
 	 * Retourne le résultat de la recherche pour la fonction d’autocomplete	
+	 * 
 	 * @param string $nom La chaine de caractère à rechercher
 	 * @param integer $nb_resultat Le nombre de résultat maximal à retourner.
-	 * @throws Exception Erreur de requête sur la base de données
+	 * 
 	 * @return array tous les données de la bouteille trouvée dans le catalogue
 	 */
 	
@@ -52,9 +53,7 @@ class Modele_Liste extends Modele
 
 	/**
 	 * Fonction qui ajoute une liste d'achats
-	 * @param integer $id_usager L'id de l'usager connecté.
-	 * @param $nom Le nom de la liste.
-	 * @throws Exception Erreur de requête sur la base de données 
+	 * 
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function ajouter_liste()
@@ -83,7 +82,9 @@ class Modele_Liste extends Modele
 
 	/**
 	 * Retourne le résultat de la recherche pour la fonction d’autocomplete 
-	 * @param integer $id_usager L'id de l'usager connecté. 
+	 * 
+	 * @param integer $id_usager L'id de l'usager connecté.
+	 * 
 	 * @return array tous les données de la bouteille dans la table bouteille SAQ
 	 */
 	public function obtenir_liste($id_usager, $nom_liste_achat)
@@ -128,7 +129,6 @@ class Modele_Liste extends Modele
 	 * Supprime liste d'achat par id liste achat dans la table vino_liste_achat
 	 * @param integer $id_liste_achat
 	 * 
-	 * À VÉRIFIER, CE QUE LA FONCTION RETOURNE
 	 * @return boolean Indique si la requête a correctement fonctionné.
 	 */
 	public function supprimerListe($id_liste_achat)
