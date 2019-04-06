@@ -16,13 +16,23 @@ class Controleur_Login extends Controleur
 
 
 	/**
+	 * Initialise les modèles.
 	 * 
+	 * @return void
 	 */
 	public function __construct()
 	{
 		$this->modele_usager = $this->modele('Modele_usager');
 	}
 
+
+	/**
+	 * Récupère la requête de l’utilisateur afin de la traiter.
+	 * 
+	 * @param array $params Requête de l'utilisateur ($_REQUEST).
+	 * 
+	 * @return void
+	 */
 	public function traite(array $params)
 	{
 		switch($params['action'])
@@ -57,11 +67,13 @@ class Controleur_Login extends Controleur
 	}
 
 	/**
-	 * Fonction appelée par défaut qui affiche la page login
+	 * Affiche la page login
 	 *
 	 * Le contrôleur login est le contrôleur par défaut,
 	 * donc si quelqu’un se connecte va à la racine du site,
 	 * il faut le rediriger correctement
+	 * 
+	 * @return void
 	 */
 	public function index()
 	{
@@ -84,6 +96,7 @@ class Controleur_Login extends Controleur
 			else
 			{
 				$messageErreur = ' Mauvaise combinaison username/password';
+
 				// On affiche la page login
 				$donnees['erreurs'] = $messageErreur;
 				$this->afficheVue('modeles/en-tete');
@@ -93,11 +106,11 @@ class Controleur_Login extends Controleur
 			}
 		}
 
-		// Si je suis connecté en tant qu'administrateur
+		// Si je suis connecté en tant qu’administrateur
 		if ( isset($_SESSION['admin']) && $_SESSION['admin'] == true )
 		{
 			header('Location: ' . site_url('importation') );
-		// Si je suis connecté en tant qu'usager
+		// Si je suis connecté en tant qu’usager
 		} elseif ( isset($_SESSION['id_usager']) && $_SESSION['id_usager'] == true )
 		{
 			header('Location: ' .  site_url('cellier') );
@@ -110,8 +123,10 @@ class Controleur_Login extends Controleur
 		}
 	}
 
+
 	/**
-	 * Fonction Affichage du formulaire d'inscription
+	 * Fonction Affichage du formulaire d’inscription
+	 * 
 	 * @return void
 	 */
 	public function formulaire()
@@ -122,8 +137,10 @@ class Controleur_Login extends Controleur
 		// $this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
 	 * Fonction Affichage du formulaire de modification
+	 * 
 	 * @return void
 	 */
 	public function formulaireModification()
@@ -140,9 +157,10 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction modifier qui gére la modification des informations 
-	 * d'un usager connecté
+	 * Fonction modifier qui gére la modification des informations d’un usager connecté
+	 * 
 	 * @return void
 	 */
 	public function modifier()
@@ -237,8 +255,10 @@ class Controleur_Login extends Controleur
 		// }
 
 	/**
-	 * Fonction inscrire qui gére l'inscription d'un nouvel usager
-	 * @param $params
+	 * Fonction inscrire qui gére l’inscription d’un nouvel usager
+	 * 
+	 * @param array $params Tableau de paramètres
+	 * 
 	 * @return void
 	 */
 	public function inscrire($params)
@@ -250,6 +270,7 @@ class Controleur_Login extends Controleur
 		{
 			// Appel de la fonction valideFormSansMdp et verifier ce qu’elle retourne 
 			$messageErreur = $this->valideFormSansMdp($_REQUEST['courriel'], $_REQUEST['nom'], $_REQUEST['prenom']);
+
 			// Appel de la fonction valideFormInscription et verifier ce qu’elle retourne 
 			$messageErreur .= $this->valideFormInscription($_REQUEST['mdp'], $_REQUEST['mdp2']);  
 
@@ -268,6 +289,7 @@ class Controleur_Login extends Controleur
 				//Renvoi à la page par défaut pour se logger
 				//header( 'Location: ' . base_url() );
 				$messageErreur = ' Bravo! votre compte a été créé';
+
 				// On affiche la page login
 				$donnees['erreurs'] = $messageErreur;
 				$this->afficheVue('modeles/en-tete');
@@ -284,8 +306,11 @@ class Controleur_Login extends Controleur
 		}
 	}
 
+
 	/**
-	 * Fonction logout qui gére la déconnexion
+	 * Gére la déconnexion
+	 * 
+	 * @return void
 	 */
 	public function logout()
 	{
@@ -304,9 +329,13 @@ class Controleur_Login extends Controleur
 		header( 'Location: ' . base_url() );
 	}
 
+
 	/**
-	 * Fonction d'affichage du formulaire d'ajout d'un usager
-	 * @param $erreurs le message d'ereur
+	 * Affiche le formulaire d’ajout d’un usager
+	 * 
+	 * @param string $erreurs le message d’erreur
+	 * 
+	 * @return void
 	 */
 	public function afficheFormInscription($erreurs = '')
 	{
@@ -322,16 +351,22 @@ class Controleur_Login extends Controleur
 		// $this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction d'affichage du formulaire de modification
-	 * @param $erreurs le message d'ereur
+	 * Affiche du formulaire de modification
+	 * 
+	 * @param string $erreurs Le message d’erreur
+	 * 
+	 * @return void
 	 */
 	public function afficheFormModification($erreurs = '')
 	{
 		// Récupére la liste des usagers
 		$donnees['usager'] = $this->modele_usager->obtenir_tous();
+
 		$donnees['usager'] = $this->modele_usager->obtenir_par_id($_GET['id']);
 		$donnees['erreurs'] = $erreurs;
+
 		// Afficher le formulaire du login
 		$this->afficheVue('modeles/en-tete');
 		$this->afficheVue('modeles/menu-usager');
@@ -339,14 +374,18 @@ class Controleur_Login extends Controleur
 		$this->afficheVue('modeles/bas-de-page');
 	}
 
+
 	/**
-	 * Fonction de validation du formulaire d'inscription
-	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
-	 * @return retourne le message d'erreur
+	 * Valide le formulaire d’inscription
+	 * 
+	 * @param string $mdp1 Mot de passe
+	 * @param string $mdp2 Confirmation du mot de passe
+	 * 
+	 * @return retourne Le message d'erreur
 	 */
 	public function valideFormInscription($mdp1 ,$mdp2)
 	{
-		// Initialiser le message d'erreur
+		// Initialiser le message d’erreur
 		$msgErreur = '';
 		
 		$mdp1 = trim($mdp1);
@@ -362,12 +401,13 @@ class Controleur_Login extends Controleur
 		if($mdp1 != $mdp2)
 			$msgErreur .= 'Les mots de passe doivent ètre identiques.<br>';
 
-		// Retourner un message d'erreur
+		// Retourner le message d’erreur
 		return $msgErreur;
 	}
 
+
 	/**
-	 * Fonction de validation du formulaire d'inscription
+	 * Fonction de validation du formulaire d’inscription
 	 * @param $courriel, $nom, $prenom, $mdp ,$mdp2
 	 * @return retourne le message d'erreur
 	 */
@@ -398,14 +438,18 @@ class Controleur_Login extends Controleur
 		return $msgErreur;
 	}
 
-		/**
-	 * Fonction de validation du formulaire d'inscription sans mot de passe
-	 * @param $courriel, $nom, $prenom
-	 * @return retourne le message d'erreur
+	/**
+	 * Valide le formulaire d’inscription sans mot de passe
+	 * 
+	 * @param string $courriel Courriel de l’usager
+	 * @param string $nom Nom de l’usager
+	 * @param string $prenom Prénom de l’usager
+	 * 
+	 * @return string Le message d’erreur
 	 */
 	public function valideFormSansMdp($courriel, $nom, $prenom)
 	{
-		// Initialiser le message d'erreur
+		// Initialiser le message d’erreur
 		$msgErreur = '';
 
 		// Récupérer le courriel
@@ -432,7 +476,8 @@ class Controleur_Login extends Controleur
 
 		if(!preg_match("/^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{2,30})$/",$prenom))
 			$msgErreur .= 'Entrez au moins deux caractères dans le prénom et pas de chiffres.<br>';
-		// Retourner un message d'erreur
+
+		// Retourner un message d’erreur
 		return $msgErreur;
 	}
 }
