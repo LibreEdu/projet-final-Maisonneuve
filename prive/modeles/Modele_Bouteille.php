@@ -21,6 +21,7 @@ class Modele_Bouteille extends Modele
 
 	/**
 	 * Retourne les données d’une bouteille.
+	 * 
 	 * @param integer $id_bouteille Identifiants de la bouteille
 	 *
 	 * @return object Les données d’une bouteille.
@@ -70,7 +71,6 @@ class Modele_Bouteille extends Modele
 	 * Change la quantité de bouteilles.
 	 * 
 	 * @param integer $id_bouteille Identifiant de la bouteille.
-	 *
 	 * @param integer $delta Nombre de bouteille à ajouter ou à retirer
 	 * 
 	 * @return mixed Jeu de résultat si la requête a été correctement exécutée, false sinon.
@@ -105,7 +105,7 @@ class Modele_Bouteille extends Modele
 	 * 
 	 * @param integer $id_cellier
 	 * 
-	 * @return boolean Indique si la requête a correctement fonctionné.
+	 * @return void
 	 */
 	public function supprimerBouteille($id_cellier)
 	{
@@ -117,7 +117,7 @@ class Modele_Bouteille extends Modele
 	 * 
 	 * @param integer $id_bouteille
 	 *
-	 * @return boolean Indique si la requête a correctement fonctionné.
+	 * @return void
 	 */
 	public function supprimerBouteilleParIdBouteille($id_bouteille)
 	{
