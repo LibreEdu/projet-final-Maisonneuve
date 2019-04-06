@@ -39,7 +39,7 @@ var vinoAdmin = (function(){
 			'mettreAJour':document.getElementById('mettreAJour').checked,
 			'indice':document.getElementById('btnIndice').value
 		};
-		let requete = new Request('index.php?importation&action=importer', {method: 'POST', body: JSON.stringify(parametres)});
+		let requete = new Request('index.php?importation&action=importer-js', {method: 'POST', body: JSON.stringify(parametres)});
 		fetch(requete)
 		.then(response => {
 			if (response.status === 200) {
