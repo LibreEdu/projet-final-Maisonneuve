@@ -76,11 +76,10 @@ class Modele_Cellier extends Modele
 	/**
 	 * Fonction qui verifie si bien le cellier appartient à un usager 
 	 *
-	 * @param intereg $idCellier Indiquant le id de cellier 
+	 * @param integer $idCellier Indiquant le id de cellier 
+	 * @param integer $idUsager Indiquant le id d'usager 
 	 *
-	 * @param interger $idUsager Indiquant le id d'usager 
-	 *
-	 * @return $resultat Le cellier trouvée dans la table vino cellier
+	 * @return mixed Le cellier trouvée dans la table vino cellier ou false
 	 */
 	public function verif_usager($idCellier, $idUsager)
 	{
