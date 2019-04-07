@@ -1,4 +1,0 @@
-\babel@toc {french}{}
-\beamer@sectionintoc {1}{Structure du MVC}{3}{0}{1}
-\beamer@sectionintoc {2}{User stories}{4}{0}{2}
-\beamer@sectionintoc {3}{L\IeC {\textquoteright }application web}{6}{0}{3}
