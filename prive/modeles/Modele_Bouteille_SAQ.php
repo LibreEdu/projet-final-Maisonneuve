@@ -29,7 +29,7 @@ class Modele_Bouteille_SAQ extends Modele
 	public function obtenir_total()
 	{
 		$resultat = $this->total();
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Total');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_total');
 		$nbBouteilles = $resultat->fetch();
 		return $nbBouteilles->total;
 	}
@@ -45,7 +45,7 @@ class Modele_Bouteille_SAQ extends Modele
 	public function estPresent($code_saq)
 	{
 		$resultat = $this->lire($code_saq, 'code_saq');
-		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
+		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille_saq');
 		return $bouteilles;
 	}
 

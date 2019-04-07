@@ -148,7 +148,9 @@ final class Controleur_Bouteille extends Controleur
 		$_POST['millesime'] = ($_POST['millesime'] == '') ? null : $_POST['millesime'];
 
 		$this->modele_bouteille->modifier();
+		if($this->modele_bouteille->modifier()) {
 		header('Location: ' . site_url( 'cellier&action=voir&id_cellier=' . $_POST['id_cellier']) );
+		}
 	}
 
 

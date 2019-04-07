@@ -28,7 +28,7 @@ class Modele_Usager extends Modele
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$usagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		$usagers = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_usager');
 		return $usagers;
 	}
 
@@ -44,7 +44,7 @@ class Modele_Usager extends Modele
 	public function Authentification($courriel, $mot_de_passe)
 	{
 		$resultat = $this->lire($courriel, 'courriel');
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_usager');
 		$usager = $resultat->fetch();
 		
 		if($usager)
@@ -75,7 +75,7 @@ class Modele_Usager extends Modele
 	public function obtenirUsager($id)
 	{
 		$resultat = $this->lire($id, 'courriel');
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_usager');
 		return $resultat->fetch();
 	}
 
@@ -106,7 +106,7 @@ class Modele_Usager extends Modele
 	public function obtenir_par_id($id)
 	{
 		$resultat = $this->lire($id, 'id_usager');
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Usager');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_usager');
 
 		return $resultat->fetch();
 	}

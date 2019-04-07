@@ -29,7 +29,7 @@ class Modele_Cellier extends Modele
 	public function obtenir_par_id($id_cellier)
 	{
 		$resultat = $this->lire($id_cellier);
-		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
+		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_cellier');
 		return $cellier;
 	}
 
@@ -43,7 +43,7 @@ class Modele_Cellier extends Modele
 	public function obtenir_par_usager($id_usager)
 	{
 		$resultat = $this->lire($id_usager, 'id_usager');
-		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Cellier');
+		$cellier = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_cellier');
 		return $cellier;
 	}
 

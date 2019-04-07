@@ -27,7 +27,7 @@ class Modele_Type extends Modele
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$types = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
+		$types = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_type');
 		return $types;
 	}
 
@@ -40,7 +40,7 @@ class Modele_Type extends Modele
 	public function obtenir_type($type)
 	{
 		$resultat = $this->lire($type, 'type');
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Type');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_type');
 		return $listes;
 	}
 

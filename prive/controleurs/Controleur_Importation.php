@@ -53,8 +53,8 @@ final class Controleur_Importation extends Controleur
 		$this->_nbBouteillesWeb = $this->recupererNbBouteilles();
 
 		// Initialisation des modèles.
-		$this->modele_bouteille_SAQ = $this->modele('Modele_bouteille_SAQ');
-		$this->modele_type = $this->modele('Modele_type');
+		$this->modele_bouteille_SAQ = $this->modele('modele_bouteille_saq');
+		$this->modele_type = $this->modele('modele_type');
 
 	}
 

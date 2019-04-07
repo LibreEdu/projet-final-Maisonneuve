@@ -28,9 +28,9 @@ final class Controleur_Cellier extends Controleur
 	 */
 	public function __construct()
 	{
-		$this->modele_bouteille = $this->modele('Modele_bouteille');
-		$this->modele_cellier = $this->modele('Modele_cellier');
-		$this->modele_type = $this->modele('Modele_type');
+		$this->modele_bouteille = $this->modele('modele_bouteille');
+		$this->modele_cellier = $this->modele('modele_cellier');
+		$this->modele_type = $this->modele('modele_type');
 	}
 
 
