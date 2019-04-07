@@ -7,7 +7,7 @@
 			<h2 class="mdl-card__title-text">Créer une liste d'achat</h2>		
 		</div>
 		<div class="mdl-card__supporting-text">
-			<form method="POST">
+			<form name="form_achats" method="POST">
 				<div class="mdl-textfield mdl-js-textfield">
 					Nom de la liste d'achat : 
 						<input class="mdl-textfield__input" type="text" id="nom_bouteille" name="nom" required="required">

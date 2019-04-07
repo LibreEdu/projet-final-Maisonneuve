@@ -22,7 +22,7 @@ class Controleur_Login extends Controleur
 	 */
 	public function __construct()
 	{
-		$this->modele_usager = $this->modele('Modele_usager');
+		$this->modele_usager = $this->modele('modele_usager');
 	}
 
 

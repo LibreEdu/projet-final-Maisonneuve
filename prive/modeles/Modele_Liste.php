@@ -34,7 +34,7 @@ class Modele_Liste extends Modele
 		$nom = preg_replace('/\*/','%' , $nom);
 		$sql ='SELECT * FROM vino_bouteille_saq where LOWER(nom) like LOWER("%' . $nom . '%") LIMIT 0,'. $nb_resultat;
 		$requete = $this->requete($sql);
-		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille_SAQ');
+		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille_saq');
 
 		foreach($bouteilles as $bouteille) {
 			$uneBouteille = array();
@@ -109,7 +109,7 @@ class Modele_Liste extends Modele
 					AND l.id_liste_achat = a.id_liste_achat
 				ORDER BY l.nom';
 		$resultat = $this->requete($sql);
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_bouteille_SAQ');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille_saq');
 
 		return $listes;
 	}
@@ -121,7 +121,7 @@ class Modele_Liste extends Modele
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Liste');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_liste');
 		return $listes;
 	}
 

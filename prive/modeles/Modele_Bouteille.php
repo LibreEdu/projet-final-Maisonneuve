@@ -29,7 +29,7 @@ class Modele_Bouteille extends Modele
 	public function obtenir_par_id($id_bouteille)
 	{
 		$resultat = $this->lire($id_bouteille, 'id_bouteille');
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille');
 		return $resultat->fetch();
 	}
 
@@ -63,7 +63,7 @@ class Modele_Bouteille extends Modele
 			ORDER BY id_bouteille';
 		$donnees = array($id_cellier);
 		$resultat = $this->requete($sql, $donnees);
-		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		$bouteilles = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille');
 		return $bouteilles;
 	}
 
@@ -96,7 +96,7 @@ class Modele_Bouteille extends Modele
 		$sql = 'SELECT quantite FROM vino_bouteille WHERE id_bouteille = ? ';
 		$donnees = array($id_bouteille);
 		$resultat = $this->requete($sql, $donnees);
-		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		$resultat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille');
 		return $resultat->fetch();
 	}
 
@@ -233,7 +233,7 @@ class Modele_Bouteille extends Modele
 		}
 		$donnees=array($id_cellier);
 		$requete = $this->requete($sql, $donnees);
-		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Bouteille');
+		$bouteilles = $requete->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_bouteille');
 		
 		if ($bouteilles == NULL) {
 			return 0;

@@ -27,7 +27,7 @@ class Modele_Affichage extends Modele
 	public function obtenir_tous()
 	{
 		$resultat = $this->lireTous();
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Affichage');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_affichage');
 		return $listes;
 	}
 
@@ -41,7 +41,7 @@ class Modele_Affichage extends Modele
 	public function obtenir_par_id($id_liste_achat)
 	{
 		$resultat = $this->lire($id_liste_achat, 'id_liste_achat');
-		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Classe_Affichage');
+		$listes = $resultat->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe_affichage');
 
 		return $listes;
 	}

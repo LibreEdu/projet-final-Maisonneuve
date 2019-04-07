@@ -445,7 +445,8 @@ window.addEventListener('load', function() {
 			if(evt.target.tagName == 'LI'){
 				mes_achats.innerHTML += '<div name="laDiv" class="bouteille_liste"><input type="hidden" name="id_bouteille_saq[]" value="' + evt.target.dataset.id_bouteille_saq + '" /><table style="width:100%;"><tr><td style="width:90%;">' + evt.target.innerHTML + '</td><td style="width:10%;"><button class="mdl-button mdl-js-button mdl-button--raised"><i class="far fa-trash-alt"></i></button></td><tr></table></div>';				
 				la_liste.innerHTML = '';
-				NomBouteille.value = '';
+				NomBouteille.value = '';				
+				document.form_achats.une_bouteille.focus()
 			}
 		});
 
@@ -457,6 +458,7 @@ window.addEventListener('load', function() {
 			if(evt.target.tagName == 'BUTTON'){
 				for(var i=0; i<les_bouteilles.length; i++) {
 					mes_achats.removeChild(les_bouteilles[i]);
+					document.form_achats.une_bouteille.focus();
 				}
 			}			
 		});
